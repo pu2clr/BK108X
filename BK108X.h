@@ -110,7 +110,7 @@ typedef union {
 /**
  * @ingroup GA01
  * @brief Power Configuratio
- * @see  BAKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER; pages 13 and 14 
+ * @see  BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER; pages 13 and 14 
  */
 typedef union {
     struct
@@ -135,7 +135,7 @@ typedef union {
  * @ingroup GA01
  * @brief Channe
  * @details The tuned Frequency = Band + CHAN * SPACE
- * @see BAKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER; page 14 
+ * @see BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER; page 14 
  */
 typedef union {
     struct
