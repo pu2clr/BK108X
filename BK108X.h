@@ -23,8 +23,8 @@
 #define OSCILLATOR_TYPE_CRYSTAL  1 // Crystal
 #define OSCILLATOR_TYPE_REFCLK   0 // Reference clock    
 
-#define RDS_STANDARD  0   //!< RDS Mode.
-#define RDS_VERBOSE   1   //!< RDS Mode.
+#define RDS_STANDARD  0      //!< RDS Mode.
+#define RDS_VERBOSE   1      //!< RDS Mode.
 #define bk_SEEK_DOWN 0       //!< Seek Down  Direction
 #define bk_SEEK_UP 1         //!< Seek Up  Direction
 #define bk_SEEK_WRAP 0       // 
@@ -54,6 +54,20 @@
 #define REG10 0x10
 #define REG11 0x11
 #define REG12 0x12
+#define REG13 0x13
+#define REG14 0x14
+#define REG15 0x15
+#define REG16 0x16
+#define REG17 0x17
+#define REG18 0x18
+#define REG19 0x19
+#define REG1A 0x1A
+#define REG1B 0x1B
+#define REG1C 0x1C
+#define REG1D 0x1D
+#define REG1E 0x1E
+#define REG1F 0x1F
+
 
 /**
  * @defgroup GA01 Union, Structure and Defined Data Types  
@@ -262,84 +276,64 @@ typedef union {
 /**
  * @ingroup GA01
  * @brief Test 2
- * @details If written, these bits should be read first and then written with their pre-existing val- ues. Do not write during powerup.
+ * @details RSSI Threshold for Instant AFC updating; AFC Average Range; Variation Threshold for average AFC calculation;
+ * @details AFC Average; AFCRL Threshold; AFC/RSSI/SNR Calculate Rate; AFC Enable
+ * 
  */
 typedef union {
     struct
     {
-        uint8_t lowByte;    //!< Reserved
-        uint8_t highByte;   //!< Reserved
+        uint8_t AFCRSSIT : 7; //!< RSSI Threshold for Instant AFC updating
+        uint8_t RANGE : 2;    //!< AFC Average Range; 00 = the toughest; 11 = the loosest
+        uint8_t VAR : 2;      //!< Variation Threshold for average AFC calculation; 00 = Disable; 01 = the toughest; 11 = the loosest
+        uint8_t AVE : 1;      //!< AFC Average
+        uint8_t SEL25K : 1;   //!< AFCRL Threshold; 0 = Channel space/2; 1 = 25kHz
+        uint8_t TCSEL : 2;    //!< AFC/RSSI/SNR Calculate Rate; 00 = fastest; 11 = slowest. 4X times each
+        uint8_t AFCEN : 1;    //!< AFC Enable; 0 = Disable; 1 = Enable.
     } refined;
     uint16_t raw;
 } bk_reg08;
 
 /**
  * @ingroup GA01
- * @brief Boot Configuration
- * @details If written, these bits should be read first and then written with their pre-existing val- ues. Do not write during powerup.
+ * @brief Register 09h. Status1 (0x0000)
  */
 typedef union {
     struct
     {
-        uint8_t lowByte;    //!< Reserved
-        uint8_t highByte;   //!< Reserved
+        uint16_t SNR;       //!< The AFC value.
+        uint16_t AFC;       //!< unit AM 0.15k Hz, FM 0.6k Hz
     } refined;
     uint16_t raw;
 } bk_reg09;
 
 /**
  * @ingroup GA01
- * @brief Status RSSI
- * @details RSSI is measured units of dBμV in 1 dB increments with a maximum of approximately 75 dBμV. Si4702/03-C19 does not report RSSI levels greater than 75 dBuV.
- * @details AFCRL is updated after a tune or seek operation completes and indicates a valid or invalid channel. During normal operation, AFCRL is updated to reflect changing RF envi- ronments.
- * @details The SF/BL flag is set high when SKMODE 02h[10] = 0 and the seek operation fails to find a channel qualified as valid according to the seek parameters.
- * @details The SF/BL flag is set high when SKMODE 02h[10] = 1 and the upper or lower band limit has been reached. The SEEK 02h[8] bit must be set low to clear SF/BL.
- * @details The seek/tune complete flag is set when the seek or tune operation completes. Setting the SEEK 02h[8] or TUNE 03h[15] bit low will clear STC.
- * 
- * | RDS Block A Errors | Description | 
- * | ------------------ | ----------- |
- * |          0         | 0 errors requiring correction |
- * |          1         | 1–2 errors requiring correction | 
- * |          2         | 3–5 errors requiring correction | 
- * |          3         | 6+ errors or error in checkword, correction not possible |
- * 
+ * @brief Register 0Ah. Status2 (0x0000)
  */
 typedef union {
     struct
     {
-        uint8_t RSSI;    //!< RSSI (Received Signal Strength Indicator).
+        uint8_t RSSI : 7;    //!< RSSI (Received Signal Strength Indicator).
         uint8_t ST : 1;      //!< Stereo Indicator; 0 = Mono; 1 = Stereo.
-        uint8_t BLERA : 2;   //!< RDS Block A Errors; See table above.
-        uint8_t RDSS : 1;    //!< RDS Synchronized; 0 = RDS decoder not synchronized (default); 1 = RDS decoder synchronized.
-        uint8_t AFCRL : 1;   //!< AFC Rail; 0 = AFC not railed; 1 = AFC railed, indicating an invalid channel. Audio output is softmuted when set.
+        uint8_t CNTIMP : 4;  //!< Impulse Number
+        uint8_t AFCRL : 1;   //!< AFC Rail; 0 = AFC not railed; 1 = AFC railed.
         uint8_t SF_BL : 1;   //!< Seek Fail/Band Limit; 0 = Seek successful; 1 = Seek failure/Band limit reached.
         uint8_t STC : 1;     //!< Seek/Tune Complete; 0 = Not complete (default); 1 = Complete.
-        uint8_t RDSR : 1;    //!< RDS Ready; 0 = No RDS group ready (default); 1 = New RDS group ready.
+        uint8_t RDSR : 1;    //!< RDS Ready; 0 = No RDS group ready (default); 1 = New RDS group ready. Keep high for 40ms after new RDS is received
     } refined;
     uint16_t raw;
 } bk_reg0a;
 
 /**
  * @ingroup GA01
- * @brief Read Channel
- * @details If BAND 05h[7:6] = 00, then Freq (MHz) = Spacing (MHz) x Channel + 87.5 MHz. If BAND 05h[7:6] = 01, BAND 05h[7:6] = 10, then Freq (MHz) = Spacing (MHz) x Channel + 76 MHz.
- * @details READCHAN[9:0] provides the current tuned channel and is updated during a seek operation and after a seek or tune operation completes. Spacing and channel are set with the bits SPACE 05h[5:4] and CHAN 03h[9:0].
- * 
- * | RDS block Errors | Description | 
- * | -----------------| ----------- |
- * |          0       | 0 errors requiring correction |
- * |          1       | 1–2 errors requiring correction | 
- * |          2       | 3–5 errors requiring correction | 
- * |          3       | 6+ errors or error in checkword, correction not possible |
- * 
+ * @brief Register 0Bh. Read Channel (0x0000)
  */
 typedef union {
     struct
     {
-        uint16_t READCHAN : 10;  //!< Read Channel.
-        uint16_t BLERD : 2;      //!< RDS Block D Errors. See table above.
-        uint16_t BLERC : 2;      //!< RDS Block C Errors. See table above.
-        uint16_t BLERB : 2;      //!< RDS Block B Errors. See table above.
+        uint16_t READCHAN : 14; //!< Read Channel. Provides the current working channel
+        uint16_t RESERVED : 2;
     } refined;
     uint16_t raw;
 } bk_reg0b;
@@ -353,24 +347,265 @@ typedef uint16_t bk_reg0c; //!< RDS Block A Data.
 
 /**
  * @ingroup GA01
- * @brief RDS Block B
- * 
+ * @brief Register 0Ch. RDS1 (0x0000)
+ * @details RDS Block A - The First Register of RDS Received
  */
-typedef uint16_t bk_reg0d; //!< RDS Block B Data.
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg0c;
 
 /**
  * @ingroup GA01
- * @brief RDS Block C
- * 
+ * @brief Register 0Dh. RDS2 (0x0000)
+ * @details RDS Block B - The second register of RDS received
  */
-typedef uint16_t bk_reg0e; //!< RDS Block C Data.
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg0d;
 
 /**
  * @ingroup GA01
- * @brief RDS Block D
- * 
+ * @brief Register 0Eh. RDS2 (0x0000)
+ * @details RDS Block C - The third register of RDS received
  */
-typedef uint16_t bk_reg0f; //!< RDS Block D Data.
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg0e;
+
+/**
+ * @ingroup GA01
+ * @brief Register 0Fh. RDS4 (0x0000)
+ * @details RDS Block D - The fourth register of RDS received when read
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg0f;
+
+
+/**
+ * @ingroup GA01
+ * @brief Register 10h. Boot Configuration1 (0x7b11)
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg10;
+
+/**
+ * @ingroup GA01
+ * @brief Register 11h. Boot Configuration2 (0x0080)
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg11;
+
+/**
+ * @ingroup GA01
+ * @brief Register 12h. Boot Configuration3 (0x4000)
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg12;
+
+/**
+ * @ingroup GA01
+ * @brief Register 13h. Boot Configuration4 (0x3e00)
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg13;
+
+/**
+ * @ingroup GA01
+ * @brief Register 14h. Boot Configuration5 (0x0000)
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t RSSIMTH : 7;    //!< The Mute Threshold Based on RSSI
+        uint8_t SNRMTH : 7;     //!< The Mute Threshold Based on SNR
+        uint8_t AFCMUTE : 1;    //!< 0: disable soft mute when AFCRL is high; 1: enable soft mute when AFCRL is high
+        uint8_t SKMUTE : 1;     //!< 0: disable soft mute when seeking; 1: enable soft mute when seeking
+    } refined;
+    uint16_t raw;
+} bk_reg14;
+
+/**
+ * @ingroup GA01
+ * @brief 15h. Boot Configuration6 (0x0000)
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg15;
+
+
+/**
+ * @ingroup GA01
+ * @brief Register 16h. Boot Configuration7 (0x0400)
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg16;
+
+/**
+ * @ingroup GA01
+ * @brief Register 17h. Boot Configuration8 (0x0001)
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg17;
+
+/**
+ * @ingroup GA01
+ * @brief Register 18h. Boot Configuration9 (0x143c)
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg18;
+
+
+/**
+ * @ingroup GA01
+ * @brief Register 19h. Boot Configuration10 (0x4351)
+ */
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw;
+} bk_reg19;
+
+/**
+ * @ingroup GA01
+ * @brief Register 1Ah. Boot Configuration11 (0x0000)
+ */
+typedef union
+{
+    struct
+    {
+        uint16_t ANT_SEL : 9;   //!< Antenna varactor tune
+        uint16_t RESERVED : 7;
+    } refined;
+    uint16_t raw;
+} bk_reg1A;
+
+/**
+ * @ingroup GA01
+ * @brief Register 1Bh. Analog Configuration1 (0x0000)
+ */
+typedef union
+{
+    struct
+    {
+        uint16_t RESERVED : 15;
+        uint16_t FREQ_SEL : 1; //!<  Reference clock divider control ,Refer to Reg1D. Default 0 for 32.768kHz reference input.
+    } refined;
+    uint16_t raw;
+} bk_reg1B;
+
+/**
+ * @ingroup GA01
+ * @brief Register 1Ch. Analog Configuration2 (0x0000)
+ */
+typedef union
+{
+    struct
+    {
+        uint16_t RESERVED : 15;
+        uint16_t FREQ_SEL : 1; //!<  Reference clock divider control ,Refer to Reg1D Default 0 for 32.768kHz reference input.
+    } refined;
+    uint16_t raw;
+} bk_reg1C;
+
+/**
+ * @ingroup GA01
+ * @brief Register 1Dh. Analog Configuration2 (0x0000)
+ */
+typedef union {
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
+    } refined;
+    uint16_t raw; //!< //!< Reference clock divider control , FREQ_SEL[17:0] = HEX | Ref Frequency/512+0.5 | Default 16 for 32.768kHz reference.
+} bk_reg1D; 
+
+
 
 /**
  * @ingroup GA01
@@ -388,7 +623,8 @@ typedef uint16_t bk_reg0f; //!< RDS Block D Data.
  * 
  * @see also https://en.wikipedia.org/wiki/Radio_Data_System
  */
-typedef union {
+typedef union
+{
     struct
     {
         uint8_t address : 2;            // Depends on Group Type and Version codes. If 0A or 0B it is the Text Segment Address.
@@ -468,7 +704,7 @@ typedef union {
 class BK108X {
 
     private:
-        uint16_t shadowRegisters[17]; //!< shadow registers
+        uint16_t shadowRegisters[32]; //!< shadow registers 0x00  to 0x1F (0 - 31)
 
         // Device registers map - References to the shadow registers
         bk_reg00 *reg00 = (bk_reg00 *)&shadowRegisters[REG00];
@@ -487,6 +723,23 @@ class BK108X {
         bk_reg0d *reg0d = (bk_reg0d *)&shadowRegisters[REG0D];
         bk_reg0e *reg0e = (bk_reg0e *)&shadowRegisters[REG0E];
         bk_reg0f *reg0f = (bk_reg0f *)&shadowRegisters[REG0F];
+        bk_reg10 *reg10 = (bk_reg10 *)&shadowRegisters[REG10];
+        bk_reg11 *reg11 = (bk_reg11 *)&shadowRegisters[REG11];
+        bk_reg12 *reg12 = (bk_reg12 *)&shadowRegisters[REG12];
+        bk_reg13 *reg13 = (bk_reg13 *)&shadowRegisters[REG13];
+        bk_reg14 *reg14 = (bk_reg14 *)&shadowRegisters[REG14];
+        bk_reg15 *reg15 = (bk_reg15 *)&shadowRegisters[REG15];
+        bk_reg16 *reg16 = (bk_reg16 *)&shadowRegisters[REG16];
+        bk_reg17 *reg17 = (bk_reg17 *)&shadowRegisters[REG17];
+        bk_reg18 *reg18 = (bk_reg18 *)&shadowRegisters[REG18];
+        bk_reg19 *reg19 = (bk_reg19 *)&shadowRegisters[REG19];
+        bk_reg1a *reg1A = (bk_reg1a *)&shadowRegisters[REG1A];
+        bk_reg1b *reg1b = (bk_reg1b *)&shadowRegisters[REG1B];
+        bk_reg1c *reg1c = (bk_reg1c *)&shadowRegisters[REG1C];
+        bk_reg1d *reg1d = (bk_reg1d *)&shadowRegisters[REG1D];
+        bk_reg1e *reg1e = (bk_reg1e *)&shadowRegisters[REG1E];
+        bk_reg1f *reg1f = (bk_reg1f *)&shadowRegisters[REG1F];
+
 
         uint16_t startBand[4] = {8750, 7600, 7600, 6400 }; //!< Start FM band limit
         uint16_t endBand[4] = {10800, 10800, 9000, 10800}; //!< End FM band limit
@@ -589,9 +842,6 @@ class BK108X {
 
             bool isStereo(); 
 
-            uint8_t getPartNumber();
-            uint16_t getManufacturerId();
-            uint8_t getFirmwareVersion();
             uint8_t getDeviceId();
             uint8_t getChipVersion();
 

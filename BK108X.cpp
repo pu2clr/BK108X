@@ -19,34 +19,11 @@
 /**
  * @ingroup GA03
  * @brief Gets all current register content of the device
- * @details For read operations, the device acknowledge is followed by an eight bit data word shifted out on falling SCLK edges. An internal address counter automatically increments to allow continuous data byte reads, starting with the upper byte of register 0Ah, followed by the lower byte of register 0Ah, and onward until the lower byte of the last register is reached. The internal address counter then automatically wraps around to the upper byte of register 00h and proceeds from there until continuous reads cease. 
- *
- * @see BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS; page 19.
  * @see shadowRegisters;  
  */
 void BK108X::getAllRegisters()
 {
-    word16_to_bytes aux;
-    int i;
 
-    Wire.requestFrom(this->deviceAddress, 32);
-    delayMicroseconds(300);
-    // while (Wire.available() < 32); // It did not work on Attiny Core
-
-    // The registers from 0x0A to 0x0F come first
-    for (i = 0x0A; i <= 0x0F; i++)
-    {
-        aux.refined.highByte = Wire.read();
-        aux.refined.lowByte = Wire.read();
-        shadowRegisters[i] = aux.raw;
-    }
-
-    for (i = 0x00; i <= 0x09; i++)
-    {
-        aux.refined.highByte = Wire.read();
-        aux.refined.lowByte = Wire.read();
-        shadowRegisters[i] = aux.raw;
-    }
 }
 
 /**
@@ -62,33 +39,16 @@ void BK108X::getAllRegisters()
  */
 void BK108X::setAllRegisters(uint8_t limit)
 {
-    word16_to_bytes aux;
-    Wire.beginTransmission(this->deviceAddress);
-    for (int i = 0x02; i <= limit; i++)
-    {
-        aux.raw = shadowRegisters[i];
-        Wire.write(aux.refined.highByte);
-        Wire.write(aux.refined.lowByte);
-    }
-    Wire.endTransmission();
+
 }
 
 /**
  * @ingroup GA03
- * @brief Gets the value of the 0x0A register
- * @details This function also updates the value of shadowRegisters[0];
- * @return bk_reg0a 
+ * @return 
  */
 void BK108X::getStatus()
 {
-    word16_to_bytes aux;
-    Wire.requestFrom(this->deviceAddress, 2);
-    delayMicroseconds(300);
-    // while (Wire.available() < 2) ; // It did not work on Attiny Core
 
-    aux.refined.highByte = Wire.read();
-    aux.refined.lowByte = Wire.read();
-    shadowRegisters[0x0A] = aux.raw;
 }
 
 /**
@@ -99,19 +59,7 @@ void BK108X::getStatus()
  */
 void BK108X::waitAndFinishTune()
 {
-    do
-    {
-        getStatus();
-    } while (reg0a->refined.STC == 0);
 
-    getAllRegisters();
-    reg02->refined.SEEK = 0;
-    reg03->refined.TUNE = 0;
-    setAllRegisters();
-    do
-    {
-        getStatus();
-    } while (reg0a->refined.STC != 0);
 }
 
 /**
@@ -134,50 +82,7 @@ void BK108X::reset()
  */
 void BK108X::powerUp()
 {
-    getAllRegisters();
-    reg07->refined.XOSCEN = this->oscillatorType; // Sets the Crustal
-    reg07->refined.AHIZEN = 0;
-    setAllRegisters();
-    delay(this->maxDelayAftarCrystalOn); // You can set this value. See inline function setDelayAfterCrystalOn
 
-    getAllRegisters();
-
-    reg02->refined.DMUTE = 1; // Mutes the device;
-    reg02->refined.MONO = 0;
-    reg02->refined.DSMUTE = 1;
-
-    reg02->refined.RDSM = 0;
-    reg02->refined.SKMODE = 0;
-    reg02->refined.SEEKUP = 0;
-    reg02->refined.SEEK = 0;
-    reg02->refined.ENABLE = 1; // Power up
-    reg02->refined.DISABLE = 0;
-
-    reg04->refined.RDSIEN = 0;
-    reg04->refined.STCIEN = 0;
-    reg04->refined.RDS = 0;
-    reg04->refined.DE = 0;
-    reg04->refined.AGCD = 1;
-    reg04->refined.BLNDADJ = 1;
-    // TODO - link the GPIO with interrupt pins
-    reg04->refined.GPIO1 = reg04->refined.GPIO2 = reg04->refined.GPIO3 = 0;
-
-    reg05->refined.SEEKTH = 0; // RSSI Seek Threshold;
-    this->currentFMBand = reg05->refined.BAND = 0;
-    this->currentFMSpace = reg05->refined.SPACE = 1;
-    this->currentVolume = reg05->refined.VOLUME = 0;
-
-    reg06->refined.SMUTER = 0;
-    reg06->refined.SMUTEA = 0;
-
-    reg06->refined.VOLEXT = 0;
-    reg06->refined.SKSNR = 0;
-    reg06->refined.SKCNT = 0;
-
-    setAllRegisters();
-    delay(60);
-    getAllRegisters(); // Gets All registers (current status after powerup)
-    delay(60);
 }
 
 /**
@@ -186,14 +91,7 @@ void BK108X::powerUp()
  */
 void BK108X::powerDown()
 {
-    getAllRegisters();
-    reg07->refined.AHIZEN = 1;
-    // reg07->refined.RESERVED = 0x0100;
-    reg04->refined.GPIO1 = reg04->refined.GPIO2 = reg04->refined.GPIO3 = 0;
-    reg02->refined.ENABLE = 1;
-    reg02->refined.DISABLE = 1;
-    setAllRegisters();
-    delay(100);
+
 }
 
 /**
@@ -250,25 +148,18 @@ void BK108X::setup(int resetPin, int sdaPin, uint8_t oscillator_type)
  */
 void BK108X::setChannel(uint16_t channel)
 {
-    reg03->refined.CHAN = channel;
-    reg03->refined.TUNE = 1;
-    setAllRegisters();
-    delayMicroseconds(60000);
-    waitAndFinishTune();
+
 }
 
 /**
  * @ingroup GA03
  * @brief Sets the FM frequency 
- * @details If you want to select 106.5 MHz, send the integer number 10650 (frequency 106.5MHz multiplied by 100).
- * @param frequency  7600 to 1080 (means 76Mhz to 108Mhz)
+ * @details ....
+ * @param frequency  
  */
 void BK108X::setFrequency(uint16_t frequency)
 {
-    uint16_t channel;
-    channel = (frequency - this->startBand[this->currentFMBand]) / this->fmSpace[this->currentFMSpace];
-    setChannel(channel);
-    this->currentFrequency = frequency;
+
 }
 
 /**
@@ -349,14 +240,7 @@ uint16_t BK108X::getRealFrequency()
  */
 void BK108X::seek(uint8_t seek_mode, uint8_t direction)
 {
-    getAllRegisters();
-    reg03->refined.TUNE = 1;
-    reg02->refined.SEEK = 1; // Enable seek
-    reg02->refined.SKMODE = seek_mode;
-    reg02->refined.SEEKUP = direction;
-    setAllRegisters();
-    waitAndFinishTune();
-    setFrequency(getRealFrequency());
+
 }
 
 /**
@@ -394,76 +278,38 @@ void BK108X::seek(uint8_t seek_mode, uint8_t direction)
  */
 void BK108X::seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)())
 {
-    getAllRegisters();
-    do
-    {
-        reg03->refined.TUNE = 1;
-        reg02->refined.SEEK = 1; // Enable seek
-        reg02->refined.SKMODE = seek_mode;
-        reg02->refined.SEEKUP = direction;
-        setAllRegisters();
-        delay(60);
-        if (showFunc != NULL)
-        {
-            showFunc();
-        }
-        getStatus();
-        this->currentFrequency = getRealFrequency(); // gets the current seek frequency
-    } while (reg0a->refined.STC == 0);
-    waitAndFinishTune();
-    setFrequency(getRealFrequency()); // Fixes station found.
+
 }
 
 /**
  * @ingroup GA03
  * @brief Sets RSSI Seek Threshold
- * @details SEEKTH presents the logarithmic RSSI threshold for the seek operation. 
- * @details The Si4702/03-C19 will not validate channels with RSSI below the SEEKTH value. 
- * @details SEEKTH is one of multiple parameters that can be used to validate channels.
- * @details For more information, see "AN284: Si4700/01 Firmware 15 Seek Adjustability and Set- tings."
  * @param  value between 0 and 127
  */
 void BK108X::setSeekThreshold(uint8_t value)
 {
-    reg05->refined.SEEKTH = value;
-    setAllRegisters();
+
 }
 
 /**
  * @ingroup GA03
  * @brief Sets the FM Band  
- * @details 
+
  * 
- * | BAND value     | Description | 
- * | ----------     | ----------- | 
- * |    0           | 00 = 87.5–108 MHz (USA, Europe) (Default) |
- * |    1 (default) | 01 = 76–108 MHz (Japan wide band) | 
- * |    2           | 10 = 76–90 MHz (Japan) | 
- * |    3           | 11 = Reserved | 
- * 
- * @param band  See the table above. If you do not set a parameter, will be considered 1 (76-108MHz)
+ * @param band  
  */
 void BK108X::setBand(uint8_t band)
 {
-    this->currentFMBand = reg05->refined.BAND = band;
-    setAllRegisters();
+
 }
 
 /**
  * @ingroup GA03
  * @brief Sets the FM Space  
- * @details The BK108X device supports 3 different settings as shown below
- * | BAND value     | Description | 
- * | ----------     | ----------- | 
- * |    0           | 00 - 200 kHz (US / Australia, Default) |
- * |    1 (default) | 01 - 100 kHz (Europe / Japan) | 
- * |    2           | 02 - 50 kHz | 
- * |    3           | 03 - Reserved (Do not use)| 
  */
 void BK108X::setSpace(uint8_t space)
 {
-    this->currentFMBand = reg05->refined.SPACE = space;
-    setAllRegisters();
+
 }
 
 /**
@@ -474,8 +320,7 @@ void BK108X::setSpace(uint8_t space)
  */
 int BK108X::getRssi()
 {
-    getStatus();
-    return reg0a->refined.RSSI;
+
 }
 
 /**
@@ -485,46 +330,29 @@ int BK108X::getRssi()
  */
 void BK108X::setSoftmute(bool value)
 {
-    reg02->refined.DSMUTE = !value; // If true, it has not be disabled
-    setAllRegisters();
+
 }
 
 /**
  * @ingroup GA03
  * @brief Sets Softmute Attack/Recover Rate.
  * 
- *  | Value | Description |
- *  | ----- | ----------- | 
- *  |   0   | fastest (default) |
- *  |   1   | fast |
- *  |   2   | slow | 
- *  |   3   | slowest |       
- * 
- * @param value See table above
+ * @param value 
  */
 void BK108X::setSoftmuteAttack(uint8_t value)
 {
-    reg06->refined.SMUTER = value;
-    setAllRegisters();
+
 }
 
 /**
  * @ingroup GA03
  * @brief Sets  Softmute Attenuation..
  * 
- *  | Value | Description |
- *  | ----- | ----------- | 
- *  |   0   | 16 dB (default) |
- *  |   1   | 14 dB |
- *  |   2   | 12 dB | 
- *  |   3   | 10 dB |       
- * 
- * @param value See table above
+ * @param value 
  */
 void BK108X::setSoftmuteAttenuation(uint8_t value)
 {
-    reg06->refined.SMUTEA = value;
-    setAllRegisters();
+
 }
 
 /**
@@ -534,8 +362,7 @@ void BK108X::setSoftmuteAttenuation(uint8_t value)
  */
 void BK108X::setAgc(bool value)
 {
-    reg04->refined.AGCD = !value;
-    setAllRegisters();
+
 }
 
 /**
@@ -546,8 +373,7 @@ void BK108X::setAgc(bool value)
  */
 void BK108X::setMute(bool value)
 {
-    reg02->refined.DMUTE = !value; // If true, it has not be disabled
-    setAllRegisters();
+
 }
 
 /**
@@ -558,8 +384,7 @@ void BK108X::setMute(bool value)
  */
 void BK108X::setMono(bool value)
 {
-    reg02->refined.MONO = value; // If true, it has not be disabled
-    setAllRegisters();
+
 }
 
 /**
@@ -570,8 +395,7 @@ void BK108X::setMono(bool value)
  */
 bool BK108X::isStereo()
 {
-    getStatus();
-    return reg0a->refined.ST;
+
 }
 
 /**
@@ -582,10 +406,7 @@ bool BK108X::isStereo()
  */
 void BK108X::setVolume(uint8_t value)
 {
-    if (value > 15)
-        return;
-    this->currentVolume = reg05->refined.VOLUME = value;
-    setAllRegisters();
+
 }
 
 /**
@@ -630,46 +451,13 @@ void BK108X::setVolumeDown()
 /**
  * @ingroup GA03
  * @brief Sets Extended Volume Range.
- * @details This bit attenuates the output by 30 dB. With the bit set to 0, the 15 volume settings adjust the volume between 0 and –28 dBFS. With the bit set to 1, the 15 volume set- tings adjust the volume between –30 and –58 dBFS.
  * @param value false = disabled (default); true = enabled.
  */
 void BK108X::setExtendedVolumeRange(bool value)
 {
-    reg06->refined.VOLEXT = value;
-    setAllRegisters();
+
 }
 
-/**
- * @ingroup GA03
- * @brief Gets the Part Number
- * @details If it returns 0x01, so the device is: Si4702/03
- * @return the part number 
- */
-uint8_t BK108X::getPartNumber()
-{
-    return reg00->refined.PN;
-}
-
-/**
- * @ingroup GA03
- * @brief Gets the Manufacturer ID
- * @return number  
- */
-uint16_t BK108X::getManufacturerId()
-{
-    return reg00->refined.MFGID;
-}
-
-/**
- * @ingroup GA03
- * @brief Gets the Firmware Version
- * @details The return velue before powerup will be 0. After powerup should be 010011 (19)
- * @return number 
- */
-uint8_t BK108X::getFirmwareVersion()
-{
-    return reg01->refined.FIRMWARE;
-}
 
 /**
  * @ingroup GA03
@@ -678,7 +466,7 @@ uint8_t BK108X::getFirmwareVersion()
  */
 uint8_t BK108X::getDeviceId()
 {
-    return reg01->refined.DEV;
+
 }
 
 /**
@@ -688,7 +476,7 @@ uint8_t BK108X::getDeviceId()
  */
 uint8_t BK108X::getChipVersion()
 {
-    return reg01->refined.REV;
+
 }
 
 /**
@@ -700,8 +488,7 @@ uint8_t BK108X::getChipVersion()
  */
 void BK108X::setFmDeemphasis(uint8_t de)
 {
-    reg04->refined.DE = de;
-    setAllRegisters();
+
 }
 
 /** 
@@ -718,19 +505,7 @@ void BK108X::setFmDeemphasis(uint8_t de)
  */
 void BK108X::getRdsStatus()
 {
-    word16_to_bytes aux;
-    int i;
 
-    Wire.requestFrom(this->deviceAddress, 12);
-    delayMicroseconds(300);
-    // while (Wire.available() < 32); // It did not work on Attiny Core
-    // The registers from 0x0A to 0x0F come first
-    for (i = 0x0A; i <= 0x0F; i++)
-    {
-        aux.refined.highByte = Wire.read();
-        aux.refined.lowByte = Wire.read();
-        shadowRegisters[i] = aux.raw;
-    }
 }
 
 /**
@@ -741,8 +516,7 @@ void BK108X::getRdsStatus()
  */
 void BK108X::setRdsMode(uint8_t rds_mode)
 {
-    reg02->refined.RDSM = rds_mode; // If true, it has not be disabled
-    setAllRegisters();
+
 }
 
 /**
@@ -754,8 +528,7 @@ void BK108X::setRdsMode(uint8_t rds_mode)
  */
 void BK108X::setRds(bool value)
 {
-    reg04->refined.RDS = value;
-    setAllRegisters();
+
 }
 
 /**
@@ -769,8 +542,7 @@ void BK108X::setRds(bool value)
  */
 bool BK108X::getRdsReady()
 {
-    getStatus();
-    return reg0a->refined.RDSR;
+
 };
 
 /**
@@ -782,10 +554,7 @@ bool BK108X::getRdsReady()
  */
 uint8_t BK108X::getRdsFlagAB(void)
 {
-    bk_rds_blockb blkb;
-    blkb.blockB = shadowRegisters[0x0D];
 
-    return blkb.refined.textABFlag;
 }
 
 /**
@@ -796,10 +565,7 @@ uint8_t BK108X::getRdsFlagAB(void)
  */
 uint16_t BK108X::getRdsGroupType()
 {
-    bk_rds_blockb blkb;
-    getRdsStatus();
-    blkb.blockB = shadowRegisters[0x0D];
-    return blkb.group0.groupType;
+
 }
 
 /**
@@ -810,9 +576,7 @@ uint16_t BK108X::getRdsGroupType()
  */
 uint8_t BK108X::getRdsVersionCode(void)
 {
-    bk_rds_blockb blkb;
-    blkb.blockB = shadowRegisters[0x0D];
-    return blkb.refined.programType;
+
 }
 
 /**  
@@ -823,9 +587,7 @@ uint8_t BK108X::getRdsVersionCode(void)
  */
 uint8_t BK108X::getRdsProgramType(void)
 {
-    bk_rds_blockb blkb;
-    blkb.blockB = shadowRegisters[0x0D];
-    return blkb.refined.programType;
+
 }
 
 /**
