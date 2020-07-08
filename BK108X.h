@@ -4,6 +4,7 @@
  * @brief PU2CLR BK108X Arduino Library implementation. <br> 
  * @details This is an Arduino library for the BK1086 and BK1088 DSP BROADCAST RECEIVER.<br>  
  * @details It works with I2C protocol and can provide an easier interface for controlling the BK1086/88 devices.<br>
+ * @details This library is based on BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER manual. 
  * 
  * This library can be freely distributed using the MIT Free Software model.
  * Copyright (c) 2020 Ricardo Lima Caratti.  

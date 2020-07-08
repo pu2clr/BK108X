@@ -1,9 +1,10 @@
 /**
  * @mainpage BK108X Arduino Library implementation 
  * @details BK108X Arduino Library implementation. This is an Arduino library for the BK108X, BROADCAST RECEIVER.  
- * @details It works with I2C protocol and can provide an easier interface to control the BK108X device.<br>
- * @details This library was built based on "AN230 - Si4700/01/02/03 PROGRAMMING GUIDE" and  "Si4702/03-C19 - BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS"
- * @details This library can be freely distributed using the MIT Free Software model.
+ * @details This is an Arduino library for the BK1086 and BK1088 DSP BROADCAST RECEIVER.<br>  
+ * @details It works with I2C protocol and can provide an easier interface for controlling the BK1086/88 devices.<br>
+ * @details This library is based on BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER manual. 
+ * 
  * @copyright Copyright (c) 2020 Ricardo Lima Caratti. 
  * @author Ricardo LIma Caratti (pu2clr@gmail.com)
  */
