@@ -18,28 +18,58 @@
 
 /**
  * @ingroup GA03
- * @brief Gets all current register content of the device
+ * @brief Gets a givens current register content of the device
  * @see shadowRegisters;  
+ * @param device register address
  */
-void BK108X::getAllRegisters()
+uint16_t BK108X::getRegister(uint8_t reg)
 {
+    word16_to_bytes result;
 
+    Wire.beginTransmission(this->deviceAddress);
+    Wire.write(reg);
+   //  Wire.endTransmission(false);
+    // delayMicroseconds(6000);
+    Wire.requestFrom(this->deviceAddress, 2);
+    result.refined.highByte = Wire.read();
+    result.refined.lowByte = Wire.read();
+    Wire.endTransmission(true);
+    delayMicroseconds(6000);
+
+    shadowRegisters[reg] = result.raw; // Syncs with the shadowRegisters
+
+    return result.raw;
 }
+
 
 /**
  * @ingroup GA03
- * @brief   Sets values to the device registers from 0x02 to 0x07
+ * @brief   Sets a given value to the device registers 
  * @details For write operations, the device acknowledge is followed by an eight bit data word latched internally on rising edges of SCLK. The device acknowledges each byte of data written by driving SDIO low after the next falling SCLK edge, for 1 cycle.
  * @details An internal address counter automatically increments to allow continuous data byte writes, starting with the upper byte of register 02h, followed by the lower byte of register 02h, and onward until the lower byte of the last register is reached. The internal address counter then automatically wraps around to the upper byte of register 00h and proceeds from there until continuous writes end.
- *  @details The registers from 0x2 to 0x07 are used to setup the device. This method writes the array  shadowRegisters, elements 8 to 14 (corresponding the registers 0x2 to 0x7 respectively)  into the device. See Device registers map  in BK108X.h file.
+ * @details The registers from 0x2 to 0x07 are used to setup the device. This method writes the array  shadowRegisters, elements 8 to 14 (corresponding the registers 0x2 to 0x7 respectively)  into the device. See Device registers map  in BK108X.h file.
  * @details To implement this, a register maping was created to deal with each register structure. For each type of register, there is a reference to the array element. 
  *  
- * @see BROADCAST FM RADIO TUNER FOR PORTABLE APPLICATIONS; pages 18 and 19.
  * @see shadowRegisters; 
+ * 
+ * @param device register address
  */
-void BK108X::setAllRegisters(uint8_t limit)
+void BK108X::setRegister(uint8_t reg, uint16_t value)
 {
+    word16_to_bytes param;
 
+    param.raw = value;
+
+    Wire.beginTransmission(this->deviceAddress);
+    Wire.write(reg);
+
+    Wire.write(param.refined.highByte);
+    Wire.write(param.refined.lowByte);
+    Wire.endTransmission();
+
+    shadowRegisters[reg] = value;  // Syncs with the shadowRegisters
+
+    delayMicroseconds(6000);
 }
 
 /**
@@ -68,11 +98,7 @@ void BK108X::waitAndFinishTune()
  */
 void BK108X::reset()
 {
-    pinMode(this->resetPin, OUTPUT);
-    digitalWrite(this->resetPin, LOW);
-    delay(1);
-    digitalWrite(this->resetPin, HIGH);
-    delay(1);
+
 }
 
 /**
@@ -82,7 +108,11 @@ void BK108X::reset()
  */
 void BK108X::powerUp()
 {
-
+    reg02->raw = 0;    
+    reg02->refined.DSMUTE = 1;
+    reg02->refined.STEREO = 1; 
+    reg02->refined.ENABLE = 1;
+    setRegister(REG02,reg02->raw);
 }
 
 /**
@@ -99,22 +129,12 @@ void BK108X::powerDown()
  * @brief Starts the device 
  * @details sets the reset pin, interrupt pins and oscillator type you are using in your project.
  * @details You have to inform at least two parameters: RESET pin and I2C SDA pin of your MCU
- * @param resetPin         // Arduino pin used to reset control. 
- * @param sdaPin           // I2C data bus pin (SDA).       
  * @param rdsInterruptPin  // optional. Sets the Interrupt Arduino pin used to RDS function control.
  * @param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control. 
  * @param oscillator_type  // optional. Sets the Oscillator type used Crystal (default) or Ref. Clock. 
  */
-void BK108X::setup(int resetPin, int sdaPin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type)
+void BK108X::setup(int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type)
 {
-
-    if (sdaPin >= 0)
-    {
-        pinMode(sdaPin, OUTPUT);
-        digitalWrite(sdaPin, LOW);
-    }
-
-    this->resetPin = resetPin;
     if (rdsInterruptPin >= 0)
         this->rdsInterruptPin = rdsInterruptPin;
     if (seekInterruptPin >= 0)
@@ -128,18 +148,6 @@ void BK108X::setup(int resetPin, int sdaPin, int rdsInterruptPin, int seekInterr
     powerUp();
 }
 
-/**
- * @ingroup GA03
- * @brief Starts the device 
- * @details Use this if you are not using interrupt pins in your project
- * @param resetPin         // Arduino pin used to reset control.     
- * @param rdsInterruptPin  // optional. Sets the Arduino pin used to RDS function control.
- * @param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control. 
- */
-void BK108X::setup(int resetPin, int sdaPin, uint8_t oscillator_type)
-{
-    setup(resetPin, sdaPin, -1, -1, oscillator_type);
-}
 
 /**
  * @ingroup GA03
@@ -210,7 +218,7 @@ uint16_t BK108X::getFrequency()
  */
 uint16_t BK108X::getRealChannel()
 {
-    getAllRegisters();
+    
     return reg0b->refined.READCHAN;
 }
 
@@ -598,32 +606,7 @@ uint8_t BK108X::getRdsProgramType(void)
  */
 void BK108X::getNext2Block(char *c)
 {
-    char raw[2];
-    int i, j;
-    word16_to_bytes blk;
 
-    blk.raw = shadowRegisters[REG0F];
-
-    raw[1] = blk.refined.lowByte;
-    raw[0] = blk.refined.highByte;
-
-    for (i = j = 0; i < 2; i++)
-    {
-        if (raw[i] == 0xD || raw[i] == 0xA)
-        {
-            c[j] = '\0';
-            return;
-        }
-        if (raw[i] >= 32)
-        {
-            c[j] = raw[i];
-            j++;
-        }
-        else
-        {
-            c[i] = ' ';
-        }
-    }
 }
 
 /**
@@ -635,35 +618,7 @@ void BK108X::getNext2Block(char *c)
  */
 void BK108X::getNext4Block(char *c)
 {
-    char raw[4];
-    int i, j;
-    word16_to_bytes blk_c, blk_d;
 
-    blk_c.raw = shadowRegisters[REG0E];
-    blk_d.raw = shadowRegisters[REG0F];
-
-    raw[0] = blk_c.refined.highByte;
-    raw[1] = blk_c.refined.lowByte;
-    raw[2] = blk_d.refined.highByte;
-    raw[3] = blk_d.refined.lowByte;
-
-    for (i = j = 0; i < 4; i++)
-    {
-        if (raw[i] == 0xD || raw[i] == 0xA)
-        {
-            c[j] = '\0';
-            return;
-        }
-        if (raw[i] >= 32)
-        {
-            c[j] = raw[i];
-            j++;
-        }
-        else
-        {
-            c[i] = ' ';
-        }
-    }
 }
 
 /**
@@ -674,20 +629,7 @@ void BK108X::getNext4Block(char *c)
  */
 char *BK108X::getRdsText(void)
 {
-    static int rdsTextAdress2A;
-    bk_rds_blockb blkb;
-
-    getRdsStatus();
-
-    blkb.blockB = shadowRegisters[0x0D];
-    rdsTextAdress2A = blkb.group2.address;
-
-    if (rdsTextAdress2A >= 16)
-        rdsTextAdress2A = 0;
-
-    getNext4Block(&rds_buffer2A[rdsTextAdress2A * 4]);
-    rdsTextAdress2A += 4;
-    return rds_buffer2A;
+    return NULL;
 }
 
 /**
@@ -700,23 +642,6 @@ char *BK108X::getRdsText(void)
  */
 char *BK108X::getRdsText0A(void)
 {
-    static int rdsTextAdress0A;
-    bk_rds_blockb blkb;
-
-    getRdsStatus();
-    blkb.blockB = shadowRegisters[0x0D];
-
-    if (blkb.group0.groupType == 0)
-    {
-        // Process group type 0
-        rdsTextAdress0A = blkb.group0.address;
-        if (rdsTextAdress0A >= 0 && rdsTextAdress0A < 4)
-        {
-            getNext2Block(&rds_buffer0A[rdsTextAdress0A * 2]);
-            rds_buffer0A[8] = '\0';
-            return rds_buffer0A;
-        }
-    }
     return NULL;
 }
 
@@ -729,24 +654,6 @@ char *BK108X::getRdsText0A(void)
  */
 char *BK108X::getRdsText2A(void)
 {
-    static int rdsTextAdress2A;
-    bk_rds_blockb blkb;
-
-    getRdsStatus();
-
-    blkb.blockB = shadowRegisters[0x0D];
-    rdsTextAdress2A = blkb.group2.address;
-    if (blkb.group2.groupType == 2)
-    {
-        // Process group 2A
-        // Decode B block information
-        if (rdsTextAdress2A >= 0 && rdsTextAdress2A < 16)
-        {
-            getNext4Block(&rds_buffer2A[rdsTextAdress2A * 4]);
-            rds_buffer2A[63] = '\0';
-            return rds_buffer2A;
-        }
-    }
     return NULL;
 }
 
@@ -757,21 +664,6 @@ char *BK108X::getRdsText2A(void)
  */
 char *BK108X::getRdsText2B(void)
 {
-    static int rdsTextAdress2B;
-    bk_rds_blockb blkb;
-
-    getRdsStatus();
-    blkb.blockB = shadowRegisters[0x0D];
-    if (blkb.group2.groupType == 2)
-    {
-        // Process group 2B
-        rdsTextAdress2B = blkb.group2.address;
-        if (rdsTextAdress2B >= 0 && rdsTextAdress2B < 16)
-        {
-            getNext2Block(&rds_buffer2B[rdsTextAdress2B * 2]);
-            return rds_buffer2B;
-        }
-    }
     return NULL;
 }
 
@@ -782,53 +674,6 @@ char *BK108X::getRdsText2B(void)
  */
 char *BK108X::getRdsTime()
 {
-    // Under Test and construction
-    // Need to check the Group Type before.
-    bk_rds_date_time dt;
-    word16_to_bytes blk_b, blk_c, blk_d;
-    bk_rds_blockb blkb;
-
-    getRdsStatus();
-
-    blk_b.raw = blkb.blockB = shadowRegisters[REG0D];
-    blk_c.raw = shadowRegisters[REG0E];
-    blk_d.raw = shadowRegisters[REG0F];
-
-    uint16_t minute;
-    uint16_t hour;
-
-    if ( blkb.group0.groupType  == 4)
-    {
-        char offset_sign;
-        int offset_h;
-        int offset_m;
-
-        // uint16_t y, m, d;
-
-        dt.raw[4] = blk_b.refined.lowByte;
-        dt.raw[5] = blk_b.refined.highByte;
-
-        dt.raw[2] = blk_c.refined.lowByte;
-        dt.raw[3] = blk_c.refined.highByte;
-
-        dt.raw[0] = blk_d.refined.lowByte;
-        dt.raw[1] = blk_d.refined.highByte;
-
-        // Unfortunately it was necessary to wotk well on the GCC compiler on 32-bit
-        // platforms. See si47x_rds_date_time (typedef union) and CGG “Crosses boundary” issue/features.
-        // Now it is working on Atmega328, STM32, Arduino DUE, ESP32 and more.
-        minute = (dt.refined.minute2 << 2) | dt.refined.minute1;
-        hour = (dt.refined.hour2 << 4) | dt.refined.hour1;
-
-        offset_sign = (dt.refined.offset_sense == 1) ? '+' : '-';
-        offset_h = (dt.refined.offset * 30) / 60;
-        offset_m = (dt.refined.offset * 30) - (offset_h * 60);
-        // sprintf(rds_time, "%02u:%02u %c%02u:%02u", dt.refined.hour, dt.refined.minute, offset_sign, offset_h, offset_m);
-        sprintf(rds_time, "%02u:%02u %c%02u:%02u", hour, minute, offset_sign, offset_h, offset_m);
-
-        return rds_time;
-    }
-
     return NULL;
 }
 
@@ -840,6 +685,5 @@ char *BK108X::getRdsTime()
  */
 bool BK108X::getRdsSync()
 {
-    getStatus();
-    return reg0a->refined.RDSS;
+    return NULL;
 }

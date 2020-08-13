@@ -18,7 +18,7 @@
 #define MAX_DELAY_AFTER_OSCILLATOR 500  // Max delay after the crystal oscilator becomes active
 
 
-#define I2C_DEVICE_ADDR 0x80
+#define I2C_DEVICE_ADDR 0x40
 
 #define OSCILLATOR_TYPE_CRYSTAL  1 // Crystal
 #define OSCILLATOR_TYPE_REFCLK   0 // Reference clock    
@@ -338,12 +338,6 @@ typedef union {
     uint16_t raw;
 } bk_reg0b;
 
-/**
- * @ingroup GA01
- * @brief RDS Block A
- * 
- */
-typedef uint16_t bk_reg0c; //!< RDS Block A Data.
 
 /**
  * @ingroup GA01
@@ -603,9 +597,10 @@ typedef union {
         uint8_t highByte;
     } refined;
     uint16_t raw; //!< //!< Reference clock divider control , FREQ_SEL[17:0] = HEX | Ref Frequency/512+0.5 | Default 16 for 32.768kHz reference.
-} bk_reg1D; 
+} bk_reg1D;
 
-
+typedef uint16_t bk_reg1E; // Internal register
+typedef uint16_t bk_reg1F; // Internal Register
 
 /**
  * @ingroup GA01
@@ -733,12 +728,12 @@ class BK108X {
         bk_reg17 *reg17 = (bk_reg17 *)&shadowRegisters[REG17];
         bk_reg18 *reg18 = (bk_reg18 *)&shadowRegisters[REG18];
         bk_reg19 *reg19 = (bk_reg19 *)&shadowRegisters[REG19];
-        bk_reg1a *reg1A = (bk_reg1a *)&shadowRegisters[REG1A];
-        bk_reg1b *reg1b = (bk_reg1b *)&shadowRegisters[REG1B];
-        bk_reg1c *reg1c = (bk_reg1c *)&shadowRegisters[REG1C];
-        bk_reg1d *reg1d = (bk_reg1d *)&shadowRegisters[REG1D];
-        bk_reg1e *reg1e = (bk_reg1e *)&shadowRegisters[REG1E];
-        bk_reg1f *reg1f = (bk_reg1f *)&shadowRegisters[REG1F];
+        bk_reg1A *reg1A = (bk_reg1A *)&shadowRegisters[REG1A];
+        bk_reg1B *reg1b = (bk_reg1B *)&shadowRegisters[REG1B];
+        bk_reg1C *reg1c = (bk_reg1C *)&shadowRegisters[REG1C];
+        bk_reg1D *reg1d = (bk_reg1D *)&shadowRegisters[REG1D];
+        bk_reg1E *reg1e = (bk_reg1E *)&shadowRegisters[REG1E];
+        bk_reg1F *reg1f = (bk_reg1F *)&shadowRegisters[REG1F];
 
 
         uint16_t startBand[4] = {8750, 7600, 7600, 6400 }; //!< Start FM band limit
@@ -753,7 +748,7 @@ class BK108X {
         char rds_time[20];     //!<  RDS date time received information
 
         int deviceAddress = I2C_DEVICE_ADDR;
-        int resetPin;
+
         uint16_t currentFrequency;
         uint8_t currentFMBand = 0;
         uint8_t currentFMSpace = 0;
@@ -784,8 +779,9 @@ class BK108X {
          * @param ms_value  Value in milliseconds 
          */
         inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAftarCrystalOn = ms_value; };
-        void getAllRegisters();
-        void setAllRegisters(uint8_t limit = 0x07);
+
+        uint16_t getRegister(uint8_t reg);
+        void setRegister(uint8_t reg, uint16_t value);
         void getStatus();
 
         /**
@@ -815,9 +811,7 @@ class BK108X {
             };
 
 
-            void setup(int resetPin, int sdaPin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
-            void setup(int resetPin, int sdaPin, uint8_t oscillator_type);
-            // void setupDebug(int resetPin, int sdaPin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type, void (*showFunc)(byte v));
+            void setup(int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
             void setFrequency(uint16_t frequency);
             void setFrequencyUp();
             void setFrequencyDown();
