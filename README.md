@@ -74,6 +74,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Schematic
 
+__Schematic under construction....__
 
 ![Basic Schematic](extras/images/basic_schematic.png)
 
