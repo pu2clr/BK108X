@@ -1,4 +1,13 @@
-#include <BK108X.h>
+/**
+ * Circuit test 
+ * Use this sketch with the Arduino IDE and Serial Monitor.
+ * This sketch can be useful to test your circuit with BK1086 or BK1088.
+ * Active the Serial Monitor on your Arduino IDE.
+ * 
+ * This sketch can be freely distributed using the MIT Free Software model.
+ * Copyright (c) 2020 Ricardo Lima Caratti.  
+ * Contact: pu2clr@gmail.com
+ */
 
 BK108X rx;
 
