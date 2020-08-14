@@ -16,26 +16,24 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-
-#define MAX_DELAY_AFTER_OSCILLATOR 500  // Max delay after the crystal oscilator becomes active
-
+#define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscilator becomes active
 
 #define I2C_DEVICE_ADDR 0x40
 
-#define OSCILLATOR_TYPE_CRYSTAL  1 // Crystal
-#define OSCILLATOR_TYPE_REFCLK   0 // Reference clock    
+#define OSCILLATOR_TYPE_CRYSTAL 1 // Crystal
+#define OSCILLATOR_TYPE_REFCLK 0  // Reference clock
 
-#define RDS_STANDARD  0      //!< RDS Mode.
-#define RDS_VERBOSE   1      //!< RDS Mode.
-#define bk_SEEK_DOWN 0       //!< Seek Down  Direction
-#define bk_SEEK_UP 1         //!< Seek Up  Direction
-#define bk_SEEK_WRAP 0       // 
-#define bk_SEEK_STOP 1  
+#define RDS_STANDARD 0 //!< RDS Mode.
+#define RDS_VERBOSE 1  //!< RDS Mode.
+#define bk_SEEK_DOWN 0 //!< Seek Down  Direction
+#define bk_SEEK_UP 1   //!< Seek Up  Direction
+#define bk_SEEK_WRAP 0 //
+#define bk_SEEK_STOP 1
 
-#define FM_BAND_USA_EU       0 //!< 87.5–108 MHz (US / Europe, Default)
-#define FM_BAND_JAPAN_WIDE   1 //!< 76–108 MHz (Japan wide band)
-#define FM_BAND_JAPAN        2 //!< 76–90 MHz (Japan)
-#define FM_BAND_RESERVED     3 //!< Reserved
+#define FM_BAND_USA_EU 0     //!< 87.5–108 MHz (US / Europe, Default)
+#define FM_BAND_JAPAN_WIDE 1 //!< 76–108 MHz (Japan wide band)
+#define FM_BAND_JAPAN 2      //!< 76–90 MHz (Japan)
+#define FM_BAND_RESERVED 3   //!< Reserved
 
 #define REG00 0x00
 #define REG01 0x01
@@ -70,7 +68,6 @@
 #define REG1E 0x1E
 #define REG1F 0x1F
 
-
 /**
  * @defgroup GA01 Union, Structure and Defined Data Types  
  * @brief   BK108X Defined Data Types 
@@ -87,12 +84,14 @@
  * @brief Device ID
  * 
  */
-typedef union {
-    struct {
-        uint8_t lowByte;    
-        uint8_t highByte;    
+typedef union
+{
+    struct
+    {
+        uint8_t lowByte;
+        uint8_t highByte;
     } refined;
-    uint16_t deviceId;        
+    uint16_t deviceId;
 } bk_reg00;
 
 /**
@@ -100,7 +99,8 @@ typedef union {
  * @brief Chip ID
  * 
  */
-typedef union {
+typedef union
+{
     struct
     {
         uint8_t lowByte;
@@ -114,21 +114,22 @@ typedef union {
  * @brief Power Configuratio
  * @see  BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER; pages 13 and 14 
  */
-typedef union {
+typedef union
+{
     struct
     {
-        uint8_t ENABLE : 1;     //!< Powerup Enable;
-        uint8_t SNR_REF : 5;    //!< Output SNR adjustment. Read SNR = SNR (calculated)
-        uint8_t DISABLE : 1;    //!< Powerup Disable;
-        uint8_t SKAFCRL : 1;    //!< Seek with AFC Rail; 0 = During seeking, the channel is valid no matter whether AFCRL is high or low; 1 = During seeking, the channel is invalid if AFCRL is high.
-        uint8_t SEEK : 1;       //!< 0 = Disable (default); 1 = Enable;
-        uint8_t SEEKUP : 1;     //!< Seek Direction; 0 = Seek down (default); 1 = Seek up.
-        uint8_t SKMODE : 1;     //!< Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit.
-        uint8_t STEREO : 1;     //!< Stereo; 0 = Normal operation; 1 = Force stereo; MONO and STEREO cannot be set to 1 simultaneously.
-        uint8_t MONO : 1;       //!< Mono; 0 = Normal operation; 1 = Force mono.
-        uint8_t MUTER : 1;      //!< Mute R channel; 0 = R channel normal operation; 1 = R channel mute.
-        uint8_t MUTEL : 1;      //!< Mute L channel; 0 = L channel normal operation; 1 = L channel mute.
-        uint8_t DSMUTE : 1;     //!< Softmute Disable; 0 = Softmute enable (default); 1 = Softmute disable.
+        uint8_t ENABLE : 1;  //!< Powerup Enable;
+        uint8_t SNR_REF : 5; //!< Output SNR adjustment. Read SNR = SNR (calculated)
+        uint8_t DISABLE : 1; //!< Powerup Disable;
+        uint8_t SKAFCRL : 1; //!< Seek with AFC Rail; 0 = During seeking, the channel is valid no matter whether AFCRL is high or low; 1 = During seeking, the channel is invalid if AFCRL is high.
+        uint8_t SEEK : 1;    //!< 0 = Disable (default); 1 = Enable;
+        uint8_t SEEKUP : 1;  //!< Seek Direction; 0 = Seek down (default); 1 = Seek up.
+        uint8_t SKMODE : 1;  //!< Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit.
+        uint8_t STEREO : 1;  //!< Stereo; 0 = Normal operation; 1 = Force stereo; MONO and STEREO cannot be set to 1 simultaneously.
+        uint8_t MONO : 1;    //!< Mono; 0 = Normal operation; 1 = Force mono.
+        uint8_t MUTER : 1;   //!< Mute R channel; 0 = R channel normal operation; 1 = R channel mute.
+        uint8_t MUTEL : 1;   //!< Mute L channel; 0 = L channel normal operation; 1 = L channel mute.
+        uint8_t DSMUTE : 1;  //!< Softmute Disable; 0 = Softmute enable (default); 1 = Softmute disable.
     } refined;
     uint16_t raw;
 } bk_reg02;
@@ -139,11 +140,12 @@ typedef union {
  * @details The tuned Frequency = Band + CHAN * SPACE
  * @see BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER; page 14 
  */
-typedef union {
+typedef union
+{
     struct
     {
-        uint16_t CHAN : 15;      //!< Channel Select;  The tuned Frequency = Band + CHAN * SPACE.
-        uint16_t TUNE : 1;       //!< Tune. 0 = Disable (default); 1 = Enable.
+        uint16_t CHAN : 15; //!< Channel Select;  The tuned Frequency = Band + CHAN * SPACE.
+        uint16_t TUNE : 1;  //!< Tune. 0 = Disable (default); 1 = Enable.
     } refined;
     uint16_t raw;
 } bk_reg03;
@@ -166,20 +168,21 @@ typedef union {
  * |      7        | 22–40 RSSI (-9 dBuV) |
  * 
  */
-typedef union {
+typedef union
+{
     struct
     {
-        uint8_t GPIO1 : 2;      //!< General Purpose I/O 1; 00 = High impedance (default); 01 = CLK38MHz; 10 = Low; 11 = High.
-        uint8_t GPIO2 : 2;      //!< General Purpose I/O 2. 00 = High impedance (default); 01 = STC/RDS interrupt; 10 = Low; 11 = High.
-        uint8_t GPIO3 : 2;      //!< General Purpose I/O 2. 00 = High impedance (default); 01 = Mono/Stereo indicator (ST); 10 = Low; 11 = High.
-        uint8_t BLNDADJ : 3;    //!< Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. See table above.
-        uint8_t TCPILOT : 2;    //!< The Time Used to Cal The Strength of Pilot
-        uint8_t AGCD : 1;       //!< AGC Disable; 0 = AGC enable (default); 1 = AGC disable.
-        uint8_t DE : 1;         //!< De-emphasis; 0 = 75 μs. Used in USA (default); 1 = 50 μs. Used in Europe, Australia, Japan.
-        uint8_t RDSEN : 1;      //!< RDS Enable; 0 = Disable (default); 1 = Enable.
-        uint8_t AFCINV : 1;     //!< AFC Invert; 0 = Normal AFC into mixer; 1 = Reverse AFC into mixer.
-        uint8_t STCIEN : 1;     //!< Seek/Tune Complete Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt. See details above.
-        uint8_t RDSIEN : 1;     //!< RDS Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt. See details above.
+        uint8_t GPIO1 : 2;   //!< General Purpose I/O 1; 00 = High impedance (default); 01 = CLK38MHz; 10 = Low; 11 = High.
+        uint8_t GPIO2 : 2;   //!< General Purpose I/O 2. 00 = High impedance (default); 01 = STC/RDS interrupt; 10 = Low; 11 = High.
+        uint8_t GPIO3 : 2;   //!< General Purpose I/O 2. 00 = High impedance (default); 01 = Mono/Stereo indicator (ST); 10 = Low; 11 = High.
+        uint8_t BLNDADJ : 3; //!< Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. See table above.
+        uint8_t TCPILOT : 2; //!< The Time Used to Cal The Strength of Pilot
+        uint8_t AGCD : 1;    //!< AGC Disable; 0 = AGC enable (default); 1 = AGC disable.
+        uint8_t DE : 1;      //!< De-emphasis; 0 = 75 μs. Used in USA (default); 1 = 50 μs. Used in Europe, Australia, Japan.
+        uint8_t RDSEN : 1;   //!< RDS Enable; 0 = Disable (default); 1 = Enable.
+        uint8_t AFCINV : 1;  //!< AFC Invert; 0 = Normal AFC into mixer; 1 = Reverse AFC into mixer.
+        uint8_t STCIEN : 1;  //!< Seek/Tune Complete Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt. See details above.
+        uint8_t RDSIEN : 1;  //!< RDS Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt. See details above.
     } refined;
     uint16_t raw;
 } bk_reg04;
@@ -208,13 +211,14 @@ typedef union {
  * 
  * @see bk_reg07
  */
-typedef union {
+typedef union
+{
     struct
     {
-        uint8_t VOLUME : 5;     //!< 0x00 is the lowest and 0x1F is highest (0dBFS). 2dB each
-        uint8_t SPACE : 2;      //!< Channel Spacing; See AM and FM Channel Space table above.
-        uint8_t BAND : 2;       //!< Band Select. See AM and Fm Band table above.
-        uint8_t SEEKTH: 7;      //!< RSSI Seek Threshold. 0x00 = min RSSI (default); 0x7F = max RSSI. 
+        uint8_t VOLUME : 5; //!< 0x00 is the lowest and 0x1F is highest (0dBFS). 2dB each
+        uint8_t SPACE : 2;  //!< Channel Spacing; See AM and FM Channel Space table above.
+        uint8_t BAND : 2;   //!< Band Select. See AM and Fm Band table above.
+        uint8_t SEEKTH : 7; //!< RSSI Seek Threshold. 0x00 = min RSSI (default); 0x7F = max RSSI.
     } refined;
     uint16_t raw;
 } bk_reg05;
@@ -244,14 +248,15 @@ typedef union {
  * |            3                   | slowest           |
  * 
  */
-typedef union {
+typedef union
+{
     struct
     {
-        uint8_t SKCNT : 4;      //!< See details above.
-        uint8_t SKSNR : 7;      //!< Seek SNR Threshold. Required channel SNR for a valid seek channel
-        uint8_t CLKSEL : 1;     //!< Clock Select. 0 = External clock input; 1= Internal oscillator input.
-        uint8_t SMUTEA : 2;     //!< Softmute Attenuation; See table above.
-        uint8_t SMUTER : 2;     //!< Softmute Attack/Recover Rate; See table above
+        uint8_t SKCNT : 4;  //!< See details above.
+        uint8_t SKSNR : 7;  //!< Seek SNR Threshold. Required channel SNR for a valid seek channel
+        uint8_t CLKSEL : 1; //!< Clock Select. 0 = External clock input; 1= Internal oscillator input.
+        uint8_t SMUTEA : 2; //!< Softmute Attenuation; See table above.
+        uint8_t SMUTER : 2; //!< Softmute Attack/Recover Rate; See table above
     } refined;
     uint16_t raw;
 } bk_reg06;
@@ -260,16 +265,17 @@ typedef union {
  * @ingroup GA01
  * @brief Register 07h. Test1 (0x0900)
  */
-typedef union {
+typedef union
+{
     struct
     {
-        uint8_t FMGAIN : 3;     //!< The gain of Frequency demodulated; 000 = 0dB ... 011= +18dB; 100= 0dB ... 111= -18dB
-        uint8_t STGAIN : 5;     //!< Stereo L/R Gain Adjustment, sighed value; 00000 = 0 dB ... 01111=15dB; 10000= -16dB ... 11111= -1dB; For stereo separation optimization
-        uint8_t IMPTH : 2;      //!< Threshold of Impulse Detect. 00 = toughest; 11 = loosest
-        uint8_t BPDE : 1;       //!< De-emphasis Bypass; 0 = Normal operation; 1 = Bypass de-emphasis.
-        uint8_t IMPEN : 1;      //!< Impulse Remove Enable; 0 = Disable; 1 = Enable.
-        uint8_t SIQ : 1;        //!< IF I/Q Signal switch; 0 = Normal operation; 1 = Reversed I/Q signal.
-        uint8_t MODE : 1;       //!< 0 = FM receiver; 1 = AM receiver
+        uint8_t FMGAIN : 3; //!< The gain of Frequency demodulated; 000 = 0dB ... 011= +18dB; 100= 0dB ... 111= -18dB
+        uint8_t STGAIN : 5; //!< Stereo L/R Gain Adjustment, sighed value; 00000 = 0 dB ... 01111=15dB; 10000= -16dB ... 11111= -1dB; For stereo separation optimization
+        uint8_t IMPTH : 2;  //!< Threshold of Impulse Detect. 00 = toughest; 11 = loosest
+        uint8_t BPDE : 1;   //!< De-emphasis Bypass; 0 = Normal operation; 1 = Bypass de-emphasis.
+        uint8_t IMPEN : 1;  //!< Impulse Remove Enable; 0 = Disable; 1 = Enable.
+        uint8_t SIQ : 1;    //!< IF I/Q Signal switch; 0 = Normal operation; 1 = Reversed I/Q signal.
+        uint8_t MODE : 1;   //!< 0 = FM receiver; 1 = AM receiver
         uint8_t RESERVED : 2;
     } refined;
     uint16_t raw;
@@ -282,7 +288,8 @@ typedef union {
  * @details AFC Average; AFCRL Threshold; AFC/RSSI/SNR Calculate Rate; AFC Enable
  * 
  */
-typedef union {
+typedef union
+{
     struct
     {
         uint8_t AFCRSSIT : 7; //!< RSSI Threshold for Instant AFC updating
@@ -300,11 +307,12 @@ typedef union {
  * @ingroup GA01
  * @brief Register 09h. Status1 (0x0000)
  */
-typedef union {
+typedef union
+{
     struct
     {
-        uint16_t SNR;       //!< The AFC value.
-        uint16_t AFC;       //!< unit AM 0.15k Hz, FM 0.6k Hz
+        uint16_t SNR; //!< The AFC value.
+        uint16_t AFC; //!< unit AM 0.15k Hz, FM 0.6k Hz
     } refined;
     uint16_t raw;
 } bk_reg09;
@@ -313,16 +321,17 @@ typedef union {
  * @ingroup GA01
  * @brief Register 0Ah. Status2 (0x0000)
  */
-typedef union {
+typedef union
+{
     struct
     {
-        uint8_t RSSI : 7;    //!< RSSI (Received Signal Strength Indicator).
-        uint8_t ST : 1;      //!< Stereo Indicator; 0 = Mono; 1 = Stereo.
-        uint8_t CNTIMP : 4;  //!< Impulse Number
-        uint8_t AFCRL : 1;   //!< AFC Rail; 0 = AFC not railed; 1 = AFC railed.
-        uint8_t SF_BL : 1;   //!< Seek Fail/Band Limit; 0 = Seek successful; 1 = Seek failure/Band limit reached.
-        uint8_t STC : 1;     //!< Seek/Tune Complete; 0 = Not complete (default); 1 = Complete.
-        uint8_t RDSR : 1;    //!< RDS Ready; 0 = No RDS group ready (default); 1 = New RDS group ready. Keep high for 40ms after new RDS is received
+        uint8_t RSSI : 7;   //!< RSSI (Received Signal Strength Indicator).
+        uint8_t ST : 1;     //!< Stereo Indicator; 0 = Mono; 1 = Stereo.
+        uint8_t CNTIMP : 4; //!< Impulse Number
+        uint8_t AFCRL : 1;  //!< AFC Rail; 0 = AFC not railed; 1 = AFC railed.
+        uint8_t SF_BL : 1;  //!< Seek Fail/Band Limit; 0 = Seek successful; 1 = Seek failure/Band limit reached.
+        uint8_t STC : 1;    //!< Seek/Tune Complete; 0 = Not complete (default); 1 = Complete.
+        uint8_t RDSR : 1;   //!< RDS Ready; 0 = No RDS group ready (default); 1 = New RDS group ready. Keep high for 40ms after new RDS is received
     } refined;
     uint16_t raw;
 } bk_reg0a;
@@ -331,7 +340,8 @@ typedef union {
  * @ingroup GA01
  * @brief Register 0Bh. Read Channel (0x0000)
  */
-typedef union {
+typedef union
+{
     struct
     {
         uint16_t READCHAN : 14; //!< Read Channel. Provides the current working channel
@@ -339,7 +349,6 @@ typedef union {
     } refined;
     uint16_t raw;
 } bk_reg0b;
-
 
 /**
  * @ingroup GA01
@@ -400,7 +409,6 @@ typedef union
     } refined;
     uint16_t raw;
 } bk_reg0f;
-
 
 /**
  * @ingroup GA01
@@ -466,10 +474,10 @@ typedef union
 {
     struct
     {
-        uint8_t RSSIMTH : 7;    //!< The Mute Threshold Based on RSSI
-        uint8_t SNRMTH : 7;     //!< The Mute Threshold Based on SNR
-        uint8_t AFCMUTE : 1;    //!< 0: disable soft mute when AFCRL is high; 1: enable soft mute when AFCRL is high
-        uint8_t SKMUTE : 1;     //!< 0: disable soft mute when seeking; 1: enable soft mute when seeking
+        uint8_t RSSIMTH : 7; //!< The Mute Threshold Based on RSSI
+        uint8_t SNRMTH : 7;  //!< The Mute Threshold Based on SNR
+        uint8_t AFCMUTE : 1; //!< 0: disable soft mute when AFCRL is high; 1: enable soft mute when AFCRL is high
+        uint8_t SKMUTE : 1;  //!< 0: disable soft mute when seeking; 1: enable soft mute when seeking
     } refined;
     uint16_t raw;
 } bk_reg14;
@@ -487,7 +495,6 @@ typedef union
     } refined;
     uint16_t raw;
 } bk_reg15;
-
 
 /**
  * @ingroup GA01
@@ -531,7 +538,6 @@ typedef union
     uint16_t raw;
 } bk_reg18;
 
-
 /**
  * @ingroup GA01
  * @brief Register 19h. Boot Configuration10 (0x4351)
@@ -554,7 +560,7 @@ typedef union
 {
     struct
     {
-        uint16_t ANT_SEL : 9;   //!< Antenna varactor tune
+        uint16_t ANT_SEL : 9; //!< Antenna varactor tune
         uint16_t RESERVED : 7;
     } refined;
     uint16_t raw;
@@ -592,7 +598,8 @@ typedef union
  * @ingroup GA01
  * @brief Register 1Dh. Analog Configuration2 (0x0000)
  */
-typedef union {
+typedef union
+{
     struct
     {
         uint8_t lowByte;
@@ -664,7 +671,8 @@ typedef union
  * To make it compatible with 8, 16 and 32 bits platforms and avoid Crosses boundary, it was necessary to
  * split minute and hour representation. 
  */
-typedef union {
+typedef union
+{
     struct
     {
         uint8_t offset : 5;       // Local Time Offset
@@ -682,7 +690,8 @@ typedef union {
  * @ingroup GA01
  * @brief Converts 16 bits word to two bytes 
  */
-typedef union {
+typedef union
+{
     struct
     {
         uint8_t lowByte;
@@ -698,95 +707,94 @@ typedef union {
  * 
  * @author PU2CLR - Ricardo Lima Caratti 
  */
-class BK108X {
+class BK108X
+{
 
-    private:
-        uint16_t shadowRegisters[32]; //!< shadow registers 0x00  to 0x1F (0 - 31)
+private:
+    uint16_t shadowRegisters[32]; //!< shadow registers 0x00  to 0x1F (0 - 31)
 
-        // Device registers map - References to the shadow registers
-        bk_reg00 *reg00 = (bk_reg00 *)&shadowRegisters[REG00];
-        bk_reg01 *reg01 = (bk_reg01 *)&shadowRegisters[REG01];
-        bk_reg02 *reg02 = (bk_reg02 *)&shadowRegisters[REG02];
-        bk_reg03 *reg03 = (bk_reg03 *)&shadowRegisters[REG03];
-        bk_reg04 *reg04 = (bk_reg04 *)&shadowRegisters[REG04];
-        bk_reg05 *reg05 = (bk_reg05 *)&shadowRegisters[REG05];
-        bk_reg06 *reg06 = (bk_reg06 *)&shadowRegisters[REG06];
-        bk_reg07 *reg07 = (bk_reg07 *)&shadowRegisters[REG07];
-        bk_reg08 *reg08 = (bk_reg08 *)&shadowRegisters[REG08];
-        bk_reg09 *reg09 = (bk_reg09 *)&shadowRegisters[REG09];
-        bk_reg0a *reg0a = (bk_reg0a *)&shadowRegisters[REG0A];
-        bk_reg0b *reg0b = (bk_reg0b *)&shadowRegisters[REG0B];
-        bk_reg0c *reg0c = (bk_reg0c *)&shadowRegisters[REG0C];
-        bk_reg0d *reg0d = (bk_reg0d *)&shadowRegisters[REG0D];
-        bk_reg0e *reg0e = (bk_reg0e *)&shadowRegisters[REG0E];
-        bk_reg0f *reg0f = (bk_reg0f *)&shadowRegisters[REG0F];
-        bk_reg10 *reg10 = (bk_reg10 *)&shadowRegisters[REG10];
-        bk_reg11 *reg11 = (bk_reg11 *)&shadowRegisters[REG11];
-        bk_reg12 *reg12 = (bk_reg12 *)&shadowRegisters[REG12];
-        bk_reg13 *reg13 = (bk_reg13 *)&shadowRegisters[REG13];
-        bk_reg14 *reg14 = (bk_reg14 *)&shadowRegisters[REG14];
-        bk_reg15 *reg15 = (bk_reg15 *)&shadowRegisters[REG15];
-        bk_reg16 *reg16 = (bk_reg16 *)&shadowRegisters[REG16];
-        bk_reg17 *reg17 = (bk_reg17 *)&shadowRegisters[REG17];
-        bk_reg18 *reg18 = (bk_reg18 *)&shadowRegisters[REG18];
-        bk_reg19 *reg19 = (bk_reg19 *)&shadowRegisters[REG19];
-        bk_reg1A *reg1A = (bk_reg1A *)&shadowRegisters[REG1A];
-        bk_reg1B *reg1b = (bk_reg1B *)&shadowRegisters[REG1B];
-        bk_reg1C *reg1c = (bk_reg1C *)&shadowRegisters[REG1C];
-        bk_reg1D *reg1d = (bk_reg1D *)&shadowRegisters[REG1D];
-        bk_reg1E *reg1e = (bk_reg1E *)&shadowRegisters[REG1E];
-        bk_reg1F *reg1f = (bk_reg1F *)&shadowRegisters[REG1F];
+    // Device registers map - References to the shadow registers
+    bk_reg00 *reg00 = (bk_reg00 *)&shadowRegisters[REG00];
+    bk_reg01 *reg01 = (bk_reg01 *)&shadowRegisters[REG01];
+    bk_reg02 *reg02 = (bk_reg02 *)&shadowRegisters[REG02];
+    bk_reg03 *reg03 = (bk_reg03 *)&shadowRegisters[REG03];
+    bk_reg04 *reg04 = (bk_reg04 *)&shadowRegisters[REG04];
+    bk_reg05 *reg05 = (bk_reg05 *)&shadowRegisters[REG05];
+    bk_reg06 *reg06 = (bk_reg06 *)&shadowRegisters[REG06];
+    bk_reg07 *reg07 = (bk_reg07 *)&shadowRegisters[REG07];
+    bk_reg08 *reg08 = (bk_reg08 *)&shadowRegisters[REG08];
+    bk_reg09 *reg09 = (bk_reg09 *)&shadowRegisters[REG09];
+    bk_reg0a *reg0a = (bk_reg0a *)&shadowRegisters[REG0A];
+    bk_reg0b *reg0b = (bk_reg0b *)&shadowRegisters[REG0B];
+    bk_reg0c *reg0c = (bk_reg0c *)&shadowRegisters[REG0C];
+    bk_reg0d *reg0d = (bk_reg0d *)&shadowRegisters[REG0D];
+    bk_reg0e *reg0e = (bk_reg0e *)&shadowRegisters[REG0E];
+    bk_reg0f *reg0f = (bk_reg0f *)&shadowRegisters[REG0F];
+    bk_reg10 *reg10 = (bk_reg10 *)&shadowRegisters[REG10];
+    bk_reg11 *reg11 = (bk_reg11 *)&shadowRegisters[REG11];
+    bk_reg12 *reg12 = (bk_reg12 *)&shadowRegisters[REG12];
+    bk_reg13 *reg13 = (bk_reg13 *)&shadowRegisters[REG13];
+    bk_reg14 *reg14 = (bk_reg14 *)&shadowRegisters[REG14];
+    bk_reg15 *reg15 = (bk_reg15 *)&shadowRegisters[REG15];
+    bk_reg16 *reg16 = (bk_reg16 *)&shadowRegisters[REG16];
+    bk_reg17 *reg17 = (bk_reg17 *)&shadowRegisters[REG17];
+    bk_reg18 *reg18 = (bk_reg18 *)&shadowRegisters[REG18];
+    bk_reg19 *reg19 = (bk_reg19 *)&shadowRegisters[REG19];
+    bk_reg1A *reg1A = (bk_reg1A *)&shadowRegisters[REG1A];
+    bk_reg1B *reg1b = (bk_reg1B *)&shadowRegisters[REG1B];
+    bk_reg1C *reg1c = (bk_reg1C *)&shadowRegisters[REG1C];
+    bk_reg1D *reg1d = (bk_reg1D *)&shadowRegisters[REG1D];
+    bk_reg1E *reg1e = (bk_reg1E *)&shadowRegisters[REG1E];
+    bk_reg1F *reg1f = (bk_reg1F *)&shadowRegisters[REG1F];
 
+    uint16_t startBand[4] = {8750, 7600, 7600, 6400};  //!< Start FM band limit
+    uint16_t endBand[4] = {10800, 10800, 9000, 10800}; //!< End FM band limit
+    uint16_t fmSpace[4] = {20, 10, 5, 1};              //!< FM channel space
 
-        uint16_t startBand[4] = {8750, 7600, 7600, 6400 }; //!< Start FM band limit
-        uint16_t endBand[4] = {10800, 10800, 9000, 10800}; //!< End FM band limit
-        uint16_t fmSpace[4] = {20, 10, 5, 1}; //!< FM channel space
+protected:
+    char rds_buffer2A[65]; //!<  RDS Radio Text buffer - Program Information
+    char rds_buffer2B[33]; //!<  RDS Radio Text buffer - Station Informaation
+    char rds_buffer0A[9];  //!<  RDS Basic tuning and switching information (Type 0 groups)
+    char rds_time[20];     //!<  RDS date time received information
 
-    protected:
+    int deviceAddress = I2C_DEVICE_ADDR;
 
-        char rds_buffer2A[65]; //!<  RDS Radio Text buffer - Program Information
-        char rds_buffer2B[33]; //!<  RDS Radio Text buffer - Station Informaation
-        char rds_buffer0A[9];  //!<  RDS Basic tuning and switching information (Type 0 groups)
-        char rds_time[20];     //!<  RDS date time received information
+    uint16_t currentFrequency;
+    uint8_t currentFMBand = 0;
+    uint8_t currentFMSpace = 0;
+    uint8_t currentVolume = 0;
+    int rdsInterruptPin = -1;
+    int seekInterruptPin = -1;
+    int oscillatorType = OSCILLATOR_TYPE_CRYSTAL;
+    uint16_t maxDelayAftarCrystalOn = MAX_DELAY_AFTER_OSCILLATOR;
 
-        int deviceAddress = I2C_DEVICE_ADDR;
+    void reset();
+    void powerUp();
+    void powerDown();
+    void waitAndFinishTune();
 
-        uint16_t currentFrequency;
-        uint8_t currentFMBand = 0;
-        uint8_t currentFMSpace = 0;
-        uint8_t currentVolume = 0;
-        int rdsInterruptPin = -1;
-        int seekInterruptPin = -1;
-        int oscillatorType = OSCILLATOR_TYPE_CRYSTAL;
-        uint16_t maxDelayAftarCrystalOn = MAX_DELAY_AFTER_OSCILLATOR;
-
-        void reset();
-        void powerUp();
-        void powerDown();
-        void waitAndFinishTune();
-
-    public:
-        /**
+public:
+    /**
          * @ingroup GA03
          * @brief Sets the I2C bus address 
          * @details This function must to be called before setup function if your device are not using 0x10 (default)
          * @param bus_addr I2C buss address
          */
-        inline void setI2CAddress(int bus_addr) { this->deviceAddress = bus_addr; };
+    inline void setI2CAddress(int bus_addr) { this->deviceAddress = bus_addr; };
 
-        /**
+    /**
          * @ingroup GA03
          * @brief Set the Delay After Crystal On (default 500ms)
          * 
          * @param ms_value  Value in milliseconds 
          */
-        inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAftarCrystalOn = ms_value; };
+    inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAftarCrystalOn = ms_value; };
 
-        uint16_t getRegister(uint8_t reg);
-        void setRegister(uint8_t reg, uint16_t value);
-        void getStatus();
+    uint16_t getRegister(uint8_t reg);
+    void setRegister(uint8_t reg, uint16_t value);
+    void getStatus();
 
-        /**
+    /**
              * @ingroup GA03
              * @brief Get the Shadown Register object
              * @details if you want to get the current value of the device register, call getAllRegisters() before calling this function. 
@@ -795,9 +803,9 @@ class BK108X {
              * @param register_number 
              * @return  16 bits word with the Shadown registert 
              */
-        inline uint16_t getShadownRegister(uint8_t register_number) { return shadowRegisters[register_number]; };
+    inline uint16_t getShadownRegister(uint8_t register_number) { return shadowRegisters[register_number]; };
 
-        /**
+    /**
              * @ingroup GA03
              * @brief Sets a given value to the Shadown Register
              * @details You have to call setAllRegisters() after setting the Shadow Registers to store the value into the device.
@@ -805,68 +813,66 @@ class BK108X {
              * @param register_number  register index (from 0x00 to 0x0F)
              * @param value            16 bits word with the content of the register 
              */
-        void setShadownRegister(uint8_t register_number, uint16_t value)
-        {
-            if (register_number > 0x0F)
-                return;
-            shadowRegisters[register_number] = value;
-            };
+    void setShadownRegister(uint8_t register_number, uint16_t value)
+    {
+        if (register_number > 0x0F)
+            return;
+        shadowRegisters[register_number] = value;
+    };
 
+    uint16_t getDeviceId();
+    uint16_t getChipId();
 
-            void setup(int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
-            void setFrequency(uint16_t frequency);
-            void setFrequencyUp();
-            void setFrequencyDown();
-            uint16_t getFrequency();
-            uint16_t getRealFrequency();
-            uint16_t getRealChannel();
-            void setChannel(uint16_t channel);
-            void seek(uint8_t seek_mode, uint8_t direction);
-            void seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)());
-            void setSeekThreshold(uint8_t value);
+    void setup(int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
+    void setFrequency(uint16_t frequency);
+    void setFrequencyUp();
+    void setFrequencyDown();
+    uint16_t getFrequency();
+    uint16_t getRealFrequency();
+    uint16_t getRealChannel();
+    void setChannel(uint16_t channel);
+    void seek(uint8_t seek_mode, uint8_t direction);
+    void seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)());
+    void setSeekThreshold(uint8_t value);
 
-            void setBand(uint8_t band = 1);
-            void setSpace(uint8_t space = 0);
-            int getRssi();
+    void setBand(uint8_t band = 1);
+    void setSpace(uint8_t space = 0);
+    int getRssi();
 
-            void setSoftmute(bool value);
-            void setSoftmuteAttack(uint8_t value);
-            void setSoftmuteAttenuation(uint8_t value);
-            void setAgc(bool value);
+    void setSoftmute(bool value);
+    void setSoftmuteAttack(uint8_t value);
+    void setSoftmuteAttenuation(uint8_t value);
+    void setAgc(bool value);
 
-            void setMono(bool value);
+    void setMono(bool value);
 
-            bool isStereo(); 
+    bool isStereo();
 
-            uint8_t getDeviceId();
-            uint8_t getChipVersion();
+    void setMute(bool value);
+    void setVolume(uint8_t value);
+    uint8_t getVolume();
+    void setVolumeUp();
+    void setVolumeDown();
+    void setExtendedVolumeRange(bool value);
 
-            void setMute(bool value);
-            void setVolume(uint8_t value);
-            uint8_t getVolume();
-            void setVolumeUp();
-            void setVolumeDown();
-            void setExtendedVolumeRange(bool value);
+    void setFmDeemphasis(uint8_t de);
 
-            void setFmDeemphasis(uint8_t de);
+    void getRdsStatus();
+    void setRdsMode(uint8_t rds_mode = 0);
+    void setRds(bool value);
+    inline void setRDS(bool value) { setRds(value); };
+    bool getRdsReady();
 
-            void getRdsStatus();
-            void setRdsMode(uint8_t rds_mode = 0);
-            void setRds(bool value);
-            inline void setRDS(bool value) {setRds(value); };
-            bool getRdsReady();
-
-            uint8_t getRdsFlagAB(void);
-            uint8_t getRdsVersionCode(void);
-            uint16_t getRdsGroupType();
-            uint8_t getRdsProgramType(void);
-            void getNext2Block(char *c);
-            void getNext4Block(char *c);
-            char *getRdsText(void);
-            char *getRdsText0A(void);
-            char *getRdsText2A(void);
-            char *getRdsText2B(void);
-            char *getRdsTime();
-            bool  getRdsSync();
-
+    uint8_t getRdsFlagAB(void);
+    uint8_t getRdsVersionCode(void);
+    uint16_t getRdsGroupType();
+    uint8_t getRdsProgramType(void);
+    void getNext2Block(char *c);
+    void getNext4Block(char *c);
+    char *getRdsText(void);
+    char *getRdsText0A(void);
+    char *getRdsText2A(void);
+    char *getRdsText2B(void);
+    char *getRdsTime();
+    bool getRdsSync();
 };

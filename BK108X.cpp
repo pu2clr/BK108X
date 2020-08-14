@@ -30,12 +30,12 @@ uint16_t BK108X::getRegister(uint8_t reg)
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
     Wire.endTransmission(false);
-    delayMicroseconds(6000);
+    delayMicroseconds(1000);
     Wire.requestFrom(this->deviceAddress, 2);
     result.refined.highByte = Wire.read();
     result.refined.lowByte = Wire.read();
     Wire.endTransmission(true);
-    delayMicroseconds(6000);
+    delayMicroseconds(1000);
 
     shadowRegisters[reg] = result.raw; // Syncs with the shadowRegisters
 
@@ -72,6 +72,26 @@ void BK108X::setRegister(uint8_t reg, uint16_t value)
 
     delayMicroseconds(6000);
 }
+
+/**
+ * @brief Returns the Device Indentifiction
+ * @return device id 
+ */
+uint16_t BK108X::getDeviceId()
+{
+    return getRegister(REG00);
+}
+
+/**
+ * @brief Returns the Chip Indentifiction
+ * 
+ * @return IC id
+ */
+uint16_t BK108X::getChipId()
+{
+    return getRegister(REG01);
+}
+
 
 /**
  * @ingroup GA03
@@ -468,25 +488,6 @@ void BK108X::setExtendedVolumeRange(bool value)
 }
 
 
-/**
- * @ingroup GA03
- * @brief Gets the Device identification
- * @return number 
- */
-uint8_t BK108X::getDeviceId()
-{
-
-}
-
-/**
- * @ingroup GA03
- * @brief Gets the Chip Version
- * @return number 
- */
-uint8_t BK108X::getChipVersion()
-{
-
-}
 
 /**
  * @ingroup GA03
