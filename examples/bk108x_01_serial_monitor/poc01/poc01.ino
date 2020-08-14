@@ -7,8 +7,9 @@ void setup()
   char aux[100];
   Serial.begin(9600);
   while (!Serial);
-
+  checkI2C();
   if ( !checkI2C() ) {
+    
     Serial.println("Check your circuit!");
     while (1);
   }
@@ -31,7 +32,7 @@ void loop()
 bool checkI2C() {
   byte error, address;
   int nDevices;
-  Serial.println("I2C bus Scanning...");
+  Serial.println("I2C bus Scanning...\n");
   nDevices = 0;
   for (address = 1; address < 127; address++ ) {
     Wire.beginTransmission(address);

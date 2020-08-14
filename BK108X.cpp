@@ -28,8 +28,8 @@ uint16_t BK108X::getRegister(uint8_t reg)
 
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
-   //  Wire.endTransmission(false);
-    // delayMicroseconds(6000);
+    Wire.endTransmission(false);
+    delayMicroseconds(6000);
     Wire.requestFrom(this->deviceAddress, 2);
     result.refined.highByte = Wire.read();
     result.refined.lowByte = Wire.read();
