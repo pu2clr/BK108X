@@ -8,6 +8,8 @@ void setup()
   while (!Serial);
 
   Serial.println("\n********Before!");
+
+  Wire.begin();
   checkDevice();   
 
   rx.setup();

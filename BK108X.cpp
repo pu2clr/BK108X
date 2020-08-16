@@ -30,12 +30,12 @@ uint16_t BK108X::getRegister(uint8_t reg)
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
     Wire.endTransmission(false);
-    delayMicroseconds(1000);
+    // delayMicroseconds(1000);
     Wire.requestFrom(this->deviceAddress, 2);
     result.refined.highByte = Wire.read();
     result.refined.lowByte = Wire.read();
     Wire.endTransmission(true);
-    delayMicroseconds(1000);
+    // delayMicroseconds(1000);
 
     shadowRegisters[reg] = result.raw; // Syncs with the shadowRegisters
 
@@ -70,7 +70,7 @@ void BK108X::setRegister(uint8_t reg, uint16_t value)
 
     shadowRegisters[reg] = value;  // Syncs with the shadowRegisters
 
-    delayMicroseconds(6000);
+    // delayMicroseconds(6000);
 }
 
 /**

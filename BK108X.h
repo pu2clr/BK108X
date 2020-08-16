@@ -18,7 +18,7 @@
 
 #define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscilator becomes active
 
-#define I2C_DEVICE_ADDR 0x40
+#define I2C_DEVICE_ADDR 0x80
 
 #define OSCILLATOR_TYPE_CRYSTAL 1 // Crystal
 #define OSCILLATOR_TYPE_REFCLK 0  // Reference clock
