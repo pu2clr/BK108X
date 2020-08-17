@@ -21,7 +21,7 @@ Contact: __pu2clr@gmail.com__.
 1. [Preface](https://pu2clr.github.io/TEF668X#preface)
 2. [Library Installation]()
 3. [API Documentation]()
-4. [Schematic]()
+4. [Schematic](./#schematic)
 5. [Sketch examples]()
 
 
