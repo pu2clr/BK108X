@@ -131,6 +131,13 @@ __Image extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3
 
 
 
+## BK1086/88E pinout
+
+
+![BK1086/88E PINOUT]()
+
+
+
 ## Schematic
 
 
