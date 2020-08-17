@@ -126,8 +126,9 @@ The image below was extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEI
 ![BEKEN Typical Application Schematic](extras/images/basic_circuit_from_beken.png)
 
 
-The schematic below is based on the BEKEN typical application schematic added the Arduino controller. It can guide you to build your own receiver.  
+The schematic below is based on the BEKEN typical application schematic added to the Arduino controller. The front-end circuit has been modified to use regular antenna instead headphone antenna setup.  
 
+The main porpuse of this circuit is to test the  BK108X Arduino Library. However, you may be surprised at the performance of this simple circuit due to the high features of the BK1086/88 device. Also, it is importante to say that this receiver does not intend to be a real radio for exigent listener. However, it is possible to start with it and then, if you wish, you can include some devices to the circuit to improve, for example,  its sensibility, output sound quality beyond other desired features.
 
 __Schematic under construction....__
 
