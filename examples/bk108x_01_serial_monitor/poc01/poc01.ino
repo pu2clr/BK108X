@@ -9,7 +9,14 @@ void setup()
 
   Serial.println("\n********Before!");
 
-  Wire.begin();
+
+  pinMode(9,OUTPUT);
+  digitalWrite(9, LOW);
+  
+  delay(2000);
+
+  digitalWrite(9, HIGH);
+  delay(1000);
   checkDevice();   
 
   rx.setup();
@@ -44,9 +51,13 @@ bool checkI2C() {
   byte error, address;
   int nDevices;
   Serial.println("I2C bus Scanning...\n");
+  Wire.begin();
   nDevices = 0;
   for (address = 1; address < 127; address++ ) {
+    Serial.println(address, HEX);
+    delay(1);
     Wire.beginTransmission(address);
+    delay(1);
     error = Wire.endTransmission();
     if (error == 0) {
       Serial.print("\nI2C device found at address 0x");

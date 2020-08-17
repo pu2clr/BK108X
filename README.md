@@ -59,6 +59,49 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <BR>
 
 
+## Thanks
+
+Mr. Peng Roy, from BEKEN Corporation, for providing me with the technical information on the BK1086/88.
+
+
+## Your support is important
+
+If you have suggestions to improve this project, please let me know. 
+
+
+
+## BK1088 features
+
+
+* BK1086/88 has an internal automatic tuning technology, which can automatically adjust the internal variable capacitance value to make the resonant circuit in the best resonance state at the current operating frequency, thus greatly simplifying the design of the AM antenna end;
+* BK1086 only supports FM and medium wave, BK1088 supports short wave and long wave in addition to FM and medium wave;
+* The input DC operating point of the front-end low noise amplifier of the BK1086/88 chip has been internally set to 0V. and so When using ground wire as antenna input, DC blocking capacitor is not needed. If there is a DC blocking capacitor (FM mode>100pF, medium wave mode>270nF) in the external circuit design, it will not affect the receiving performance;
+* Adding an LC resonant circuit can better improve the FM receiving sensitivity. If there is a higher requirement for this performance, you must Join;
+* If the control mode is I2C mode, SEN pin can be connected high or left floating. MODE pin can Ground directly.
+* There is already a 40K pull-up resistor inside the chip for the SEN, SCLK and SDIO. So, in general, no external pull-up resistor is needed. In international applications, the communication failure may be caused by weak external main control platform drive or long wiring of these three control signals. Under these conditions, it is necessary to reduce the pull-up resistor value;
+* The BK1086/88 chip requires input clock accuracy <200ppm. When the external input clock frequency is 32.768KHz
+When, the required peak-to-peak clock signal is greater than 750mV. When the external input clock frequency is 24MHz, the peak-to-peak value of the clock signal required by BK1086/88 is greater than 1.35V. The waveform of the clock signal is not limited;
+
+
+### Similarities and differences between BK1088 and BK1088E
+
+* BK1088 needs to initialize 41 registers, while BK1088E only needs to initialize 33 registers. And initialize the list
+The register value is also different. Same point: Except for the initialization list, the other codes are the same, including setting the frequency, setting the volume, and the threshold of automatic station search;
+* Compared with BK1088, BK1088E has an overall improvement in sensitivity. AM sensitivity has been increased by about 2dB and FM sensitivity has been increased by about 3dB.
+  
+
+
+
+
+## Useful informarion
+
+* BK1086/88 can be controlled by an MCU through 2-wire I2C mode.  BK1086/88 always gets the data on the SDIO line on the rising edge of the SCLK signal, and outputs data to the SDIO line on the falling edge of the SCLK signal. So for MCU, it is necessary to output data to SDIO on the falling edge of SCLK, and read the data on SDIO after the rising edge of SCLK.
+
+* In I2C mode, SCLK is the clock signal, SDIO is the data signal, SEN is invalid, this pin can be connected to high voltage Flat or floating. An I2C read and write operation starts from the Start condition and ends with the Stop condition. After Start, the MCU needs to SDIO outputs an 8-bit Device ID, and the Device ID of BK1086/88 is 0x80.
+After outputting the Device ID, the MCU continues to output an 8-bit control word to SDIO. The control word starts from 7 bits. Start register address, and a read and write bit (read operation is 1, write operation is 0). For example: the starting register address is 0x03, and data needs to be read from Device, then ControlWord=(0x03<<1+1)=0x07. After outputting the control word, you can write data to SDIO data (write operation) or get data from SDIO (read operation). When MCU writes data, after writing a byte each time, Device will output a low level ACK signal. When MCU reads data, after reading a byte each time, MCU must output an ACK signal to BK1086/88; and after outputting the last data, MCU needs to give NACK signal to BK1086/88.
+
+
+
 
 ## Library Installation
 
@@ -73,6 +116,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 ## Schematic
+
+
+
+### BEKEN Typical Application Schematic
+
+The image below was extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 25". It is a basic circuit suggested by BEKEN.
+
+![]()
+
+
+The schematic below is based on the BEKEN typical application schematic added the Arduino controller. 
+ 
 
 __Schematic under construction....__
 
