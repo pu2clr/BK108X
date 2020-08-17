@@ -22,7 +22,7 @@ Contact: __pu2clr@gmail.com__.
 2. [BK1086/88 features]()
 3. [Library Installation]()
 4. [API Documentation]()
-5. [Functional Description](https://github.com/pu2clr/BK108X#functional-description)
+5. [Functional Block Diagram](https://github.com/pu2clr/BK108X#functional-block-diagram)
 6. [Schematic](https://github.com/pu2clr/BK108X#schematic)
 7. [Sketch examples](examples/)
 8. [References]()
@@ -122,10 +122,10 @@ __Under construction.....__
 
 
 
-## Functional Description
+## Functional Block Diagram
 
 
-![BK1088 Functional Description](https://github.com/pu2clr/BK108X/blob/master/extras/images/bk1088_functional_block_diagram.png)
+![BK1086/88E Functional Description](https://github.com/pu2clr/BK108X/blob/master/extras/images/bk1088_functional_block_diagram.png)
 
 __Image extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 3"__
 
