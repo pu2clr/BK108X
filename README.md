@@ -23,9 +23,10 @@ Contact: __pu2clr@gmail.com__.
 3. [Library Installation]()
 4. [API Documentation]()
 5. [Functional Block Diagram](https://github.com/pu2clr/BK108X#functional-block-diagram)
-6. [Schematic](https://github.com/pu2clr/BK108X#schematic)
-7. [Sketch examples](examples/)
-8. [References]()
+6. [BK1086/88E TSSOP20 pinout](https://github.com/pu2clr/BK108X#bk108688e-tssop20--pinout)
+7. [Schematic](https://github.com/pu2clr/BK108X#schematic)
+8. [Sketch examples](examples/)
+9. [References]()
 
 
 
