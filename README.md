@@ -126,7 +126,7 @@ The image below was extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEI
 ![BEKEN Typical Application Schematic](extras/images/basic_circuit_from_beken.png)
 
 
-The schematic below is based on the BEKEN typical application schematic added the Arduino controller. 
+The schematic below is based on the BEKEN typical application schematic added the Arduino controller. It can guide you to build your own receiver.  
 
 
 __Schematic under construction....__
