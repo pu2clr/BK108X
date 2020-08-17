@@ -8,6 +8,9 @@
  * 
  * @see https://github.com/pu2clr/BK108X
  * 
+ * __THIS LIBRARY IS UNDER CONSTRUCTION.....___
+ * 
+ * 
  * This library can be freely distributed using the MIT Free Software model.
  * Copyright (c) 2020 Ricardo Lima Caratti.  
  * Contact: pu2clr@gmail.com
