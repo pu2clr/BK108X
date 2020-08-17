@@ -19,10 +19,11 @@ Contact: __pu2clr@gmail.com__.
 ## Contents
 
 1. [Preface](https://github.com/pu2clr/BK108X#preface)
-2. [Library Installation]()
-3. [API Documentation]()
-4. [Schematic](https://github.com/pu2clr/BK108X#schematic)
-5. [Sketch examples](examples/)
+2. [BK1086/88 features]()
+3. [Library Installation]()
+4. [API Documentation]()
+5. [Schematic](https://github.com/pu2clr/BK108X#schematic)
+6. [Sketch examples](examples/)
 
 
 
@@ -70,24 +71,25 @@ If you have suggestions to improve this project, please let me know.
 
 
 
-## BK1088 features
+## BK1086/88 features
 
 
 ### Main features
 
 1. Worldwide 64~108 MHz FM band support;
 2. Worldwide 520~1710kHz AM band support;
-3. SW band support(2.3-21.85MHz, BK1088 only);
-4. Automatic gain control(AGC);
-5. Automatic frequency control(AFC);
-6. Digital FM stereo decoder;
-7. Automatic FM stereo/mono blend;
-8. Automatic noise suppression;
-9. 50us/75us de-emphasis;
-10. RDS/RBDS decoder;
-11. 2.4 ~ 5.5 V supply voltage;
-12. Wide range reference clock support;
-13. 32.768KHz crystal oscillator.
+3. LW band support(153-279kHz,BK1088E only)
+4. SW band support(2.3-21.85MHz, BK1088E only);
+5. Automatic gain control(AGC);
+6. Automatic frequency control(AFC);
+7. Digital FM stereo decoder;
+8. Automatic FM stereo/mono blend;
+9. Automatic noise suppression;
+10. 50us/75us de-emphasis;
+11. RDS/RBDS decoder;
+12. 2.4 ~ 5.5 V supply voltage;
+13. Wide range reference clock support;
+14. 32.768KHz crystal oscillator.
 
 
 ### Useful informarion
@@ -113,21 +115,7 @@ The register value is also different. Same point: Except for the initialization 
   
 
 
-
-
-
-
-
-
-
 ## Library Installation
-
-
-
-
-
-## API Documentation
-
 
 
 
