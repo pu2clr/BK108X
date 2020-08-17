@@ -24,14 +24,15 @@ Contact: __pu2clr@gmail.com__.
 4. [API Documentation]()
 5. [Schematic](https://github.com/pu2clr/BK108X#schematic)
 6. [Sketch examples](examples/)
+7. [References]()
 
 
 
 ## Preface 
 
-At the end of 2019 I started some Arduino library development projects to control DSP receivers. The first implementation was the Arduino library for the SI4844 and then for the ICx Si473X family, all manufactured by Silicon Labs. Given the acceptance and enthusiasm of various radio listeners, experimenters and hobbyists, around the use of the implementations of these libraries, I decided to expand the number of libraries for the platform and also developed the libraries for the AKC695X, KT0915, SI470X and RDA5807. When I started reading about the BK1086/88 Datasheet I notice it is also very apropriated for radio listener and hobbyists. Unlik the other devices previously mentioned, I found very few documentation about it. So, it encouraged me to build as much information as possible about this BEKEN family of devices.
+At the end of 2019 I started some Arduino library development projects to control DSP receivers. The first implementation was the Arduino library for the SI4844 and then for the ICx Si473X family, all manufactured by Silicon Labs. Given the acceptance and enthusiasm of various radio listeners, experimenters and hobbyists, around the use of the implementations of these libraries, I decided to expand the number of Arduino libraries for the Arduino IDE platform and also developed the libraries for the AKC695X, KT0915, SI470X and RDA5807. When I started reading about the BK1086/88 Datasheet I notice it is also very apropriated for radio listener and hobbyists. Unlik the other devices previously mentioned, I found very few documentation about it. So, it encouraged me to build as much information as possible about this BEKEN family of devices. I requested some information about the BK1086/88E from BEKEN Corporation and I was promptly answered. I would like to thank the BEKEN Corporation fot its attention. 
 
-This library is based on the BEKEN manual “BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER” and experiments made by me during the developemnt process. 
+This library is based on the BEKEN manual “BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER REV1.3” provided by BEKEN Corporation and experiments made by me during the development process. 
 
 __This library is under construction...__
 
@@ -114,10 +115,9 @@ The register value is also different. Same point: Except for the initialization 
 * Compared with BK1088, BK1088E has an overall improvement in sensitivity. AM sensitivity has been increased by about 2dB and FM sensitivity has been increased by about 3dB.
   
 
-
 ## Library Installation
 
-
+__Under construction.....__
 
 
 ## Schematic
@@ -140,6 +140,15 @@ __Schematic under construction....__
 ![Basic Schematic](extras/images/basic_schematic.png)
 
 
+
+
+## References
+
+* BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev 1.3 (Copyright©2012 by Beken Corporation);
+* BK1086/88 Application Manual (In Chines - Copyright©2012 by Beken Corporation);
+* [1201682 Radio Alarm Clock with Bluetooth Speaker / Bluetooth Alarm Clock Radio Schematics Circuit Diagram Shenzhen Great Power Enterprise](https://fccid.io/ZY9-1201682/Schematics/Circuit-Diagram-2803394);
+* [AudioComm RAD-F630Z](http://nice.kaze.com/rad-f630z.html);
+  
 
 
 
