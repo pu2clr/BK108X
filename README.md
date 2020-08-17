@@ -134,7 +134,31 @@ __Image extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3
 ## BK1086/88E pinout
 
 
-![BK1086/88E PINOUT]()
+![BK1086/88E PINOUT](extras/images/BK1088_pinout.png)
+
+
+| Pin Number | Name     | Description | 
+| ---------- | -------- | ----------- | 
+| 1          | GND      | Ground. Connect to ground plane on PCB |
+| 2          | GND      | Ground. Connect to ground plane on PCB |
+| 3          | FMI      | FM RF input | 
+| 4          | RFGND    | RF ground | 
+| 5          | AMI      | MW/SW/LW RF input |
+| 6          | GND      | Ground. Connect to ground plane on PCB |
+| 7          | SCLK     | Clock for Serial communications |
+| 8          | SDIO     | Serial data input/output | 
+| 9          | RCLK     | 32.768kHz - 38.4MHz external reference clock input/32.768KHz Oscillator input |
+| 10         | VDD      | Power supply for digital and I/O | 
+| 11         | ROUT     | Right audio output | 
+| 12         | LOUT     | Left audio output |
+| 13         | VA       | Power supply for analog |
+| 14         | GPIO3    | General purpose output 3 | 
+| 15         | GPIO2    | General purpose output 2 | 
+| 16         | EXTLNA   | External LNA control | 
+| 17         | RIN2     | Line in input (Right channel2) | 
+| 18         | LIN2     | Line in input (Left channel2) | 
+| 19         | RIN1     | Line in input (Right channel1) | 
+| 20         | LIN1     | Line in input (Left channel1) |
 
 
 
