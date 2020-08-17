@@ -120,6 +120,13 @@ The register value is also different. Same point: Except for the initialization 
 __Under construction.....__
 
 
+
+## Functional Description
+
+
+![]()
+
+
 ## Schematic
 
 
