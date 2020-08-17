@@ -145,7 +145,7 @@ __Schematic under construction....__
 ## References
 
 * BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev 1.3 (Copyright©2012 by Beken Corporation);
-* BK1086/88 Application Manual (In Chines - Copyright©2012 by Beken Corporation);
+* BK1086/88 Application Manual (In Chinese - Copyright©2012 by Beken Corporation);
 * [1201682 Radio Alarm Clock with Bluetooth Speaker / Bluetooth Alarm Clock Radio Schematics Circuit Diagram Shenzhen Great Power Enterprise](https://fccid.io/ZY9-1201682/Schematics/Circuit-Diagram-2803394);
 * [AudioComm RAD-F630Z](http://nice.kaze.com/rad-f630z.html);
   
