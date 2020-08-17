@@ -4047,10 +4047,10 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="C4" library="capacitor-wima" library_urn="urn:adsk.eagle:library:116" deviceset="C" device="5/3" package3d_urn="urn:adsk.eagle:package:5433/1" value="100nF"/>
 <part name="L1" library="ngspice-simulation" library_urn="urn:adsk.eagle:library:527439" deviceset="L" device="" value="100nH"/>
 <part name="C5" library="capacitor-wima" library_urn="urn:adsk.eagle:library:116" deviceset="C" device="5/3" package3d_urn="urn:adsk.eagle:package:5433/1" value="1.8pF"/>
-<part name="ANT1" library="discrete" library_urn="urn:adsk.eagle:library:211" deviceset="ANTENNA" device="" package3d_urn="urn:adsk.eagle:package:12928/1"/>
+<part name="FM" library="discrete" library_urn="urn:adsk.eagle:library:211" deviceset="ANTENNA" device="" package3d_urn="urn:adsk.eagle:package:12928/1"/>
 <part name="D1" library="SparkFun-DiscreteSemi" library_urn="urn:adsk.eagle:library:514" deviceset="BAV99" device="" package3d_urn="urn:adsk.eagle:package:38446/1" value="200mA/70V"/>
 <part name="C6" library="capacitor-wima" library_urn="urn:adsk.eagle:library:116" deviceset="C" device="5/3" package3d_urn="urn:adsk.eagle:package:5433/1" value="100nF"/>
-<part name="ANT2" library="discrete" library_urn="urn:adsk.eagle:library:211" deviceset="ANTENNA" device="" package3d_urn="urn:adsk.eagle:package:12928/1"/>
+<part name="SW" library="discrete" library_urn="urn:adsk.eagle:library:211" deviceset="ANTENNA" device="" package3d_urn="urn:adsk.eagle:package:12928/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -4137,7 +4137,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="NAME" x="6.096" y="88.519" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="6.096" y="93.599" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="ANT1" gate="A" x="-5.08" y="116.84" smashed="yes">
+<instance part="FM" gate="A" x="-5.08" y="116.84" smashed="yes">
 <attribute name="NAME" x="-7.62" y="118.11" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-2.54" y="111.76" size="1.778" layer="96"/>
 </instance>
@@ -4149,7 +4149,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attribute name="NAME" x="-46.101" y="65.024" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-41.021" y="65.024" size="1.778" layer="96"/>
 </instance>
-<instance part="ANT2" gate="A" x="-63.5" y="78.74" smashed="yes">
+<instance part="SW" gate="A" x="-63.5" y="78.74" smashed="yes">
 <attribute name="NAME" x="-66.04" y="80.01" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-60.96" y="73.66" size="1.778" layer="96"/>
 </instance>
@@ -4352,7 +4352,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="C5" gate="G$1" pin="2"/>
 <wire x1="-5.08" y1="104.14" x2="0" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="0" y1="104.14" x2="0" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="ANT1" gate="A" pin="1"/>
+<pinref part="FM" gate="A" pin="1"/>
 <wire x1="-5.08" y1="111.76" x2="-5.08" y2="104.14" width="0.1524" layer="91"/>
 <junction x="-5.08" y="104.14"/>
 <pinref part="U$1" gate="G$1" pin="FMI"/>
@@ -4369,7 +4369,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </net>
 <net name="N$11" class="0">
 <segment>
-<pinref part="ANT2" gate="A" pin="1"/>
+<pinref part="SW" gate="A" pin="1"/>
 <pinref part="C6" gate="G$1" pin="1"/>
 <wire x1="-63.5" y1="73.66" x2="-63.5" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="-63.5" y1="71.12" x2="-43.18" y2="71.12" width="0.1524" layer="91"/>
