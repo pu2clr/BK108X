@@ -22,9 +22,10 @@ Contact: __pu2clr@gmail.com__.
 2. [BK1086/88 features]()
 3. [Library Installation]()
 4. [API Documentation]()
-5. [Schematic](https://github.com/pu2clr/BK108X#schematic)
-6. [Sketch examples](examples/)
-7. [References]()
+5. [Functional Description]()
+6. [Schematic](https://github.com/pu2clr/BK108X#schematic)
+7. [Sketch examples](examples/)
+8. [References]()
 
 
 
