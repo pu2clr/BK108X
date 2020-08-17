@@ -18,11 +18,11 @@ Contact: __pu2clr@gmail.com__.
 
 ## Contents
 
-1. [Preface](https://pu2clr.github.io/TEF668X#preface)
+1. [Preface](https://github.com/pu2clr/BK108X#preface)
 2. [Library Installation]()
 3. [API Documentation]()
 4. [Schematic](https://github.com/pu2clr/BK108X#schematic)
-5. [Sketch examples]()
+5. [Sketch examples](examples/)
 
 
 
