@@ -9,7 +9,7 @@
  * 
  * This library can be freely distributed using the MIT Free Software model.
  * Copyright (c) 2020 Ricardo Lima Caratti.  
- * Contact: pu2clr@gmail.com* 
+ * Contact: pu2clr@gmail.com 
  */
 
 #include <BK108X.h>

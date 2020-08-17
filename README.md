@@ -18,15 +18,15 @@ Contact: __pu2clr@gmail.com__.
 
 ## Contents
 
-1. [Preface](https://github.com/pu2clr/BK108X#preface)
-2. [BK1086/88E features](https://github.com/pu2clr/BK108X#bk108688-features)
-3. [Library Installation](https://github.com/pu2clr/BK108X#library-installation)
+1. [Preface](https://pu2clr.github.io/BK108X#preface)
+2. [BK1086/88E features](https://pu2clr.github.io/BK108X#bk108688-features)
+3. [Library Installation](https://pu2clr.github.io/BK108X#library-installation)
 4. [API Documentation](https://pu2clr.github.io/BK108X/extras/docs/html/index.html)
-5. [Functional Block Diagram](https://github.com/pu2clr/BK108X#functional-block-diagram)
-6. [BK1086/88E TSSOP20 pinout](https://github.com/pu2clr/BK108X#bk108688e-tssop20--pinout)
-7. [Schematic](https://github.com/pu2clr/BK108X#schematic)
-8. [Sketch examples](examples/)
-9. [References](https://github.com/pu2clr/BK108X#references)
+5. [Functional Block Diagram](https://pu2clr.github.io/BK108X#functional-block-diagram)
+6. [BK1086/88E TSSOP20 pinout](https://pu2clr.github.io/BK108X#bk108688e-tssop20--pinout)
+7. [Schematic](https://pu2clr.github.io/BK108X#schematic)
+8. [Sketch examples](https://pu2clr.github.io/BK108X/examples/)
+9. [References](https://pu2clr.github.io/BK108X#references)
 
 
 
