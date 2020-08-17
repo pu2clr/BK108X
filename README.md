@@ -127,7 +127,7 @@ __Under construction.....__
 
 ![BK1086/88E Functional Description](https://github.com/pu2clr/BK108X/blob/master/extras/images/bk1088_functional_block_diagram.png)
 
-__Image extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 3"__
+__Source: "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 3"__
 
 
 
@@ -135,6 +135,8 @@ __Image extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3
 
 
 ![BK1086/88E PINOUT](extras/images/BK1088_pinout.png)
+
+__Source: "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 23"__
 
 
 | Pin Number | Name     | Description | 
