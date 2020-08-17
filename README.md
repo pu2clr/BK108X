@@ -21,7 +21,7 @@ Contact: __pu2clr@gmail.com__.
 1. [Preface](https://github.com/pu2clr/BK108X#preface)
 2. [BK1086/88E features](https://github.com/pu2clr/BK108X#bk108688-features)
 3. [Library Installation](https://github.com/pu2clr/BK108X#library-installation)
-4. [API Documentation]()
+4. [API Documentation](file:///Users/rcaratti/Desenvolvimento/eu/Arduino/DSP/bk108X/BK108X/extras/docs/html/index.html)
 5. [Functional Block Diagram](https://github.com/pu2clr/BK108X#functional-block-diagram)
 6. [BK1086/88E TSSOP20 pinout](https://github.com/pu2clr/BK108X#bk108688e-tssop20--pinout)
 7. [Schematic](https://github.com/pu2clr/BK108X#schematic)
