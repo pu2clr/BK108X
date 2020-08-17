@@ -2,7 +2,7 @@
 
 The BK1086 and BK1088 are DSP receivers from BAKEN. The BK1088 is a BROADCAST FM and AM (LW, MW and ) RECEIVER and BK1086 is a subset of the BK1088 (it does not have LW and SW acording to the Datasheet).  
 
-This project is about an Arduino Library to control the BK1086 and BK1088 devices. 
+This project is about an Arduino Library to control the BK1086 and BK1088 devices. It was based on "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3" documentation from BEKEN Corporation.
 
 __This library is under construction...__
 
@@ -123,11 +123,11 @@ After outputting the Device ID, the MCU continues to output an 8-bit control wor
 
 The image below was extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 25". It is a basic circuit suggested by BEKEN.
 
-![]()
+![BEKEN Typical Application Schematic](extras/images/basic_circuit_from_beken.png)
 
 
 The schematic below is based on the BEKEN typical application schematic added the Arduino controller. 
- 
+
 
 __Schematic under construction....__
 
