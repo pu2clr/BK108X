@@ -131,7 +131,7 @@ __Source: "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 3"__
 
 
 
-## BK1086/88E pinout
+## BK1086/88E TSSOP20  pinout
 
 
 ![BK1086/88E PINOUT](extras/images/BK1088_pinout.png)
@@ -182,7 +182,6 @@ The main porpuse of this circuit is to test the  BK108X Arduino Library. However
 __Schematic under construction....__
 
 ![Basic Schematic](extras/images/basic_schematic.png)
-
 
 
 
