@@ -124,7 +124,7 @@ __Under construction.....__
 ## Functional Description
 
 
-![]()
+![BK1088 Functional Description](https://github.com/pu2clr/BK108X/blob/master/extras/images/bk1088_functional_block_diagram.png)
 
 
 ## Schematic
