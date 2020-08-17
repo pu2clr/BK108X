@@ -5,9 +5,11 @@
  * @details It works with I2C protocol and can provide an easier interface for controlling the BK1086/88 devices.<br>
  * @details This library is based on BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER manual. 
  * 
- * @copyright Copyright (c) 2020 Ricardo Lima Caratti. 
- * @author Ricardo LIma Caratti (pu2clr@gmail.com)
+ * __THIS LIBRARY IS UNDER CONSTRUCTION.....___
  * 
+ * This library can be freely distributed using the MIT Free Software model.
+ * Copyright (c) 2020 Ricardo Lima Caratti.  
+ * Contact: pu2clr@gmail.com* 
  */
 
 #include <BK108X.h>
