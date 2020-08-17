@@ -4055,6 +4055,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <sheets>
 <sheet>
 <plain>
+<text x="149.86" y="30.48" size="1.778" layer="91">To audio amplifier</text>
 </plain>
 <instances>
 <instance part="GND1" gate="1" x="20.32" y="76.2" smashed="yes" rot="R270">
