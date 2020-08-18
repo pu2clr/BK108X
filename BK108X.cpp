@@ -15,11 +15,235 @@
 #include <BK108X.h>
 
 /** 
+ * @defgroup GA02 BEKEN I2C BUS 
+ * @section GA02 I2C
+ */
+
+/**
+ * @ingroup GA02
+ * @brief Sets I2C bus address 
+ * @details Useful if some release of BEKEN device is different of 0x80. 
+ * 
+ * @param i2c_addr 
+ */
+void BK108X::setI2C(uint8_t i2c_addr) {
+    this->deviceAddress = i2c_addr;
+}
+
+/**
+ * @ingroup GA02
+ * @brief Sets the MCU pins connected to the I2C bus 
+ * @details Configures the I2C bus for BK108X
+ * 
+ * @param pin_sdio SDA/SDIO MCU/Arduino pin
+ * @param pin_sclk CLK/SCLK MCU/Arduino pin 
+ */
+void BK108X::i2cInit(int pin_sdio, int pin_sclk){
+    this->pin_sdio = pin_sdio;
+    this->pin_sclk = pin_sclk;
+}
+
+/**
+ * @ingroup GA02
+ * @brief Starts the I2C bus transaction  
+ */
+void BK108X::i2cStart()
+{
+    pinMode(this->pin_sdio, OUTPUT);
+    pinMode(this->pin_sclk, OUTPUT);
+    digitalWrite(this->pin_sdio, HIGH);
+    digitalWrite(this->pin_sclk, HIGH);
+    delayMicroseconds(1);
+
+    digitalWrite(this->pin_sdio, LOW);
+    delayMicroseconds(1);
+    digitalWrite(this->pin_sclk, LOW);
+    delayMicroseconds(1);
+    digitalWrite(this->pin_sdio, HIGH);
+}
+
+/**
+ * @ingroup GA02
+ * @brief Finish the I2C bus  transaction
+ */
+void BK108X::i2cStop()
+{
+    pinMode(pin_sdio, OUTPUT);
+    digitalWrite(this->pin_sdio, LOW);
+    delayMicroseconds(1);
+
+    digitalWrite(this->pin_sclk, HIGH);
+    delayMicroseconds(1);
+
+    digitalWrite(this->pin_sdio, HIGH);
+    delayMicroseconds(1);
+}
+
+/**
+ * @ingroup GA02
+ * @brief Sends Acknowledge (ACK)
+ * @details Each byte of data (including the address byte) have to be followed by one ACK bit from the receiver.
+ * @details The ACK bit allows the receiver to communicate to the transmitter.
+ * @see https://www.ti.com/lit/an/slva704/slva704.pdf
+ */
+void BK108X::i2cAck()
+{
+    pinMode(pin_sdio, OUTPUT);
+    digitalWrite(this->pin_sclk, LOW);
+    digitalWrite(this->pin_sdio, LOW);
+    delayMicroseconds(1);
+    digitalWrite(this->pin_sclk, HIGH);
+    delayMicroseconds(1);
+    digitalWrite(this->pin_sclk, LOW);
+}
+
+/**
+ * @ingroup GA02
+ * @brief Sends Not Acknowledge (ACK)
+ * @see https://www.ti.com/lit/an/slva704/slva704.pdf
+ */
+void BK108X::i2cNack()
+{
+    pinMode(pin_sdio, OUTPUT);
+
+    digitalWrite(this->pin_sclk, LOW);
+    digitalWrite(this->pin_sdio, HIGH);
+    delayMicroseconds(1);
+    digitalWrite(this->pin_sclk, HIGH);
+    delayMicroseconds(1);
+    digitalWrite(this->pin_sclk, LOW);
+}
+
+/**
+ * @ingroup GA02
+ * @brief Gets Acknowledge (ACK)
+ * @see https://www.ti.com/lit/an/slva704/slva704.pdf
+ * @return ack value
+ */
+uint8_t BK108X::i2cReceiveAck()
+{
+    uint8_t ack;
+    pinMode(pin_sdio, INPUT);
+    delayMicroseconds(1);
+
+    digitalWrite(this->pin_sclk, HIGH);
+    delayMicroseconds(1);
+
+    ack = digitalRead(this->pin_sdio);
+
+    digitalWrite(this->pin_sclk, LOW);
+    delayMicroseconds(1);
+
+    return ack;
+}
+
+/**
+ * @ingroup GA02
+ * @brief Sends a Byte to the slave device
+ * @param data to be sent to the slave device
+ */
+void BK108X::i2cWriteByte( uint8_t data)
+{
+    pinMode(pin_sdio, OUTPUT);
+    delayMicroseconds(1);
+
+    for (int i = 0; i < 8; i++) {
+        digitalWrite(this->pin_sdio,  (data & this->deviceAddress) );   // SDA will be 1 or 0
+        delayMicroseconds(1);
+        digitalWrite(this->pin_sclk, HIGH);
+        delayMicroseconds(1);
+        data = data << 1;
+        digitalWrite(this->pin_sclk, LOW);
+    }
+}
+
+/**
+ * @ingroup GA02
+ * @brief Gets a Byte from the slave device
+ * @return value read from the device
+ */
+uint8_t BK108X::i2cReadByte()
+{
+    uint8_t value = 0;
+
+    pinMode(pin_sdio, INPUT);
+    delayMicroseconds(1);
+
+    for (int i = 0; i < 8; i++)
+    {
+        digitalWrite(this->pin_sclk, HIGH);
+        value = value << 1;
+        delayMicroseconds(1);
+        if ( digitalRead(this->pin_sdio) ) 
+            value = value | 1;
+        digitalWrite(this->pin_sclk, LOW);
+        delayMicroseconds(1);
+    }
+
+    return value;
+}
+
+/**
+ * @ingroup GA02
+ * @brief Sends an array of values to a BK108X given register
+ * @param reg register to be written
+ * @param data byte array of values to be sent
+ * @param size size of byte array
+ */
+void BK108X::writeRegister(uint8_t reg, uint8_t *data, uint8_t size) {
+    this->i2cStart();
+    this->i2cWriteByte(this->deviceAddress);
+    this->i2cReceiveAck();
+
+    // reg = (reg << 1) | 1;
+    reg = reg << 1;
+    
+    this->i2cWriteByte(reg);
+    this->i2cReceiveAck();
+
+    for (int i = 0; i < size; i++)
+    {
+        this->i2cWriteByte(data[i]);
+        this->i2cReceiveAck();
+    }
+    this->i2cStop();
+}
+
+/**
+ * @ingroup GA02
+ * @brief Gets an array of values from a BK108X given register
+ * @param reg register to be read
+ * @param data byte array of values to be populated
+ * @param size size of byte array
+ */
+void BK108X::readRegister(uint8_t reg, uint8_t *data, uint8_t size) {
+    this->i2cStart();
+    this->i2cWriteByte(this->deviceAddress);
+    this->i2cReceiveAck();
+
+    reg = (reg << 1) | 1;
+
+    this->i2cWriteByte(reg);
+    this->i2cReceiveAck();
+
+    for (int i = 0; i < size - 1; i++ ) {
+        data[i] = this->i2cReadByte();
+        this->i2cAck();
+    }
+    data[size - 1] = this->i2cReadByte();
+    this->i2cNack();
+    this->i2cStop();
+}
+
+
+
+
+/** 
  * @defgroup GA03 Basic Functions
  * @section GA03 Basic
  */
 
-/**
+ /**
  * @ingroup GA03
  * @brief Gets a givens current register content of the device
  * @see shadowRegisters;  
@@ -29,16 +253,8 @@ uint16_t BK108X::getRegister(uint8_t reg)
 {
     word16_to_bytes result;
 
-    Wire.beginTransmission(this->deviceAddress);
-    Wire.write(reg);
-    Wire.endTransmission(false);
-    // delayMicroseconds(1000);
-    Wire.requestFrom(this->deviceAddress, 2);
-    result.refined.highByte = Wire.read();
-    result.refined.lowByte = Wire.read();
-    Wire.endTransmission(true);
-    // delayMicroseconds(1000);
-
+    this->readRegister(reg,result.array,2);
+    
     shadowRegisters[reg] = result.raw; // Syncs with the shadowRegisters
 
     return result.raw;
@@ -63,16 +279,9 @@ void BK108X::setRegister(uint8_t reg, uint16_t value)
 
     param.raw = value;
 
-    Wire.beginTransmission(this->deviceAddress);
-    Wire.write(reg);
-
-    Wire.write(param.refined.highByte);
-    Wire.write(param.refined.lowByte);
-    Wire.endTransmission();
+    this->writeRegister(reg, param.array,2);
 
     shadowRegisters[reg] = value;  // Syncs with the shadowRegisters
-
-    // delayMicroseconds(6000);
 }
 
 /**
@@ -156,8 +365,13 @@ void BK108X::powerDown()
  * @param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control. 
  * @param oscillator_type  // optional. Sets the Oscillator type used Crystal (default) or Ref. Clock. 
  */
-void BK108X::setup(int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type)
+void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type)
 {
+
+    // Configures BEKEN I2C bus 
+    this->i2cInit(sda_pin, sclk_pin);
+
+
     if (rdsInterruptPin >= 0)
         this->rdsInterruptPin = rdsInterruptPin;
     if (seekInterruptPin >= 0)

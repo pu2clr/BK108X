@@ -1,5 +1,9 @@
 #include <BK108X.h>
 
+
+#define SDA_PIN A4
+#define CLK_PIN A5
+
 BK108X rx;
 
 void setup()
@@ -7,7 +11,7 @@ void setup()
   Serial.begin(9600);
   while (!Serial);
 
-  Serial.println("\n********Before!");
+  Serial.println("\n********Begin!");
 
 
   pinMode(9,OUTPUT);
@@ -17,12 +21,17 @@ void setup()
 
   digitalWrite(9, HIGH);
   delay(1000);
+
   checkDevice();   
 
-  rx.setup();
-  Serial.println("\nAfter!***********");  
+  rx.setI2C(0x40);
+  
+  rx.setup(SDA_PIN, CLK_PIN);
+  
+  getDeviceInfo(); 
+  
+  Serial.println("\nFinish!***********");  
 
-  checkDevice();
   
 }
 
@@ -31,19 +40,22 @@ void loop()
 
 }
 
+
+void getDeviceInfo() {
+   char aux[100];
+    
+  sprintf(aux,"Device Id = %d; Chip Id = %d",rx.getDeviceId(), rx.getChipId() );
+  Serial.println(aux);
+
+}
+
 void checkDevice() {
-  char aux[100];
-  checkI2C();
   if ( !checkI2C() ) {
     
     Serial.println("Check your circuit!");
     while (1);
   }
-
   Serial.println("Device Found!!!");
-
-  sprintf(aux,"Device Id = %d; Chip Id = %d",rx.getDeviceId(), rx.getChipId() );
-  Serial.println(aux);
 }
 
 
@@ -54,7 +66,8 @@ bool checkI2C() {
   Wire.begin();
   nDevices = 0;
   for (address = 1; address < 127; address++ ) {
-    Serial.println(address, HEX);
+    digitalWrite(A5, HIGH);
+    digitalWrite(A4, LOW);
     delay(1);
     Wire.beginTransmission(address);
     delay(1);

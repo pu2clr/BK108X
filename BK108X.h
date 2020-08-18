@@ -21,7 +21,7 @@
 
 #define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscilator becomes active
 
-#define I2C_DEVICE_ADDR 0x80
+#define I2C_DEVICE_ADDR 0x40
 
 #define OSCILLATOR_TYPE_CRYSTAL 1 // Crystal
 #define OSCILLATOR_TYPE_REFCLK 0  // Reference clock
@@ -700,6 +700,7 @@ typedef union
         uint8_t lowByte;
         uint8_t highByte;
     } refined;
+    uint8_t  array[2];
     uint16_t raw;
 } word16_to_bytes;
 
@@ -714,6 +715,9 @@ class BK108X
 {
 
 private:
+
+    uint8_t  i2cBuffer[32];
+
     uint16_t shadowRegisters[32]; //!< shadow registers 0x00  to 0x1F (0 - 31)
 
     // Device registers map - References to the shadow registers
@@ -754,6 +758,8 @@ private:
     uint16_t endBand[4] = {10800, 10800, 9000, 10800}; //!< End FM band limit
     uint16_t fmSpace[4] = {20, 10, 5, 1};              //!< FM channel space
 
+    int pin_sdio, pin_sclk; 
+
 protected:
     char rds_buffer2A[65]; //!<  RDS Radio Text buffer - Program Information
     char rds_buffer2B[33]; //!<  RDS Radio Text buffer - Station Informaation
@@ -771,12 +777,28 @@ protected:
     int oscillatorType = OSCILLATOR_TYPE_CRYSTAL;
     uint16_t maxDelayAftarCrystalOn = MAX_DELAY_AFTER_OSCILLATOR;
 
+
+
+public:
+    void setI2C(uint8_t i2c_addr = I2C_DEVICE_ADDR);
+    void i2cInit(int pin_sdio, int pin_sclk);
+    void i2cStart();
+    void i2cStop();
+    void i2cAck();
+    void i2cNack();
+    uint8_t i2cReceiveAck();
+    void i2cWriteByte(uint8_t data);
+    uint8_t i2cReadByte();
+    void writeRegister(uint8_t reg, uint8_t *data, uint8_t size);
+    void readRegister(uint8_t reg, uint8_t *data, uint8_t size);
+
     void reset();
     void powerUp();
     void powerDown();
     void waitAndFinishTune();
 
-public:
+
+
     /**
          * @ingroup GA03
          * @brief Sets the I2C bus address 
@@ -826,7 +848,7 @@ public:
     uint16_t getDeviceId();
     uint16_t getChipId();
 
-    void setup(int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
+    void setup(int sda_pin, int sclk_pin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
     void setFrequency(uint16_t frequency);
     void setFrequencyUp();
     void setFrequencyDown();
