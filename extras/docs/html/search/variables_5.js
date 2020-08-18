@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oscillatortype_339',['oscillatorType',['../group___g_a01.html#a50a9ac975ce0539aed15b122db83d36b',1,'BK108X']]]
+  ['maxdelayaftarcrystalon_363',['maxDelayAftarCrystalOn',['../group___g_a01.html#aa4937fcebe3dc30474a903c3aa02a67b',1,'BK108X']]]
 ];

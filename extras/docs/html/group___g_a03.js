@@ -11,7 +11,7 @@ var group___g_a03 =
     [ "reset", "group___g_a03.html#ga0479b36a2d6558df557a3ba4a0d07ce2", null ],
     [ "powerUp", "group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618", null ],
     [ "powerDown", "group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857", null ],
-    [ "setup", "group___g_a03.html#gae3693f08b177e3287a49f46ec65eb62e", null ],
+    [ "setup", "group___g_a03.html#ga8d1b082b77d8b0cc7c0e6cb5cb489c80", null ],
     [ "setChannel", "group___g_a03.html#gaa479240fcad272dc505ae50a6f4369d3", null ],
     [ "setFrequency", "group___g_a03.html#ga514242393caa2068d8acb3adec953832", null ],
     [ "setFrequencyUp", "group___g_a03.html#gac0c265a916d7852d7e4977b1835098eb", null ],

@@ -34,16 +34,15 @@ var NAVTREE =
       [ "Your support is important", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md6", null ],
       [ "BK1086/88 features", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md7", [
         [ "Main features", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md8", null ],
-        [ "Useful informarion", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md9", null ],
-        [ "Similarities and differences between BK1088 and BK1088E", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md10", null ]
+        [ "Useful informarion", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md9", null ]
       ] ],
-      [ "Library Installation", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md11", null ],
-      [ "Functional Block Diagram", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md12", null ],
-      [ "BK1086/88E TSSOP20  pinout", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md13", null ],
-      [ "Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md14", [
-        [ "BEKEN Typical Application Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md15", null ]
+      [ "Library Installation", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md10", null ],
+      [ "Functional Block Diagram", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md11", null ],
+      [ "BK1086/88E TSSOP20  pinout", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md12", null ],
+      [ "Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md13", [
+        [ "BEKEN Typical Application Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md14", null ]
       ] ],
-      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md16", null ]
+      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md15", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -70,7 +69,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_b_k108_x_8cpp.html",
-"group___g_a01.html#acd4dc69a843a2266bfe2b47fcd0993b8"
+"group___g_a01.html#acd4dc69a843a2266bfe2b47fcd0993b8",
+"pages.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

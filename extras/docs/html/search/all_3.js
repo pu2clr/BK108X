@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['fm_5fband_5fjapan_85',['FM_BAND_JAPAN',['../_b_k108_x_8h.html#a3e920d475d85c9c6ccd907ba332f94fc',1,'BK108X.h']]],
-  ['fm_5fband_5fjapan_5fwide_86',['FM_BAND_JAPAN_WIDE',['../_b_k108_x_8h.html#a52b160692c66b326ce004ef59a9c7384',1,'BK108X.h']]],
-  ['fm_5fband_5freserved_87',['FM_BAND_RESERVED',['../_b_k108_x_8h.html#a24d7b9791b3d1eea6bb86b0d1596da19',1,'BK108X.h']]],
-  ['fm_5fband_5fusa_5feu_88',['FM_BAND_USA_EU',['../_b_k108_x_8h.html#a7417bf6a10c7dd58227fc91601825691',1,'BK108X.h']]]
+  ['deviceaddress_85',['deviceAddress',['../group___g_a01.html#a91b3171ba5c52f8bbbd54277bbb2bdfe',1,'BK108X']]],
+  ['deviceid_86',['deviceId',['../group___g_a01.html#a5f8e8adbb251053157b4a51d2a38d6bb',1,'bk_reg00']]]
 ];

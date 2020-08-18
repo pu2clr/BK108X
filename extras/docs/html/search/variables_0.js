@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['blockb_328',['blockB',['../group___g_a01.html#adfbe429f8db8c7490d1cb27921e826c3',1,'bk_rds_blockb']]]
+  ['array_352',['array',['../group___g_a01.html#afc3c841ec8fe1d53e8b6fb3328b766da',1,'word16_to_bytes']]]
 ];

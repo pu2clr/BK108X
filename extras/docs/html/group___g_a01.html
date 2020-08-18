@@ -2848,6 +2848,12 @@ refined</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
+<a id="afc3c841ec8fe1d53e8b6fb3328b766da"></a>uint8_t</td>
+<td class="fieldname">
+array[2]</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
 <a id="abed44166b8c3d82c0c44fb317d3b650a"></a>uint16_t</td>
 <td class="fieldname">
 raw</td>
@@ -2905,9 +2911,55 @@ highByte</td>
 <p>This class implements all functions that will help you to control the KT0915 devices.</p>
 <dl class="section author"><dt>Author</dt><dd>PU2CLR - Ricardo Lima Caratti </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00713">713</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00714">714</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h3>Public Member Functions</h3></td></tr>
+<tr class="memitem:gabb521f2af588ce1c94755bd2525f32c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#gabb521f2af588ce1c94755bd2525f32c9">setI2C</a> (uint8_t i2c_addr=<a class="el" href="_b_k108_x_8h.html#af1732013854882f94b02e77b8a6106ec">I2C_DEVICE_ADDR</a>)</td></tr>
+<tr class="memdesc:gabb521f2af588ce1c94755bd2525f32c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets I2C bus address.  <a href="group___g_a02.html#gabb521f2af588ce1c94755bd2525f32c9">More...</a><br /></td></tr>
+<tr class="separator:gabb521f2af588ce1c94755bd2525f32c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafbe95dfa30734cd6c30f5d6ea77089c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#gafbe95dfa30734cd6c30f5d6ea77089c9">i2cInit</a> (int pin_sdio, int pin_sclk)</td></tr>
+<tr class="memdesc:gafbe95dfa30734cd6c30f5d6ea77089c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the MCU pins connected to the I2C bus.  <a href="group___g_a02.html#gafbe95dfa30734cd6c30f5d6ea77089c9">More...</a><br /></td></tr>
+<tr class="separator:gafbe95dfa30734cd6c30f5d6ea77089c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga43a1163605687a62cd95e905e2524bf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#ga43a1163605687a62cd95e905e2524bf1">i2cStart</a> ()</td></tr>
+<tr class="memdesc:ga43a1163605687a62cd95e905e2524bf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the I2C bus transaction <br  />
+  <a href="group___g_a02.html#ga43a1163605687a62cd95e905e2524bf1">More...</a><br /></td></tr>
+<tr class="separator:ga43a1163605687a62cd95e905e2524bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga20a9075705e5e4ee5f0b75162728c9ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#ga20a9075705e5e4ee5f0b75162728c9ab">i2cStop</a> ()</td></tr>
+<tr class="memdesc:ga20a9075705e5e4ee5f0b75162728c9ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finish the I2C bus transaction.  <a href="group___g_a02.html#ga20a9075705e5e4ee5f0b75162728c9ab">More...</a><br /></td></tr>
+<tr class="separator:ga20a9075705e5e4ee5f0b75162728c9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf3c1f7226ebb99d7b7aa2e0c58d166db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#gaf3c1f7226ebb99d7b7aa2e0c58d166db">i2cAck</a> ()</td></tr>
+<tr class="memdesc:gaf3c1f7226ebb99d7b7aa2e0c58d166db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends Acknowledge (ACK)  <a href="group___g_a02.html#gaf3c1f7226ebb99d7b7aa2e0c58d166db">More...</a><br /></td></tr>
+<tr class="separator:gaf3c1f7226ebb99d7b7aa2e0c58d166db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7987984a7302ba985689c6cec95f833"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#gab7987984a7302ba985689c6cec95f833">i2cNack</a> ()</td></tr>
+<tr class="memdesc:gab7987984a7302ba985689c6cec95f833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends Not Acknowledge (ACK)  <a href="group___g_a02.html#gab7987984a7302ba985689c6cec95f833">More...</a><br /></td></tr>
+<tr class="separator:gab7987984a7302ba985689c6cec95f833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga00ccd956af8470ccc32a18b476dda0c2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#ga00ccd956af8470ccc32a18b476dda0c2">i2cReceiveAck</a> ()</td></tr>
+<tr class="memdesc:ga00ccd956af8470ccc32a18b476dda0c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets Acknowledge (ACK)  <a href="group___g_a02.html#ga00ccd956af8470ccc32a18b476dda0c2">More...</a><br /></td></tr>
+<tr class="separator:ga00ccd956af8470ccc32a18b476dda0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f97140ef586e3fbf52b482bfae94d9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#ga9f97140ef586e3fbf52b482bfae94d9c">i2cWriteByte</a> (uint8_t data)</td></tr>
+<tr class="memdesc:ga9f97140ef586e3fbf52b482bfae94d9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a Byte to the slave device.  <a href="group___g_a02.html#ga9f97140ef586e3fbf52b482bfae94d9c">More...</a><br /></td></tr>
+<tr class="separator:ga9f97140ef586e3fbf52b482bfae94d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d7a8606874d174e6fdb66d9ef602811"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#ga2d7a8606874d174e6fdb66d9ef602811">i2cReadByte</a> ()</td></tr>
+<tr class="memdesc:ga2d7a8606874d174e6fdb66d9ef602811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a Byte from the slave device.  <a href="group___g_a02.html#ga2d7a8606874d174e6fdb66d9ef602811">More...</a><br /></td></tr>
+<tr class="separator:ga2d7a8606874d174e6fdb66d9ef602811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac22a13c5233923dfbee36613665dd1cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#gac22a13c5233923dfbee36613665dd1cb">writeRegister</a> (uint8_t reg, uint8_t *data, uint8_t size)</td></tr>
+<tr class="memdesc:gac22a13c5233923dfbee36613665dd1cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an array of values to a <a class="el" href="group___g_a01.html#class_b_k108_x" title="KT0915 Class.">BK108X</a> given register.  <a href="group___g_a02.html#gac22a13c5233923dfbee36613665dd1cb">More...</a><br /></td></tr>
+<tr class="separator:gac22a13c5233923dfbee36613665dd1cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga35abeeb434051d1fd4c098e506be7a2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#ga35abeeb434051d1fd4c098e506be7a2f">readRegister</a> (uint8_t reg, uint8_t *data, uint8_t size)</td></tr>
+<tr class="memdesc:ga35abeeb434051d1fd4c098e506be7a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an array of values from a <a class="el" href="group___g_a01.html#class_b_k108_x" title="KT0915 Class.">BK108X</a> given register.  <a href="group___g_a02.html#ga35abeeb434051d1fd4c098e506be7a2f">More...</a><br /></td></tr>
+<tr class="separator:ga35abeeb434051d1fd4c098e506be7a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0479b36a2d6558df557a3ba4a0d07ce2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga0479b36a2d6558df557a3ba4a0d07ce2">reset</a> ()</td></tr>
+<tr class="memdesc:ga0479b36a2d6558df557a3ba4a0d07ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the device.  <a href="group___g_a03.html#ga0479b36a2d6558df557a3ba4a0d07ce2">More...</a><br /></td></tr>
+<tr class="separator:ga0479b36a2d6558df557a3ba4a0d07ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacdabf4e7e5c7ef78bf51710122daa618"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618">powerUp</a> ()</td></tr>
+<tr class="memdesc:gacdabf4e7e5c7ef78bf51710122daa618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Powers the receiver on.  <a href="group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618">More...</a><br /></td></tr>
+<tr class="separator:gacdabf4e7e5c7ef78bf51710122daa618"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa3a8958cbfb9cac36c81ed9351b5b857"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857">powerDown</a> ()</td></tr>
+<tr class="memdesc:gaa3a8958cbfb9cac36c81ed9351b5b857"><td class="mdescLeft">&#160;</td><td class="mdescRight">Powers the receiver off.  <a href="group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857">More...</a><br /></td></tr>
+<tr class="separator:gaa3a8958cbfb9cac36c81ed9351b5b857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga157dea83c3abb71f49124252a109a383"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga157dea83c3abb71f49124252a109a383">waitAndFinishTune</a> ()</td></tr>
+<tr class="memdesc:ga157dea83c3abb71f49124252a109a383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait STC (Seek/Tune Complete) status becomes 0.  <a href="group___g_a03.html#ga157dea83c3abb71f49124252a109a383">More...</a><br /></td></tr>
+<tr class="separator:ga157dea83c3abb71f49124252a109a383"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga46c6eb53236fb1b817147a12a94e237b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga46c6eb53236fb1b817147a12a94e237b">setI2CAddress</a> (int bus_addr)</td></tr>
 <tr class="memdesc:ga46c6eb53236fb1b817147a12a94e237b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the I2C bus address.  <a href="group___g_a03.html#ga46c6eb53236fb1b817147a12a94e237b">More...</a><br /></td></tr>
 <tr class="separator:ga46c6eb53236fb1b817147a12a94e237b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2934,9 +2986,9 @@ highByte</td>
 <tr class="memitem:a102d07b1523cf46434bb4434b7c70d60"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a102d07b1523cf46434bb4434b7c70d60">getChipId</a> ()</td></tr>
 <tr class="memdesc:a102d07b1523cf46434bb4434b7c70d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Chip Indentifiction.  <a href="group___g_a01.html#a102d07b1523cf46434bb4434b7c70d60">More...</a><br /></td></tr>
 <tr class="separator:a102d07b1523cf46434bb4434b7c70d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae3693f08b177e3287a49f46ec65eb62e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gae3693f08b177e3287a49f46ec65eb62e">setup</a> (int <a class="el" href="group___g_a01.html#ab14e1e533462b60b82ff498dc15abbb1">rdsInterruptPin</a>=-1, int <a class="el" href="group___g_a01.html#a68b0bac67680a37773d972c470716a37">seekInterruptPin</a>=-1, uint8_t oscillator_type=<a class="el" href="_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2">OSCILLATOR_TYPE_CRYSTAL</a>)</td></tr>
-<tr class="memdesc:gae3693f08b177e3287a49f46ec65eb62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the device.  <a href="group___g_a03.html#gae3693f08b177e3287a49f46ec65eb62e">More...</a><br /></td></tr>
-<tr class="separator:gae3693f08b177e3287a49f46ec65eb62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d1b082b77d8b0cc7c0e6cb5cb489c80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga8d1b082b77d8b0cc7c0e6cb5cb489c80">setup</a> (int sda_pin, int sclk_pin, int <a class="el" href="group___g_a01.html#ab14e1e533462b60b82ff498dc15abbb1">rdsInterruptPin</a>=-1, int <a class="el" href="group___g_a01.html#a68b0bac67680a37773d972c470716a37">seekInterruptPin</a>=-1, uint8_t oscillator_type=<a class="el" href="_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2">OSCILLATOR_TYPE_CRYSTAL</a>)</td></tr>
+<tr class="memdesc:ga8d1b082b77d8b0cc7c0e6cb5cb489c80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the device.  <a href="group___g_a03.html#ga8d1b082b77d8b0cc7c0e6cb5cb489c80">More...</a><br /></td></tr>
+<tr class="separator:ga8d1b082b77d8b0cc7c0e6cb5cb489c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga514242393caa2068d8acb3adec953832"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga514242393caa2068d8acb3adec953832">setFrequency</a> (uint16_t frequency)</td></tr>
 <tr class="memdesc:ga514242393caa2068d8acb3adec953832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the FM frequency.  <a href="group___g_a03.html#ga514242393caa2068d8acb3adec953832">More...</a><br /></td></tr>
 <tr class="separator:ga514242393caa2068d8acb3adec953832"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3068,19 +3120,6 @@ highByte</td>
 <tr class="memitem:gace7a6e83ef173bcf9e26b129df416c9c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c">getRdsSync</a> ()</td></tr>
 <tr class="memdesc:gace7a6e83ef173bcf9e26b129df416c9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Rds Sync.  <a href="group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c">More...</a><br /></td></tr>
 <tr class="separator:gace7a6e83ef173bcf9e26b129df416c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><h3>Protected Member Functions</h3></td></tr>
-<tr class="memitem:ga0479b36a2d6558df557a3ba4a0d07ce2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga0479b36a2d6558df557a3ba4a0d07ce2">reset</a> ()</td></tr>
-<tr class="memdesc:ga0479b36a2d6558df557a3ba4a0d07ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the device.  <a href="group___g_a03.html#ga0479b36a2d6558df557a3ba4a0d07ce2">More...</a><br /></td></tr>
-<tr class="separator:ga0479b36a2d6558df557a3ba4a0d07ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacdabf4e7e5c7ef78bf51710122daa618"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618">powerUp</a> ()</td></tr>
-<tr class="memdesc:gacdabf4e7e5c7ef78bf51710122daa618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Powers the receiver on.  <a href="group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618">More...</a><br /></td></tr>
-<tr class="separator:gacdabf4e7e5c7ef78bf51710122daa618"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa3a8958cbfb9cac36c81ed9351b5b857"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857">powerDown</a> ()</td></tr>
-<tr class="memdesc:gaa3a8958cbfb9cac36c81ed9351b5b857"><td class="mdescLeft">&#160;</td><td class="mdescRight">Powers the receiver off.  <a href="group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857">More...</a><br /></td></tr>
-<tr class="separator:gaa3a8958cbfb9cac36c81ed9351b5b857"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga157dea83c3abb71f49124252a109a383"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga157dea83c3abb71f49124252a109a383">waitAndFinishTune</a> ()</td></tr>
-<tr class="memdesc:ga157dea83c3abb71f49124252a109a383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait STC (Seek/Tune Complete) status becomes 0.  <a href="group___g_a03.html#ga157dea83c3abb71f49124252a109a383">More...</a><br /></td></tr>
-<tr class="separator:ga157dea83c3abb71f49124252a109a383"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><h3>Protected Attributes</h3></td></tr>
 <tr class="memitem:a47624a15a9716a9ec6c0ac2d1060dd85"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a47624a15a9716a9ec6c0ac2d1060dd85">rds_buffer2A</a> [65]</td></tr>
 <tr class="memdesc:a47624a15a9716a9ec6c0ac2d1060dd85"><td class="mdescLeft">&#160;</td><td class="mdescRight">RDS Radio Text buffer - Program Information.  <a href="group___g_a01.html#a47624a15a9716a9ec6c0ac2d1060dd85">More...</a><br /></td></tr>
@@ -3132,7 +3171,7 @@ highByte</td>
 <p>Returns the Device Indentifiction. </p>
 <dl class="section return"><dt>Returns</dt><dd>device id </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00082">82</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00291">291</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -3154,7 +3193,7 @@ highByte</td>
 <p>Returns the Chip Indentifiction. </p>
 <dl class="section return"><dt>Returns</dt><dd>IC id </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00092">92</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00301">301</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -3182,9 +3221,9 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00866">866</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00888">888</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l00541">setRds()</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l00755">setRds()</a>.</p>
 
 </div>
 </div>
@@ -3211,7 +3250,7 @@ highByte</td>
 
 <p>RDS Radio Text buffer - Program Information. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00758">758</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00764">764</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3237,7 +3276,7 @@ highByte</td>
 
 <p>RDS Radio Text buffer - Station Informaation. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00759">759</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00765">765</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3263,7 +3302,7 @@ highByte</td>
 
 <p>RDS Basic tuning and switching information (Type 0 groups) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00760">760</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00766">766</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3289,7 +3328,7 @@ highByte</td>
 
 <p>RDS date time received information. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00761">761</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00767">767</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3313,9 +3352,9 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00763">763</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00769">769</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8h_source.html#l00786">setI2CAddress()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8h_source.html#l00808">setI2CAddress()</a>.</p>
 
 </div>
 </div>
@@ -3339,7 +3378,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00765">765</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00771">771</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3363,7 +3402,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00766">766</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00772">772</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3387,7 +3426,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00767">767</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00773">773</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3411,7 +3450,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00768">768</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00774">774</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3435,9 +3474,9 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00769">769</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00775">775</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00159">setup()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00368">setup()</a>.</p>
 
 </div>
 </div>
@@ -3461,9 +3500,9 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00770">770</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00776">776</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00159">setup()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00368">setup()</a>.</p>
 
 </div>
 </div>
@@ -3487,7 +3526,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00771">771</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00777">777</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3511,7 +3550,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00772">772</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00778">778</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['oscillator_5ftype_5fcrystal_119',['OSCILLATOR_TYPE_CRYSTAL',['../_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2',1,'BK108X.h']]],
-  ['oscillator_5ftype_5frefclk_120',['OSCILLATOR_TYPE_REFCLK',['../_b_k108_x_8h.html#ad079e38ccae2f64aa341332e2ccb8b8e',1,'BK108X.h']]],
-  ['oscillatortype_121',['oscillatorType',['../group___g_a01.html#a50a9ac975ce0539aed15b122db83d36b',1,'BK108X']]]
+  ['max_5fdelay_5fafter_5foscillator_127',['MAX_DELAY_AFTER_OSCILLATOR',['../_b_k108_x_8h.html#afb81dd661d531fa5c5422549fab7588f',1,'BK108X.h']]],
+  ['maxdelayaftarcrystalon_128',['maxDelayAftarCrystalOn',['../group___g_a01.html#aa4937fcebe3dc30474a903c3aa02a67b',1,'BK108X']]]
 ];

@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['deviceaddress_334',['deviceAddress',['../group___g_a01.html#a91b3171ba5c52f8bbbd54277bbb2bdfe',1,'BK108X']]],
-  ['deviceid_335',['deviceId',['../group___g_a01.html#a5f8e8adbb251053157b4a51d2a38d6bb',1,'bk_reg00']]]
+  ['chipid_354',['chipId',['../group___g_a01.html#a76d151d53814f303d62a9b81554f9faf',1,'bk_reg01']]],
+  ['currentfmband_355',['currentFMBand',['../group___g_a01.html#a30a872ef33639d695429d078e0548521',1,'BK108X']]],
+  ['currentfmspace_356',['currentFMSpace',['../group___g_a01.html#a3d417aad563b9807c9173528450f8ef6',1,'BK108X']]],
+  ['currentfrequency_357',['currentFrequency',['../group___g_a01.html#a8574caee2008e27651b9a084ef516943',1,'BK108X']]],
+  ['currentvolume_358',['currentVolume',['../group___g_a01.html#a637b02d5fa446097e998beda73059ac8',1,'BK108X']]]
 ];

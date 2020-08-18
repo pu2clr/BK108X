@@ -329,6 +329,7 @@ var group___g_a01 =
     ] ],
     [ "word16_to_bytes", "group___g_a01.html#unionword16__to__bytes", [
       [ "refined", "group___g_a01.html#ab477ccdc1663dff78093c2e43126447b", null ],
+      [ "array", "group___g_a01.html#afc3c841ec8fe1d53e8b6fb3328b766da", null ],
       [ "raw", "group___g_a01.html#abed44166b8c3d82c0c44fb317d3b650a", null ]
     ] ],
     [ "word16_to_bytes.refined", "group___g_a01.html#structword16__to__bytes_8refined", [
@@ -336,6 +337,17 @@ var group___g_a01 =
       [ "highByte", "group___g_a01.html#a7b99e4a5dc723242645ede8c604610df", null ]
     ] ],
     [ "BK108X", "group___g_a01.html#class_b_k108_x", [
+      [ "setI2C", "group___g_a02.html#gabb521f2af588ce1c94755bd2525f32c9", null ],
+      [ "i2cInit", "group___g_a02.html#gafbe95dfa30734cd6c30f5d6ea77089c9", null ],
+      [ "i2cStart", "group___g_a02.html#ga43a1163605687a62cd95e905e2524bf1", null ],
+      [ "i2cStop", "group___g_a02.html#ga20a9075705e5e4ee5f0b75162728c9ab", null ],
+      [ "i2cAck", "group___g_a02.html#gaf3c1f7226ebb99d7b7aa2e0c58d166db", null ],
+      [ "i2cNack", "group___g_a02.html#gab7987984a7302ba985689c6cec95f833", null ],
+      [ "i2cReceiveAck", "group___g_a02.html#ga00ccd956af8470ccc32a18b476dda0c2", null ],
+      [ "i2cWriteByte", "group___g_a02.html#ga9f97140ef586e3fbf52b482bfae94d9c", null ],
+      [ "i2cReadByte", "group___g_a02.html#ga2d7a8606874d174e6fdb66d9ef602811", null ],
+      [ "writeRegister", "group___g_a02.html#gac22a13c5233923dfbee36613665dd1cb", null ],
+      [ "readRegister", "group___g_a02.html#ga35abeeb434051d1fd4c098e506be7a2f", null ],
       [ "reset", "group___g_a03.html#ga0479b36a2d6558df557a3ba4a0d07ce2", null ],
       [ "powerUp", "group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618", null ],
       [ "powerDown", "group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857", null ],
@@ -349,7 +361,7 @@ var group___g_a01 =
       [ "setShadownRegister", "group___g_a03.html#ga08ce22717a9f95e1ee3685478e919ee5", null ],
       [ "getDeviceId", "group___g_a01.html#a5f9fe73f248fbeafb1a6abb1c92d578b", null ],
       [ "getChipId", "group___g_a01.html#a102d07b1523cf46434bb4434b7c70d60", null ],
-      [ "setup", "group___g_a03.html#gae3693f08b177e3287a49f46ec65eb62e", null ],
+      [ "setup", "group___g_a03.html#ga8d1b082b77d8b0cc7c0e6cb5cb489c80", null ],
       [ "setFrequency", "group___g_a03.html#ga514242393caa2068d8acb3adec953832", null ],
       [ "setFrequencyUp", "group___g_a03.html#gac0c265a916d7852d7e4977b1835098eb", null ],
       [ "setFrequencyDown", "group___g_a03.html#ga5bf724e36f2dbdc826c387601e00ace1", null ],

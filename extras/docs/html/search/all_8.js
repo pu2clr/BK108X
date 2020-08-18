@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['pu2clr_20bk108x_20arduino_20library_122',['PU2CLR BK108X Arduino Library',['../md__b_k108_x__r_e_a_d_m_e.html',1,'']]],
-  ['powerdown_123',['powerDown',['../group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857',1,'BK108X']]],
-  ['powerup_124',['powerUp',['../group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618',1,'BK108X']]]
+  ['oscillator_5ftype_5fcrystal_129',['OSCILLATOR_TYPE_CRYSTAL',['../_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2',1,'BK108X.h']]],
+  ['oscillator_5ftype_5frefclk_130',['OSCILLATOR_TYPE_REFCLK',['../_b_k108_x_8h.html#ad079e38ccae2f64aa341332e2ccb8b8e',1,'BK108X.h']]],
+  ['oscillatortype_131',['oscillatorType',['../group___g_a01.html#a50a9ac975ce0539aed15b122db83d36b',1,'BK108X']]]
 ];
