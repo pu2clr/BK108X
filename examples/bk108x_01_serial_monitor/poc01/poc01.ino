@@ -25,7 +25,7 @@ void setup()
   checkDevice();   
 
   rx.setI2C(0x40);
-  
+  Serial.println(rx.getRegister(REG09),BIN);
   rx.setup(SDA_PIN, CLK_PIN);
   
   getDeviceInfo(); 
@@ -64,10 +64,10 @@ bool checkI2C() {
   int nDevices;
   Serial.println("I2C bus Scanning...\n");
   Wire.begin();
+  delay(10);
+    
   nDevices = 0;
   for (address = 1; address < 127; address++ ) {
-    digitalWrite(A5, HIGH);
-    digitalWrite(A4, LOW);
     delay(1);
     Wire.beginTransmission(address);
     delay(1);

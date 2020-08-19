@@ -180,7 +180,8 @@ __Schematic under construction....__
 * BK1086/88 Application Manual (In Chinese - Copyright©2012 by Beken Corporation);
 * [BK1088ES](http://www.bekencorp.com/index/goods/detail/cid/36.html)
 * [1201682 Radio Alarm Clock with Bluetooth Speaker / Bluetooth Alarm Clock Radio Schematics Circuit Diagram Shenzhen Great Power Enterprise](https://fccid.io/ZY9-1201682/Schematics/Circuit-Diagram-2803394);
-* [AudioComm RAD-F630Z](http://nice.kaze.com/rad-f630z.html);
+* [AudioComm RAD-F630Z](http://nice.kaze.com/rad-f630z.html)
+* [Tutorial: Arduino and the I2C bus – Part One](https://tronixstuff.com/2010/10/20/tutorial-arduino-and-the-i2c-bus/)
   
 
 

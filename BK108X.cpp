@@ -249,6 +249,8 @@ void BK108X::readRegister(uint8_t reg, uint8_t *data, uint8_t size) {
  * @see shadowRegisters;  
  * @param device register address
  */
+
+/*
 uint16_t BK108X::getRegister(uint8_t reg)
 {
     word16_to_bytes result;
@@ -259,7 +261,25 @@ uint16_t BK108X::getRegister(uint8_t reg)
 
     return result.raw;
 }
+*/
+uint16_t BK108X::getRegister(uint8_t reg)
+{
 
+    word16_to_bytes result;
+
+    // Wire.beginTransmission(this->deviceAddress);
+    // Wire.write(reg);
+    // Wire.endTransmission(false);
+    
+    Wire.requestFrom(this->deviceAddress, 2);
+    result.refined.highByte = Wire.read();
+    result.refined.lowByte = Wire.read();
+    // Wire.endTransmission(true);
+
+    shadowRegisters[reg] = result.raw; // Syncs with the shadowRegisters
+
+    return result.raw;
+}
 
 /**
  * @ingroup GA03
@@ -345,6 +365,10 @@ void BK108X::powerUp()
     reg02->refined.STEREO = 1; 
     reg02->refined.ENABLE = 1;
     setRegister(REG02,reg02->raw);
+
+    reg06->raw = 0;
+    reg06->refined.CLKSEL = 1;
+    setRegister(REG06, reg06->raw);
 }
 
 /**
@@ -369,7 +393,7 @@ void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInter
 {
 
     // Configures BEKEN I2C bus 
-    this->i2cInit(sda_pin, sclk_pin);
+    // this->i2cInit(sda_pin, sclk_pin);
 
 
     if (rdsInterruptPin >= 0)
@@ -380,6 +404,7 @@ void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInter
     this->oscillatorType = oscillator_type;
 
     reset();
+
     Wire.begin();
     delay(1);
     powerUp();
