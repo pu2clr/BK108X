@@ -41,6 +41,7 @@ void BK108X::setI2C(uint8_t i2c_addr) {
 void BK108X::i2cInit(int pin_sdio, int pin_sclk){
     this->pin_sdio = pin_sdio;
     this->pin_sclk = pin_sclk;
+     
 }
 
 /**
@@ -195,7 +196,6 @@ void BK108X::writeRegister(uint8_t reg, uint8_t *data, uint8_t size) {
     this->i2cWriteByte(this->deviceAddress);
     this->i2cReceiveAck();
 
-    // reg = (reg << 1) | 1;
     reg = reg << 1;
     
     this->i2cWriteByte(reg);
@@ -217,6 +217,7 @@ void BK108X::writeRegister(uint8_t reg, uint8_t *data, uint8_t size) {
  * @param size size of byte array
  */
 void BK108X::readRegister(uint8_t reg, uint8_t *data, uint8_t size) {
+
     this->i2cStart();
     this->i2cWriteByte(this->deviceAddress);
     this->i2cReceiveAck();
@@ -250,32 +251,12 @@ void BK108X::readRegister(uint8_t reg, uint8_t *data, uint8_t size) {
  * @param device register address
  */
 
-/*
 uint16_t BK108X::getRegister(uint8_t reg)
 {
     word16_to_bytes result;
 
     this->readRegister(reg,result.array,2);
     
-    shadowRegisters[reg] = result.raw; // Syncs with the shadowRegisters
-
-    return result.raw;
-}
-*/
-uint16_t BK108X::getRegister(uint8_t reg)
-{
-
-    word16_to_bytes result;
-
-    // Wire.beginTransmission(this->deviceAddress);
-    // Wire.write(reg);
-    // Wire.endTransmission(false);
-    
-    Wire.requestFrom(this->deviceAddress, 2);
-    result.refined.highByte = Wire.read();
-    result.refined.lowByte = Wire.read();
-    // Wire.endTransmission(true);
-
     shadowRegisters[reg] = result.raw; // Syncs with the shadowRegisters
 
     return result.raw;
@@ -393,7 +374,7 @@ void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInter
 {
 
     // Configures BEKEN I2C bus 
-    // this->i2cInit(sda_pin, sclk_pin);
+    this->i2cInit(sda_pin, sclk_pin);
 
 
     if (rdsInterruptPin >= 0)
@@ -403,10 +384,6 @@ void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInter
 
     this->oscillatorType = oscillator_type;
 
-    reset();
-
-    Wire.begin();
-    delay(1);
     powerUp();
 }
 

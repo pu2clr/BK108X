@@ -17,11 +17,10 @@
  */
 
 #include <Arduino.h>
-#include <Wire.h>
 
 #define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscilator becomes active
 
-#define I2C_DEVICE_ADDR 0x40
+#define I2C_DEVICE_ADDR 0x80
 
 #define OSCILLATOR_TYPE_CRYSTAL 1 // Crystal
 #define OSCILLATOR_TYPE_REFCLK 0  // Reference clock
@@ -800,19 +799,19 @@ public:
 
 
     /**
-         * @ingroup GA03
-         * @brief Sets the I2C bus address 
-         * @details This function must to be called before setup function if your device are not using 0x10 (default)
-         * @param bus_addr I2C buss address
-         */
+     * @ingroup GA03
+     * @brief Sets the I2C bus address 
+     * @details This function must to be called before setup function if your device are not using 0x10 (default)
+     * @param bus_addr I2C buss address
+     */
     inline void setI2CAddress(int bus_addr) { this->deviceAddress = bus_addr; };
 
     /**
-         * @ingroup GA03
-         * @brief Set the Delay After Crystal On (default 500ms)
-         * 
-         * @param ms_value  Value in milliseconds 
-         */
+     * @ingroup GA03
+     * @brief Set the Delay After Crystal On (default 500ms)
+     * 
+     * @param ms_value  Value in milliseconds 
+     */
     inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAftarCrystalOn = ms_value; };
 
     uint16_t getRegister(uint8_t reg);
@@ -820,24 +819,24 @@ public:
     void getStatus();
 
     /**
-             * @ingroup GA03
-             * @brief Get the Shadown Register object
-             * @details if you want to get the current value of the device register, call getAllRegisters() before calling this function. 
-             * @details if you are dealing with the status register (0x0A), you can call getStatus() instead getAllRegisters(). 
-             * @see setAllRegisters, getAllRegisters, getShadownRegister, getStatus
-             * @param register_number 
-             * @return  16 bits word with the Shadown registert 
-             */
+     * @ingroup GA03
+     * @brief Get the Shadown Register object
+     * @details if you want to get the current value of the device register, call getAllRegisters() before calling this function. 
+     * @details if you are dealing with the status register (0x0A), you can call getStatus() instead getAllRegisters(). 
+     * @see setAllRegisters, getAllRegisters, getShadownRegister, getStatus
+     * @param register_number 
+     * @return  16 bits word with the Shadown registert 
+     */
     inline uint16_t getShadownRegister(uint8_t register_number) { return shadowRegisters[register_number]; };
 
     /**
-             * @ingroup GA03
-             * @brief Sets a given value to the Shadown Register
-             * @details You have to call setAllRegisters() after setting the Shadow Registers to store the value into the device.
-             * @see setAllRegisters, getAllRegisters, getShadownRegister, getStatus
-             * @param register_number  register index (from 0x00 to 0x0F)
-             * @param value            16 bits word with the content of the register 
-             */
+     * @ingroup GA03
+     * @brief Sets a given value to the Shadown Register
+     * @details You have to call setAllRegisters() after setting the Shadow Registers to store the value into the device.
+     * @see setAllRegisters, getAllRegisters, getShadownRegister, getStatus
+     * @param register_number  register index (from 0x00 to 0x0F)
+     * @param value            16 bits word with the content of the register 
+     */
     void setShadownRegister(uint8_t register_number, uint16_t value)
     {
         if (register_number > 0x0F)
