@@ -14,6 +14,7 @@
 
 #include <BK108X.h>
 
+
 /** 
  * @defgroup GA02 BEKEN I2C BUS 
  * @section GA02 I2C
@@ -149,12 +150,16 @@ void BK108X::i2cWriteByte( uint8_t data)
     delayMicroseconds(1);
 
     for (int i = 0; i < 8; i++) {
-        digitalWrite(this->pin_sdio,  (data & this->deviceAddress) );   // SDA will be 1 or 0
+        if (data & this->deviceAddress)
+            digitalWrite(this->pin_sdio, HIGH); // SDA will be 1 or 0
+        else 
+            digitalWrite(this->pin_sdio, LOW); // SDA will be 1 or 0
+
         delayMicroseconds(1);
         digitalWrite(this->pin_sclk, HIGH);
         delayMicroseconds(1);
-        data = data << 1;
         digitalWrite(this->pin_sclk, LOW);
+        data = data << 1;
     }
 }
 
@@ -188,24 +193,27 @@ uint8_t BK108X::i2cReadByte()
  * @ingroup GA02
  * @brief Sends an array of values to a BK108X given register
  * @param reg register to be written
- * @param data byte array of values to be sent
- * @param size size of byte array
+ * @param value content to be stored into the register
  */
-void BK108X::writeRegister(uint8_t reg, uint8_t *data, uint8_t size) {
+void BK108X::writeRegister(uint8_t reg, uint16_t value) {
+
+    word16_to_bytes data;
+    data.raw = value;
+    
     this->i2cStart();
     this->i2cWriteByte(this->deviceAddress);
     this->i2cReceiveAck();
 
-    reg = reg << 1;
-    
+    reg = reg << 1; // Converts address and sets to write operation
+
     this->i2cWriteByte(reg);
     this->i2cReceiveAck();
 
-    for (int i = 0; i < size; i++)
-    {
-        this->i2cWriteByte(data[i]);
-        this->i2cReceiveAck();
-    }
+    this->i2cWriteByte(data.refined.highByte);
+    this->i2cReceiveAck();
+    this->i2cWriteByte(data.refined.lowByte);
+    this->i2cReceiveAck();
+
     this->i2cStop();
 }
 
@@ -213,30 +221,30 @@ void BK108X::writeRegister(uint8_t reg, uint8_t *data, uint8_t size) {
  * @ingroup GA02
  * @brief Gets an array of values from a BK108X given register
  * @param reg register to be read
- * @param data byte array of values to be populated
- * @param size size of byte array
+ * @return register content
  */
-void BK108X::readRegister(uint8_t reg, uint8_t *data, uint8_t size) {
+uint16_t BK108X::readRegister(uint8_t reg) {
+
+    word16_to_bytes data;
 
     this->i2cStart();
     this->i2cWriteByte(this->deviceAddress);
     this->i2cReceiveAck();
 
-    reg = (reg << 1) | 1;
+    reg = (reg << 1) | 1;  // Converts address and sets to read operation
 
     this->i2cWriteByte(reg);
     this->i2cReceiveAck();
 
-    for (int i = 0; i < size - 1; i++ ) {
-        data[i] = this->i2cReadByte();
-        this->i2cAck();
-    }
-    data[size - 1] = this->i2cReadByte();
+    data.refined.highByte = this->i2cReadByte();
+    this->i2cAck();
+    data.refined.lowByte = this->i2cReadByte();
     this->i2cNack();
+
     this->i2cStop();
+
+    return data.raw;
 }
-
-
 
 
 /** 
@@ -244,22 +252,19 @@ void BK108X::readRegister(uint8_t reg, uint8_t *data, uint8_t size) {
  * @section GA03 Basic
  */
 
- /**
+/**
  * @ingroup GA03
  * @brief Gets a givens current register content of the device
  * @see shadowRegisters;  
  * @param device register address
+ * @return the register content (the shadowRegisters array has this content. So, you do not need to use it most of the cases)
  */
-
 uint16_t BK108X::getRegister(uint8_t reg)
 {
     word16_to_bytes result;
-
-    this->readRegister(reg,result.array,2);
-    
+    result.raw = this->readRegister(reg);
     shadowRegisters[reg] = result.raw; // Syncs with the shadowRegisters
-
-    return result.raw;
+    return result.raw;  // Optional 
 }
 
 /**
@@ -276,13 +281,9 @@ uint16_t BK108X::getRegister(uint8_t reg)
  */
 void BK108X::setRegister(uint8_t reg, uint16_t value)
 {
-    word16_to_bytes param;
-
-    param.raw = value;
-
-    this->writeRegister(reg, param.array,2);
-
+    this->writeRegister(reg, value);
     shadowRegisters[reg] = value;  // Syncs with the shadowRegisters
+    delayMicroseconds(250);
 }
 
 /**
@@ -341,15 +342,16 @@ void BK108X::reset()
  */
 void BK108X::powerUp()
 {
-    reg02->raw = 0;    
-    reg02->refined.DSMUTE = 1;
-    reg02->refined.STEREO = 1; 
-    reg02->refined.ENABLE = 1;
+    reg02->raw = 0;     
+    reg02->refined.DSMUTE = 1; // Soft Mute disabled
+    reg02->refined.STEREO = 1; // Force stereo
+    reg02->refined.ENABLE = 1; // 
     setRegister(REG02,reg02->raw);
 
     reg06->raw = 0;
     reg06->refined.CLKSEL = 1;
     setRegister(REG06, reg06->raw);
+
 }
 
 /**
@@ -358,7 +360,9 @@ void BK108X::powerUp()
  */
 void BK108X::powerDown()
 {
-
+    reg02->refined.DISABLE = 1;
+    reg02->refined.ENABLE = 0;
+    setRegister(REG02, reg02->raw);
 }
 
 /**
@@ -416,10 +420,10 @@ void BK108X::setFrequency(uint16_t frequency)
  */
 void BK108X::setFrequencyUp()
 {
-    if (this->currentFrequency < this->endBand[this->currentFMBand])
+    if (this->currentFrequency < this->fmEndBand[this->currentFMBand])
         this->currentFrequency += this->fmSpace[currentFMSpace];
     else
-        this->currentFrequency = this->startBand[this->currentFMBand];
+        this->currentFrequency = this->fmStartBand[this->currentFMBand];
 
     setFrequency(this->currentFrequency);
 }
@@ -431,10 +435,10 @@ void BK108X::setFrequencyUp()
  */
 void BK108X::setFrequencyDown()
 {
-    if (this->currentFrequency > this->startBand[this->currentFMBand])
+    if (this->currentFrequency > this->fmStartBand[this->currentFMBand])
         this->currentFrequency -= this->fmSpace[currentFMSpace];
     else
-        this->currentFrequency = this->endBand[this->currentFMBand];
+        this->currentFrequency = this->fmEndBand[this->currentFMBand];
 
     setFrequency(this->currentFrequency);
 }
@@ -470,7 +474,7 @@ uint16_t BK108X::getRealChannel()
  */
 uint16_t BK108X::getRealFrequency()
 {
-    return getRealChannel() * this->fmSpace[this->currentFMSpace] + this->startBand[this->currentFMBand];
+    return getRealChannel() * this->fmSpace[this->currentFMSpace] + this->fmStartBand[this->currentFMBand];
 }
 
 /**
@@ -649,11 +653,16 @@ bool BK108X::isStereo()
  * @ingroup GA03
  * @brief Sets the audio volume level
  * 
- * @param value  0 to 15 (if 0, mutes the audio)
+ * @param value  0 to 31 (if 0, mutes the audio)
  */
 void BK108X::setVolume(uint8_t value)
 {
+    if ( value > 31) return;
+    this->currentVolume = value;
+    // reg05 is a shadow register and has the last value read or written from/to the internal device register
+    reg05->refined.VOLUME = value; 
 
+    setRegister(REG05,reg05->raw);
 }
 
 /**
@@ -674,7 +683,7 @@ uint8_t BK108X::getVolume()
  */
 void BK108X::setVolumeUp()
 {
-    if (this->currentVolume < 15)
+    if (this->currentVolume < 31)
     {
         this->currentVolume++;
         setVolume(this->currentVolume);

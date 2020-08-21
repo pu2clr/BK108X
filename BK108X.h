@@ -20,22 +20,42 @@
 
 #define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscilator becomes active
 
-#define I2C_DEVICE_ADDR 0x80
+/**
+ * @brief About I2C Address on BK1086/88 and Arduino platform
+ * 
+ * The BK1086/88 Datasheet says that the I2C buss address is 0x80. However, the Wire (I2C) Arduino library does not find 
+ * the device on 0x80. Actually the Arduino finds the device on 0x40.
+ * This must be due to the internal conversion of the address from 8 bits to 7 bits. (0x80 = 0b10000000; 0x40 = 0b01000000)
+ * After a few unsuccessful attempts at using the Arduino I2C library, I decided to write the necessary I2C routines to deal 
+ * with BK1086/88 device. 
+ * @see setI2C, i2cInit, i2cStart, i2cStop, i2cAck, i2cNack, i2cReceiveAck, i2cWriteByte, i2cReadByte, writeRegister, readRegister
+ * 
+ * IMPORTANT: 
+ * For stable communication, the rising edge time of SCLK should be less than 200ns.
+ */
+#define I2C_DEVICE_ADDR 0x80         
+
+
 
 #define OSCILLATOR_TYPE_CRYSTAL 1 // Crystal
 #define OSCILLATOR_TYPE_REFCLK 0  // Reference clock
 
 #define RDS_STANDARD 0 //!< RDS Mode.
 #define RDS_VERBOSE 1  //!< RDS Mode.
-#define bk_SEEK_DOWN 0 //!< Seek Down  Direction
-#define bk_SEEK_UP 1   //!< Seek Up  Direction
-#define bk_SEEK_WRAP 0 //
-#define bk_SEEK_STOP 1
+#define BK_SEEK_DOWN 0 //!< Seek Down  Direction
+#define BK_SEEK_UP 1   //!< Seek Up  Direction
+#define BK_SEEK_WRAP 0 //
+#define BK_SEEK_STOP 1
 
-#define FM_BAND_USA_EU 0     //!< 87.5–108 MHz (US / Europe, Default)
+#define FM_FULL 0            //!< 64~108MHz
 #define FM_BAND_JAPAN_WIDE 1 //!< 76–108 MHz (Japan wide band)
 #define FM_BAND_JAPAN 2      //!< 76–90 MHz (Japan)
-#define FM_BAND_RESERVED 3   //!< Reserved
+#define FM_BAND_USA_EU 3     //!< 87–108 MHz (US / Europe, Default)
+
+#define AM_LW  0 //!< 153~279KHz
+#define AM_MW1 1 //!< 520~1710Khz
+#define AM_SW  2 //!< 2.3~21.85KHz
+#define AM_M22 3 //!< 522~1710
 
 #define REG00 0x00
 #define REG01 0x01
@@ -699,7 +719,6 @@ typedef union
         uint8_t lowByte;
         uint8_t highByte;
     } refined;
-    uint8_t  array[2];
     uint16_t raw;
 } word16_to_bytes;
 
@@ -753,9 +772,11 @@ private:
     bk_reg1E *reg1e = (bk_reg1E *)&shadowRegisters[REG1E];
     bk_reg1F *reg1f = (bk_reg1F *)&shadowRegisters[REG1F];
 
-    uint16_t startBand[4] = {8750, 7600, 7600, 6400};  //!< Start FM band limit
-    uint16_t endBand[4] = {10800, 10800, 9000, 10800}; //!< End FM band limit
-    uint16_t fmSpace[4] = {20, 10, 5, 1};              //!< FM channel space
+    uint16_t fmStartBand[4] = {6400, 7400, 7600, 8700};  //!< Start FM band limit
+    uint16_t fmEndBand[4] = {10800, 7600, 9100, 10800};  //!< End FM band limit
+    uint16_t fmSpace[4] = {10, 50, 100, 200};            //!< FM channel space
+
+    uint16_t amSpace[4] = {1, 5, 9, 10}; //!< AM channel space
 
     int pin_sdio, pin_sclk; 
 
@@ -788,8 +809,8 @@ public:
     uint8_t i2cReceiveAck();
     void i2cWriteByte(uint8_t data);
     uint8_t i2cReadByte();
-    void writeRegister(uint8_t reg, uint8_t *data, uint8_t size);
-    void readRegister(uint8_t reg, uint8_t *data, uint8_t size);
+    void writeRegister(uint8_t reg,uint16_t vakue);
+    uint16_t readRegister(uint8_t reg);
 
     void reset();
     void powerUp();

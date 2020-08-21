@@ -19,7 +19,22 @@ void setup()
   rx.setup(SDA_PIN, CLK_PIN);
   
   getDeviceInfo(); 
+
+  rx.setVolume(30);
   
+  Serial.println(rx.getRegister(REG02),BIN);
+
+
+  delay(4000);
+  
+  Serial.println("\nPower Down!");
+  rx.powerDown();
+  Serial.println(rx.getRegister(REG02),BIN);
+  delay(4000);
+  Serial.println("\nPower UP!");
+  Serial.println("You should hear a pop in the speaker.");
+  rx.powerUp();
+  Serial.println(rx.getRegister(REG02),BIN);
   Serial.println("\nFinish!***********");  
 
   
@@ -32,9 +47,16 @@ void loop()
 
 
 void getDeviceInfo() {
-   char aux[100];
-    
-  sprintf(aux,"Device Id = %d; Chip Id = %d",rx.getDeviceId(), rx.getChipId() );
-  Serial.println(aux);
 
+  char aux[100];
+  uint16_t deviceId = rx.getDeviceId();
+  uint16_t chipId = rx.getChipId();
+
+  if ( (chipId ==0 || chipId == 0xFFFF)  || ( deviceId == 0 || deviceId == 0xFFFF )  ) {
+    Serial.println("The device may not have been successfully detected. Please, check it.");
+  }
+
+  sprintf(aux, "Device Id = %u; Chip Id = %u", deviceId, chipId);
+  Serial.println(aux);
+  
 }
