@@ -20,19 +20,6 @@
 
 #define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscilator becomes active
 
-/**
- * @brief About I2C Address on BK1086/88 and Arduino platform
- * 
- * The BK1086/88 Datasheet says that the I2C buss address is 0x80. However, the Wire (I2C) Arduino library does not find 
- * the device on 0x80. Actually the Arduino finds the device on 0x40.
- * This must be due to the internal conversion of the address from 8 bits to 7 bits. (0x80 = 0b10000000; 0x40 = 0b01000000)
- * After a few unsuccessful attempts at using the Arduino I2C library, I decided to write the necessary I2C routines to deal 
- * with BK1086/88 device. 
- * @see setI2C, i2cInit, i2cStart, i2cStop, i2cAck, i2cNack, i2cReceiveAck, i2cWriteByte, i2cReadByte, writeRegister, readRegister
- * 
- * IMPORTANT: 
- * For stable communication, the rising edge time of SCLK should be less than 200ns.
- */
 #define I2C_DEVICE_ADDR 0x80         
 
 
@@ -817,8 +804,8 @@ protected:
 public:
     void setI2C(uint8_t i2c_addr = I2C_DEVICE_ADDR);
     void i2cInit(int pin_sdio, int pin_sclk);
-    void i2cStart();
-    void i2cStop();
+    void i2cBeginTransaction();
+    void i2cEndTransaction();
     void i2cAck();
     void i2cNack();
     uint8_t i2cReceiveAck();
