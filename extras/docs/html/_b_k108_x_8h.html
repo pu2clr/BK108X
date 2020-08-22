@@ -93,7 +93,6 @@ $(document).ready(function(){initNavTree('_b_k108_x_8h.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
-<code>#include &lt;Wire.h&gt;</code><br />
 </div>
 <p><a href="_b_k108_x_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -275,7 +274,7 @@ Classes</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:afb81dd661d531fa5c5422549fab7588f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#afb81dd661d531fa5c5422549fab7588f">MAX_DELAY_AFTER_OSCILLATOR</a>&#160;&#160;&#160;500</td></tr>
 <tr class="separator:afb81dd661d531fa5c5422549fab7588f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1732013854882f94b02e77b8a6106ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#af1732013854882f94b02e77b8a6106ec">I2C_DEVICE_ADDR</a>&#160;&#160;&#160;0x40</td></tr>
+<tr class="memitem:af1732013854882f94b02e77b8a6106ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#af1732013854882f94b02e77b8a6106ec">I2C_DEVICE_ADDR</a>&#160;&#160;&#160;0x80</td></tr>
 <tr class="separator:af1732013854882f94b02e77b8a6106ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0763fd256db4ec1ecc62f84bbff56e2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2">OSCILLATOR_TYPE_CRYSTAL</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:ad0763fd256db4ec1ecc62f84bbff56e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -287,28 +286,44 @@ Macros</h2></td></tr>
 <tr class="memitem:acdc3372b73fee284997dbef795123257"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#acdc3372b73fee284997dbef795123257">RDS_VERBOSE</a>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:acdc3372b73fee284997dbef795123257"><td class="mdescLeft">&#160;</td><td class="mdescRight">RDS Mode.  <a href="_b_k108_x_8h.html#acdc3372b73fee284997dbef795123257">More...</a><br /></td></tr>
 <tr class="separator:acdc3372b73fee284997dbef795123257"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7d203fad4a34ba58c1b12e3adfc3026"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#ae7d203fad4a34ba58c1b12e3adfc3026">bk_SEEK_DOWN</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ae7d203fad4a34ba58c1b12e3adfc3026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek Down Direction.  <a href="_b_k108_x_8h.html#ae7d203fad4a34ba58c1b12e3adfc3026">More...</a><br /></td></tr>
-<tr class="separator:ae7d203fad4a34ba58c1b12e3adfc3026"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d245bfa94f3023daf6762c82312453b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a2d245bfa94f3023daf6762c82312453b">bk_SEEK_UP</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:a2d245bfa94f3023daf6762c82312453b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek Up Direction.  <a href="_b_k108_x_8h.html#a2d245bfa94f3023daf6762c82312453b">More...</a><br /></td></tr>
-<tr class="separator:a2d245bfa94f3023daf6762c82312453b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9409bd19836c82272293c7dc4395100e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a9409bd19836c82272293c7dc4395100e">bk_SEEK_WRAP</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a9409bd19836c82272293c7dc4395100e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad0fff3345fe4d360e740e59d518a336"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#aad0fff3345fe4d360e740e59d518a336">bk_SEEK_STOP</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:aad0fff3345fe4d360e740e59d518a336"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7417bf6a10c7dd58227fc91601825691"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a7417bf6a10c7dd58227fc91601825691">FM_BAND_USA_EU</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:a7417bf6a10c7dd58227fc91601825691"><td class="mdescLeft">&#160;</td><td class="mdescRight">87.5–108 MHz (US / Europe, Default)  <a href="_b_k108_x_8h.html#a7417bf6a10c7dd58227fc91601825691">More...</a><br /></td></tr>
-<tr class="separator:a7417bf6a10c7dd58227fc91601825691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a017ece573abf2a972df53a4266b0be4e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a017ece573abf2a972df53a4266b0be4e">BK_SEEK_DOWN</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a017ece573abf2a972df53a4266b0be4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek Down Direction.  <a href="_b_k108_x_8h.html#a017ece573abf2a972df53a4266b0be4e">More...</a><br /></td></tr>
+<tr class="separator:a017ece573abf2a972df53a4266b0be4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b6fda0c416f414d2f9b94e704b4bb42"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a8b6fda0c416f414d2f9b94e704b4bb42">BK_SEEK_UP</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a8b6fda0c416f414d2f9b94e704b4bb42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek Up Direction.  <a href="_b_k108_x_8h.html#a8b6fda0c416f414d2f9b94e704b4bb42">More...</a><br /></td></tr>
+<tr class="separator:a8b6fda0c416f414d2f9b94e704b4bb42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d3798980a48b89080f730fdcab13fa3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a7d3798980a48b89080f730fdcab13fa3">BK_SEEK_WRAP</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a7d3798980a48b89080f730fdcab13fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaac3081acb27c04e3f8fb159ba831fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#acaac3081acb27c04e3f8fb159ba831fa">BK_SEEK_STOP</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:acaac3081acb27c04e3f8fb159ba831fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68615bfe4d7601a46a6510e9562a1574"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a68615bfe4d7601a46a6510e9562a1574">FM_FULL</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a68615bfe4d7601a46a6510e9562a1574"><td class="mdescLeft">&#160;</td><td class="mdescRight">64~108MHz  <a href="_b_k108_x_8h.html#a68615bfe4d7601a46a6510e9562a1574">More...</a><br /></td></tr>
+<tr class="separator:a68615bfe4d7601a46a6510e9562a1574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52b160692c66b326ce004ef59a9c7384"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a52b160692c66b326ce004ef59a9c7384">FM_BAND_JAPAN_WIDE</a>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:a52b160692c66b326ce004ef59a9c7384"><td class="mdescLeft">&#160;</td><td class="mdescRight">76–108 MHz (Japan wide band)  <a href="_b_k108_x_8h.html#a52b160692c66b326ce004ef59a9c7384">More...</a><br /></td></tr>
 <tr class="separator:a52b160692c66b326ce004ef59a9c7384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e920d475d85c9c6ccd907ba332f94fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a3e920d475d85c9c6ccd907ba332f94fc">FM_BAND_JAPAN</a>&#160;&#160;&#160;2</td></tr>
 <tr class="memdesc:a3e920d475d85c9c6ccd907ba332f94fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">76–90 MHz (Japan)  <a href="_b_k108_x_8h.html#a3e920d475d85c9c6ccd907ba332f94fc">More...</a><br /></td></tr>
 <tr class="separator:a3e920d475d85c9c6ccd907ba332f94fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24d7b9791b3d1eea6bb86b0d1596da19"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a24d7b9791b3d1eea6bb86b0d1596da19">FM_BAND_RESERVED</a>&#160;&#160;&#160;3</td></tr>
-<tr class="memdesc:a24d7b9791b3d1eea6bb86b0d1596da19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserved.  <a href="_b_k108_x_8h.html#a24d7b9791b3d1eea6bb86b0d1596da19">More...</a><br /></td></tr>
-<tr class="separator:a24d7b9791b3d1eea6bb86b0d1596da19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7417bf6a10c7dd58227fc91601825691"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a7417bf6a10c7dd58227fc91601825691">FM_BAND_USA_EU</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:a7417bf6a10c7dd58227fc91601825691"><td class="mdescLeft">&#160;</td><td class="mdescRight">87–108 MHz (US / Europe, Default)  <a href="_b_k108_x_8h.html#a7417bf6a10c7dd58227fc91601825691">More...</a><br /></td></tr>
+<tr class="separator:a7417bf6a10c7dd58227fc91601825691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb0ffdea9eb5762555dc7b44bd1ef0a2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#abb0ffdea9eb5762555dc7b44bd1ef0a2">AM_LW</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:abb0ffdea9eb5762555dc7b44bd1ef0a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">153~279KHz  <a href="_b_k108_x_8h.html#abb0ffdea9eb5762555dc7b44bd1ef0a2">More...</a><br /></td></tr>
+<tr class="separator:abb0ffdea9eb5762555dc7b44bd1ef0a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa688c38f626aa474f1a03ac57cab615"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#aaa688c38f626aa474f1a03ac57cab615">AM_MW1</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:aaa688c38f626aa474f1a03ac57cab615"><td class="mdescLeft">&#160;</td><td class="mdescRight">520~1710Khz  <a href="_b_k108_x_8h.html#aaa688c38f626aa474f1a03ac57cab615">More...</a><br /></td></tr>
+<tr class="separator:aaa688c38f626aa474f1a03ac57cab615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a776a18bb0c4290ced8ada8c123562b36"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a776a18bb0c4290ced8ada8c123562b36">AM_SW</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a776a18bb0c4290ced8ada8c123562b36"><td class="mdescLeft">&#160;</td><td class="mdescRight">2.3~21.85KHz  <a href="_b_k108_x_8h.html#a776a18bb0c4290ced8ada8c123562b36">More...</a><br /></td></tr>
+<tr class="separator:a776a18bb0c4290ced8ada8c123562b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af39fe24f22250fa188526968cb9ae75a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#af39fe24f22250fa188526968cb9ae75a">AM_M22</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:af39fe24f22250fa188526968cb9ae75a"><td class="mdescLeft">&#160;</td><td class="mdescRight">522~1710  <a href="_b_k108_x_8h.html#af39fe24f22250fa188526968cb9ae75a">More...</a><br /></td></tr>
+<tr class="separator:af39fe24f22250fa188526968cb9ae75a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46befaec21d3091b4530cdf8a6f93c55"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a46befaec21d3091b4530cdf8a6f93c55">MODE_FM</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a46befaec21d3091b4530cdf8a6f93c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27aa705095a6b6dad7db24441132f9bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a27aa705095a6b6dad7db24441132f9bd">MODE_AM</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a27aa705095a6b6dad7db24441132f9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a748ad53bef975af9c1edbcacc58e5be4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4">REG00</a>&#160;&#160;&#160;0x00</td></tr>
 <tr class="separator:a748ad53bef975af9c1edbcacc58e5be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc04faecdab9e0d1751466b6c53fdaf1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_b_k108_x_8h.html#afc04faecdab9e0d1751466b6c53fdaf1">REG01</a>&#160;&#160;&#160;0x01</td></tr>
@@ -394,7 +409,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00022">22</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00021">21</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -405,12 +420,12 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define I2C_DEVICE_ADDR&#160;&#160;&#160;0x40</td>
+          <td class="memname">#define I2C_DEVICE_ADDR&#160;&#160;&#160;0x80</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00024">24</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00023">23</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -426,7 +441,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00026">26</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00027">27</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -442,7 +457,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00027">27</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00028">28</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -460,7 +475,7 @@ Typedefs</h2></td></tr>
 
 <p>RDS Mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00029">29</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00030">30</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -478,70 +493,54 @@ Typedefs</h2></td></tr>
 
 <p>RDS Mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00030">30</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00031">31</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
-<a id="ae7d203fad4a34ba58c1b12e3adfc3026"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7d203fad4a34ba58c1b12e3adfc3026">&#9670;&nbsp;</a></span>bk_SEEK_DOWN</h2>
+<a id="a017ece573abf2a972df53a4266b0be4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a017ece573abf2a972df53a4266b0be4e">&#9670;&nbsp;</a></span>BK_SEEK_DOWN</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define bk_SEEK_DOWN&#160;&#160;&#160;0</td>
+          <td class="memname">#define BK_SEEK_DOWN&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Seek Down Direction. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00031">31</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00032">32</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
-<a id="a2d245bfa94f3023daf6762c82312453b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d245bfa94f3023daf6762c82312453b">&#9670;&nbsp;</a></span>bk_SEEK_UP</h2>
+<a id="a8b6fda0c416f414d2f9b94e704b4bb42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b6fda0c416f414d2f9b94e704b4bb42">&#9670;&nbsp;</a></span>BK_SEEK_UP</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define bk_SEEK_UP&#160;&#160;&#160;1</td>
+          <td class="memname">#define BK_SEEK_UP&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Seek Up Direction. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00032">32</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
-
-</div>
-</div>
-<a id="a9409bd19836c82272293c7dc4395100e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9409bd19836c82272293c7dc4395100e">&#9670;&nbsp;</a></span>bk_SEEK_WRAP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define bk_SEEK_WRAP&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00033">33</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
-<a id="aad0fff3345fe4d360e740e59d518a336"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad0fff3345fe4d360e740e59d518a336">&#9670;&nbsp;</a></span>bk_SEEK_STOP</h2>
+<a id="a7d3798980a48b89080f730fdcab13fa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d3798980a48b89080f730fdcab13fa3">&#9670;&nbsp;</a></span>BK_SEEK_WRAP</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define bk_SEEK_STOP&#160;&#160;&#160;1</td>
+          <td class="memname">#define BK_SEEK_WRAP&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -550,21 +549,37 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a id="a7417bf6a10c7dd58227fc91601825691"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7417bf6a10c7dd58227fc91601825691">&#9670;&nbsp;</a></span>FM_BAND_USA_EU</h2>
+<a id="acaac3081acb27c04e3f8fb159ba831fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaac3081acb27c04e3f8fb159ba831fa">&#9670;&nbsp;</a></span>BK_SEEK_STOP</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define FM_BAND_USA_EU&#160;&#160;&#160;0</td>
+          <td class="memname">#define BK_SEEK_STOP&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>87.5–108 MHz (US / Europe, Default) </p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00035">35</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00036">36</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+</div>
+</div>
+<a id="a68615bfe4d7601a46a6510e9562a1574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68615bfe4d7601a46a6510e9562a1574">&#9670;&nbsp;</a></span>FM_FULL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FM_FULL&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>64~108MHz </p>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00037">37</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -582,7 +597,7 @@ Typedefs</h2></td></tr>
 
 <p>76–108 MHz (Japan wide band) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00037">37</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00038">38</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -600,25 +615,129 @@ Typedefs</h2></td></tr>
 
 <p>76–90 MHz (Japan) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00038">38</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00039">39</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
-<a id="a24d7b9791b3d1eea6bb86b0d1596da19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24d7b9791b3d1eea6bb86b0d1596da19">&#9670;&nbsp;</a></span>FM_BAND_RESERVED</h2>
+<a id="a7417bf6a10c7dd58227fc91601825691"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7417bf6a10c7dd58227fc91601825691">&#9670;&nbsp;</a></span>FM_BAND_USA_EU</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define FM_BAND_RESERVED&#160;&#160;&#160;3</td>
+          <td class="memname">#define FM_BAND_USA_EU&#160;&#160;&#160;3</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Reserved. </p>
+<p>87–108 MHz (US / Europe, Default) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00039">39</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00040">40</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+
+</div>
+</div>
+<a id="abb0ffdea9eb5762555dc7b44bd1ef0a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb0ffdea9eb5762555dc7b44bd1ef0a2">&#9670;&nbsp;</a></span>AM_LW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AM_LW&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>153~279KHz </p>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00042">42</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+
+</div>
+</div>
+<a id="aaa688c38f626aa474f1a03ac57cab615"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa688c38f626aa474f1a03ac57cab615">&#9670;&nbsp;</a></span>AM_MW1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AM_MW1&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>520~1710Khz </p>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00043">43</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+
+</div>
+</div>
+<a id="a776a18bb0c4290ced8ada8c123562b36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a776a18bb0c4290ced8ada8c123562b36">&#9670;&nbsp;</a></span>AM_SW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AM_SW&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>2.3~21.85KHz </p>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00044">44</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+
+</div>
+</div>
+<a id="af39fe24f22250fa188526968cb9ae75a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af39fe24f22250fa188526968cb9ae75a">&#9670;&nbsp;</a></span>AM_M22</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AM_M22&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>522~1710 </p>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00045">45</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+
+</div>
+</div>
+<a id="a46befaec21d3091b4530cdf8a6f93c55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46befaec21d3091b4530cdf8a6f93c55">&#9670;&nbsp;</a></span>MODE_FM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MODE_FM&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00047">47</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+
+</div>
+</div>
+<a id="a27aa705095a6b6dad7db24441132f9bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27aa705095a6b6dad7db24441132f9bd">&#9670;&nbsp;</a></span>MODE_AM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MODE_AM&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00048">48</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -634,7 +753,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00041">41</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00050">50</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -650,7 +769,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00042">42</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00051">51</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -666,7 +785,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00043">43</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00052">52</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -682,7 +801,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00044">44</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00053">53</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -698,7 +817,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00045">45</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00054">54</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -714,7 +833,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00046">46</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00055">55</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -730,7 +849,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00047">47</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00056">56</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -746,7 +865,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00048">48</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00057">57</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -762,7 +881,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00049">49</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00058">58</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -778,7 +897,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00050">50</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00059">59</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -794,7 +913,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00051">51</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00060">60</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -810,7 +929,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00052">52</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00061">61</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -826,7 +945,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00053">53</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00062">62</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -842,7 +961,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00054">54</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00063">63</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -858,7 +977,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00055">55</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00064">64</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -874,7 +993,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00056">56</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00065">65</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -890,7 +1009,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00057">57</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00066">66</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -906,7 +1025,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00058">58</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00067">67</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -922,7 +1041,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00059">59</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00068">68</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -938,7 +1057,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00060">60</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00069">69</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -954,7 +1073,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00061">61</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00070">70</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -970,7 +1089,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00062">62</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00071">71</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -986,7 +1105,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00063">63</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00072">72</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1002,7 +1121,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00064">64</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00073">73</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1018,7 +1137,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00065">65</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00074">74</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1034,7 +1153,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00066">66</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00075">75</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1050,7 +1169,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00067">67</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00076">76</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1066,7 +1185,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00068">68</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00077">77</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1082,7 +1201,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00069">69</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00078">78</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1217,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00070">70</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00079">79</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1114,7 +1233,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00071">71</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00080">80</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1130,7 +1249,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00072">72</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00081">81</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1147,7 +1266,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00614">614</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00623">623</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1163,7 +1282,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00615">615</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00624">624</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>

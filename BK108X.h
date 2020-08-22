@@ -875,6 +875,12 @@ public:
     void setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step);
     void setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space = 0);
 
+    /**
+     * @ingroup GA03
+     * @brief Get the Current Mode (AM or FM)
+     * 
+     * @return uint8_t  0 = FM; 1 = AM
+     */
     inline uint8_t getCurrentMode() { return this->currentMode; };
 
     void setFrequency(uint16_t frequency);

@@ -105,14 +105,17 @@ Functions</h2></td></tr>
 <tr class="memitem:ga08ce22717a9f95e1ee3685478e919ee5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga08ce22717a9f95e1ee3685478e919ee5">BK108X::setShadownRegister</a> (uint8_t register_number, uint16_t value)</td></tr>
 <tr class="memdesc:ga08ce22717a9f95e1ee3685478e919ee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a given value to the Shadown Register.  <a href="group___g_a03.html#ga08ce22717a9f95e1ee3685478e919ee5">More...</a><br /></td></tr>
 <tr class="separator:ga08ce22717a9f95e1ee3685478e919ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga75e29ce01163c9bb4934d0064e998362"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga75e29ce01163c9bb4934d0064e998362">BK108X::getCurrentMode</a> ()</td></tr>
+<tr class="memdesc:ga75e29ce01163c9bb4934d0064e998362"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Current Mode (AM or FM)  <a href="group___g_a03.html#ga75e29ce01163c9bb4934d0064e998362">More...</a><br /></td></tr>
+<tr class="separator:ga75e29ce01163c9bb4934d0064e998362"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaff213081b782af8223279caf1488ef80"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gaff213081b782af8223279caf1488ef80">BK108X::getRegister</a> (uint8_t reg)</td></tr>
 <tr class="memdesc:gaff213081b782af8223279caf1488ef80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a givens current register content of the device.  <a href="group___g_a03.html#gaff213081b782af8223279caf1488ef80">More...</a><br /></td></tr>
 <tr class="separator:gaff213081b782af8223279caf1488ef80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadc64097823fe26425a420270562cfc34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gadc64097823fe26425a420270562cfc34">BK108X::setRegister</a> (uint8_t reg, uint16_t value)</td></tr>
 <tr class="memdesc:gadc64097823fe26425a420270562cfc34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a given value to the device registers.  <a href="group___g_a03.html#gadc64097823fe26425a420270562cfc34">More...</a><br /></td></tr>
 <tr class="separator:gadc64097823fe26425a420270562cfc34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafd5103952ee94197bd9936244474450f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gafd5103952ee94197bd9936244474450f">BK108X::getStatus</a> ()</td></tr>
-<tr class="separator:gafd5103952ee94197bd9936244474450f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga759a835f25ca7ce2c861cc5b3cf1abb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___g_a01.html#unionbk__reg0a">bk_reg0a</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga759a835f25ca7ce2c861cc5b3cf1abb8">BK108X::getStatus</a> ()</td></tr>
+<tr class="separator:ga759a835f25ca7ce2c861cc5b3cf1abb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga157dea83c3abb71f49124252a109a383"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga157dea83c3abb71f49124252a109a383">BK108X::waitAndFinishTune</a> ()</td></tr>
 <tr class="memdesc:ga157dea83c3abb71f49124252a109a383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait STC (Seek/Tune Complete) status becomes 0.  <a href="group___g_a03.html#ga157dea83c3abb71f49124252a109a383">More...</a><br /></td></tr>
 <tr class="separator:ga157dea83c3abb71f49124252a109a383"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,6 +131,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga8d1b082b77d8b0cc7c0e6cb5cb489c80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga8d1b082b77d8b0cc7c0e6cb5cb489c80">BK108X::setup</a> (int sda_pin, int sclk_pin, int <a class="el" href="group___g_a01.html#ab14e1e533462b60b82ff498dc15abbb1">rdsInterruptPin</a>=-1, int <a class="el" href="group___g_a01.html#a68b0bac67680a37773d972c470716a37">seekInterruptPin</a>=-1, uint8_t oscillator_type=<a class="el" href="_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2">OSCILLATOR_TYPE_CRYSTAL</a>)</td></tr>
 <tr class="memdesc:ga8d1b082b77d8b0cc7c0e6cb5cb489c80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the device.  <a href="group___g_a03.html#ga8d1b082b77d8b0cc7c0e6cb5cb489c80">More...</a><br /></td></tr>
 <tr class="separator:ga8d1b082b77d8b0cc7c0e6cb5cb489c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6da4291400839ffc68ccff5e1ad7b13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gaa6da4291400839ffc68ccff5e1ad7b13">BK108X::setFM</a> (uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step)</td></tr>
+<tr class="memdesc:gaa6da4291400839ffc68ccff5e1ad7b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the receiver to FM mode.  <a href="group___g_a03.html#gaa6da4291400839ffc68ccff5e1ad7b13">More...</a><br /></td></tr>
+<tr class="separator:gaa6da4291400839ffc68ccff5e1ad7b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga334ccbe40fcb5faa9e045288ca606f89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga334ccbe40fcb5faa9e045288ca606f89">BK108X::setAM</a> (uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space=0)</td></tr>
+<tr class="memdesc:ga334ccbe40fcb5faa9e045288ca606f89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the receiver to AM mode.  <a href="group___g_a03.html#ga334ccbe40fcb5faa9e045288ca606f89">More...</a><br /></td></tr>
+<tr class="separator:ga334ccbe40fcb5faa9e045288ca606f89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa479240fcad272dc505ae50a6f4369d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gaa479240fcad272dc505ae50a6f4369d3">BK108X::setChannel</a> (uint16_t channel)</td></tr>
 <tr class="memdesc:gaa479240fcad272dc505ae50a6f4369d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the channel.  <a href="group___g_a03.html#gaa479240fcad272dc505ae50a6f4369d3">More...</a><br /></td></tr>
 <tr class="separator:gaa479240fcad272dc505ae50a6f4369d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,6 +152,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga91be125793a421bc17e2b25223b3a10a"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga91be125793a421bc17e2b25223b3a10a">BK108X::getFrequency</a> ()</td></tr>
 <tr class="memdesc:ga91be125793a421bc17e2b25223b3a10a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current frequency.  <a href="group___g_a03.html#ga91be125793a421bc17e2b25223b3a10a">More...</a><br /></td></tr>
 <tr class="separator:ga91be125793a421bc17e2b25223b3a10a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga06f919a6698c0dee4181200222e088c2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga06f919a6698c0dee4181200222e088c2">BK108X::getChannel</a> ()</td></tr>
+<tr class="memdesc:ga06f919a6698c0dee4181200222e088c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current channel.  <a href="group___g_a03.html#ga06f919a6698c0dee4181200222e088c2">More...</a><br /></td></tr>
+<tr class="separator:ga06f919a6698c0dee4181200222e088c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga142c5b934ce9d95beb8e83278b622013"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga142c5b934ce9d95beb8e83278b622013">BK108X::getRealChannel</a> ()</td></tr>
 <tr class="memdesc:ga142c5b934ce9d95beb8e83278b622013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current channel stored in register 0x0B.  <a href="group___g_a03.html#ga142c5b934ce9d95beb8e83278b622013">More...</a><br /></td></tr>
 <tr class="separator:ga142c5b934ce9d95beb8e83278b622013"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -245,9 +257,9 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00808">808</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00830">830</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8h_source.html#l00769">BK108X::deviceAddress</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8h_source.html#l00783">BK108X::deviceAddress</a>.</p>
 
 </div>
 </div>
@@ -283,7 +295,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00816">816</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00838">838</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -313,7 +325,7 @@ Basic</h1>
 
 <p>Get the Shadown Register object. </p>
 <p>if you want to get the current value of the device register, call getAllRegisters() before calling this function.</p>
-<p>if you are dealing with the status register (0x0A), you can call <a class="el" href="group___g_a03.html#gafd5103952ee94197bd9936244474450f">getStatus()</a> instead getAllRegisters(). </p><dl class="section see"><dt>See also</dt><dd>setAllRegisters, getAllRegisters, <a class="el" href="group___g_a03.html#gab9a18cc2ced8b4683f83ce95f0d62df4" title="Get the Shadown Register object.">getShadownRegister</a>, <a class="el" href="group___g_a03.html#gafd5103952ee94197bd9936244474450f">getStatus</a> </dd></dl>
+<p>if you are dealing with the status register (0x0A), you can call <a class="el" href="group___g_a03.html#ga759a835f25ca7ce2c861cc5b3cf1abb8">getStatus()</a> instead getAllRegisters(). </p><dl class="section see"><dt>See also</dt><dd>setAllRegisters, getAllRegisters, <a class="el" href="group___g_a03.html#gab9a18cc2ced8b4683f83ce95f0d62df4" title="Get the Shadown Register object.">getShadownRegister</a>, <a class="el" href="group___g_a03.html#ga759a835f25ca7ce2c861cc5b3cf1abb8">getStatus</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">register_number</td><td></td></tr>
@@ -322,7 +334,7 @@ Basic</h1>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>16 bits word with the Shadown registert </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00831">831</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00853">853</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -361,7 +373,7 @@ Basic</h1>
 </div><div class="memdoc">
 
 <p>Sets a given value to the Shadown Register. </p>
-<p>You have to call setAllRegisters() after setting the Shadow Registers to store the value into the device. </p><dl class="section see"><dt>See also</dt><dd>setAllRegisters, getAllRegisters, <a class="el" href="group___g_a03.html#gab9a18cc2ced8b4683f83ce95f0d62df4" title="Get the Shadown Register object.">getShadownRegister</a>, <a class="el" href="group___g_a03.html#gafd5103952ee94197bd9936244474450f">getStatus</a> </dd></dl>
+<p>You have to call setAllRegisters() after setting the Shadow Registers to store the value into the device. </p><dl class="section see"><dt>See also</dt><dd>setAllRegisters, getAllRegisters, <a class="el" href="group___g_a03.html#gab9a18cc2ced8b4683f83ce95f0d62df4" title="Get the Shadown Register object.">getShadownRegister</a>, <a class="el" href="group___g_a03.html#ga759a835f25ca7ce2c861cc5b3cf1abb8">getStatus</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">register_number</td><td>register index (from 0x00 to 0x0F) </td></tr>
@@ -370,7 +382,37 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00841">841</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00863">863</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+
+</div>
+</div>
+<a id="ga75e29ce01163c9bb4934d0064e998362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga75e29ce01163c9bb4934d0064e998362">&#9670;&nbsp;</a></span>getCurrentMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t BK108X::getCurrentMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the Current Mode (AM or FM) </p>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t 0 = FM; 1 = AM </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00884">884</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -399,8 +441,9 @@ Basic</h1>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the register content (the shadowRegisters array has this content. So, you do not need to use it most of the cases) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00252">252</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00271">271</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -443,27 +486,27 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00276">276</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00291">291</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
-<a id="gafd5103952ee94197bd9936244474450f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafd5103952ee94197bd9936244474450f">&#9670;&nbsp;</a></span>getStatus()</h2>
+<a id="ga759a835f25ca7ce2c861cc5b3cf1abb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga759a835f25ca7ce2c861cc5b3cf1abb8">&#9670;&nbsp;</a></span>getStatus()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BK108X::getStatus </td>
+          <td class="memname"><a class="el" href="group___g_a01.html#unionbk__reg0a">bk_reg0a</a> BK108X::getStatus </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group___g_a01.html#unionbk__reg0a" title="Register 0Ah. Status2 (0x0000)">bk_reg0a</a> data type status register (Register 0Ah. Status2) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00311">311</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00321">321</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -486,7 +529,9 @@ Basic</h1>
 <p>Should be used before processing Tune or Seek.</p>
 <p>The STC bit being cleared indicates that the TUNE or SEEK bits may be set again to start another tune or seek operation. Do not set the TUNE or SEEK bits until the <a class="el" href="group___g_a01.html#class_b_k108_x" title="KT0915 Class.">BK108X</a> clears the STC bit. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00322">322</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00332">332</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00497">BK108X::setChannel()</a>.</p>
 
 </div>
 </div>
@@ -507,9 +552,7 @@ Basic</h1>
 
 <p>Resets the device. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00331">331</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00368">BK108X::setup()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00348">348</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -531,9 +574,9 @@ Basic</h1>
 <p>Powers the receiver on. </p>
 <p>Starts the receiver with some default configurations </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00341">341</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00363">363</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00368">BK108X::setup()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00409">BK108X::setup()</a>.</p>
 
 </div>
 </div>
@@ -554,7 +597,7 @@ Basic</h1>
 
 <p>Powers the receiver off. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00354">354</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00392">392</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -613,9 +656,123 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00368">368</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00409">409</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l00041">BK108X::i2cInit()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l00341">BK108X::powerUp()</a>, <a class="el" href="_b_k108_x_8h_source.html#l00775">BK108X::rdsInterruptPin</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l00331">BK108X::reset()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l00776">BK108X::seekInterruptPin</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l00054">BK108X::i2cInit()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l00363">BK108X::powerUp()</a>, <a class="el" href="_b_k108_x_8h_source.html#l00798">BK108X::rdsInterruptPin</a>, and <a class="el" href="_b_k108_x_8h_source.html#l00799">BK108X::seekInterruptPin</a>.</p>
+
+</div>
+</div>
+<a id="gaa6da4291400839ffc68ccff5e1ad7b13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa6da4291400839ffc68ccff5e1ad7b13">&#9670;&nbsp;</a></span>setFM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BK108X::setFM </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>minimum_frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>maximum_frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>default_frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>step</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the receiver to FM mode. </p>
+<p>Configures the receiver on FM mode; Also sets the band limits, defaul frequency and step.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minimum_frequency</td><td>minimum frequency for the band </td></tr>
+    <tr><td class="paramname">maximum_frequency</td><td>maximum frequency for the band </td></tr>
+    <tr><td class="paramname">default_frequency</td><td>default freuency </td></tr>
+    <tr><td class="paramname">step</td><td>increment and decrement frequency step </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00435">435</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ga334ccbe40fcb5faa9e045288ca606f89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga334ccbe40fcb5faa9e045288ca606f89">&#9670;&nbsp;</a></span>setAM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BK108X::setAM </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>minimum_frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>maximum_frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>default_frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>step</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>am_space</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the receiver to AM mode. </p>
+<p>Configures the receiver on AM mode; Also sets the band limits, defaul frequency and step.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minimum_frequency</td><td>minimum frequency for the band </td></tr>
+    <tr><td class="paramname">maximum_frequency</td><td>maximum frequency for the band </td></tr>
+    <tr><td class="paramname">default_frequency</td><td>default freuency </td></tr>
+    <tr><td class="paramname">step</td><td>increment and decrement frequency step </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00465">465</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -643,7 +800,9 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00394">394</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00497">497</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l00332">BK108X::waitAndFinishTune()</a>.</p>
 
 </div>
 </div>
@@ -672,7 +831,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00405">405</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00518">518</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -694,7 +853,7 @@ Basic</h1>
 <p>Increments the current frequency. </p>
 <p>The increment uses the band space as step. See array: uint16_t fmSpace[4] = {20, 10, 5, 1}; </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00415">415</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00537">537</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -714,9 +873,9 @@ Basic</h1>
 </div><div class="memdoc">
 
 <p>Decrements the current frequency. </p>
-<p>The drecrement uses the band space as step. See array: uint16_t fmSpace[4] = {20, 10, 5, 1}; </p>
+<p>The drecrement uses the band space as step. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00430">430</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00552">552</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -738,7 +897,29 @@ Basic</h1>
 <p>Gets the current frequency. </p>
 <dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00445">445</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00567">567</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ga06f919a6698c0dee4181200222e088c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga06f919a6698c0dee4181200222e088c2">&#9670;&nbsp;</a></span>getChannel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t BK108X::getChannel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current channel. </p>
+<dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00577">577</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -760,7 +941,7 @@ Basic</h1>
 <p>Gets the current channel stored in register 0x0B. </p>
 <p>This method is useful to query the current channel during the seek operations. </p><dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00456">456</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00588">588</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -783,7 +964,7 @@ Basic</h1>
 <p>Unlike getFrequency method, this method queries the device.</p>
 <dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00469">469</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00601">601</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -817,7 +998,6 @@ Basic</h1>
 <p>Seeks a station up or down.</p>
 <p>Seek begins at the current channel, and goes in the direction specified with the SEEKUP bit. Seek operation stops when a channel is qualified as valid according to the seek parameters, the entire band has been searched (SKMODE = 0), or the upper or lower band limit has been reached (SKMODE = 1).</p>
 <p>The STC bit is set high when the seek operation completes and/or the SF/BL bit is set high if the seek operation was unable to find a channel qualified as valid according to the seek parameters. The STC and SF/BL bits must be set low by setting the SEEK bit low before the next seek or tune may begin.</p>
-<p>Seek performance for 50 kHz channel spacing varies according to RCLK tolerance. Silicon Laboratories recommends ±50 ppm RCLK crystal tolerance for 50 kHz seek performance.</p>
 <p>A seek operation may be aborted by setting SEEK = 0.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -827,7 +1007,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00486">486</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00621">621</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -883,7 +1063,7 @@ Basic</h1>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
 <div class="line"> .</div>
 <div class="line"> .</div>
-<div class="line">     rx.<a class="code" href="group___g_a03.html#ga35ec6cac70fcc8a648a52bc337f5a056">seek</a>(<a class="code" href="_b_k108_x_8h.html#a9409bd19836c82272293c7dc4395100e">bk_SEEK_WRAP</a>, <a class="code" href="_b_k108_x_8h.html#a2d245bfa94f3023daf6762c82312453b">bk_SEEK_UP</a>, showFrequency); <span class="comment">// Seek Up</span></div>
+<div class="line">     rx.<a class="code" href="group___g_a03.html#ga35ec6cac70fcc8a648a52bc337f5a056">seek</a>(bk_SEEK_WRAP, bk_SEEK_UP, showFrequency); <span class="comment">// Seek Up</span></div>
 <div class="line"> .</div>
 <div class="line"> .</div>
 <div class="line">}</div>
@@ -896,7 +1076,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00524">524</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00659">659</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -924,7 +1104,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00534">534</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00669">669</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -954,7 +1134,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00546">546</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00681">681</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -977,7 +1157,7 @@ Basic</h1>
 <p>Sets the FM Space <br  />
  </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00555">555</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00690">690</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -999,7 +1179,7 @@ Basic</h1>
 <p>Gets the Rssi. </p>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00566">566</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00701">701</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1027,7 +1207,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00576">576</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00711">711</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1055,7 +1235,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00587">587</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00722">722</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1083,7 +1263,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00598">598</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00733">733</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1111,7 +1291,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00608">608</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00743">743</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1139,7 +1319,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00619">619</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00754">754</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1167,7 +1347,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00630">630</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00765">765</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1194,7 +1374,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00641">641</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00776">776</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1217,12 +1397,12 @@ Basic</h1>
 <p>Sets the audio volume level. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>0 to 15 (if 0, mutes the audio) </td></tr>
+    <tr><td class="paramname">value</td><td>0 to 31 (if 0, mutes the audio) </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00652">652</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00787">787</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1244,7 +1424,7 @@ Basic</h1>
 <p>Gets the current audio volume level. </p>
 <dl class="section return"><dt>Returns</dt><dd>uint8_t 0 to 15 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00663">663</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00803">803</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1265,7 +1445,7 @@ Basic</h1>
 
 <p>Increments the audio volume. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00673">673</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00813">813</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1286,7 +1466,7 @@ Basic</h1>
 
 <p>Decrements the audio volume. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00687">687</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00827">827</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1314,7 +1494,7 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00701">701</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00841">841</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1343,17 +1523,15 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00715">715</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00855">855</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="agroup___g_a03_html_ga35ec6cac70fcc8a648a52bc337f5a056"><div class="ttname"><a href="group___g_a03.html#ga35ec6cac70fcc8a648a52bc337f5a056">BK108X::seek</a></div><div class="ttdeci">void seek(uint8_t seek_mode, uint8_t direction)</div><div class="ttdoc">Seek function.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l00486">BK108X.cpp:486</a></div></div>
-<div class="ttc" id="a_b_k108_x_8h_html_a9409bd19836c82272293c7dc4395100e"><div class="ttname"><a href="_b_k108_x_8h.html#a9409bd19836c82272293c7dc4395100e">bk_SEEK_WRAP</a></div><div class="ttdeci">#define bk_SEEK_WRAP</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00033">BK108X.h:33</a></div></div>
-<div class="ttc" id="a_b_k108_x_8h_html_a2d245bfa94f3023daf6762c82312453b"><div class="ttname"><a href="_b_k108_x_8h.html#a2d245bfa94f3023daf6762c82312453b">bk_SEEK_UP</a></div><div class="ttdeci">#define bk_SEEK_UP</div><div class="ttdoc">Seek Up Direction.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00032">BK108X.h:32</a></div></div>
-<div class="ttc" id="agroup___g_a01_html_class_b_k108_x"><div class="ttname"><a href="group___g_a01.html#class_b_k108_x">BK108X</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00714">BK108X.h:714</a></div></div>
-<div class="ttc" id="agroup___g_a03_html_ga91be125793a421bc17e2b25223b3a10a"><div class="ttname"><a href="group___g_a03.html#ga91be125793a421bc17e2b25223b3a10a">BK108X::getFrequency</a></div><div class="ttdeci">uint16_t getFrequency()</div><div class="ttdoc">Gets the current frequency.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l00445">BK108X.cpp:445</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_ga35ec6cac70fcc8a648a52bc337f5a056"><div class="ttname"><a href="group___g_a03.html#ga35ec6cac70fcc8a648a52bc337f5a056">BK108X::seek</a></div><div class="ttdeci">void seek(uint8_t seek_mode, uint8_t direction)</div><div class="ttdoc">Seek function.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l00621">BK108X.cpp:621</a></div></div>
+<div class="ttc" id="agroup___g_a01_html_class_b_k108_x"><div class="ttname"><a href="group___g_a01.html#class_b_k108_x">BK108X</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00724">BK108X.h:724</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_ga91be125793a421bc17e2b25223b3a10a"><div class="ttname"><a href="group___g_a03.html#ga91be125793a421bc17e2b25223b3a10a">BK108X::getFrequency</a></div><div class="ttdeci">uint16_t getFrequency()</div><div class="ttdoc">Gets the current frequency.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l00567">BK108X.cpp:567</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

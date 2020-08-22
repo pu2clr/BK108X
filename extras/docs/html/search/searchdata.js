@@ -4,9 +4,9 @@ var indexSectionsWithContent =
   1: "bw",
   2: "br",
   3: "giprsw",
-  4: "abcdgmors",
+  4: "bcdgmors",
   5: "b",
-  6: "bfimor",
+  6: "abfimor",
   7: "bru",
   8: "bpt"
 };
