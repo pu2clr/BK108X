@@ -1,0 +1,88 @@
+##################################################################
+# Syntax Coloring Map 
+##################################################################
+# Datatypes (KEYWORD1)
+BK108X   KEYWORD1
+
+# Methods (KEYWORD2)
+
+BK108X KEYWORD2
+setup  KEYWORD2
+reset  KEYWORD2
+setRegister KEYWORD2
+getRegister KEYWORD2
+setFM  KEYWORD2
+setAM  KEYWORD2
+setStep KEYWORD2
+setFrequency KEYWORD2
+frequencyUp KEYWORD2
+frequencyDown KEYWORD2
+setAntennaTuneCapacitor KEYWORD2
+setStep KEYWORD2
+setVolumeDialModeOff KEYWORD2
+setVolumeDialModeOn KEYWORD2
+setTuneDialModeOff KEYWORD2
+setTuneDialModeOn KEYWORD2
+isCrystalReady KEYWORD2
+setReferenceClockType KEYWORD2
+setI2CBusAddress KEYWORD2
+getDeviceId KEYWORD2
+setAudioBass KEYWORD2
+setAudioGain KEYWORD2
+isFmStereo KEYWORD2
+getAmRssi KEYWORD2
+getFmRssi KEYWORD2
+setDeEmphasis KEYWORD2
+setAmAfc KEYWORD2
+setAmSpace KEYWORD2
+setAmBandwidth KEYWORD2
+setFrequencyUp KEYWORD2
+setFrequencyDown KEYWORD2
+getAmCurrentChannel KEYWORD2
+getFmCurrentChannel KEYWORD2
+getFrequency KEYWORD2
+setLeftChannelInverseControl KEYWORD2
+
+
+#Literals
+
+REG01         LITERAL1
+REG02         LITERAL1
+REG03         LITERAL1
+REG04         LITERAL1
+REG05         LITERAL1
+REG06         LITERAL1
+REG07         LITERAL1
+REG08         LITERAL1
+REG09         LITERAL1
+REG0A         LITERAL1
+REG0B         LITERAL1
+REG0C         LITERAL1
+REG0D         LITERAL1
+REG0E         LITERAL1
+REG0F         LITERAL1
+REG10         LITERAL1
+REG11         LITERAL1
+REG12         LITERAL1
+REG13         LITERAL1
+REG14         LITERAL1
+REG15         LITERAL1
+REG16         LITERAL1
+REG17         LITERAL1
+REG18         LITERAL1
+REG19         LITERAL1
+REG1A         LITERAL1
+REG1B         LITERAL1   
+REG1C         LITERAL1   
+REG1D         LITERAL1 
+REG1E         LITERAL1
+REG1F         LITERAL1
+OSCILLATOR_TYPE_CRYSTAL  LITERAL1
+OSCILLATOR_TYPE_REFCLK   LITERAL1
+BK_SEEK_DOWN  LITERAL1 
+BK_SEEK_UP    LITERAL1
+BK_SEEK_WRAP  LITERAL1  
+BK_SEEK_STOP  LITERAL1
+MODE_FM       LITERAL1
+MODE_AM       LITERAL1
+
