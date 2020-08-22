@@ -31,7 +31,7 @@ void setup()
   delay(10000);
 
   Serial.print("\nChecking an FM station in your location at ");
-  Serial.print(STRONG_LOCAL_FM_STATION / 100);
+  Serial.print(STRONG_LOCAL_FM_STATION / 100.0);
   Serial.print("MHZ\n\n");
   rx.setFM(6400, 10800, STRONG_LOCAL_FM_STATION, 100);
   delay(10000);

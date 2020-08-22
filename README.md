@@ -4,10 +4,6 @@ The BK1086 and BK1088 are DSP receivers from BAKEN. The BK1088 is a BROADCAST FM
 
 This project is about an Arduino Library to control the BK1086 and BK1088 devices. It was based on "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3" documentation from BEKEN Corporation.
 
-__This library is under construction...__
-
-![Under construction](extras/images/under_construction.png)
-
 
 This library can be freely distributed using the MIT Free Software model. 
 
@@ -36,7 +32,6 @@ At the end of 2019 I started some Arduino library development projects to contro
 
 This library is based on the BEKEN manual “BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER REV1.3” provided by BEKEN Corporation and experiments made by me during the development process. 
 
-__This library is under construction...__
 
 
 ### See also
@@ -107,8 +102,7 @@ If you have suggestions to improve this project, please let me know.
 
 ## Library Installation
 
-__Under construction.....__
-
+__TODO__
 
 
 ## Functional Block Diagram
@@ -168,10 +162,8 @@ The schematic below is based on the BEKEN typical application schematic added to
 
 The main porpuse of this circuit is to test the  BK108X Arduino Library. However, you may be surprised at the performance of this simple circuit due to the high features of the BK1086/88 device. Also, it is importante to say that this receiver does not intend to be a real radio for exigent listener. However, it is possible to start with it and then, if you wish, you can include some devices to the circuit to improve, for example,  its sensibility, output sound quality beyond other desired features.
 
-__Schematic under construction....__
 
 ![Basic Schematic](extras/images/basic_schematic.png)
-
 
 
 ## References

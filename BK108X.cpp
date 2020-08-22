@@ -472,12 +472,19 @@ void BK108X::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
     this->currentMode =  reg07->refined.MODE = MODE_AM;
     setRegister(REG07, reg07->raw);
     // Sets BAND, SPACE and other parameters
-    this->currentAMBand = reg05->refined.BAND = 1;
-    this->currentAMSpace = reg05->refined.SPACE = 3;
+
+    if (minimum_frequency < 520 )
+        this->currentAMBand = reg05->refined.BAND = 0;  // LW
+    else if (minimum_frequency < 1800)
+        this->currentAMBand = reg05->refined.BAND = 1;  // MW
+    else
+        this->currentAMBand = reg05->refined.BAND = 2;  // SW
+
+    this->currentAMSpace = reg05->refined.SPACE = am_space;    // Space default value 0 (0=1KHz; 1 = 5KHz; 2=9KHz; 3 = 10KHz)
+
     setRegister(REG05, reg05->raw);
 
     this->setFrequency(default_frequency);
-
 }
 
 

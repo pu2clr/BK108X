@@ -873,7 +873,9 @@ public:
     void setup(int sda_pin, int sclk_pin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
     
     void setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step);
-    void setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space = 3);
+    void setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space = 0);
+
+    inline uint8_t getCurrentMode() { return this->currentMode; };
 
     void setFrequency(uint16_t frequency);
     void setFrequencyUp();
