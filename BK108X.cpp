@@ -323,7 +323,12 @@ void BK108X::getStatus()
  */
 void BK108X::waitAndFinishTune()
 {
+    while ( reg0a->refined.STC == 0) {
+        getRegister(REG0A);
+    }
 
+    reg03->refined.TUNE = 1;
+    setRegister(REG03, reg03->raw);
 }
 
 /**
@@ -389,7 +394,65 @@ void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInter
     this->oscillatorType = oscillator_type;
 
     powerUp();
+
+    // Populates all shadow registers 
+    for (int i = REG00; i < REG1F; i++) 
+     getRegister(i);
+
 }
+
+/**
+ * @ingroup GA03
+ * @brief Sets the receiver to FM mode
+ * @details Configures the receiver on FM mode; Also sets the band limits, defaul frequency and step.
+ * 
+ * @param minimum_frequency  minimum frequency for the band
+ * @param maximum_frequency  maximum frequency for the band
+ * @param default_frequency  default freuency
+ * @param step  increment and decrement frequency step
+ */
+void BK108X::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step)
+{
+
+    this->currentStep = step;
+    this->currentFrequency = default_frequency;
+    this->minimumFrequency = minimum_frequency;
+    this->maximumFrequency = maximum_frequency;
+    this->currentMode = MODE_FM;
+
+
+    reg07->refined.MODE = MODE_FM;
+    setRegister(REG07, reg07->raw);
+
+    this->currentFMBand =  reg05->refined.BAND = 3;
+    this->currentFMSpace = reg05->refined.SPACE = 2;
+    setRegister(REG05, reg05->raw);
+
+    setFrequency(default_frequency);
+};
+
+/**
+ * @ingroup GA03
+ * @brief Sets the receiver to AM mode
+ * @details Configures the receiver on AM mode; Also sets the band limits, defaul frequency and step.
+ * 
+ * @param minimum_frequency  minimum frequency for the band
+ * @param maximum_frequency  maximum frequency for the band
+ * @param default_frequency  default freuency
+ * @param step  increment and decrement frequency step
+ */
+void BK108X::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space)
+{
+    this->currentStep = step;
+    this->currentFrequency = default_frequency;
+    this->minimumFrequency = minimum_frequency;
+    this->maximumFrequency = maximum_frequency;
+    this->currentMode = MODE_AM;
+
+    this->setFrequency(default_frequency);
+
+}
+
 
 
 /**
@@ -399,7 +462,17 @@ void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInter
  */
 void BK108X::setChannel(uint16_t channel)
 {
+    reg02->refined.SEEK = 0;
+    setRegister(REG02,reg02->raw);
 
+    reg03->refined.TUNE = 1;
+    reg03->refined.CHAN = channel;
+
+    setRegister(REG03,reg03->raw);
+
+    waitAndFinishTune();
+
+    this->currentChannel = channel;
 }
 
 /**
@@ -410,7 +483,20 @@ void BK108X::setChannel(uint16_t channel)
  */
 void BK108X::setFrequency(uint16_t frequency)
 {
+    uint16_t channel;
 
+    char aux[100];
+
+    if (this->currentMode == MODE_FM)
+        channel = (frequency - this->fmStartBand[this->currentFMBand]) /  this->fmSpace[this->currentFMSpace];
+    else
+        channel = (frequency - this->amStartBand[this->currentAMBand]) / this->amSpace[this->currentAMSpace];
+
+    sprintf(aux, "Band: %d, Space: %d, %d", this->fmStartBand[this->currentFMBand], this->fmSpace[this->currentFMSpace], this->currentFMSpace);
+    Serial.println(aux);
+
+
+    this->setChannel(channel);
 }
 
 /**
@@ -431,7 +517,7 @@ void BK108X::setFrequencyUp()
 /**
  * @ingroup GA03
  * @brief Decrements the current frequency
- * @details The drecrement uses the band space as step. See array: uint16_t fmSpace[4] = {20, 10, 5, 1};
+ * @details The drecrement uses the band space as step.
  */
 void BK108X::setFrequencyDown()
 {
@@ -451,6 +537,16 @@ void BK108X::setFrequencyDown()
 uint16_t BK108X::getFrequency()
 {
     return this->currentFrequency;
+}
+
+/**
+ * @ingroup GA03
+ * @brief Gets the current channel. 
+ * @return uint16_t 
+ */
+uint16_t BK108X::getChannel()
+{
+    return this->currentChannel;
 }
 
 /**

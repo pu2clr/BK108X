@@ -57,6 +57,9 @@
 #define AM_SW  2 //!< 2.3~21.85KHz
 #define AM_M22 3 //!< 522~1710
 
+#define MODE_FM  0
+#define MODE_AM  1
+
 #define REG00 0x00
 #define REG01 0x01
 #define REG02 0x02
@@ -774,8 +777,10 @@ private:
 
     uint16_t fmStartBand[4] = {6400, 7400, 7600, 8700};  //!< Start FM band limit
     uint16_t fmEndBand[4] = {10800, 7600, 9100, 10800};  //!< End FM band limit
-    uint16_t fmSpace[4] = {10, 50, 100, 200};            //!< FM channel space
+    uint16_t fmSpace[4] = {10, 50, 100, 200};             //!< FM channel space
 
+    uint16_t amStartBand[4] = {153, 520, 2300, 522}; //!< Start FM band limit
+    uint16_t amEndBand[4] = {279, 1710, 21850, 1710}; //!< End FM band limit
     uint16_t amSpace[4] = {1, 5, 9, 10}; //!< AM channel space
 
     int pin_sdio, pin_sclk; 
@@ -788,15 +793,23 @@ protected:
 
     int deviceAddress = I2C_DEVICE_ADDR;
 
-    uint16_t currentFrequency;
+    uint32_t currentFrequency;
+    uint32_t minimumFrequency; 
+    uint32_t maximumFrequency; 
+
+    uint16_t currentChannel = 0;
+    uint16_t currentStep = 1;
     uint8_t currentFMBand = 0;
+    uint8_t currentAMBand = 1;
     uint8_t currentFMSpace = 0;
+    uint8_t currentAMSpace = 0;
+    uint8_t currentMode = MODE_FM;
+
     uint8_t currentVolume = 0;
     int rdsInterruptPin = -1;
     int seekInterruptPin = -1;
     int oscillatorType = OSCILLATOR_TYPE_CRYSTAL;
     uint16_t maxDelayAftarCrystalOn = MAX_DELAY_AFTER_OSCILLATOR;
-
 
 
 public:
@@ -869,10 +882,15 @@ public:
     uint16_t getChipId();
 
     void setup(int sda_pin, int sclk_pin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
+    
+    void setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step);
+    void setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space);
+
     void setFrequency(uint16_t frequency);
     void setFrequencyUp();
     void setFrequencyDown();
     uint16_t getFrequency();
+    uint16_t getChannel();
     uint16_t getRealFrequency();
     uint16_t getRealChannel();
     void setChannel(uint16_t channel);

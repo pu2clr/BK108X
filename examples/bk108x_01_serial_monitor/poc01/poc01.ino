@@ -17,25 +17,48 @@ void setup()
   delay(2000);
 
   rx.setup(SDA_PIN, CLK_PIN);
-  
+
+  rx.setFM(6400, 10800, 10390, 100);
+  Serial.println(rx.getChannel());
+  while(1);  
   getDeviceInfo(); 
 
-  rx.setVolume(30);
+  /*
+  Serial.println("\nChecking the Volume.");
+  for (int i = 31; i > 3; i-=3) {
+    rx.setVolume(i);
+    delay(500);
+  } */
+
+  delay(5000);
   
+  rx.setVolume(15);
+    
+ 
   Serial.println(rx.getRegister(REG02),BIN);
 
 
-  delay(4000);
+  delay(5000);
   
   Serial.println("\nPower Down!");
   rx.powerDown();
   Serial.println(rx.getRegister(REG02),BIN);
-  delay(4000);
+
+  delay(5000);
   Serial.println("\nPower UP!");
   Serial.println("You should hear a pop in the speaker.");
   rx.powerUp();
   Serial.println(rx.getRegister(REG02),BIN);
   Serial.println("\nFinish!***********");  
+  rx.setFrequency(9550);
+
+  delay(5000);
+  Serial.println("\nTest");  
+  for (uint16_t i = 0; i < 800; i+=10 ) {
+    rx.setChannel(i);
+    Serial.println(i);
+    delay(600);
+  }
 
   
 }
