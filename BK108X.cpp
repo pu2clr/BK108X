@@ -339,7 +339,12 @@ void BK108X::waitAndFinishTune()
  */
 void BK108X::reset()
 {
-
+    reg02->refined.DISABLE = 1;
+    reg02->refined.ENABLE = 0;
+    setRegister(REG02, reg02->raw);
+    reg02->refined.DISABLE = 0;
+    reg02->refined.ENABLE = 1;
+    setRegister(REG02, reg02->raw);
 }
 
 /**
@@ -350,50 +355,25 @@ void BK108X::reset()
 void BK108X::powerUp()
 {
 
-    reg02->raw = 0;     
-    reg02->refined.DSMUTE = 1; // Soft Mute disabled
-    reg02->refined.STEREO = 1; // Force stereo
-    reg02->refined.ENABLE = 1; // 
-    setRegister(REG02,reg02->raw);
+    reg02->raw = 0;                 // Sets to 0 all attributes of the register 0x02 (Power Configuration)
+    reg02->refined.DSMUTE = 1;      // Soft Mute disabled
+    reg02->refined.STEREO = 1;      // Force stereo
+    reg02->refined.ENABLE = 1;      // Power the receiver UP (DISABLE has to be 0)
+    setRegister(REG02,reg02->raw);  // Stores the register 0x02
+
+    setRegister(REG03, 0x00);       // Sets to 0 all attributes of the register 0x03 (Channel)
+    setRegister(REG04, 0x00);       // Sets to 0 all attributes of the register 0x04 (System Configuration1)
+
+
+    this->currentVolume = reg05->refined.VOLUME = 15;
+    setRegister(REG05, reg05->raw); //  System Configuration2
 
     reg06->raw = 0;
     reg06->refined.CLKSEL = 1;
+    reg06->refined.SKSNR = 0x06;
+    reg06->refined.SKCNT = 0x0F;
     setRegister(REG06, reg06->raw);
 
-   /*
-        setRegister(0, 0x8000); //0
-        setRegister(1, 0x1080);
-        setRegister(2, 0x0381);
-        setRegister(3, 0x0000);
-        setRegister(4, 0x60C0);
-        setRegister(5, 0x365a); //5
-        setRegister(6, 0x086E);
-        setRegister(7, 0x0901);
-        setRegister(8, 0x9C90);
-        setRegister(9, 0x17A0);
-        setRegister(10, 0x402B); //10
-        setRegister(11, 0x0040);
-        setRegister(12, 0x0000);
-        setRegister(13, 0x0000);
-        setRegister(14, 0x0000);
-        setRegister(15, 0x0000); //15
-        setRegister(16, 0x7B11);
-        setRegister(17, 0x0C00);
-        setRegister(18, 0x4000);
-        setRegister(19, 0x4144);
-        setRegister(20, 0x829A); //20
-        setRegister(21, 0x7812);
-        setRegister(22, 0x43BB);
-        setRegister(23, 0x0B41);
-        setRegister(24, 0x143C);
-        setRegister(25, 0x000E); //25
-        setRegister(26, 0x0000);
-        setRegister(27, 0x48D4);
-        setRegister(28, 0x0000);
-        setRegister(29, 0x0200);
-        setRegister(30, 0x80AA); //30
-        setRegister(31, 0x0000);
-    */
 }
 
 /**
@@ -528,19 +508,12 @@ void BK108X::setFrequency(uint16_t frequency)
 {
     uint16_t channel;
 
-    char aux[100];
-
     if (this->currentMode == MODE_FM) {
         channel = (frequency - this->fmStartBand[this->currentFMBand]) /  this->fmSpace[this->currentFMSpace];
-        sprintf(aux, "Freq: %u, Real Chan: %u; channel: %u  | Band: %d, Space: %d, %d", frequency, this->getRealChannel(), channel, this->fmStartBand[this->currentFMBand], this->fmSpace[this->currentFMSpace], this->currentFMSpace);
     }
     else {
         channel = (frequency - this->amStartBand[this->currentAMBand]) / this->amSpace[this->currentAMSpace];
-        sprintf(aux, "Freq: %u, Real Chan: %u; channel: %u  | Band: %d, Space: %d, %d", frequency, this->getRealChannel(), channel, this->amStartBand[this->currentAMBand], this->amSpace[this->currentAMSpace], this->currentAMSpace);
     }
-
-    Serial.println(aux);
-
 
     this->setChannel(channel);
 }

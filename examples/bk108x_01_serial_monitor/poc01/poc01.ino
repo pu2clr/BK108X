@@ -4,6 +4,10 @@
 #define SDA_PIN A4
 #define CLK_PIN A5
 
+
+#define STRONG_LOCAL_FM_STATION 10650   // Set the best FM frequency to your location. The current is 106.50MHz 
+#define STRONG_LOCAL_AM_STATION 620     // Set the best AM freqiency to your location. The current is 620KHz 
+
 BK108X rx;
 
 void setup()
@@ -12,63 +16,26 @@ void setup()
   while (!Serial);
 
   Serial.println("\n********Begin!");
-
  
-  delay(2000);
+  delay(1000);
 
   rx.setup(SDA_PIN, CLK_PIN);
-
-  // rx.setFM(6400, 10800, 10650, 100);
-  rx.setVolume(20);
-  //delay(10000);
-  rx.setAM(520, 1700, 810, 10);
-  delay(2000);
-  for (uint16_t i = 0; i < 100; i++) {
-    rx.setChannel(i);
-    Serial.println(i);
-    delay(1000);
-  }
- 
-  while(1);  
   getDeviceInfo(); 
-
-  /*
-  Serial.println("\nChecking the Volume.");
-  for (int i = 31; i > 3; i-=3) {
-    rx.setVolume(i);
-    delay(500);
-  } */
-
-  delay(5000);
   
-  rx.setVolume(15);
-    
+  rx.setVolume(20);       
+
+  Serial.print("\nChecking an AM station in your location at ");
+  Serial.print(STRONG_LOCAL_AM_STATION);
+  Serial.print("KHZ\n\n");
+  rx.setAM(520, 1700, STRONG_LOCAL_AM_STATION, 10);     
+  delay(10000);
+
+  Serial.print("\nChecking an FM station in your location at ");
+  Serial.print(STRONG_LOCAL_FM_STATION / 100);
+  Serial.print("MHZ\n\n");
+  rx.setFM(6400, 10800, STRONG_LOCAL_FM_STATION, 100);
  
-  Serial.println(rx.getRegister(REG02),BIN);
-
-
-  delay(5000);
-  
-  Serial.println("\nPower Down!");
-  rx.powerDown();
-  Serial.println(rx.getRegister(REG02),BIN);
-
-  delay(5000);
-  Serial.println("\nPower UP!");
-  Serial.println("You should hear a pop in the speaker.");
-  rx.powerUp();
-  Serial.println(rx.getRegister(REG02),BIN);
   Serial.println("\nFinish!***********");  
-  rx.setFrequency(9550);
-
-  delay(5000);
-  Serial.println("\nTest");  
-  for (uint16_t i = 0; i < 800; i+=10 ) {
-    rx.setChannel(i);
-    Serial.println(i);
-    delay(600);
-  }
-
   
 }
 
