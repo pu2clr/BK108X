@@ -324,11 +324,13 @@ void BK108X::getStatus()
 void BK108X::waitAndFinishTune()
 {
     while ( reg0a->refined.STC == 0) {
+        delay(10);
         getRegister(REG0A);
     }
 
-    reg03->refined.TUNE = 1;
+    reg03->refined.TUNE = 0;
     setRegister(REG03, reg03->raw);
+    delay(40);
 }
 
 /**
@@ -347,6 +349,7 @@ void BK108X::reset()
  */
 void BK108X::powerUp()
 {
+
     reg02->raw = 0;     
     reg02->refined.DSMUTE = 1; // Soft Mute disabled
     reg02->refined.STEREO = 1; // Force stereo
@@ -357,6 +360,40 @@ void BK108X::powerUp()
     reg06->refined.CLKSEL = 1;
     setRegister(REG06, reg06->raw);
 
+   /*
+        setRegister(0, 0x8000); //0
+        setRegister(1, 0x1080);
+        setRegister(2, 0x0381);
+        setRegister(3, 0x0000);
+        setRegister(4, 0x60C0);
+        setRegister(5, 0x365a); //5
+        setRegister(6, 0x086E);
+        setRegister(7, 0x0901);
+        setRegister(8, 0x9C90);
+        setRegister(9, 0x17A0);
+        setRegister(10, 0x402B); //10
+        setRegister(11, 0x0040);
+        setRegister(12, 0x0000);
+        setRegister(13, 0x0000);
+        setRegister(14, 0x0000);
+        setRegister(15, 0x0000); //15
+        setRegister(16, 0x7B11);
+        setRegister(17, 0x0C00);
+        setRegister(18, 0x4000);
+        setRegister(19, 0x4144);
+        setRegister(20, 0x829A); //20
+        setRegister(21, 0x7812);
+        setRegister(22, 0x43BB);
+        setRegister(23, 0x0B41);
+        setRegister(24, 0x143C);
+        setRegister(25, 0x000E); //25
+        setRegister(26, 0x0000);
+        setRegister(27, 0x48D4);
+        setRegister(28, 0x0000);
+        setRegister(29, 0x0200);
+        setRegister(30, 0x80AA); //30
+        setRegister(31, 0x0000);
+    */
 }
 
 /**
@@ -423,8 +460,8 @@ void BK108X::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
 
     reg07->refined.MODE = MODE_FM;
     setRegister(REG07, reg07->raw);
-
-    this->currentFMBand =  reg05->refined.BAND = 3;
+    // Sets BAND, SPACE and other parameters
+    this->currentFMBand =  reg05->refined.BAND = 0;
     this->currentFMSpace = reg05->refined.SPACE = 2;
     setRegister(REG05, reg05->raw);
 
@@ -447,7 +484,13 @@ void BK108X::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
     this->currentFrequency = default_frequency;
     this->minimumFrequency = minimum_frequency;
     this->maximumFrequency = maximum_frequency;
-    this->currentMode = MODE_AM;
+
+    this->currentMode =  reg07->refined.MODE = MODE_AM;
+    setRegister(REG07, reg07->raw);
+    // Sets BAND, SPACE and other parameters
+    this->currentAMBand = reg05->refined.BAND = 1;
+    this->currentAMSpace = reg05->refined.SPACE = 3;
+    setRegister(REG05, reg05->raw);
 
     this->setFrequency(default_frequency);
 
@@ -469,7 +512,7 @@ void BK108X::setChannel(uint16_t channel)
     reg03->refined.CHAN = channel;
 
     setRegister(REG03,reg03->raw);
-
+    delay(50);
     waitAndFinishTune();
 
     this->currentChannel = channel;
@@ -487,12 +530,15 @@ void BK108X::setFrequency(uint16_t frequency)
 
     char aux[100];
 
-    if (this->currentMode == MODE_FM)
+    if (this->currentMode == MODE_FM) {
         channel = (frequency - this->fmStartBand[this->currentFMBand]) /  this->fmSpace[this->currentFMSpace];
-    else
+        sprintf(aux, "Freq: %u, Real Chan: %u; channel: %u  | Band: %d, Space: %d, %d", frequency, this->getRealChannel(), channel, this->fmStartBand[this->currentFMBand], this->fmSpace[this->currentFMSpace], this->currentFMSpace);
+    }
+    else {
         channel = (frequency - this->amStartBand[this->currentAMBand]) / this->amSpace[this->currentAMSpace];
+        sprintf(aux, "Freq: %u, Real Chan: %u; channel: %u  | Band: %d, Space: %d, %d", frequency, this->getRealChannel(), channel, this->amStartBand[this->currentAMBand], this->amSpace[this->currentAMSpace], this->currentAMSpace);
+    }
 
-    sprintf(aux, "Band: %d, Space: %d, %d", this->fmStartBand[this->currentFMBand], this->fmSpace[this->currentFMSpace], this->currentFMSpace);
     Serial.println(aux);
 
 
@@ -506,11 +552,8 @@ void BK108X::setFrequency(uint16_t frequency)
  */
 void BK108X::setFrequencyUp()
 {
-    if (this->currentFrequency < this->fmEndBand[this->currentFMBand])
-        this->currentFrequency += this->fmSpace[currentFMSpace];
-    else
-        this->currentFrequency = this->fmStartBand[this->currentFMBand];
 
+    this->currentFrequency += this->currentStep;
     setFrequency(this->currentFrequency);
 }
 
@@ -521,11 +564,7 @@ void BK108X::setFrequencyUp()
  */
 void BK108X::setFrequencyDown()
 {
-    if (this->currentFrequency > this->fmStartBand[this->currentFMBand])
-        this->currentFrequency -= this->fmSpace[currentFMSpace];
-    else
-        this->currentFrequency = this->fmEndBand[this->currentFMBand];
-
+    this->currentFrequency -= this->currentStep;
     setFrequency(this->currentFrequency);
 }
 

@@ -18,8 +18,17 @@ void setup()
 
   rx.setup(SDA_PIN, CLK_PIN);
 
-  rx.setFM(6400, 10800, 10390, 100);
-  Serial.println(rx.getChannel());
+  // rx.setFM(6400, 10800, 10650, 100);
+  rx.setVolume(20);
+  //delay(10000);
+  rx.setAM(520, 1700, 810, 10);
+  delay(2000);
+  for (uint16_t i = 0; i < 100; i++) {
+    rx.setChannel(i);
+    Serial.println(i);
+    delay(1000);
+  }
+ 
   while(1);  
   getDeviceInfo(); 
 

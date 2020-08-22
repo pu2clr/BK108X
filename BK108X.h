@@ -777,7 +777,7 @@ private:
 
     uint16_t fmStartBand[4] = {6400, 7400, 7600, 8700};  //!< Start FM band limit
     uint16_t fmEndBand[4] = {10800, 7600, 9100, 10800};  //!< End FM band limit
-    uint16_t fmSpace[4] = {10, 50, 100, 200};             //!< FM channel space
+    uint16_t fmSpace[4] = {1, 5, 10, 20};             //!< FM channel space
 
     uint16_t amStartBand[4] = {153, 520, 2300, 522}; //!< Start FM band limit
     uint16_t amEndBand[4] = {279, 1710, 21850, 1710}; //!< End FM band limit
@@ -884,7 +884,7 @@ public:
     void setup(int sda_pin, int sclk_pin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL);
     
     void setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step);
-    void setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space);
+    void setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space = 3);
 
     void setFrequency(uint16_t frequency);
     void setFrequencyUp();
