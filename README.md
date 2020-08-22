@@ -108,7 +108,7 @@ __TODO__
 ## Functional Block Diagram
 
 
-![BK1086/88E Functional Description](https://github.com/pu2clr/BK108X/blob/master/extras/images/bk1088_functional_block_diagram.png)
+![BK1086/88E Functional Description](extras/images/bk1088_functional_block_diagram.png)
 
 __Source: "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 3"__
 
