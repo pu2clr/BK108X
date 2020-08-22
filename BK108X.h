@@ -725,6 +725,8 @@ typedef union
     uint16_t raw;
 } word16_to_bytes;
 
+
+
 /**
  * @ingroup GA01  
  * @brief KT0915 Class 
@@ -850,7 +852,7 @@ public:
 
     uint16_t getRegister(uint8_t reg);
     void setRegister(uint8_t reg, uint16_t value);
-    void getStatus();
+    bk_reg0a getStatus();
 
     /**
      * @ingroup GA03

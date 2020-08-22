@@ -150,10 +150,8 @@ void BK108X::i2cWriteByte( uint8_t data)
     delayMicroseconds(1);
 
     for (int i = 0; i < 8; i++) {
-        if (data & this->deviceAddress)
-            digitalWrite(this->pin_sdio, HIGH); // SDA will be 1 or 0
-        else 
-            digitalWrite(this->pin_sdio, LOW); // SDA will be 1 or 0
+
+        digitalWrite(this->pin_sdio, (bool)(data & this->deviceAddress) );
 
         delayMicroseconds(1);
         digitalWrite(this->pin_sclk, HIGH);
@@ -305,14 +303,13 @@ uint16_t BK108X::getChipId()
     return getRegister(REG01);
 }
 
-
 /**
  * @ingroup GA03
- * @return 
+ * @return  bk_reg0a data type status register (Register 0Ah. Status2)
  */
-void BK108X::getStatus()
+bk_reg0a BK108X::getStatus()
 {
-
+    getRegister(REG0A); // update the reg0a shadow register
 }
 
 /**
@@ -374,6 +371,7 @@ void BK108X::powerUp()
     reg06->refined.SKCNT = 0x0F;
     setRegister(REG06, reg06->raw);
 
+    delay(100);
 }
 
 /**
@@ -385,6 +383,7 @@ void BK108X::powerDown()
     reg02->refined.DISABLE = 1;
     reg02->refined.ENABLE = 0;
     setRegister(REG02, reg02->raw);
+    delay(100);
 }
 
 /**
@@ -398,10 +397,8 @@ void BK108X::powerDown()
  */
 void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type)
 {
-
     // Configures BEKEN I2C bus 
     this->i2cInit(sda_pin, sclk_pin);
-
 
     if (rdsInterruptPin >= 0)
         this->rdsInterruptPin = rdsInterruptPin;
@@ -411,10 +408,6 @@ void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInter
     this->oscillatorType = oscillator_type;
 
     powerUp();
-
-    // Populates all shadow registers 
-    for (int i = REG00; i < REG1F; i++) 
-     getRegister(i);
 
 }
 
@@ -525,8 +518,11 @@ void BK108X::setFrequency(uint16_t frequency)
  */
 void BK108X::setFrequencyUp()
 {
-
     this->currentFrequency += this->currentStep;
+
+    if (this->currentFrequency > this->maximumFrequency ) 
+        this->currentFrequency = this->minimumFrequency;
+
     setFrequency(this->currentFrequency);
 }
 
@@ -538,6 +534,10 @@ void BK108X::setFrequencyUp()
 void BK108X::setFrequencyDown()
 {
     this->currentFrequency -= this->currentStep;
+
+    if (this->currentFrequency < this->minimumFrequency)
+        this->currentFrequency = this->maximumFrequency;
+
     setFrequency(this->currentFrequency);
 }
 
@@ -582,7 +582,11 @@ uint16_t BK108X::getRealChannel()
  */
 uint16_t BK108X::getRealFrequency()
 {
-    return getRealChannel() * this->fmSpace[this->currentFMSpace] + this->fmStartBand[this->currentFMBand];
+    if (currentMode == MODE_AM) {
+        return getRealChannel() * this->amSpace[this->currentAMSpace] + this->amStartBand[this->currentAMBand];
+    } else {
+        return getRealChannel() * this->fmSpace[this->currentFMSpace] + this->fmStartBand[this->currentFMBand];
+    }  
 }
 
 /**
@@ -591,7 +595,6 @@ uint16_t BK108X::getRealFrequency()
  * @details Seeks a station up or down.
  * @details Seek begins at the current channel, and goes in the direction specified with the SEEKUP bit. Seek operation stops when a channel is qualified as valid according to the seek parameters, the entire band has been searched (SKMODE = 0), or the upper or lower band limit has been reached (SKMODE = 1).
  * @details The STC bit is set high when the seek operation completes and/or the SF/BL bit is set high if the seek operation was unable to find a channel qualified as valid according to the seek parameters. The STC and SF/BL bits must be set low by setting the SEEK bit low before the next seek or tune may begin.
- * @details Seek performance for 50 kHz channel spacing varies according to RCLK tolerance. Silicon Laboratories recommends ±50 ppm RCLK crystal tolerance for 50 kHz seek performance.
  * @details A seek operation may be aborted by setting SEEK = 0.
  * 
  * @param seek_mode  Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit.
@@ -599,7 +602,7 @@ uint16_t BK108X::getRealFrequency()
  */
 void BK108X::seek(uint8_t seek_mode, uint8_t direction)
 {
-
+    
 }
 
 /**

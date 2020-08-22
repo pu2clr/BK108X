@@ -34,6 +34,8 @@ void setup()
   Serial.print(STRONG_LOCAL_FM_STATION / 100);
   Serial.print("MHZ\n\n");
   rx.setFM(6400, 10800, STRONG_LOCAL_FM_STATION, 100);
+  delay(10000);
+   rx.setFrequency(10390);
  
   Serial.println("\nFinish!***********");  
   
