@@ -607,21 +607,6 @@ uint16_t BK108X::getRealFrequency()
     }  
 }
 
-/**
- * @ingroup GA03
- * @brief Seek function
- * @details Seeks a station up or down.
- * @details Seek begins at the current channel, and goes in the direction specified with the SEEKUP bit. Seek operation stops when a channel is qualified as valid according to the seek parameters, the entire band has been searched (SKMODE = 0), or the upper or lower band limit has been reached (SKMODE = 1).
- * @details The STC bit is set high when the seek operation completes and/or the SF/BL bit is set high if the seek operation was unable to find a channel qualified as valid according to the seek parameters. The STC and SF/BL bits must be set low by setting the SEEK bit low before the next seek or tune may begin.
- * @details A seek operation may be aborted by setting SEEK = 0.
- * 
- * @param seek_mode  Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit.
- * @param direction  Seek Direction; 0 = Seek down (default); 1 = Seek up.
- */
-void BK108X::seek(uint8_t seek_mode, uint8_t direction)
-{
-
-}
 
 /**
  * @ingroup GA03
@@ -647,7 +632,7 @@ void BK108X::seek(uint8_t seek_mode, uint8_t direction)
  * void loop() {
  *  .
  *  .
- *      rx.seek(bk_SEEK_WRAP, bk_SEEK_UP, showFrequency); // Seek Up
+ *      rx.seek(BK_SEEK_WRAP, BK_SEEK_UP, showFrequency); // Seek Up
  *  .
  *  .
  * }
@@ -658,7 +643,31 @@ void BK108X::seek(uint8_t seek_mode, uint8_t direction)
  */
 void BK108X::seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)())
 {
+    long max_time = millis();
+    do
+    {
+        reg02->refined.SKMODE = seek_mode;
+        reg02->refined.SEEKUP = direction;
+        reg02->refined.SEEK = 1;
+        reg03->refined.TUNE = 1;
+        setRegister(REG02, reg02->raw);
+        setRegister(REG03, reg03->raw);
 
+        delay(40);
+        if (showFunc != NULL)
+        {
+            this->currentFrequency = getRealFrequency();
+            showFunc();                                    
+        }
+        getRegister(REG0A);
+    } while ( reg0a->refined.STC && (millis() - max_time) < MAX_SEEK_TIME);
+
+    reg02->refined.SEEK = 0;
+    reg03->refined.TUNE = 0;
+    setRegister(REG02, reg02->raw);
+    setRegister(REG03, reg03->raw);
+
+    this->currentFrequency = getRealFrequency();
 }
 
 /**
@@ -668,6 +677,7 @@ void BK108X::seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)())
  */
 void BK108X::setSeekThreshold(uint8_t value)
 {
+
 
 }
 

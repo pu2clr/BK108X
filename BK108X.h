@@ -20,9 +20,9 @@
 
 #define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscilator becomes active
 
-#define I2C_DEVICE_ADDR 0x80         
+#define I2C_DEVICE_ADDR 0x80
 
-
+#define MAX_SEEK_TIME 3000 // Maximum time have to be a seeking process (in ms).
 
 #define OSCILLATOR_TYPE_CRYSTAL 1 // Crystal
 #define OSCILLATOR_TYPE_REFCLK 0  // Reference clock
@@ -891,8 +891,7 @@ public:
     uint16_t getRealFrequency();
     uint16_t getRealChannel();
     void setChannel(uint16_t channel);
-    void seek(uint8_t seek_mode, uint8_t direction);
-    void seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)());
+    void seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL);
     void setSeekThreshold(uint8_t value);
 
     void setBand(uint8_t band = 1);
