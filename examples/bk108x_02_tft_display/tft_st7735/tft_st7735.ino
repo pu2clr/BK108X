@@ -94,7 +94,6 @@ char oldVolume[15];
 char oldStereo[15];
 char oldBandName[10];
 
-
 bool bSt = true;
 bool bShow = false;
 
@@ -105,8 +104,6 @@ long pollin_elapsed = millis();
 volatile int encoderCount = 0;
 
 uint16_t currentFrequency;
-
-
 
 typedef struct
 {
