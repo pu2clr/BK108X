@@ -47,6 +47,9 @@
 #define MODE_FM  0
 #define MODE_AM  1
 
+#define DE_EMPHASIS_75 0
+#define DE_EMPHASIS_50 1
+
 #define REG00 0x00
 #define REG01 0x01
 #define REG02 0x02
