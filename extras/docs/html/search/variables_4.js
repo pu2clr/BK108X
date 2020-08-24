@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['maxdelayaftarcrystalon_387',['maxDelayAftarCrystalOn',['../group___g_a01.html#aa4937fcebe3dc30474a903c3aa02a67b',1,'BK108X']]],
-  ['maximumfrequency_388',['maximumFrequency',['../group___g_a01.html#a1e99e80f89544a23a58b2584570b50b9',1,'BK108X']]],
-  ['minimumfrequency_389',['minimumFrequency',['../group___g_a01.html#ad0d12ff6d8f2b1980edf1825d68a0a67',1,'BK108X']]]
+  ['group0_428',['group0',['../group___g_a01.html#af4c2aef0f53a411edf117bece827e3d7',1,'bk_rds_blockb']]],
+  ['group2_429',['group2',['../group___g_a01.html#adb869e4dfeb7e0537f32990ee4f90614',1,'bk_rds_blockb']]]
 ];

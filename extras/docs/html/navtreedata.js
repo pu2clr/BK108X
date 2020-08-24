@@ -24,25 +24,26 @@ var NAVTREE =
 [
   [ "PU2CLR BK108X Arduino Library", "index.html", [
     [ "BK108X Arduino Library implementation", "index.html", null ],
+    [ "Your support is important.", "md__b_k108_x__c_o_n_t_r_i_b_u_t_i_n_g.html", null ],
     [ "PU2CLR BK108X Arduino Library", "md__b_k108_x__r_e_a_d_m_e.html", [
-      [ "Contents", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md1", null ],
-      [ "Preface", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md2", [
-        [ "See also", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md3", null ]
+      [ "Contents", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md2", null ],
+      [ "Preface", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md3", [
+        [ "See also", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md4", null ]
       ] ],
-      [ "MIT License", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md4", null ],
-      [ "Thanks", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md5", null ],
-      [ "Your support is important", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md6", null ],
-      [ "BK1086/88 features", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md7", [
-        [ "Main features", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md8", null ],
-        [ "Useful informarion", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md9", null ]
+      [ "MIT License", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md5", null ],
+      [ "Thanks", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md6", null ],
+      [ "Your support is important", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md7", null ],
+      [ "BK1086/88 features", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md8", [
+        [ "Main features", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md9", null ],
+        [ "Useful informarion", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md10", null ]
       ] ],
-      [ "Library Installation", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md10", null ],
-      [ "Functional Block Diagram", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md11", null ],
-      [ "BK1086/88E TSSOP20  pinout", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md12", null ],
-      [ "Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md13", [
-        [ "BEKEN Typical Application Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md14", null ]
+      [ "Library Installation", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md11", null ],
+      [ "Functional Block Diagram", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md12", null ],
+      [ "BK1086/88E TSSOP20  pinout", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md13", null ],
+      [ "Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md14", [
+        [ "BEKEN Typical Application Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md15", null ]
       ] ],
-      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md15", null ]
+      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md16", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -59,6 +60,8 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
@@ -69,8 +72,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_b_k108_x_8cpp.html",
-"group___g_a01.html#abed44166b8c3d82c0c44fb317d3b650a",
-"group___g_a04.html#gade944541df0205f7a7bb6335ae25c211"
+"group___g_a01.html#ab93fd5f964344aadbe614b1b076b8c9b",
+"group___g_a04.html#gaa45a715a465a77143dc7d300d6a3192f"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['oscillator_5ftype_5fcrystal_143',['OSCILLATOR_TYPE_CRYSTAL',['../_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2',1,'BK108X.h']]],
-  ['oscillator_5ftype_5frefclk_144',['OSCILLATOR_TYPE_REFCLK',['../_b_k108_x_8h.html#ad079e38ccae2f64aa341332e2ccb8b8e',1,'BK108X.h']]],
-  ['oscillatortype_145',['oscillatorType',['../group___g_a01.html#a50a9ac975ce0539aed15b122db83d36b',1,'BK108X']]]
+  ['liability_153',['LIABILITY',['../license_8txt.html#ae99750133f5a506a38868d5f2722a738',1,'license.txt']]],
+  ['license_2etxt_154',['license.txt',['../license_8txt.html',1,'']]]
 ];

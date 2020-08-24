@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('md__b_k108_x__r_e_a_d_m_e.html',''); i
 <p>This library can be freely distributed using the MIT Free Software model.</p>
 <p><a href="https://pu2clr.github.io/bk108X/#mit-license">Copyright (c) 2019 Ricardo Lima Caratti</a>.</p>
 <p>Contact: <a href="#" onclick="location.href='mai'+'lto:'+'__p'+'u2'+'clr'+'@g'+'mai'+'l.'+'com'+'__'; return false;">__pu2<span style="display: none;">.nosp@m.</span>clr@<span style="display: none;">.nosp@m.</span>gmail<span style="display: none;">.nosp@m.</span>.com<span style="display: none;">.nosp@m.</span>__</a>.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Contents</h1>
 <ol type="1">
 <li><a href="https://pu2clr.github.io/BK108X#preface">Preface</a></li>
@@ -107,11 +107,11 @@ Contents</h1>
 <li><a href="https://github.com/pu2clr/BK108X/tree/master/examples">Sketch examples</a></li>
 <li><a href="https://pu2clr.github.io/BK108X#references">References</a></li>
 </ol>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Preface</h1>
 <p>At the end of 2019 I started some Arduino library development projects to control DSP receivers. The first implementation was the Arduino library for the SI4844 and then for the ICx Si473X family, all manufactured by Silicon Labs. Given the acceptance and enthusiasm of various radio listeners, experimenters and hobbyists, around the use of the implementations of these libraries, I decided to expand the number of Arduino libraries for the Arduino IDE platform and also developed the libraries for the AKC695X, KT0915, SI470X and RDA5807. When I started reading about the BK1086/88 Datasheet I notice it is also very apropriated for radio listener and hobbyists. Unlike the other devices previously mentioned, I found very few documentation about it at first. So, it encouraged me to build as much information as possible about this BEKEN family of devices. I requested some information about the BK1086/88E from BEKEN Corporation and I was promptly answered. I would like to thank the BEKEN Corporation fot its attention.</p>
 <p>This library is based on the BEKEN manual “BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER REV1.3” provided by BEKEN Corporation and experiments made by me during the development process.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 See also</h2>
 <ol type="1">
 <li><a href="https://pu2clr.github.io/SI4735/">PU2CLR Si4735 Library for Arduino</a>. This library was built based on “Si47XX PROGRAMMING GUIDE; AN332” and it has support to FM, AM and SSB modes (LW, MW and SW). It also can be used on all members of the SI47XX family respecting, of course, the features available for each IC version;</li>
@@ -121,7 +121,7 @@ See also</h2>
 <li><a href="https://pu2clr.github.io/RDA5807/">PU2CLR RDA5807 Arduino Library</a>. The RDA5807 is a FM DSP integrated circuit receiver (50 to 115MHz) with low noise amplifier support. This device requires very few external components if compared with other similar devices. It also supports RDS/RBDS functionalities, direct auto gain control (AGC) and real time adaptive noise cancellation function.</li>
 <li><a href="https://pu2clr.github.io/SI470X/">PU2CLR SI470X Arduino Library</a>. It is a Silicon Labs device family that integrates the complete functionalities for FM receivers, including RDS (Si4703).</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 MIT License</h1>
 <p>Copyright (c) 2019 Ricardo Lima Caratti</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
@@ -129,15 +129,15 @@ MIT License</h1>
 <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE ARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 <p><br  />
 </p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Thanks</h1>
 <p>Mr. Peng Roy, from BEKEN Corporation, for providing me with the technical information on the BK1086/88.</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Your support is important</h1>
 <p>If you have suggestions to improve this project, please let me know.</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 BK1086/88 features</h1>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Main features</h2>
 <ol type="1">
 <li>Worldwide 64~108 MHz FM band support;</li>
@@ -155,7 +155,7 @@ Main features</h2>
 <li>Wide range reference clock support;</li>
 <li>32.768KHz crystal oscillator.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Useful informarion</h2>
 <ul>
 <li>BK1086/88 can be controlled by an MCU through 2-wire I2C mode.</li>
@@ -164,14 +164,14 @@ Useful informarion</h2>
 <li>If the control mode is I2C mode, SEN pin can be connected high or left floating. MODE pin can Ground directly.</li>
 <li>There is already a 40K pull-up resistor inside the chip for the SCLK and SDIO. So, in general, no external pull-up resistor is needed.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Library Installation</h1>
 <p><b>TODO</b></p>
-<h1><a class="anchor" id="autotoc_md11"></a>
-Functional Block Diagram</h1>
-<p><img src="https://github.com/pu2clr/BK108X/blob/master/extras/images/bk1088_functional_block_diagram.png" alt="BK1086/88E Functional Description" class="inline"/></p>
-<p><b>Source: "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 3"</b></p>
 <h1><a class="anchor" id="autotoc_md12"></a>
+Functional Block Diagram</h1>
+<p><img src="extras/images/bk1088_functional_block_diagram.png" alt="BK1086/88E Functional Description" class="inline"/></p>
+<p><b>Source: "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 3"</b></p>
+<h1><a class="anchor" id="autotoc_md13"></a>
 BK1086/88E TSSOP20  pinout</h1>
 <p><img src="extras/images/BK1088_pinout.png" alt="BK1086/88E PINOUT" class="inline"/></p>
 <p><b>Source: "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 23"</b></p>
@@ -219,9 +219,9 @@ BK1086/88E TSSOP20  pinout</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">20 </td><td class="markdownTableBodyNone">LIN1 </td><td class="markdownTableBodyNone">Line in input (Left channel1)  </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Schematic</h1>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 BEKEN Typical Application Schematic</h2>
 <p>The image below was extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 25". It is a basic circuit suggested by BEKEN.</p>
 <p><img src="extras/images/basic_circuit_from_beken.png" alt="BEKEN Typical Application Schematic" class="inline"/></p>
@@ -229,7 +229,7 @@ BEKEN Typical Application Schematic</h2>
 </p>
 <p>The main porpuse of this circuit is to test the <a class="el" href="group___g_a01.html#class_b_k108_x" title="KT0915 Class.">BK108X</a> Arduino Library. However, you may be surprised at the performance of this simple circuit due to the high features of the BK1086/88 device. Also, it is importante to say that this receiver does not intend to be a real radio for exigent listener. However, it is possible to start with it and then, if you wish, you can include some devices to the circuit to improve, for example, its sensibility, output sound quality beyond other desired features.</p>
 <p><img src="extras/images/basic_schematic.png" alt="Basic Schematic" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 References</h1>
 <ul>
 <li>BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev 1.3 (Copyright©2012 by Beken Corporation);</li>

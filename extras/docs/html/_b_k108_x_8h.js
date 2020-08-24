@@ -2,6 +2,7 @@ var _b_k108_x_8h =
 [
     [ "MAX_DELAY_AFTER_OSCILLATOR", "_b_k108_x_8h.html#afb81dd661d531fa5c5422549fab7588f", null ],
     [ "I2C_DEVICE_ADDR", "_b_k108_x_8h.html#af1732013854882f94b02e77b8a6106ec", null ],
+    [ "MAX_SEEK_TIME", "_b_k108_x_8h.html#acc98e8d3badddd21bc528451bb718f82", null ],
     [ "OSCILLATOR_TYPE_CRYSTAL", "_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2", null ],
     [ "OSCILLATOR_TYPE_REFCLK", "_b_k108_x_8h.html#ad079e38ccae2f64aa341332e2ccb8b8e", null ],
     [ "RDS_STANDARD", "_b_k108_x_8h.html#a128f40c85c30594203fd937611ba5f2c", null ],
@@ -20,6 +21,8 @@ var _b_k108_x_8h =
     [ "AM_M22", "_b_k108_x_8h.html#af39fe24f22250fa188526968cb9ae75a", null ],
     [ "MODE_FM", "_b_k108_x_8h.html#a46befaec21d3091b4530cdf8a6f93c55", null ],
     [ "MODE_AM", "_b_k108_x_8h.html#a27aa705095a6b6dad7db24441132f9bd", null ],
+    [ "DE_EMPHASIS_75", "_b_k108_x_8h.html#a4be511c16b6bb86f88c9993438840d7f", null ],
+    [ "DE_EMPHASIS_50", "_b_k108_x_8h.html#a620fa26e90cf0ac0645dc2ec73cf42f9", null ],
     [ "REG00", "_b_k108_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4", null ],
     [ "REG01", "_b_k108_x_8h.html#afc04faecdab9e0d1751466b6c53fdaf1", null ],
     [ "REG02", "_b_k108_x_8h.html#a09a3d3fef9f53f0dbe1dd0072f02c1d4", null ],

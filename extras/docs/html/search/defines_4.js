@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['max_5fdelay_5fafter_5foscillator_414',['MAX_DELAY_AFTER_OSCILLATOR',['../_b_k108_x_8h.html#afb81dd661d531fa5c5422549fab7588f',1,'BK108X.h']]],
-  ['mode_5fam_415',['MODE_AM',['../_b_k108_x_8h.html#a27aa705095a6b6dad7db24441132f9bd',1,'BK108X.h']]],
-  ['mode_5ffm_416',['MODE_FM',['../_b_k108_x_8h.html#a46befaec21d3091b4530cdf8a6f93c55',1,'BK108X.h']]]
+  ['i2c_5fdevice_5faddr_471',['I2C_DEVICE_ADDR',['../_b_k108_x_8h.html#af1732013854882f94b02e77b8a6106ec',1,'BK108X.h']]]
 ];
