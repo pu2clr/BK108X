@@ -608,10 +608,12 @@ uint16_t BK108X::getRealFrequency()
 }
 
 
+
+
+
 /**
- * @todo Needs to check better criteria
  * @ingroup GA03
- * @brief Seek function
+ * @brief Seeks a station via Software 
  * @details Seeks a station up or down.
  * @details Seek up or down a station and call a function defined by the user to show the frequency during the seek process. 
  * @details Seek begins at the current channel, and goes in the direction specified with the SEEKUP bit. Seek operation stops when a channel is qualified as valid according to the seek parameters, the entire band has been searched (SKMODE = 0), or the upper or lower band limit has been reached (SKMODE = 1).
@@ -642,7 +644,7 @@ uint16_t BK108X::getRealFrequency()
  * @param direction  Seek Direction; 0 = Seek down (default); 1 = Seek up.
  * @param showFunc  function that you have to implement to show the frequency during the seeking process. Set NULL if you do not want to show the progress. 
  */
-void BK108X::seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)())
+void BK108X::seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)())
 {
     long max_time = millis();
 
@@ -678,10 +680,21 @@ void BK108X::seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)())
 
 /**
  * @ingroup GA03
+ * @brief Seeks a station via hardware functionality 
+ * 
+ * @param seek_mode  Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit.
+ * @param direction  Seek Direction; 0 = Seek down (default); 1 = Seek up.
+ */
+void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction) {
+
+}
+
+    /**
+ * @ingroup GA03
  * @brief Sets RSSI Seek Threshold
  * @param  value between 0 and 127
  */
-void BK108X::setSeekThreshold(uint8_t value)
+    void BK108X::setSeekThreshold(uint8_t value)
 {
 
 

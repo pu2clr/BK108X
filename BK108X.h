@@ -892,7 +892,8 @@ public:
     uint16_t getRealFrequency();
     uint16_t getRealChannel();
     void setChannel(uint16_t channel);
-    void seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL);
+    void seekHardware(uint8_t seek_mode, uint8_t direction);
+    void seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL);
     void setSeekThreshold(uint8_t value);
 
     void setBand(uint8_t band = 1);

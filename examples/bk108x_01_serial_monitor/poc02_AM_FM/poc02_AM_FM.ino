@@ -127,10 +127,10 @@ void loop()
       radio.setFrequencyDown();
       break;
     case 'S':
-      radio.seek(0,1,showStatus);
+      radio.seekHardware(0,1);
       break;
     case 's':
-      radio.seek(0,0,showStatus);
+      radio.seekHardware(0,0);
       break;
     case '0':
       showStatus();
