@@ -36,17 +36,14 @@
 #define SDA_PIN A4
 #define CLK_PIN A5
 
-uint16_t currentFM = 10390;
-uint16_t currentAM = 620;
 
-uint16_t currentFrequency;
+uint16_t currentFrequency =7200;
 
 
 long elapsedTime = millis();
 
 uint16_t rssi, lastRssi;
 uint16_t snr, lastSnr;
-uint8_t  stereo, lastStereo;
 
 BK108X radio; 
 
@@ -58,14 +55,12 @@ void setup() {
   radio.setup(SDA_PIN, CLK_PIN);
   radio.setVolume(20);
 
-  currentFrequency = currentFM;
-  radio.setFM(8400, 10800, currentFrequency, 10);
+  radio.setAM(7200, 7450, currentFrequency, 5);
   showHelp();
   showStatus();
 
   lastRssi = rssi = radio.getRssi();
   lastSnr = snr = radio.getSnr();
-  lastStereo = stereo = radio.isStereo();
 }
 
 
@@ -73,7 +68,7 @@ void showHelp()
 {
   Serial.print("\nCommands\n");
   Serial.println("==================================================");
-  Serial.println("Type F to FM; A to MW");
+  Serial.println("Type 1 to SW1; 2 to SW2; 3 to SW3; 4 to SW4 and 5 to SW5");
   Serial.println("Type U to increase and D to decrease the frequency");
   Serial.println("Type S or s to seek station Up or Down");
   Serial.println("Type + or - to volume Up or Down");
@@ -91,21 +86,16 @@ void showStatus()
 
   currentFrequency = radio.getFrequency();
 
-  freq = (radio.getCurrentMode() == MODE_FM) ? currentFrequency / 100.0 : currentFrequency / 1.0;
+  freq =  currentFrequency / 1.0;
 
   Serial.print("\nYou are tuned on ");
   Serial.print(freq);
-  Serial.print("MHz | RSSI: ");
+  Serial.print("KHz | RSSI: ");
   Serial.print(rssi);
   Serial.print("| SNR: ");
   Serial.print(snr);  
   Serial.print("| V - Volume: ");
   Serial.print(radio.getVolume());
-  Serial.print(" | Stereo: ");
-  Serial.print(stereo);
-  Serial.print(" | RDS: ");
-  Serial.print(radio.getRdsReady());
-
   
 }
 
@@ -123,18 +113,21 @@ void loop()
     case '-':
       radio.setVolumeDown();
       break;
-    case 'a':
-    case 'A':
-      currentFM = currentFrequency;
-      radio.setAM(550, 1710, currentAM, 10);
+    case '1':
+      radio.setAM(7200, 7450, 7305, 5);
       break;
-    case 'f':
-    case 'F':
-      currentAM = currentFrequency;
-      radio.setFM(8700, 10800, currentFM, 10);
-      radio.setMono(false);
-      radio.setRds(true);
-      break;
+    case '2':
+      radio.setAM(9300, 9800, 9600, 5);
+      break;    
+    case '3':
+      radio.setAM(11600, 12000, 11940, 5);
+      break;   
+    case '4':
+      radio.setAM(13500, 13900, 13600, 5);
+      break;    
+    case '5':
+      radio.setAM(15100, 15800, 15300, 5);
+      break;              
     case 'U':
     case 'u':
       radio.setFrequencyUp();
@@ -164,11 +157,10 @@ void loop()
   if ( (millis() - elapsedTime) > 2000) {
     rssi = radio.getRssi(); 
     snr = radio.getSnr();
-    stereo = radio.isStereo();
     
-    if ( (lastRssi != rssi) || (lastSnr != snr) || (lastStereo != stereo) ) {
+    if ( (lastRssi != rssi) || (lastSnr != snr) ) {
       showStatus();
-      lastRssi = rssi; lastSnr = snr; lastStereo = stereo;
+      lastRssi = rssi; lastSnr = snr; 
     }
     
     elapsedTime = millis();

@@ -270,10 +270,10 @@ uint16_t BK108X::readRegister(uint8_t reg) {
  */
 uint16_t BK108X::getRegister(uint8_t reg)
 {
-    word16_to_bytes result;
-    result.raw = this->readRegister(reg);
-    shadowRegisters[reg] = result.raw; // Syncs with the shadowRegisters
-    return result.raw;  // Optional 
+    uint16_t reg_content;
+    reg_content = this->readRegister(reg);
+    shadowRegisters[reg] = reg_content; // Syncs with the shadowRegisters
+    return reg_content;                 // Optional
 }
 
 /**
@@ -316,12 +316,31 @@ uint16_t BK108X::getChipId()
 
 /**
  * @ingroup GA03
+ * @brief  Gets the current status (register 0x0A) content
+ * @details You can use this function when you need to get more than one status attribute at once.
+ * @details See example code below.
+ * @code 
+ * bk_reg0a status = getStatus();
+ * 
+ * Serial.println(status.refined.ST);   // Stereo Signal Received Indicator 
+ * Serial.println(status.refined.RSSI); // Current RSSI value 
+ * Serial.println(status.refined.RDSR); // RDS Ready Indicator
+ * 
+ * @endcode
+ * 
+ * @see getRSSI
+ * @see BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17. 
+ * 
  * @return  bk_reg0a data type status register (Register 0Ah. Status2)
  */
 bk_reg0a BK108X::getStatus()
 {
-    getRegister(REG0A); // update the reg0a shadow register
+    bk_reg0a tmp;
+    tmp.raw = getRegister(REG0A); // update the reg0a shadow register
+    return tmp;
 }
+
+
 
 /**
  * @ingroup GA03
@@ -363,26 +382,62 @@ void BK108X::reset()
 void BK108X::powerUp()
 {
 
-    reg02->raw = 0;                 // Sets to 0 all attributes of the register 0x02 (Power Configuration)
-    reg02->refined.DSMUTE = 1;      // Soft Mute disabled
-    reg02->refined.STEREO = 1;      // Force stereo
+    // Starts the mains register with default values.
+
+    reg02->raw = 0x0280;            // Sets to 0 all attributes of the register 0x02 (Power Configuration)
+    reg02->refined.DISABLE = 0;      // Force stereo
     reg02->refined.ENABLE = 1;      // Power the receiver UP (DISABLE has to be 0)
     setRegister(REG02,reg02->raw);  // Stores the register 0x02
 
-    setRegister(REG03, 0x00);       // Sets to 0 all attributes of the register 0x03 (Channel)
-    setRegister(REG04, 0x00);       // Sets to 0 all attributes of the register 0x04 (System Configuration1)
+    setRegister(REG03, 0x00);   // Sets to 0 all attributes of the register 0x03 (Channel)
+    setRegister(REG04, 0x60D4);     // Sets to 0 all attributes of the register 0x04 (System Configuration1)
 
-
+    /*
     this->currentVolume = reg05->refined.VOLUME = 15;
-    setRegister(REG05, reg05->raw); //  System Configuration2
+    reg05->refined.SEEKTH = 64; // RSSI Seek Threshold
 
+    setRegister(REG05, reg05->raw); //  System Configuration2
+    */
+
+    setRegister(REG05, 0x37CF);
+    setRegister(REG06, 0x086F);
+    /*
     reg06->raw = 0;
     reg06->refined.CLKSEL = 1;
-    reg06->refined.SKSNR = 0x06;
-    reg06->refined.SKCNT = 0x0F;
+    reg06->refined.SKSNR = 64; // SNR Seek Threshold
+    reg06->refined.SKCNT = 15;
     setRegister(REG06, reg06->raw);
+    */
 
-    delay(100);
+    setRegister(REG07, 0x0101);
+    setRegister(REG08, 0xAC90);
+    setRegister(REG09, 0x00000);
+    setRegister(REG0A, 0x00000);
+    setRegister(REG0B, 0x00000);
+    setRegister(REG0C, 0x00000);
+    setRegister(REG0D, 0x00000);
+    setRegister(REG0E, 0x00000);
+    setRegister(REG0F, 0x00000);
+
+    setRegister(REG10, 0x7B11);
+    setRegister(REG11, 0x004A);
+    setRegister(REG12, 0x4000);
+    setRegister(REG13, 0x3E00);
+    setRegister(REG14, 0xC29A);
+    setRegister(REG15, 0x79F8);
+    setRegister(REG16, 0x4012);
+
+    setRegister(REG17, 0x0040);
+    setRegister(REG18, 0x341C);
+    setRegister(REG19, 0x0080);
+    setRegister(REG1A, 0x0000);
+    setRegister(REG1B, 0x4CA2);
+
+    setRegister(REG1C, 0x8820);
+    setRegister(REG1D, 0x0200);
+
+
+    delay(250);
 }
 
 /**
@@ -430,17 +485,15 @@ void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInter
  * @param minimum_frequency  minimum frequency for the band
  * @param maximum_frequency  maximum frequency for the band
  * @param default_frequency  default freuency
- * @param step  increment and decrement frequency step
+ * @param step  increment and decrement frequency step in KHz (default 10 * 10KHz)
  */
 void BK108X::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step)
 {
-
     this->currentStep = step;
     this->currentFrequency = default_frequency;
     this->minimumFrequency = minimum_frequency;
     this->maximumFrequency = maximum_frequency;
     this->currentMode = MODE_FM;
-
 
     reg07->refined.MODE = MODE_FM;
     setRegister(REG07, reg07->raw);
@@ -532,7 +585,7 @@ void BK108X::setFrequency(uint16_t frequency)
 /**
  * @ingroup GA03
  * @brief Increments the current frequency
- * @details The increment uses the band space as step. See array: uint16_t fmSpace[4] = {20, 10, 5, 1};
+ * @details The increment uses the band space as step. 
  */
 void BK108X::setFrequencyUp()
 {
@@ -609,9 +662,8 @@ uint16_t BK108X::getRealFrequency()
 
 
 
-
-
 /**
+ * @todo it is not working properly
  * @ingroup GA03
  * @brief Seeks a station via Software 
  * @details Seeks a station up or down.
@@ -679,6 +731,7 @@ void BK108X::seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)
 }
 
 /**
+ * @todo It is not working properly. 
  * @ingroup GA03
  * @brief Seeks a station via hardware functionality 
  * 
@@ -687,81 +740,176 @@ void BK108X::seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)
  */
 void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction) {
 
-}
+    char aux[100];
 
-    /**
- * @ingroup GA03
- * @brief Sets RSSI Seek Threshold
- * @param  value between 0 and 127
- */
-    void BK108X::setSeekThreshold(uint8_t value)
-{
+    reg03->refined.TUNE = 0;
+    setRegister(REG03, reg03->raw);
+
+    reg02->refined.SKMODE = seek_mode;
+    reg02->refined.SEEKUP = direction;
+    reg02->refined.SKAFCRL = 1;
 
 
+    do {
+        reg02->refined.SEEK = 1;
+        setRegister(REG02, reg02->raw);
+        delay(40);
+        while (reg0a->refined.STC == 0 )
+        {
+            delay(10);
+            getRegister(REG0A);
+        }
+    } while ( reg0a->refined.SF_BL != 0 );
+
+    reg02->refined.SEEK = 0;
+    setRegister(REG02, reg02->raw);
+    delay(50);
+
+    this->setChannel(this->getRealChannel());
+    this->currentFrequency = getRealFrequency();
 }
 
 /**
  * @ingroup GA03
- * @brief Sets the FM Band  
-
- * 
- * @param band  
+ * @brief Sets RSSI and SNR Seek Threshold
+ * @param  rssiValue between 0 and 127
+ * @param  snrValue between 0 and 127
  */
+void BK108X::setSeekThreshold(uint8_t rssiValue, uint8_t snrValue)
+{
+    reg05->refined.SEEKTH = rssiValue;
+    setRegister(REG05,reg05->raw);
+
+    reg06->refined.SKSNR = snrValue;
+    setRegister(REG06,reg06->raw);
+}
+
+/**
+ * @ingroup GA03
+ * @brief Sets the current band for AM or FM  
+ * @details Configures the band by setting the Register 05h. System Configuration2
+ * 
+ * | Band value |  AM / KHz      |  FM / MHz           | 
+ * | ---------- | -------------- | ------------------- | 
+ * |    0       | LW - 153~279   | FULL - 64~108       |
+ * |    1       | MW - 520~1710  | East Europe 64~76   | 
+ * |    2       | SW - 2.3~21.85 | Japan 76~91         | 
+ * |    3       | MW - 522~1710  | Europe 87~108       | 
+ * 
+ * @see BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 15
+ * @param band  the valid values are 0, 1, 2 and 3. See table above.
+ */ 
+
 void BK108X::setBand(uint8_t band)
 {
+    if (this->currentMode == MODE_AM ) 
+        this->currentAMBand = band; 
+    else
+        this->currentFMBand = band;
 
+    reg05->refined.BAND = band;
+    setRegister(REG05,reg05->raw);
 }
 
 /**
  * @ingroup GA03
- * @brief Sets the FM Space  
+ * @brief Sets the Space channel  for AM or FM
+ * 
+ * | Band value |  AM      | FM        | 
+ * | ---------- | ---------| --------- | 
+ * |    0       |  1 KHz  |   10 KHz   |
+ * |    1       |  5 KKz  |   50 KHz   | 
+ * |    2       |  9 KHz  |  100 KHz   | 
+ * |    3       | 10 KHz  |  200 KHz   | 
+ * 
+ * @see BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 15
+ * @param space valid values 0,1,2 and 3. See table above.
  */
 void BK108X::setSpace(uint8_t space)
 {
+    if (this->currentMode == MODE_AM ) 
+        this->currentAMSpace = space;
+    else 
+        this->currentFMSpace = space;
 
+    reg05->refined.SPACE = space;
+    setRegister(REG05, reg05->raw);
 }
 
 /**
  * @ingroup GA03
- * @brief Gets the Rssi
+ * @brief Gets the current Rssi
  * 
  * @return int 
  */
 int BK108X::getRssi()
 {
+    getRegister(REG0A);
+    return reg0a->refined.RSSI;
+}
 
+/**
+ * @ingroup GA03
+ * @brief Gets the current SNR
+ * 
+ * @return int  The SNR Value.( in dB)
+ */
+int BK108X::getSnr()
+{
+    getRegister(REG09);
+    return reg09->refined.SNR;
 }
 
 /**
  * @ingroup GA03
  * @brief Sets the Softmute true or false
+ * @details Enable or Disable Soft Mute resource.
  * @param value  TRUE or FALSE
  */
 void BK108X::setSoftmute(bool value)
 {
-
+    reg02->refined.DSMUTE = !value;  // Soft mute TRUE/ENABLE means DSMUTE = 0. 
+    setRegister(REG02,reg02->raw);
 }
 
 /**
  * @ingroup GA03
  * @brief Sets Softmute Attack/Recover Rate.
  * 
- * @param value 
+ * Soft mute Attack/Recover 
+ * 
+ * | Value | Description | 
+ * | ----- | ----------- | 
+ * | 0     | fastest |
+ * | 1     | fast    | 
+ * | 2     | slow    | 
+ * | 3     | slowest | 
+ * 
+ * @param value  See table above. 
  */
 void BK108X::setSoftmuteAttack(uint8_t value)
 {
-
+    reg06->refined.SMUTER = value;
+    setRegister(REG06,reg06->raw);
 }
 
 /**
  * @ingroup GA03
- * @brief Sets  Softmute Attenuation..
+ * @brief Sets  Softmute Attenuation.
  * 
- * @param value 
+ * Soft mute Attenuation.
+ * | Value | Description | 
+ * | ----- | ----------- | 
+ * | 0     | fastest |
+ * | 1     | fast    | 
+ * | 2     | slow    | 
+ * | 3     | slowest | 
+ * @param value See table above
  */
 void BK108X::setSoftmuteAttenuation(uint8_t value)
 {
-
+    reg06->refined.SMUTEA = value;
+    setRegister(REG06, reg06->raw);
 }
 
 /**
@@ -778,33 +926,51 @@ void BK108X::setAgc(bool value)
  * @ingroup GA03
  * @brief Sets the Mute true or false
  * 
- * @param value TRUE or FALSE
+ * @param left left channel (TRUE = MUTE/ FALSE = UNMUTE)
+ * @param left right channel (TRUE = MUTE / FALSE = UMUTE)
  */
-void BK108X::setMute(bool value)
+void BK108X::setAudioMute(bool left, bool right)
 {
+    reg02->refined.MUTEL = left;
+    reg02->refined.MUTER = right;
+    setRegister(REG02, reg02->raw);    
+}
 
+/**
+ * @ingroup GA03
+ * @brief Sets the Mute true or false
+ * 
+ * @param value left and right channels (TRUE = MUTE/ FALSE = UNMUTE)
+ */
+void BK108X::setAudioMute(bool value)
+{
+    this->setAudioMute(value,value);
 }
 
 /**
  * @ingroup GA03
  * @brief Sets the Mono true or false (stereo)
- * 
+ * @details if TRUE, force mono; else force stereo
  * @param value TRUE or FALSE
  */
 void BK108X::setMono(bool value)
 {
-
+  reg02->refined.MONO = value;
+  reg02->refined.STEREO = !value;
+  setRegister(REG02,reg02->raw);  
 }
 
 /**
  * @ingroup GA03
  * @brief Checks stereo / mono status
  * 
+ * @see getStatus
  * @param value TRUE if stereo
  */
 bool BK108X::isStereo()
 {
-
+    getRegister(REG0A);
+    return reg0a->refined.ST;
 }
 
 /**
@@ -862,15 +1028,7 @@ void BK108X::setVolumeDown()
     }
 }
 
-/**
- * @ingroup GA03
- * @brief Sets Extended Volume Range.
- * @param value false = disabled (default); true = enabled.
- */
-void BK108X::setExtendedVolumeRange(bool value)
-{
 
-}
 
 
 
@@ -883,7 +1041,8 @@ void BK108X::setExtendedVolumeRange(bool value)
  */
 void BK108X::setFmDeemphasis(uint8_t de)
 {
-
+    reg04->refined.DE = de;
+    setRegister(REG04,reg04->raw);
 }
 
 /** 
@@ -923,6 +1082,8 @@ void BK108X::setRdsMode(uint8_t rds_mode)
  */
 void BK108X::setRds(bool value)
 {
+    reg04->refined.RDSEN = value;
+    setRegister(REG04,reg04->raw);
 
 }
 
@@ -937,7 +1098,8 @@ void BK108X::setRds(bool value)
  */
 bool BK108X::getRdsReady()
 {
-
+    getRegister(REG0A);
+    return reg0a->refined.RDSR;
 };
 
 /**

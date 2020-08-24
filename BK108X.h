@@ -323,8 +323,8 @@ typedef union
 {
     struct
     {
-        uint16_t SNR; //!< The AFC value.
-        uint16_t AFC; //!< unit AM 0.15k Hz, FM 0.6k Hz
+        uint16_t SNR:7; //!< The AFC value.
+        uint16_t AFC:9; //!< unit AM 0.15k Hz, FM 0.6k Hz
     } refined;
     uint16_t raw;
 } bk_reg09;
@@ -884,6 +884,7 @@ public:
      */
     inline uint8_t getCurrentMode() { return this->currentMode; };
 
+
     void setFrequency(uint16_t frequency);
     void setFrequencyUp();
     void setFrequencyDown();
@@ -894,11 +895,12 @@ public:
     void setChannel(uint16_t channel);
     void seekHardware(uint8_t seek_mode, uint8_t direction);
     void seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL);
-    void setSeekThreshold(uint8_t value);
+    void setSeekThreshold(uint8_t rssiValue, uint8_t snrValue);
 
     void setBand(uint8_t band = 1);
     void setSpace(uint8_t space = 0);
     int getRssi();
+    int getSnr();
 
     void setSoftmute(bool value);
     void setSoftmuteAttack(uint8_t value);
@@ -909,12 +911,12 @@ public:
 
     bool isStereo();
 
-    void setMute(bool value);
+    void setAudioMute(bool left, bool right);
+    void setAudioMute(bool value);
     void setVolume(uint8_t value);
     uint8_t getVolume();
     void setVolumeUp();
     void setVolumeDown();
-    void setExtendedVolumeRange(bool value);
 
     void setFmDeemphasis(uint8_t de);
 
