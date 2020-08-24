@@ -381,15 +381,14 @@ void BK108X::reset()
  */
 void BK108X::powerUp()
 {
-
-    // Starts the mains register with default values.
+    // Starts the mains register with default values suggested by BEKEN.
 
     reg02->raw = 0x0280;            // Sets to 0 all attributes of the register 0x02 (Power Configuration)
-    reg02->refined.DISABLE = 0;      // Force stereo
+    reg02->refined.DISABLE = 0;     // Force stereo
     reg02->refined.ENABLE = 1;      // Power the receiver UP (DISABLE has to be 0)
     setRegister(REG02,reg02->raw);  // Stores the register 0x02
 
-    setRegister(REG03, 0x00);   // Sets to 0 all attributes of the register 0x03 (Channel)
+    setRegister(REG03, 0x0000);     // Sets to 0 all attributes of the register 0x03 (Channel)
     setRegister(REG04, 0x60D4);     // Sets to 0 all attributes of the register 0x04 (System Configuration1)
 
     /*
@@ -408,7 +407,7 @@ void BK108X::powerUp()
     reg06->refined.SKCNT = 15;
     setRegister(REG06, reg06->raw);
     */
-
+   /*
     setRegister(REG07, 0x0101);
     setRegister(REG08, 0xAC90);
     setRegister(REG09, 0x00000);
@@ -435,7 +434,7 @@ void BK108X::powerUp()
 
     setRegister(REG1C, 0x8820);
     setRegister(REG1D, 0x0200);
-
+    */
 
     delay(250);
 }
