@@ -587,7 +587,7 @@ uint16_t BK108X::getChannel()
  */
 uint16_t BK108X::getRealChannel()
 {
-    
+    getRegister(REG0B);
     return reg0b->refined.READCHAN;
 }
 
@@ -609,6 +609,7 @@ uint16_t BK108X::getRealFrequency()
 
 
 /**
+ * @todo Needs to check better criteria
  * @ingroup GA03
  * @brief Seek function
  * @details Seeks a station up or down.
@@ -644,23 +645,28 @@ uint16_t BK108X::getRealFrequency()
 void BK108X::seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)())
 {
     long max_time = millis();
+
+    // reg06->refined.SKSNR = 9;
+    // setRegister(REG06,reg06->raw);
+
+    reg03->refined.TUNE = 0;
+    setRegister(REG03, reg03->raw);
+    delay(50);
+
     do
     {
         reg02->refined.SKMODE = seek_mode;
         reg02->refined.SEEKUP = direction;
         reg02->refined.SEEK = 1;
-        reg03->refined.TUNE = 1;
         setRegister(REG02, reg02->raw);
-        setRegister(REG03, reg03->raw);
-
-        delay(40);
+        delay(50);
         if (showFunc != NULL)
         {
             this->currentFrequency = getRealFrequency();
             showFunc();                                    
         }
         getRegister(REG0A);
-    } while ( reg0a->refined.STC && (millis() - max_time) < MAX_SEEK_TIME);
+    } while ( (!reg0a->refined.STC && reg0a->refined.SF_BL)  && (millis() - max_time) < MAX_SEEK_TIME);
 
     reg02->refined.SEEK = 0;
     reg03->refined.TUNE = 0;

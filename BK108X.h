@@ -339,7 +339,8 @@ typedef union
     {
         uint8_t RSSI : 7;   //!< RSSI (Received Signal Strength Indicator).
         uint8_t ST : 1;     //!< Stereo Indicator; 0 = Mono; 1 = Stereo.
-        uint8_t CNTIMP : 4; //!< Impulse Number
+        uint8_t STEN : 1;   //!< Impulse Number
+        uint8_t DUMMY: 3; 
         uint8_t AFCRL : 1;  //!< AFC Rail; 0 = AFC not railed; 1 = AFC railed.
         uint8_t SF_BL : 1;  //!< Seek Fail/Band Limit; 0 = Seek successful; 1 = Seek failure/Band limit reached.
         uint8_t STC : 1;    //!< Seek/Tune Complete; 0 = Not complete (default); 1 = Complete.

@@ -40,7 +40,7 @@ uint16_t currentFM = 10390;
 uint16_t currentAM = 620;
 uint16_t currentSW = 7205; 
 
-uint32_t currentFrequency;
+uint16_t currentFrequency;
 
 BK108X radio; 
 
@@ -127,10 +127,10 @@ void loop()
       radio.setFrequencyDown();
       break;
     case 'S':
-      // radio.seekStation();
+      radio.seek(0,1,showStatus);
       break;
     case 's':
-      // radio.seekStation(0);
+      radio.seek(0,0,showStatus);
       break;
     case '0':
       showStatus();
