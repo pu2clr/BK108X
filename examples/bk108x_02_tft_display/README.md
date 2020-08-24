@@ -1,6 +1,6 @@
 # Examples
 
-It is a receiver (AM-LW/MW/SW and FM) based on BK1088. This sketch uses an Arduino Pro Mini, 3.3V (8MZ) with a SPI TFT ST7735 1.8. 
+It is a receiver (AM-LW/MW/SW and FM) based on BK1088E. This sketch uses an Arduino Pro Mini, 3.3V (8MZ) with a SPI TFT ST7735 1.8. 
 
 ## Wire up on Arduino UNO, Pro mini
 
