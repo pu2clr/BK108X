@@ -88,14 +88,22 @@ void showStatus()
 {
 
   float freq;
+  char  *unt;
 
   currentFrequency = radio.getFrequency();
 
-  freq = (radio.getCurrentMode() == MODE_FM) ? currentFrequency / 100.0 : currentFrequency / 1.0;
+  if ( radio.getCurrentMode() == MODE_FM ) {
+    freq = currentFrequency / 100.0;
+    unt = "MHz";
+  } else {
+    freq = currentFrequency / 1.0;
+    unt = "KHz"; 
+  }
 
   Serial.print("\nYou are tuned on ");
   Serial.print(freq);
-  Serial.print("MHz | RSSI: ");
+  Serial.print(unt);
+  Serial.print(" | RSSI: ");
   Serial.print(rssi);
   Serial.print("| SNR: ");
   Serial.print(snr);  

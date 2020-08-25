@@ -16,6 +16,7 @@
   |                   | CS  or SS                 |     10        |
   |                   | SDI                       |     11        |
   |                   | CLK                       |     13        |
+  |                   | BL (LED)                  |    +VCC       | 
   |     BK1088        |                           |               |
   |                   | SDIO/SDA (pin 6)          |     A4        |
   |                   | SCLK/CLK (pin 7)          |     A5        |
@@ -78,7 +79,7 @@
 #define BAND_MODE_SWITCH_DOWN 5  //
 #define VOL_UP                6  // Volume Up
 #define VOL_DOWN              7  // Volume Down
-#define SWITCH_BW            14  // Seek Station Up
+#define TEST_BUTTON1         14  // Seek Station Up
 #define TEST_BUTTON2         15  // Seek Station Down
 
 #define POLLING_TIME  2000
@@ -142,7 +143,7 @@ BK108X rx;
 
 void setup()
 {
-  // Serial.begin(9600);
+  Serial.begin(9600);
   pinMode(ENCODER_PIN_A, INPUT_PULLUP);
   pinMode(ENCODER_PIN_B, INPUT_PULLUP);
 
@@ -151,7 +152,7 @@ void setup()
   pinMode(BAND_MODE_SWITCH_DOWN, INPUT_PULLUP);
   pinMode(VOL_UP, INPUT_PULLUP);
   pinMode(VOL_DOWN, INPUT_PULLUP);
-  pinMode(SWITCH_BW, INPUT_PULLUP);
+  pinMode(TEST_BUTTON1, INPUT_PULLUP);
   pinMode(TEST_BUTTON2, INPUT_PULLUP);
 
   tft.initR(INITR_BLACKTAB);
@@ -314,7 +315,7 @@ void showFrequency()
 
   currentFrequency = rx.getFrequency();
 
-  // Serial.println(currentFrequency);
+  Serial.println(currentFrequency);
 
   tft.setFont(&DSEG7_Classic_Mini_Regular_30);
   tft.setTextSize(1);
@@ -322,7 +323,9 @@ void showFrequency()
 
   if (band[bandIdx].mode ==  MODE_FM) // FM
   {
-    sprintf(aux, "%6.6lu", currentFrequency);
+    sprintf(aux, "%5.5u", currentFrequency);
+    Serial.println(aux);
+
     freq[0] = aux[0];
     freq[1] = aux[1];
     freq[2] = aux[2];
@@ -339,7 +342,7 @@ void showFrequency()
   }
   else // AM
   {
-    sprintf(aux, "%5lu", currentFrequency);
+    sprintf(aux, "%5u", currentFrequency);
     freq[0] = aux[0];
     freq[1] = aux[1];
     freq[2] = aux[2];

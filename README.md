@@ -93,10 +93,12 @@ If you have suggestions to improve this project, please let me know.
 ### Useful informarion
 
 * BK1086/88 can be controlled by an MCU through 2-wire I2C mode. 
+* The BK1088 already comes with 40K internal pull-up resistors on the i2c bus. Probabbly, no external pull-up resitores will be needed. However, depending on the size of the bus, consider using external pull-up resistors; 
 * BK1086/88 has an internal automatic tuning technology, which can automatically adjust the internal variable capacitance value to make the resonant circuit in the best resonance state at the current operating frequency, thus greatly simplifying the front-end design;
 * BK1086 only supports FM and medium wave, BK1088 supports short wave and long wave in addition to FM and medium wave;
-* If the control mode is I2C mode, SEN pin can be connected high or left floating. MODE pin can Ground directly.
-* There is already a 40K pull-up resistor inside the chip for the SCLK and SDIO. So, in general, no external pull-up resistor is needed. 
+* 
+
+
 
  
 
