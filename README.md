@@ -33,6 +33,11 @@ At the end of 2019 I started some Arduino library development projects to contro
 This library is based on the BEKEN manual “BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER REV1.3” provided by BEKEN Corporation and experiments made by me during the development process. 
 
 
+{% include video01.html %} 
+
+[BK1088E FM, AM (LW, MW and SW) DSP receiver working with Arduino](https://youtu.be/qlEbFC5zt1U)
+
+
 
 ### See also
 
@@ -96,7 +101,7 @@ If you have suggestions to improve this project, please let me know.
 * The BK1088 already comes with 40K internal pull-up resistors on the i2c bus. Probabbly, no external pull-up resitores will be needed. However, depending on the size of the bus, consider using external pull-up resistors; 
 * BK1086/88 has an internal automatic tuning technology, which can automatically adjust the internal variable capacitance value to make the resonant circuit in the best resonance state at the current operating frequency, thus greatly simplifying the front-end design;
 * BK1086 only supports FM and medium wave, BK1088 supports short wave and long wave in addition to FM and medium wave;
-* 
+
 
 
 
