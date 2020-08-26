@@ -127,7 +127,7 @@ tabBand band[] = {
   {MODE_AM, (char *) "22m", 13400, 14300, 13600, 5},
   {MODE_AM, (char *) "19m", 15000, 16100, 15300, 5},
   {MODE_AM, (char *) "16m", 17400, 17900, 17600, 5},
-  {MODE_AM, (char *) "13m", 21400, 21900, 21850, 5}
+  {MODE_AM, (char *) "13m", 21400, 21900, 21525, 5}
 };
 
 const int lastBand = (sizeof band / sizeof(tabBand)) - 1;
@@ -143,7 +143,6 @@ BK108X rx;
 
 void setup()
 {
-  Serial.begin(9600);
   pinMode(ENCODER_PIN_A, INPUT_PULLUP);
   pinMode(ENCODER_PIN_B, INPUT_PULLUP);
 
@@ -244,9 +243,16 @@ void clearStatus() {
   tft.setFont(&Serif_plain_7);
   printValue(135,15,oldMode, bandMode,7,COLOR_YELLOW);  
   printValue(135,36,oldUnit, unit,7,COLOR_YELLOW); 
+  tft.setFont(&Serif_plain_14);
+  printValue(6, 80, oldBandName, band[bandIdx].name, 14, COLOR_GREEN);
 
-  printValue(6, 120, oldBandName, band[bandIdx].name, 7, COLOR_GREEN);
 
+  tft.setTextColor(COLOR_BLUE);
+  tft.setCursor(15, 100);
+  tft.print("BK1088E RADIO");
+  tft.setTextColor(COLOR_YELLOW);
+  tft.setCursor(25, 116);
+  tft.print("Do it yourself");
 }
 
 /*
@@ -315,8 +321,6 @@ void showFrequency()
 
   currentFrequency = rx.getFrequency();
 
-  Serial.println(currentFrequency);
-
   tft.setFont(&DSEG7_Classic_Mini_Regular_30);
   tft.setTextSize(1);
   
@@ -324,7 +328,6 @@ void showFrequency()
   if (band[bandIdx].mode ==  MODE_FM) // FM
   {
     sprintf(aux, "%5.5u", currentFrequency);
-    Serial.println(aux);
 
     freq[0] = aux[0];
     freq[1] = aux[1];
@@ -334,8 +337,8 @@ void showFrequency()
     freq[5] = aux[4];
     freq[6] = '\0'; 
 
-    printValue(2, 36, &oldFreq[0], &freq[0], 23, COLOR_ORANGE);
-    printValue(82, 36, &oldFreq[4], &freq[4], 23, COLOR_ORANGE);
+    printValue(2, 36, &oldFreq[0], &freq[0], 23, COLOR_BLUE);
+    printValue(82, 36, &oldFreq[4], &freq[4], 23, COLOR_BLUE);
     tft.setCursor(80, 35);
     tft.print('.');
    
@@ -402,11 +405,11 @@ void showVolume()
 {
   char sVolume[15];
   
-  sprintf(sVolume, "V %2.2u", rx.getVolume());
+  sprintf(sVolume, "Vol.%2.2u", rx.getVolume());
   
   tft.setFont(&Serif_plain_14);
   tft.setTextSize(1);
-  printValue(100, 80, oldVolume, sVolume, 11, COLOR_GREEN);
+  printValue(90, 80, oldVolume, sVolume, 10, COLOR_GREEN);
 }
 
 
