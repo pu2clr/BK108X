@@ -173,6 +173,24 @@ The main porpuse of this circuit is to test the  BK108X Arduino Library. However
 ![Basic Schematic](extras/images/basic_schematic.png)
 
 
+
+
+
+## Photos
+
+
+Prototype: Photo 1
+![Prototype: Photo 1](extras/images/photo_A02.png)
+
+
+
+Prototype: Photo 2
+![Prototype: Photo 2](extras/images/photo_B01.png)
+
+
+
+
+
 ## References
 
 * BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev 1.3 (Copyright©2012 by Beken Corporation);
