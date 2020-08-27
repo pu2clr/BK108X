@@ -170,17 +170,6 @@ typedef union
  * @brief  Register 04h. System Configuration1 (0x1180)
  * @details When register GPIO2[1:0]=2’b01 and seek or tune finish, a 5ms low pulse will appear at GPIO2 .Both RDSIEN and STCIEN can be high;
  * @details When register GPIO2[1:0]=2’b01 and new RDS come, a 5ms low pulse will appear at GPIO2.
- *
- * | BLNDADJ value | Description | 
- * | ------------  | ----------- | 
- * |      0        | 31–49 RSSI (0 dBuV) |
- * |      1        | 34–52 RSSI (+3 dBuV) | 
- * |      2        | 37–55 RSSI (+6 dBuV) | 
- * |      3        | 40–58 RSSI (+9 dBuV) | 
- * |      4        | 31–49 RSSI (0 dBuV)  |
- * |      5        | 28–46 RSSI (-3 dBuV) |
- * |      6        | 25–43 RSSI (-6 dBuV) | 
- * |      7        | 22–40 RSSI (-9 dBuV) |
  * 
  */
 typedef union
@@ -190,9 +179,8 @@ typedef union
         uint8_t GPIO1 : 2;   //!< General Purpose I/O 1; 00 = High impedance (default); 01 = CLK38MHz; 10 = Low; 11 = High.
         uint8_t GPIO2 : 2;   //!< General Purpose I/O 2. 00 = High impedance (default); 01 = STC/RDS interrupt; 10 = Low; 11 = High.
         uint8_t GPIO3 : 2;   //!< General Purpose I/O 2. 00 = High impedance (default); 01 = Mono/Stereo indicator (ST); 10 = Low; 11 = High.
-        uint8_t BLNDADJ : 3; //!< Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. See table above.
+        uint8_t PILOTS : 3;   //!< Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. See table above.
         uint8_t TCPILOT : 2; //!< The Time Used to Cal The Strength of Pilot
-        uint8_t AGCD : 1;    //!< AGC Disable; 0 = AGC enable (default); 1 = AGC disable.
         uint8_t DE : 1;      //!< De-emphasis; 0 = 75 μs. Used in USA (default); 1 = 50 μs. Used in Europe, Australia, Japan.
         uint8_t RDSEN : 1;   //!< RDS Enable; 0 = Disable (default); 1 = Enable.
         uint8_t AFCINV : 1;  //!< AFC Invert; 0 = Normal AFC into mixer; 1 = Reverse AFC into mixer.
@@ -887,6 +875,78 @@ public:
      */
     inline uint8_t getCurrentMode() { return this->currentMode; };
 
+    /**
+     * @ingroup GA03
+     * @brief Sets the Stereo Threshold of Pilotto Strength 
+     * 
+     * @param value  0 ~ 7
+     */
+    inline void setStereoThresholdPilotStrength(uint8_t value) {
+        reg04->refined.PILOTS = value;
+        setRegister(REG04,reg04->raw);
+    }
+
+    /**
+     * @ingroup GA03
+     * @brief Sets De-emphasis.
+     * @details 75 μs. Used in USA (default); 50 μs. Used in Europe, Australia, Japan.
+     * 
+     * @param de  0 = 75 μs; 1 = 50 μs
+     */
+    inline void setFmDeemphasis(uint8_t de)
+    {
+        reg04->refined.DE = de;
+        setRegister(REG04, reg04->raw);
+    }
+
+    /**
+     * @ingroup GA03
+     * @brief Sets the time used to call the strength of pilot
+     * 
+     * @param value  0 ~ 3
+     */
+    inline void setTimeCallStrengthPilot(uint8_t value)
+    {
+        reg04->refined.TCPILOT = value;
+        setRegister(REG04, reg04->raw);
+    }
+
+    /**
+     * @brief Sets the Gpio2 
+     * @details the General Purpose I/O 2. You can use this pin according to the table below.
+     * 
+     * | value | description | 
+     * | ----- | ----------- | 
+     * |  0    | Low         |
+     * |  1    | STC/RDS interrupt |
+     * |  2    | Low         | 
+     * |  3    | High        |
+     * 
+     * @param value See table above
+     */
+    inline void setGpio2( uint8_t value) {
+        reg04->refined.GPIO2 = value;
+        setRegister(REG04,reg04->raw);
+    }
+
+    /**
+     * @brief Sets the Gpio3 
+     * @details the General Purpose I/O 3. You can use this pin according to the table below.
+     * 
+     * | value | description | 
+     * | ----- | ----------- | 
+     * |  0    | Low         |
+     * |  1    | Mono/Stereo Indicator |
+     * |  2    | Low         | 
+     * |  3    | High        |
+     * 
+     * @param value See table above
+     */
+    inline void setGpio3(uint8_t value)
+    {
+        reg04->refined.GPIO3 = value;
+        setRegister(REG04, reg04->raw);
+    }
 
     void setFrequency(uint16_t frequency);
     void setFrequencyUp();
@@ -920,8 +980,6 @@ public:
     uint8_t getVolume();
     void setVolumeUp();
     void setVolumeDown();
-
-    void setFmDeemphasis(uint8_t de);
 
     void getRdsStatus();
     void setRdsMode(uint8_t rds_mode = 0);

@@ -43,7 +43,8 @@ var NAVTREE =
       [ "Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md14", [
         [ "BEKEN Typical Application Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md15", null ]
       ] ],
-      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md16", null ]
+      [ "Photos", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md16", null ],
+      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md17", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -72,8 +73,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_b_k108_x_8cpp.html",
-"group___g_a01.html#ab93fd5f964344aadbe614b1b076b8c9b",
-"group___g_a04.html#gaa45a715a465a77143dc7d300d6a3192f"
+"group___g_a01.html#ab7c49fbcf6e13a9adf1ef73a45e696b2",
+"group___g_a04.html#ga8dafdca0cc93acecacfd3231af8aba1e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -608,29 +608,9 @@ Tune. 0 = Disable (default); 1 = Enable. </td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 04h. System Configuration1 (0x1180) </p>
 <p>When register GPIO2[1:0]=2’b01 and seek or tune finish, a 5ms low pulse will appear at GPIO2 .Both RDSIEN and STCIEN can be high;</p>
-<p>When register GPIO2[1:0]=2’b01 and new RDS come, a 5ms low pulse will appear at GPIO2.</p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">BLNDADJ value </th><th class="markdownTableHeadNone">Description  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0 </td><td class="markdownTableBodyNone">31–49 RSSI (0 dBuV)  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">1 </td><td class="markdownTableBodyNone">34–52 RSSI (+3 dBuV)  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">2 </td><td class="markdownTableBodyNone">37–55 RSSI (+6 dBuV)  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">3 </td><td class="markdownTableBodyNone">40–58 RSSI (+9 dBuV)  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">4 </td><td class="markdownTableBodyNone">31–49 RSSI (0 dBuV)  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">5 </td><td class="markdownTableBodyNone">28–46 RSSI (-3 dBuV)  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">6 </td><td class="markdownTableBodyNone">25–43 RSSI (-6 dBuV)  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">7 </td><td class="markdownTableBodyNone">22–40 RSSI (-9 dBuV)  </td></tr>
-</table>
+<p>When register GPIO2[1:0]=2’b01 and new RDS come, a 5ms low pulse will appear at GPIO2. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00186">186</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00175">175</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -661,7 +641,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00188">188</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00177">177</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -683,9 +663,9 @@ GPIO3: 2</td>
 <td class="fielddoc">
 General Purpose I/O 2. 00 = High impedance (default); 01 = Mono/Stereo indicator (ST); 10 = Low; 11 = High. </td></tr>
 <tr><td class="fieldtype">
-<a id="a847f0a9653ef12fd2d6443b0c9b998d0"></a>uint8_t</td>
+<a id="a9323bf4b36b03c9f8de9037e19db23aa"></a>uint8_t</td>
 <td class="fieldname">
-BLNDADJ: 3</td>
+PILOTS: 3</td>
 <td class="fielddoc">
 Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. See table above. </td></tr>
 <tr><td class="fieldtype">
@@ -694,12 +674,6 @@ Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. S
 TCPILOT: 2</td>
 <td class="fielddoc">
 The Time Used to Cal The Strength of Pilot. </td></tr>
-<tr><td class="fieldtype">
-<a id="aec7f3d304ef980157d98c73fd6003a09"></a>uint8_t</td>
-<td class="fieldname">
-AGCD: 1</td>
-<td class="fielddoc">
-AGC Disable; 0 = AGC enable (default); 1 = AGC disable. </td></tr>
 <tr><td class="fieldtype">
 <a id="a3a52f3c22ed6fcde5bf696a6c02c9e73"></a>uint8_t</td>
 <td class="fieldname">
@@ -773,7 +747,7 @@ RDS Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt. See
 </table>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionbk__reg07" title="Register 07h. Test1 (0x0900)">bk_reg07</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00229">229</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00217">217</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -804,7 +778,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00231">231</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00219">219</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -875,7 +849,7 @@ RSSI Seek Threshold. 0x00 = min RSSI (default); 0x7F = max RSSI. </td></tr>
 <td class="markdownTableBodyNone">3 </td><td class="markdownTableBodyNone">slowest  </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00266">266</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00254">254</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -906,7 +880,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00268">268</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00256">256</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -956,7 +930,7 @@ Softmute Attack/Recover Rate; See table above. </td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 07h. Test1 (0x0900) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00283">283</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00271">271</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -987,7 +961,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00285">285</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00273">273</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1057,7 +1031,7 @@ RESERVED: 2</td>
 <p>RSSI Threshold for Instant AFC updating; AFC Average Range; Variation Threshold for average AFC calculation;</p>
 <p>AFC Average; AFCRL Threshold; AFC/RSSI/SNR Calculate Rate; AFC Enable </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00306">306</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00294">294</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1088,7 +1062,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00308">308</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00296">296</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1150,7 +1124,7 @@ AFC Enable; 0 = Disable; 1 = Enable. </td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 09h. Status1 (0x0000) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00325">325</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00313">313</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1181,7 +1155,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00327">327</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00315">315</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1213,7 +1187,7 @@ unit AM 0.15k Hz, FM 0.6k Hz </td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 0Ah. Status2 (0x0000) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00339">339</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00327">327</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1244,7 +1218,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00341">341</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00329">329</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1312,7 +1286,7 @@ RDS Ready; 0 = No RDS group ready (default); 1 = New RDS group ready. Keep high 
 </div><div class="memdoc">
 <div class="textblock"><p>Register 0Bh. Read Channel (0x0000) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00359">359</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00347">347</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1343,7 +1317,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00361">361</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00349">349</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1376,7 +1350,7 @@ RESERVED: 2</td>
 <div class="textblock"><p>Register 0Ch. RDS1 (0x0000) </p>
 <p>RDS Block A - The First Register of RDS Received </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00374">374</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00362">362</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1407,7 +1381,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00376">376</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00364">364</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1440,7 +1414,7 @@ highByte</td>
 <div class="textblock"><p>Register 0Dh. RDS2 (0x0000) </p>
 <p>RDS Block B - The second register of RDS received </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00389">389</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00377">377</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1471,7 +1445,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00391">391</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00379">379</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1504,7 +1478,7 @@ highByte</td>
 <div class="textblock"><p>Register 0Eh. RDS2 (0x0000) </p>
 <p>RDS Block C - The third register of RDS received </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00404">404</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00392">392</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1535,7 +1509,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00406">406</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00394">394</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1568,7 +1542,7 @@ highByte</td>
 <div class="textblock"><p>Register 0Fh. RDS4 (0x0000) </p>
 <p>RDS Block D - The fourth register of RDS received when read </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00419">419</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00407">407</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1599,7 +1573,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00421">421</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00409">409</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1631,7 +1605,7 @@ highByte</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 10h. Boot Configuration1 (0x7b11) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00433">433</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00421">421</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1662,7 +1636,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00435">435</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00423">423</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1694,7 +1668,7 @@ highByte</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 11h. Boot Configuration2 (0x0080) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00447">447</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00435">435</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1725,7 +1699,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00449">449</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00437">437</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1757,7 +1731,7 @@ highByte</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 12h. Boot Configuration3 (0x4000) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00461">461</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00449">449</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1788,7 +1762,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00463">463</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00451">451</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1820,7 +1794,7 @@ highByte</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 13h. Boot Configuration4 (0x3e00) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00475">475</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00463">463</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1851,7 +1825,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00477">477</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00465">465</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1883,7 +1857,7 @@ highByte</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 14h. Boot Configuration5 (0x0000) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00489">489</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00477">477</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1914,7 +1888,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00491">491</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00479">479</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1958,7 +1932,7 @@ SKMUTE: 1</td>
 </div><div class="memdoc">
 <div class="textblock"><p>15h. Boot Configuration6 (0x0000) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00505">505</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00493">493</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -1989,7 +1963,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00507">507</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00495">495</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2021,7 +1995,7 @@ highByte</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 16h. Boot Configuration7 (0x0400) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00519">519</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00507">507</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2052,7 +2026,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00521">521</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00509">509</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2084,7 +2058,7 @@ highByte</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 17h. Boot Configuration8 (0x0001) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00533">533</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00521">521</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2115,7 +2089,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00535">535</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00523">523</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2147,7 +2121,7 @@ highByte</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 18h. Boot Configuration9 (0x143c) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00547">547</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00535">535</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2178,7 +2152,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00549">549</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00537">537</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2210,7 +2184,7 @@ highByte</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 19h. Boot Configuration10 (0x4351) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00561">561</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00549">549</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2241,7 +2215,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00563">563</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00551">551</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2273,7 +2247,7 @@ highByte</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 1Ah. Boot Configuration11 (0x0000) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00575">575</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00563">563</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2304,7 +2278,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00577">577</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00565">565</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2336,7 +2310,7 @@ RESERVED: 7</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Register 1Bh. Analog Configuration1 (0x0000) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00589">589</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00577">577</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2367,7 +2341,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00591">591</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00579">579</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2399,7 +2373,7 @@ Reference clock divider control ,Refer to Reg1D. Default 0 for 32.768kHz referen
 </div><div class="memdoc">
 <div class="textblock"><p>Register 1Ch. Analog Configuration2 (0x0000) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00603">603</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00591">591</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2430,7 +2404,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00605">605</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00593">593</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2462,7 +2436,7 @@ Reference clock divider control ,Refer to Reg1D Default 0 for 32.768kHz referenc
 </div><div class="memdoc">
 <div class="textblock"><p>Register 1Dh. Analog Configuration2 (0x0000) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00617">617</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00605">605</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2493,7 +2467,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00619">619</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00607">607</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2529,7 +2503,7 @@ highByte</td>
 </p>
 <dl class="section see"><dt>See also</dt><dd>also <a href="https://en.wikipedia.org/wiki/Radio_Data_System">https://en.wikipedia.org/wiki/Radio_Data_System</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00646">646</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00634">634</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2572,7 +2546,7 @@ blockB</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00648">648</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00636">636</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2639,7 +2613,7 @@ groupType: 4</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00659">659</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00647">647</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2694,7 +2668,7 @@ groupType: 4</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00668">668</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00656">656</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2751,7 +2725,7 @@ groupType: 4</td>
 <div class="textblock"><p>Group RDS type 4A ( RDS Date and Time) When group type 4A is used by the station, it shall be transmitted every minute according to EN 50067. This Structure uses blocks 2,3 and 5 (B,C,D)</p>
 <p>ATTENTION: To make it compatible with 8, 16 and 32 bits platforms and avoid Crosses boundary, it was necessary to split minute and hour representation. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00690">690</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00678">678</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2782,7 +2756,7 @@ raw[6]</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00692">692</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00680">680</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2844,7 +2818,7 @@ mjd: 17</td>
 </div><div class="memdoc">
 <div class="textblock"><p>Converts 16 bits word to two bytes. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00709">709</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00697">697</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2875,7 +2849,7 @@ raw</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00711">711</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00699">699</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -2911,7 +2885,7 @@ highByte</td>
 <p>This class implements all functions that will help you to control the KT0915 devices.</p>
 <dl class="section author"><dt>Author</dt><dd>PU2CLR - Ricardo Lima Caratti </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00728">728</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00716">716</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h3>Public Member Functions</h3></td></tr>
 <tr class="memitem:gabb521f2af588ce1c94755bd2525f32c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a02.html#gabb521f2af588ce1c94755bd2525f32c9">setI2C</a> (uint8_t i2c_addr=<a class="el" href="_b_k108_x_8h.html#af1732013854882f94b02e77b8a6106ec">I2C_DEVICE_ADDR</a>)</td></tr>
@@ -2999,6 +2973,21 @@ highByte</td>
 <tr class="memitem:ga75e29ce01163c9bb4934d0064e998362"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga75e29ce01163c9bb4934d0064e998362">getCurrentMode</a> ()</td></tr>
 <tr class="memdesc:ga75e29ce01163c9bb4934d0064e998362"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Current Mode (AM or FM)  <a href="group___g_a03.html#ga75e29ce01163c9bb4934d0064e998362">More...</a><br /></td></tr>
 <tr class="separator:ga75e29ce01163c9bb4934d0064e998362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga787b79fcfb96881a1784560393a23f12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga787b79fcfb96881a1784560393a23f12">setStereoThresholdPilotStrength</a> (uint8_t value)</td></tr>
+<tr class="memdesc:ga787b79fcfb96881a1784560393a23f12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Stereo Threshold of Pilotto Strength.  <a href="group___g_a03.html#ga787b79fcfb96881a1784560393a23f12">More...</a><br /></td></tr>
+<tr class="separator:ga787b79fcfb96881a1784560393a23f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabe69405f657c656f61e5e6b169690709"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gabe69405f657c656f61e5e6b169690709">setFmDeemphasis</a> (uint8_t de)</td></tr>
+<tr class="memdesc:gabe69405f657c656f61e5e6b169690709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets De-emphasis.  <a href="group___g_a03.html#gabe69405f657c656f61e5e6b169690709">More...</a><br /></td></tr>
+<tr class="separator:gabe69405f657c656f61e5e6b169690709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad4595c8678c2ec213f5034f90dc61262"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gad4595c8678c2ec213f5034f90dc61262">setTimeCallStrengthPilot</a> (uint8_t value)</td></tr>
+<tr class="memdesc:gad4595c8678c2ec213f5034f90dc61262"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the time used to call the strength of pilot.  <a href="group___g_a03.html#gad4595c8678c2ec213f5034f90dc61262">More...</a><br /></td></tr>
+<tr class="separator:gad4595c8678c2ec213f5034f90dc61262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d3ee2c4dd53cb37737770ca65e847ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a6d3ee2c4dd53cb37737770ca65e847ac">setGpio2</a> (uint8_t value)</td></tr>
+<tr class="memdesc:a6d3ee2c4dd53cb37737770ca65e847ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Gpio2.  <a href="group___g_a01.html#a6d3ee2c4dd53cb37737770ca65e847ac">More...</a><br /></td></tr>
+<tr class="separator:a6d3ee2c4dd53cb37737770ca65e847ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7215ad36ae1b116b5313efea09478cf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a7215ad36ae1b116b5313efea09478cf3">setGpio3</a> (uint8_t value)</td></tr>
+<tr class="memdesc:a7215ad36ae1b116b5313efea09478cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Gpio3.  <a href="group___g_a01.html#a7215ad36ae1b116b5313efea09478cf3">More...</a><br /></td></tr>
+<tr class="separator:a7215ad36ae1b116b5313efea09478cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga514242393caa2068d8acb3adec953832"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga514242393caa2068d8acb3adec953832">setFrequency</a> (uint16_t frequency)</td></tr>
 <tr class="memdesc:ga514242393caa2068d8acb3adec953832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the FM frequency.  <a href="group___g_a03.html#ga514242393caa2068d8acb3adec953832">More...</a><br /></td></tr>
 <tr class="separator:ga514242393caa2068d8acb3adec953832"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3081,9 +3070,6 @@ highByte</td>
 <tr class="memitem:gac2cf423a3eeee3213a3c7c73a8316f8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gac2cf423a3eeee3213a3c7c73a8316f8a">setVolumeDown</a> ()</td></tr>
 <tr class="memdesc:gac2cf423a3eeee3213a3c7c73a8316f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the audio volume.  <a href="group___g_a03.html#gac2cf423a3eeee3213a3c7c73a8316f8a">More...</a><br /></td></tr>
 <tr class="separator:gac2cf423a3eeee3213a3c7c73a8316f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabe69405f657c656f61e5e6b169690709"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gabe69405f657c656f61e5e6b169690709">setFmDeemphasis</a> (uint8_t de)</td></tr>
-<tr class="memdesc:gabe69405f657c656f61e5e6b169690709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets De-emphasis.  <a href="group___g_a03.html#gabe69405f657c656f61e5e6b169690709">More...</a><br /></td></tr>
-<tr class="separator:gabe69405f657c656f61e5e6b169690709"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gade944541df0205f7a7bb6335ae25c211"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gade944541df0205f7a7bb6335ae25c211">getRdsStatus</a> ()</td></tr>
 <tr class="memdesc:gade944541df0205f7a7bb6335ae25c211"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the RDS registers information.  <a href="group___g_a04.html#gade944541df0205f7a7bb6335ae25c211">More...</a><br /></td></tr>
 <tr class="separator:gade944541df0205f7a7bb6335ae25c211"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3226,6 +3212,104 @@ highByte</td>
 
 </div>
 </div>
+<a id="a6d3ee2c4dd53cb37737770ca65e847ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d3ee2c4dd53cb37737770ca65e847ac">&#9670;&nbsp;</a></span>setGpio2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BK108X::setGpio2 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the Gpio2. </p>
+<p>the General Purpose I/O 2. You can use this pin according to the table below.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">value </th><th class="markdownTableHeadNone">description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0 </td><td class="markdownTableBodyNone">Low  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 </td><td class="markdownTableBodyNone">STC/RDS interrupt  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">2 </td><td class="markdownTableBodyNone">Low  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">3 </td><td class="markdownTableBodyNone">High  </td></tr>
+</table>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>See table above </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00927">927</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+
+</div>
+</div>
+<a id="a7215ad36ae1b116b5313efea09478cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7215ad36ae1b116b5313efea09478cf3">&#9670;&nbsp;</a></span>setGpio3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BK108X::setGpio3 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the Gpio3. </p>
+<p>the General Purpose I/O 3. You can use this pin according to the table below.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">value </th><th class="markdownTableHeadNone">description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0 </td><td class="markdownTableBodyNone">Low  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 </td><td class="markdownTableBodyNone">Mono/Stereo Indicator  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">2 </td><td class="markdownTableBodyNone">Low  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">3 </td><td class="markdownTableBodyNone">High  </td></tr>
+</table>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>See table above </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00945">945</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+
+</div>
+</div>
 <a id="a6ac7cb09328897832578e4397645ab75"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6ac7cb09328897832578e4397645ab75">&#9670;&nbsp;</a></span>setRDS()</h2>
 
@@ -3250,9 +3334,9 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00929">929</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00987">987</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01082">setRds()</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01045">setRds()</a>.</p>
 
 </div>
 </div>
@@ -3279,7 +3363,7 @@ highByte</td>
 
 <p>RDS Radio Text buffer - Program Information. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00782">782</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00770">770</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3305,7 +3389,7 @@ highByte</td>
 
 <p>RDS Radio Text buffer - Station Informaation. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00783">783</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00771">771</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3331,7 +3415,7 @@ highByte</td>
 
 <p>RDS Basic tuning and switching information (Type 0 groups) </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00784">784</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00772">772</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3357,7 +3441,7 @@ highByte</td>
 
 <p>RDS date time received information. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00785">785</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00773">773</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3381,9 +3465,9 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00787">787</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00775">775</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8h_source.html#l00834">setI2CAddress()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8h_source.html#l00822">setI2CAddress()</a>.</p>
 
 </div>
 </div>
@@ -3407,7 +3491,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00789">789</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00777">777</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3431,7 +3515,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00790">790</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00778">778</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3455,7 +3539,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00791">791</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00779">779</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3479,7 +3563,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00793">793</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00781">781</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3503,7 +3587,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00794">794</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00782">782</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3527,7 +3611,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00795">795</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00783">783</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3551,7 +3635,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00796">796</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00784">784</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3575,7 +3659,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00797">797</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00785">785</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3599,7 +3683,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00798">798</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00786">786</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3623,7 +3707,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00799">799</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00787">787</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3647,7 +3731,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00801">801</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00789">789</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3671,9 +3755,9 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00802">802</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00790">790</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00463">setup()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00441">setup()</a>.</p>
 
 </div>
 </div>
@@ -3697,9 +3781,9 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00803">803</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00791">791</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00463">setup()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00441">setup()</a>.</p>
 
 </div>
 </div>
@@ -3723,7 +3807,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00804">804</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00792">792</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -3747,7 +3831,7 @@ highByte</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00805">805</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00793">793</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>

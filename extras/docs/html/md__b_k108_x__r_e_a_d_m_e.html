@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('md__b_k108_x__r_e_a_d_m_e.html',''); i
 <div class="title">PU2CLR <a class="el" href="group___g_a01.html#class_b_k108_x" title="KT0915 Class.">BK108X</a> Arduino Library </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The BK1086 and BK1088 are DSP receivers from BAKEN. The BK1088 is a BROADCAST FM and AM (LW, MW and ) RECEIVER and BK1086 is a subset of the BK1088 (it does not have LW and SW acording to the Datasheet). <br  />
+<div class="textblock"><p>The BK1088E is a single-chip solution for receiving AM, FM, and shortwave radio. Using inexpensive components (Arduino Pro Mini, some push buttons buttons, and a standard OLED or TFT display), the hobbyists can build serviceable little receiver based on BK1088E with a impressive performance. <br  />
 </p>
 <p>This project is about an Arduino Library to control the BK1086 and BK1088 devices. It was based on "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3" documentation from BEKEN Corporation.</p>
 <p>This library can be freely distributed using the MIT Free Software model.</p>
@@ -111,6 +111,9 @@ Contents</h1>
 Preface</h1>
 <p>At the end of 2019 I started some Arduino library development projects to control DSP receivers. The first implementation was the Arduino library for the SI4844 and then for the ICx Si473X family, all manufactured by Silicon Labs. Given the acceptance and enthusiasm of various radio listeners, experimenters and hobbyists, around the use of the implementations of these libraries, I decided to expand the number of Arduino libraries for the Arduino IDE platform and also developed the libraries for the AKC695X, KT0915, SI470X and RDA5807. When I started reading about the BK1086/88 Datasheet I notice it is also very apropriated for radio listener and hobbyists. Unlike the other devices previously mentioned, I found very few documentation about it at first. So, it encouraged me to build as much information as possible about this BEKEN family of devices. I requested some information about the BK1086/88E from BEKEN Corporation and I was promptly answered. I would like to thank the BEKEN Corporation fot its attention.</p>
 <p>This library is based on the BEKEN manual “BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER REV1.3” provided by BEKEN Corporation and experiments made by me during the development process.</p>
+<p>If you are a hobbyist, a radio enthusiast and enjoy Arduino, this project is for you.</p>
+<p>{% include video01.html %}</p>
+<p><a href="https://youtu.be/qlEbFC5zt1U">BK1088E FM, AM (LW, MW and SW) DSP receiver working with Arduino</a></p>
 <h2><a class="anchor" id="autotoc_md4"></a>
 See also</h2>
 <ol type="1">
@@ -159,10 +162,9 @@ Main features</h2>
 Useful informarion</h2>
 <ul>
 <li>BK1086/88 can be controlled by an MCU through 2-wire I2C mode.</li>
+<li>The BK1088 already comes with 40K internal pull-up resistors on the i2c bus. Probabbly, no external pull-up resitores will be needed. However, depending on the size of the bus, consider using external pull-up resistors;</li>
 <li>BK1086/88 has an internal automatic tuning technology, which can automatically adjust the internal variable capacitance value to make the resonant circuit in the best resonance state at the current operating frequency, thus greatly simplifying the front-end design;</li>
 <li>BK1086 only supports FM and medium wave, BK1088 supports short wave and long wave in addition to FM and medium wave;</li>
-<li>If the control mode is I2C mode, SEN pin can be connected high or left floating. MODE pin can Ground directly.</li>
-<li>There is already a 40K pull-up resistor inside the chip for the SCLK and SDIO. So, in general, no external pull-up resistor is needed.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md11"></a>
 Library Installation</h1>
@@ -230,6 +232,10 @@ BEKEN Typical Application Schematic</h2>
 <p>The main porpuse of this circuit is to test the <a class="el" href="group___g_a01.html#class_b_k108_x" title="KT0915 Class.">BK108X</a> Arduino Library. However, you may be surprised at the performance of this simple circuit due to the high features of the BK1086/88 device. Also, it is importante to say that this receiver does not intend to be a real radio for exigent listener. However, it is possible to start with it and then, if you wish, you can include some devices to the circuit to improve, for example, its sensibility, output sound quality beyond other desired features.</p>
 <p><img src="extras/images/basic_schematic.png" alt="Basic Schematic" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md16"></a>
+Photos</h1>
+<p>Prototype: Photo 1 <img src="extras/images/photo_A02.png" alt="Prototype: Photo 1" class="inline"/></p>
+<p>Prototype: Photo 2 <img src="extras/images/photo_B01.png" alt="Prototype: Photo 2" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md17"></a>
 References</h1>
 <ul>
 <li>BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev 1.3 (Copyright©2012 by Beken Corporation);</li>

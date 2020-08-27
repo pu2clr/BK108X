@@ -5,6 +5,9 @@ var group___g_a03 =
     [ "getShadownRegister", "group___g_a03.html#gab9a18cc2ced8b4683f83ce95f0d62df4", null ],
     [ "setShadownRegister", "group___g_a03.html#ga08ce22717a9f95e1ee3685478e919ee5", null ],
     [ "getCurrentMode", "group___g_a03.html#ga75e29ce01163c9bb4934d0064e998362", null ],
+    [ "setStereoThresholdPilotStrength", "group___g_a03.html#ga787b79fcfb96881a1784560393a23f12", null ],
+    [ "setFmDeemphasis", "group___g_a03.html#gabe69405f657c656f61e5e6b169690709", null ],
+    [ "setTimeCallStrengthPilot", "group___g_a03.html#gad4595c8678c2ec213f5034f90dc61262", null ],
     [ "getRegister", "group___g_a03.html#gaff213081b782af8223279caf1488ef80", null ],
     [ "setRegister", "group___g_a03.html#gadc64097823fe26425a420270562cfc34", null ],
     [ "getStatus", "group___g_a03.html#ga759a835f25ca7ce2c861cc5b3cf1abb8", null ],
@@ -41,6 +44,5 @@ var group___g_a03 =
     [ "setVolume", "group___g_a03.html#gaa91f9b57fb80f9411f97755d15e7d808", null ],
     [ "getVolume", "group___g_a03.html#gab8dba059205a7d118c0153db8636fdb8", null ],
     [ "setVolumeUp", "group___g_a03.html#ga89438602c507ba477aaa626999210b7e", null ],
-    [ "setVolumeDown", "group___g_a03.html#gac2cf423a3eeee3213a3c7c73a8316f8a", null ],
-    [ "setFmDeemphasis", "group___g_a03.html#gabe69405f657c656f61e5e6b169690709", null ]
+    [ "setVolumeDown", "group___g_a03.html#gac2cf423a3eeee3213a3c7c73a8316f8a", null ]
 ];

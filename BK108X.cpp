@@ -389,42 +389,20 @@ void BK108X::powerUp()
     setRegister(REG02,reg02->raw);  // Stores the register 0x02
 
     setRegister(REG03, 0x0000);     // Sets to 0 all attributes of the register 0x03 (Channel)
-    setRegister(REG04, 0x60D4);     // Sets to 0 all attributes of the register 0x04 (System Configuration1)
 
-    /*
-    this->currentVolume = reg05->refined.VOLUME = 15;
-    reg05->refined.SEEKTH = 64; // RSSI Seek Threshold
+    setRegister(REG04, 0x60D4); // 0b0110000011010100
+    setRegister(REG05, 0x37CF); // 0b0011011111001111
+    setRegister(REG06, 0x086F); // 0b0000100001101111
+    setRegister(REG07, 0x0101); // 0b0000000100000001
+    setRegister(REG08, 0xAC90); // 0b1010110010010000
 
-    setRegister(REG05, reg05->raw); //  System Configuration2
-    */
-
-    setRegister(REG05, 0x37CF);
-    setRegister(REG06, 0x086F);
-    /*
-    reg06->raw = 0;
-    reg06->refined.CLKSEL = 1;
-    reg06->refined.SKSNR = 64; // SNR Seek Threshold
-    reg06->refined.SKCNT = 15;
-    setRegister(REG06, reg06->raw);
-    */
-   /*
-    setRegister(REG07, 0x0101);
-    setRegister(REG08, 0xAC90);
-    setRegister(REG09, 0x00000);
-    setRegister(REG0A, 0x00000);
-    setRegister(REG0B, 0x00000);
-    setRegister(REG0C, 0x00000);
-    setRegister(REG0D, 0x00000);
-    setRegister(REG0E, 0x00000);
-    setRegister(REG0F, 0x00000);
-
-    setRegister(REG10, 0x7B11);
-    setRegister(REG11, 0x004A);
-    setRegister(REG12, 0x4000);
-    setRegister(REG13, 0x3E00);
-    setRegister(REG14, 0xC29A);
-    setRegister(REG15, 0x79F8);
-    setRegister(REG16, 0x4012);
+    setRegister(REG10, 0x7B11); // 0b0111101100010001
+    setRegister(REG11, 0x004A); // 0b0000000001001010
+    setRegister(REG12, 0x4000); // 0b0100000000000000
+    setRegister(REG13, 0x3E00); // 0b0011111000000000
+    setRegister(REG14, 0xC29A); // 0b1100001010011010
+    setRegister(REG15, 0x79F8); // 0b0111100111111000
+    setRegister(REG16, 0x4012); // 0b0100000000010010
 
     setRegister(REG17, 0x0040);
     setRegister(REG18, 0x341C);
@@ -434,7 +412,7 @@ void BK108X::powerUp()
 
     setRegister(REG1C, 0x8820);
     setRegister(REG1D, 0x0200);
-    */
+
 
     delay(250);
 }
@@ -1029,21 +1007,6 @@ void BK108X::setVolumeDown()
 
 
 
-
-
-/**
- * @ingroup GA03
- * @brief Sets De-emphasis.
- * @details 75 μs. Used in USA (default); 50 μs. Used in Europe, Australia, Japan.
- * 
- * @param de  0 = 75 μs; 1 = 50 μs
- */
-void BK108X::setFmDeemphasis(uint8_t de)
-{
-    reg04->refined.DE = de;
-    setRegister(REG04,reg04->raw);
-}
-
 /** 
  * @defgroup GA04 RDS Functions
  * @section GA04 RDS/RBDS
@@ -1085,6 +1048,7 @@ void BK108X::setRds(bool value)
     setRegister(REG04,reg04->raw);
 
 }
+
 
 /**
  * @ingroup GA04

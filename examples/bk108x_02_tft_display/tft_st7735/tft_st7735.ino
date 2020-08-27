@@ -83,7 +83,7 @@
 #define TEST_BUTTON2         15  // Seek Station Down
 
 #define POLLING_TIME  2000
-#define MIN_ELAPSED_TIME 100
+#define MIN_ELAPSED_TIME 150
 
 // The array sizes below can be optimized.
 char oldFreq[15];
@@ -489,6 +489,7 @@ void useBand() {
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;
   rx.setFrequency(currentFrequency);
+  delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
   showStatus();
 }
 
@@ -525,9 +526,8 @@ void volumeButton(byte d)
     rx.setVolumeUp();
   else
     rx.setVolumeDown();
-
-  showVolume();
   delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
+  showVolume();
 }
 
 
@@ -567,5 +567,5 @@ void loop()
     pollin_elapsed = millis();
   }
 
-  delay(100);
+  delay(10);
 }
