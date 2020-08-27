@@ -341,7 +341,6 @@ bk_reg0a BK108X::getStatus()
 }
 
 
-
 /**
  * @ingroup GA03
  * @brief   Wait STC (Seek/Tune Complete) status becomes 0
