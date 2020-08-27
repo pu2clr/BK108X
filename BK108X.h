@@ -176,7 +176,7 @@ typedef union
 {
     struct
     {
-        uint8_t GPIO1 : 2;   //!< General Purpose I/O 1; 00 = High impedance (default); 01 = CLK38MHz; 10 = Low; 11 = High.
+        uint8_t DUMMY : 2;   //!< Not used / RESERVED General Purpose I/O 1; 00 = High impedance (default); 01 = CLK38MHz; 10 = Low; 11 = High.
         uint8_t GPIO2 : 2;   //!< General Purpose I/O 2. 00 = High impedance (default); 01 = STC/RDS interrupt; 10 = Low; 11 = High.
         uint8_t GPIO3 : 2;   //!< General Purpose I/O 2. 00 = High impedance (default); 01 = Mono/Stereo indicator (ST); 10 = Low; 11 = High.
         uint8_t PILOTS : 3;   //!< Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. See table above.
@@ -272,14 +272,17 @@ typedef union
 {
     struct
     {
-        uint8_t FMGAIN : 3; //!< The gain of Frequency demodulated; 000 = 0dB ... 011= +18dB; 100= 0dB ... 111= -18dB
-        uint8_t STGAIN : 5; //!< Stereo L/R Gain Adjustment, sighed value; 00000 = 0 dB ... 01111=15dB; 10000= -16dB ... 11111= -1dB; For stereo separation optimization
-        uint8_t IMPTH : 2;  //!< Threshold of Impulse Detect. 00 = toughest; 11 = loosest
-        uint8_t BPDE : 1;   //!< De-emphasis Bypass; 0 = Normal operation; 1 = Bypass de-emphasis.
-        uint8_t IMPEN : 1;  //!< Impulse Remove Enable; 0 = Disable; 1 = Enable.
-        uint8_t SIQ : 1;    //!< IF I/Q Signal switch; 0 = Normal operation; 1 = Reversed I/Q signal.
-        uint8_t MODE : 1;   //!< 0 = FM receiver; 1 = AM receiver
-        uint8_t RESERVED : 2;
+        uint8_t FMGAIN : 3;     //!< The gain of Frequency demodulated; 000 = 0dB ... 011= +18dB; 100= 0dB ... 111= -18dB
+        uint8_t RESERVED :3;
+        uint8_t STHYS_SEL : 1;  //!< ST/MONO Transition Hysterisis Select.  0 = 6dB; 1=2dB
+        uint8_t DACCK_SEL : 1;  //!< DAC Clock Select
+        uint8_t IMPTH : 2;      //!< Threshold of Impulse Detect. 00 = toughest; 11 = loosest
+        uint8_t BPDE : 1;       //!< De-emphasis Bypass; 0 = Normal operation; 1 = Bypass de-emphasis.
+        uint8_t IMPEN : 1;      //!< Impulse Remove Enable; 0 = Disable; 1 = Enable.
+        uint8_t SIQ : 1;        //!< IF I/Q Signal switch; 0 = Normal operation; 1 = Reversed I/Q signal.
+        uint8_t MODE : 1;       //!< 0 = FM receiver; 1 = AM receiver
+        uint8_t LINEIN_EN : 1;  //!< Audio Line in Enable; 0 = Disable (Receiver Mode) 
+        uint8_t LINEIN_SEL : 1; //!< Audio Line in Channel Select; 0 = Channel 1; 1=Channel 2 ((QFN24 only support one line in channel))
     } refined;
     uint16_t raw;
 } bk_reg07;
@@ -564,8 +567,9 @@ typedef union
 {
     struct
     {
-        uint16_t ANT_SEL : 9; //!< Antenna varactor tune
-        uint16_t RESERVED : 7;
+        uint16_t RESERVED1 : 3;
+        uint16_t ANT_SEL : 5;   //!< Antenna varactor tune
+        uint16_t RESERVED2 : 4;
     } refined;
     uint16_t raw;
 } bk_reg1A;
@@ -576,11 +580,9 @@ typedef union
  */
 typedef union
 {
-    struct
-    {
-        uint16_t RESERVED : 15;
-        uint16_t FREQ_SEL : 1; //!<  Reference clock divider control ,Refer to Reg1D. Default 0 for 32.768kHz reference input.
-    } refined;
+    struct {
+        uint16_t RESERVED;
+    } refined; 
     uint16_t raw;
 } bk_reg1B;
 
@@ -591,7 +593,7 @@ typedef union
 typedef union
 {
     struct
-    {
+    {    
         uint16_t RESERVED : 15;
         uint16_t FREQ_SEL : 1; //!<  Reference clock divider control ,Refer to Reg1D Default 0 for 32.768kHz reference input.
     } refined;
@@ -603,17 +605,22 @@ typedef union
  * @brief Register 1Dh. Analog Configuration2 (0x0000)
  */
 typedef union
-{
-    struct
-    {
-        uint8_t lowByte;
-        uint8_t highByte;
-    } refined;
+{   
+    struct {
+     uint16_t FREQ_SEL;
+    }  refined;
     uint16_t raw; //!< //!< Reference clock divider control , FREQ_SEL[17:0] = HEX | Ref Frequency/512+0.5 | Default 16 for 32.768kHz reference.
 } bk_reg1D;
 
+/**
+ * @brief The user does not have access to registsres 0x1E, 0x1F and 0x20.
+ * @details They are Internal test registers and can be provided separately by BEKEN.
+ * @details The author of this library did not have access to these register.
+ */
 typedef uint16_t bk_reg1E; // Internal register
 typedef uint16_t bk_reg1F; // Internal Register
+typedef uint16_t bk_reg20; // Internal Register
+
 
 /**
  * @ingroup GA01
@@ -723,38 +730,38 @@ private:
     uint16_t shadowRegisters[32]; //!< shadow registers 0x00  to 0x1F (0 - 31)
 
     // Device registers map - References to the shadow registers
-    bk_reg00 *reg00 = (bk_reg00 *)&shadowRegisters[REG00];
-    bk_reg01 *reg01 = (bk_reg01 *)&shadowRegisters[REG01];
-    bk_reg02 *reg02 = (bk_reg02 *)&shadowRegisters[REG02];
-    bk_reg03 *reg03 = (bk_reg03 *)&shadowRegisters[REG03];
-    bk_reg04 *reg04 = (bk_reg04 *)&shadowRegisters[REG04];
-    bk_reg05 *reg05 = (bk_reg05 *)&shadowRegisters[REG05];
-    bk_reg06 *reg06 = (bk_reg06 *)&shadowRegisters[REG06];
-    bk_reg07 *reg07 = (bk_reg07 *)&shadowRegisters[REG07];
-    bk_reg08 *reg08 = (bk_reg08 *)&shadowRegisters[REG08];
-    bk_reg09 *reg09 = (bk_reg09 *)&shadowRegisters[REG09];
-    bk_reg0a *reg0a = (bk_reg0a *)&shadowRegisters[REG0A];
-    bk_reg0b *reg0b = (bk_reg0b *)&shadowRegisters[REG0B];
-    bk_reg0c *reg0c = (bk_reg0c *)&shadowRegisters[REG0C];
-    bk_reg0d *reg0d = (bk_reg0d *)&shadowRegisters[REG0D];
-    bk_reg0e *reg0e = (bk_reg0e *)&shadowRegisters[REG0E];
-    bk_reg0f *reg0f = (bk_reg0f *)&shadowRegisters[REG0F];
-    bk_reg10 *reg10 = (bk_reg10 *)&shadowRegisters[REG10];
-    bk_reg11 *reg11 = (bk_reg11 *)&shadowRegisters[REG11];
-    bk_reg12 *reg12 = (bk_reg12 *)&shadowRegisters[REG12];
-    bk_reg13 *reg13 = (bk_reg13 *)&shadowRegisters[REG13];
-    bk_reg14 *reg14 = (bk_reg14 *)&shadowRegisters[REG14];
-    bk_reg15 *reg15 = (bk_reg15 *)&shadowRegisters[REG15];
-    bk_reg16 *reg16 = (bk_reg16 *)&shadowRegisters[REG16];
-    bk_reg17 *reg17 = (bk_reg17 *)&shadowRegisters[REG17];
-    bk_reg18 *reg18 = (bk_reg18 *)&shadowRegisters[REG18];
-    bk_reg19 *reg19 = (bk_reg19 *)&shadowRegisters[REG19];
-    bk_reg1A *reg1A = (bk_reg1A *)&shadowRegisters[REG1A];
-    bk_reg1B *reg1b = (bk_reg1B *)&shadowRegisters[REG1B];
-    bk_reg1C *reg1c = (bk_reg1C *)&shadowRegisters[REG1C];
-    bk_reg1D *reg1d = (bk_reg1D *)&shadowRegisters[REG1D];
-    bk_reg1E *reg1e = (bk_reg1E *)&shadowRegisters[REG1E];
-    bk_reg1F *reg1f = (bk_reg1F *)&shadowRegisters[REG1F];
+    bk_reg00 *reg00 = (bk_reg00 *)&shadowRegisters[REG00]; //  0
+    bk_reg01 *reg01 = (bk_reg01 *)&shadowRegisters[REG01]; //  1
+    bk_reg02 *reg02 = (bk_reg02 *)&shadowRegisters[REG02]; //  2
+    bk_reg03 *reg03 = (bk_reg03 *)&shadowRegisters[REG03]; //  3
+    bk_reg04 *reg04 = (bk_reg04 *)&shadowRegisters[REG04]; //  4
+    bk_reg05 *reg05 = (bk_reg05 *)&shadowRegisters[REG05]; //  5
+    bk_reg06 *reg06 = (bk_reg06 *)&shadowRegisters[REG06]; //  6
+    bk_reg07 *reg07 = (bk_reg07 *)&shadowRegisters[REG07]; //  7
+    bk_reg08 *reg08 = (bk_reg08 *)&shadowRegisters[REG08]; //  8
+    bk_reg09 *reg09 = (bk_reg09 *)&shadowRegisters[REG09]; //  9
+    bk_reg0a *reg0a = (bk_reg0a *)&shadowRegisters[REG0A]; // 10
+    bk_reg0b *reg0b = (bk_reg0b *)&shadowRegisters[REG0B]; // 11
+    bk_reg0c *reg0c = (bk_reg0c *)&shadowRegisters[REG0C]; // 12
+    bk_reg0d *reg0d = (bk_reg0d *)&shadowRegisters[REG0D]; // 13
+    bk_reg0e *reg0e = (bk_reg0e *)&shadowRegisters[REG0E]; // 14
+    bk_reg0f *reg0f = (bk_reg0f *)&shadowRegisters[REG0F]; // 15
+    bk_reg10 *reg10 = (bk_reg10 *)&shadowRegisters[REG10]; // 16
+    bk_reg11 *reg11 = (bk_reg11 *)&shadowRegisters[REG11]; // 17
+    bk_reg12 *reg12 = (bk_reg12 *)&shadowRegisters[REG12]; // 18
+    bk_reg13 *reg13 = (bk_reg13 *)&shadowRegisters[REG13]; // 19
+    bk_reg14 *reg14 = (bk_reg14 *)&shadowRegisters[REG14]; // 20
+    bk_reg15 *reg15 = (bk_reg15 *)&shadowRegisters[REG15]; // 21
+    bk_reg16 *reg16 = (bk_reg16 *)&shadowRegisters[REG16]; // 22
+    bk_reg17 *reg17 = (bk_reg17 *)&shadowRegisters[REG17]; // 23
+    bk_reg18 *reg18 = (bk_reg18 *)&shadowRegisters[REG18]; // 24
+    bk_reg19 *reg19 = (bk_reg19 *)&shadowRegisters[REG19]; // 25
+    bk_reg1A *reg1A = (bk_reg1A *)&shadowRegisters[REG1A]; // 26
+    bk_reg1B *reg1b = (bk_reg1B *)&shadowRegisters[REG1B]; // 27
+    bk_reg1C *reg1c = (bk_reg1C *)&shadowRegisters[REG1C]; // 28
+    bk_reg1D *reg1d = (bk_reg1D *)&shadowRegisters[REG1D]; // 29
+    bk_reg1E *reg1e = (bk_reg1E *)&shadowRegisters[REG1E]; // 30
+    bk_reg1F *reg1f = (bk_reg1F *)&shadowRegisters[REG1F]; // 31
 
     uint16_t fmStartBand[4] = {6400, 7400, 7600, 8700};  //!< Start FM band limit
     uint16_t fmEndBand[4] = {10800, 7600, 9100, 10800};  //!< End FM band limit
@@ -948,6 +955,85 @@ public:
         setRegister(REG04, reg04->raw);
     }
 
+    /**
+     * @brief Enables or Disables AFC
+     * 
+     * @param value if True, it enables AFC
+     */
+    inline void setAfc(bool value)
+    {
+        reg08->refined.AFCEN;
+        setRegister(REG08, reg08->raw);
+    }
+
+    /**
+     * @brief Sets AFC/RSSI/SNR Calculate Rate
+     * @details 00 = fastest; 11 = slowest. 4X times each
+     * @param value 0˜3
+     */
+    inline void setAfcRssiSnrCalculateRate(uint8_t value)
+    {
+        reg08->refined.TCSEL;
+        setRegister(REG08, reg08->raw);
+    }
+
+    /**
+     * @brief Sets AFCRL Threshold
+     * @details 0 = Channel space/2; 1 = 25kHz
+     * @param value 0=Channel space/2; 1 = 25kHz
+     */
+    inline void setAfcThreshold(uint8_t value)
+    {
+        reg08->refined.SEL25K;
+        setRegister(REG08, reg08->raw);
+    }
+
+    /**
+     * @brief Sets AFC Average
+     * @details 0 = Use the instant AFC value; 1 = Use the average AFC value
+     * @param value 0 or 1
+     */
+    inline void setAfcAve(uint8_t value)
+    {
+        reg08->refined.AVE;
+        setRegister(REG08, reg08->raw);
+    }
+
+    /**
+     * @brief Sets Variation Threshold for average AFC calculation
+     * @details 0 = Disable; 1 = the most strict; 2= ?; 3 = the loosest
+     * @param value 0, 1, 2 or 3
+     */
+    inline void setAfcVar(uint8_t value)
+    {
+        reg08->refined.VAR;
+        setRegister(REG08, reg08->raw);
+    }
+
+    /**
+     * @brief Sets AFC range
+     * @details 0 = he most strict; 3 = the loosest
+     * @param value 0,1,2 or 3
+     */
+    inline void setAfcRange(uint8_t value)
+    {
+        reg08->refined.RANGE;
+        setRegister(REG08, reg08->raw);
+    }
+
+    /**
+     * @brief Sets RSSI Threshold for Instant AFC updating
+     * @details default value is 16 (0x10)
+     * @param value 
+     */
+    inline void setAfcRssiThreshold(uint8_t value)
+    {
+        reg08->refined.AFCRSSIT;
+        setRegister(REG08, reg08->raw);
+    }
+
+
+
     void setFrequency(uint16_t frequency);
     void setFrequencyUp();
     void setFrequencyDown();
@@ -968,8 +1054,11 @@ public:
     void setSoftmute(bool value);
     void setSoftmuteAttack(uint8_t value);
     void setSoftmuteAttenuation(uint8_t value);
+    void setMuteThreshold(uint8_t rssi, uint8_t snr);
+    void setSeekMute(bool value); 
+    void setAfcMute(bool value); 
     void setAgc(bool value);
-
+    
     void setMono(bool value);
 
     bool isStereo();

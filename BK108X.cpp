@@ -3,7 +3,7 @@
  * @details BK108X Arduino Library implementation. This is an Arduino library for the BK108X, BROADCAST RECEIVER.  
  * @details This is an Arduino library for the BK1086 and BK1088 DSP BROADCAST RECEIVER.<br>  
  * @details It works with I2C protocol and can provide an easier interface for controlling the BK1086/88 devices.<br>
- * @details This library is based on BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER manual. 
+ * @details This library is based on the Document: BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3. 
  * 
  * __THIS LIBRARY IS UNDER CONSTRUCTION.....___
  * 
@@ -377,7 +377,8 @@ void BK108X::reset()
 /**
  * @ingroup GA03
  * @brief Powers the receiver on 
- * @details Starts the receiver with some default configurations 
+ * @details Starts the receiver and set default configurations suggested by the BELEN
+ * @see BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; pages 12-21
  */
 void BK108X::powerUp()
 {
@@ -404,15 +405,14 @@ void BK108X::powerUp()
     setRegister(REG15, 0x79F8); // 0b0111100111111000
     setRegister(REG16, 0x4012); // 0b0100000000010010
 
-    setRegister(REG17, 0x0040);
-    setRegister(REG18, 0x341C);
-    setRegister(REG19, 0x0080);
-    setRegister(REG1A, 0x0000);
-    setRegister(REG1B, 0x4CA2);
+    setRegister(REG17, 0x0040); // 0b0000000001000000
+    setRegister(REG18, 0x341C); // 0b0011010000011100
+    setRegister(REG19, 0x0080); // 0b0000000010000000
+    setRegister(REG1A, 0x0000); // 0
+    setRegister(REG1B, 0x4CA2); // 0b0100110010100010
 
-    setRegister(REG1C, 0x8820);
-    setRegister(REG1D, 0x0200);
-
+    setRegister(REG1C, 0x8820); // 0b1000100000100000 
+    setRegister(REG1D, 0x0200); // 0b0000001000000000  ->  512
 
     delay(250);
 }
@@ -891,8 +891,47 @@ void BK108X::setSoftmuteAttenuation(uint8_t value)
 
 /**
  * @ingroup GA03
+ * @brief Set the Mute Threshold based on RSSI and SNR
+ * 
+ * @see BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 19; Register 0x14 (Boot Configuration5)
+ * @param rssi  The Mute Threshold Based on RSSI (default 26)
+ * @param snr   The Mute Threshold Based on SNR  (default 5)
+ */
+void BK108X::setMuteThreshold(uint8_t rssi, uint8_t snr)
+{
+    reg14->refined.RSSIMTH = rssi;
+    reg14->refined.SNRMTH = snr;
+    setRegister(REG14,reg14->raw);
+}
+
+/**
+ * @ingroup GA03
+ * @brief Disable or Enable soft mute when seeking
+ * 
+ * @param value If true, enable mute during the seek;
+ */
+void BK108X::setSeekMute(bool value){
+    reg14->refined.SKMUTE = value;
+    setRegister(REG14, reg14->raw);
+}
+
+/**
+ * @ingroup GA03
+ * @brief Disable or Enable soft mute when AFCRL is high
+ * 
+ * @param value  If true, enable soft mute when AFCRL is high
+ */
+void BK108X::setAfcMute(bool value) {
+    reg14->refined.AFCMUTE = value;
+    setRegister(REG14, reg14->raw);
+}
+
+
+/**
+ * @todo Not found in the documentation 
+ * @ingroup GA03
  * @brief Sets the AGC enable or disable
- * @param value true = enable; fale = disable
+ * @param value true = enable; false = disable
  */
 void BK108X::setAgc(bool value)
 {

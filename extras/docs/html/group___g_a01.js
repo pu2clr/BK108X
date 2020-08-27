@@ -47,7 +47,7 @@ var group___g_a01 =
       [ "raw", "group___g_a01.html#acdfa2eb9b5293bfb1553b08ebeca4d5c", null ]
     ] ],
     [ "bk_reg04.refined", "group___g_a01.html#structbk__reg04_8refined", [
-      [ "GPIO1", "group___g_a01.html#a0ed149a12d2a87f1496cdc90c23bfb1c", null ],
+      [ "DUMMY", "group___g_a01.html#abd2103035a8021942390a78a431ba0c4", null ],
       [ "GPIO2", "group___g_a01.html#ac8715973930ed16be4d52340ef11181b", null ],
       [ "GPIO3", "group___g_a01.html#af2d579fe9d83fc7fe6f55c570c02af38", null ],
       [ "PILOTS", "group___g_a01.html#a9323bf4b36b03c9f8de9037e19db23aa", null ],
@@ -85,13 +85,16 @@ var group___g_a01 =
     ] ],
     [ "bk_reg07.refined", "group___g_a01.html#structbk__reg07_8refined", [
       [ "FMGAIN", "group___g_a01.html#a70be2521ab8dadb936c671292f10f622", null ],
-      [ "STGAIN", "group___g_a01.html#a7f1ade2b636dd9da43b378fbdb6f3fc2", null ],
+      [ "RESERVED", "group___g_a01.html#a83c7f2aa8c3ac10ed8beb75cad162827", null ],
+      [ "STHYS_SEL", "group___g_a01.html#abda838752cde4b6a69828ea2d834c597", null ],
+      [ "DACCK_SEL", "group___g_a01.html#ae1150a67ed377511b93b85918aa390e3", null ],
       [ "IMPTH", "group___g_a01.html#a4f63b1e72a7bfa48c6f3385d1c73eeb3", null ],
       [ "BPDE", "group___g_a01.html#af4389da8402e8a0f3fe235035482ecd3", null ],
       [ "IMPEN", "group___g_a01.html#acd9660564580fc4e73bffe3af88ae9fc", null ],
       [ "SIQ", "group___g_a01.html#ae5866950ac44e43db0ba9ee7508afed7", null ],
       [ "MODE", "group___g_a01.html#ab742db58b16f1d7de716d5e8a8afabbb", null ],
-      [ "RESERVED", "group___g_a01.html#a83c7f2aa8c3ac10ed8beb75cad162827", null ]
+      [ "LINEIN_EN", "group___g_a01.html#a86b05912b32e8b631bc2ebe97ac07131", null ],
+      [ "LINEIN_SEL", "group___g_a01.html#a847b953977dd914b72d933d6c9bc3f9d", null ]
     ] ],
     [ "bk_reg08", "group___g_a01.html#unionbk__reg08", [
       [ "refined", "group___g_a01.html#a3568a3906b8e813b90bd79cc4615ae01", null ],
@@ -255,16 +258,16 @@ var group___g_a01 =
       [ "raw", "group___g_a01.html#a3fdb8fcabad060457b50bc35b183eeb5", null ]
     ] ],
     [ "bk_reg1A.refined", "group___g_a01.html#structbk__reg1_a_8refined", [
+      [ "RESERVED1", "group___g_a01.html#ad8179a090910d4923b044cbce813c8ea", null ],
       [ "ANT_SEL", "group___g_a01.html#a9b9357128833e70e06bee6a748592b72", null ],
-      [ "RESERVED", "group___g_a01.html#a83c7f2aa8c3ac10ed8beb75cad162827", null ]
+      [ "RESERVED2", "group___g_a01.html#a0b5885d29a74762639e4b55c51ce2d85", null ]
     ] ],
     [ "bk_reg1B", "group___g_a01.html#unionbk__reg1_b", [
       [ "refined", "group___g_a01.html#ab26b3237fe32d0aa84e396f4891f2643", null ],
       [ "raw", "group___g_a01.html#a005cbfaaf541782a74a5041a8bf85e81", null ]
     ] ],
     [ "bk_reg1B.refined", "group___g_a01.html#structbk__reg1_b_8refined", [
-      [ "RESERVED", "group___g_a01.html#a83c7f2aa8c3ac10ed8beb75cad162827", null ],
-      [ "FREQ_SEL", "group___g_a01.html#ac279a2ae488147fc31abb73f59163f40", null ]
+      [ "RESERVED", "group___g_a01.html#a83c7f2aa8c3ac10ed8beb75cad162827", null ]
     ] ],
     [ "bk_reg1C", "group___g_a01.html#unionbk__reg1_c", [
       [ "refined", "group___g_a01.html#a1c753064de6f9ece74eeef67f690bda4", null ],
@@ -279,8 +282,7 @@ var group___g_a01 =
       [ "raw", "group___g_a01.html#a2a23be41d7ed8653fc88a5dacd455262", null ]
     ] ],
     [ "bk_reg1D.refined", "group___g_a01.html#structbk__reg1_d_8refined", [
-      [ "lowByte", "group___g_a01.html#a51ab88497cad20027df936afa223b23d", null ],
-      [ "highByte", "group___g_a01.html#a7b99e4a5dc723242645ede8c604610df", null ]
+      [ "FREQ_SEL", "group___g_a01.html#ac279a2ae488147fc31abb73f59163f40", null ]
     ] ],
     [ "bk_rds_blockb", "group___g_a01.html#unionbk__rds__blockb", [
       [ "group0", "group___g_a01.html#af4c2aef0f53a411edf117bece827e3d7", null ],
@@ -369,6 +371,13 @@ var group___g_a01 =
       [ "setTimeCallStrengthPilot", "group___g_a03.html#gad4595c8678c2ec213f5034f90dc61262", null ],
       [ "setGpio2", "group___g_a01.html#a6d3ee2c4dd53cb37737770ca65e847ac", null ],
       [ "setGpio3", "group___g_a01.html#a7215ad36ae1b116b5313efea09478cf3", null ],
+      [ "setAfc", "group___g_a01.html#a578240fab9700fd91669777320684f86", null ],
+      [ "setAfcRssiSnrCalculateRate", "group___g_a01.html#a9371c356633341d367ca576e7e997e54", null ],
+      [ "setAfcThreshold", "group___g_a01.html#a86a02a2f56ddc56f7c55b52a964c63f7", null ],
+      [ "setAfcAve", "group___g_a01.html#a04312e1df5ec81f46dd748552936426f", null ],
+      [ "setAfcVar", "group___g_a01.html#a797c467118b27417c5d203a30d6461f2", null ],
+      [ "setAfcRange", "group___g_a01.html#a55598bcb5bf6624db9741cac93c015da", null ],
+      [ "setAfcRssiThreshold", "group___g_a01.html#a56e4525ed2d981ea44c00b3bfed9f225", null ],
       [ "setFrequency", "group___g_a03.html#ga514242393caa2068d8acb3adec953832", null ],
       [ "setFrequencyUp", "group___g_a03.html#gac0c265a916d7852d7e4977b1835098eb", null ],
       [ "setFrequencyDown", "group___g_a03.html#ga5bf724e36f2dbdc826c387601e00ace1", null ],
@@ -387,6 +396,9 @@ var group___g_a01 =
       [ "setSoftmute", "group___g_a03.html#gadc619921201fc61cbba07be8e24b2aff", null ],
       [ "setSoftmuteAttack", "group___g_a03.html#gacc64d8615a589955d46dd6b09de73740", null ],
       [ "setSoftmuteAttenuation", "group___g_a03.html#ga4b7e8a8515e5afecd46a18c0a4dfe023", null ],
+      [ "setMuteThreshold", "group___g_a03.html#gaeda6bee33d55a04e09a76408812f13cb", null ],
+      [ "setSeekMute", "group___g_a03.html#gafce9573202cce9a06869bead65fe9685", null ],
+      [ "setAfcMute", "group___g_a03.html#ga6d56b06e4420c573e56dbdd36ed18ed6", null ],
       [ "setAgc", "group___g_a03.html#ga8c11bdd0e24365b242a9929238195a58", null ],
       [ "setMono", "group___g_a03.html#gabc3b9000cc833cfbec7cf1edc03ef674", null ],
       [ "isStereo", "group___g_a03.html#ga83b36ff59c25663df3194c49747e6fe7", null ],

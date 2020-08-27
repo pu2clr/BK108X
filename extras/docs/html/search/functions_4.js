@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['powerdown_377',['powerDown',['../group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857',1,'BK108X']]],
-  ['powerup_378',['powerUp',['../group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618',1,'BK108X']]]
+  ['powerdown_388',['powerDown',['../group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857',1,'BK108X']]],
+  ['powerup_389',['powerUp',['../group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618',1,'BK108X']]]
 ];

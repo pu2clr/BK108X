@@ -1,6 +1,6 @@
 var group___g_a01_structbk__reg04_8refined =
 [
-    [ "GPIO1", "group___g_a01.html#a0ed149a12d2a87f1496cdc90c23bfb1c", null ],
+    [ "DUMMY", "group___g_a01.html#abd2103035a8021942390a78a431ba0c4", null ],
     [ "GPIO2", "group___g_a01.html#ac8715973930ed16be4d52340ef11181b", null ],
     [ "GPIO3", "group___g_a01.html#af2d579fe9d83fc7fe6f55c570c02af38", null ],
     [ "PILOTS", "group___g_a01.html#a9323bf4b36b03c9f8de9037e19db23aa", null ],

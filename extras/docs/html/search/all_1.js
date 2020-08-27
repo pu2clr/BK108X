@@ -71,12 +71,13 @@ var searchData=
   ['bk_5freg1d_2erefined_72',['bk_reg1D.refined',['../group___g_a01.html#structbk__reg1_d_8refined',1,'']]],
   ['bk_5freg1e_73',['bk_reg1E',['../_b_k108_x_8h.html#a13286a0f9a7d77ac48189ff15bb1eda9',1,'BK108X.h']]],
   ['bk_5freg1f_74',['bk_reg1F',['../_b_k108_x_8h.html#aa9f1c5ae16ae38884e7f4f7e080ea50d',1,'BK108X.h']]],
-  ['bk_5fseek_5fdown_75',['BK_SEEK_DOWN',['../_b_k108_x_8h.html#a017ece573abf2a972df53a4266b0be4e',1,'BK108X.h']]],
-  ['bk_5fseek_5fstop_76',['BK_SEEK_STOP',['../_b_k108_x_8h.html#acaac3081acb27c04e3f8fb159ba831fa',1,'BK108X.h']]],
-  ['bk_5fseek_5fup_77',['BK_SEEK_UP',['../_b_k108_x_8h.html#a8b6fda0c416f414d2f9b94e704b4bb42',1,'BK108X.h']]],
-  ['bk_5fseek_5fwrap_78',['BK_SEEK_WRAP',['../_b_k108_x_8h.html#a7d3798980a48b89080f730fdcab13fa3',1,'BK108X.h']]],
-  ['blockb_79',['blockB',['../group___g_a01.html#adfbe429f8db8c7490d1cb27921e826c3',1,'bk_rds_blockb']]],
-  ['beken_20i2c_20bus_80',['BEKEN I2C BUS',['../group___g_a02.html',1,'']]],
-  ['basic_20functions_81',['Basic Functions',['../group___g_a03.html',1,'']]],
-  ['bk108x_20arduino_20library_20implementation_82',['BK108X Arduino Library implementation',['../index.html',1,'']]]
+  ['bk_5freg20_75',['bk_reg20',['../_b_k108_x_8h.html#aa794b71b9b53b0aad3d7ff0955984e98',1,'BK108X.h']]],
+  ['bk_5fseek_5fdown_76',['BK_SEEK_DOWN',['../_b_k108_x_8h.html#a017ece573abf2a972df53a4266b0be4e',1,'BK108X.h']]],
+  ['bk_5fseek_5fstop_77',['BK_SEEK_STOP',['../_b_k108_x_8h.html#acaac3081acb27c04e3f8fb159ba831fa',1,'BK108X.h']]],
+  ['bk_5fseek_5fup_78',['BK_SEEK_UP',['../_b_k108_x_8h.html#a8b6fda0c416f414d2f9b94e704b4bb42',1,'BK108X.h']]],
+  ['bk_5fseek_5fwrap_79',['BK_SEEK_WRAP',['../_b_k108_x_8h.html#a7d3798980a48b89080f730fdcab13fa3',1,'BK108X.h']]],
+  ['blockb_80',['blockB',['../group___g_a01.html#adfbe429f8db8c7490d1cb27921e826c3',1,'bk_rds_blockb']]],
+  ['beken_20i2c_20bus_81',['BEKEN I2C BUS',['../group___g_a02.html',1,'']]],
+  ['basic_20functions_82',['Basic Functions',['../group___g_a03.html',1,'']]],
+  ['bk108x_20arduino_20library_20implementation_83',['BK108X Arduino Library implementation',['../index.html',1,'']]]
 ];
