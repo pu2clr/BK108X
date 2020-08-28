@@ -94,10 +94,10 @@ void showStatus()
 
   if ( radio.getCurrentMode() == MODE_FM ) {
     freq = currentFrequency / 100.0;
-    unt = "MHz";
+    unt = (char *) "MHz";
   } else {
     freq = currentFrequency / 1.0;
-    unt = "KHz"; 
+    unt = (char *) "KHz"; 
   }
 
   Serial.print("\nYou are tuned on ");

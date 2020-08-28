@@ -356,7 +356,7 @@ void BK108X::waitAndFinishTune()
 
     reg03->refined.TUNE = 0;
     setRegister(REG03, reg03->raw);
-    delay(40);
+    // delay(40);
 }
 
 /**
@@ -532,7 +532,7 @@ void BK108X::setChannel(uint16_t channel)
     reg03->refined.CHAN = channel;
 
     setRegister(REG03,reg03->raw);
-    delay(50);
+    // delay(50);
     waitAndFinishTune();
 
     this->currentChannel = channel;
