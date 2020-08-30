@@ -168,6 +168,7 @@ void setup()
   rx.setup(SDA_PIN,CLK_PIN); 
   
   rx.setVolume(20);
+  rx.setSoftMute(false); // Disable Soft Mute.
   
   rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
   showTemplate();

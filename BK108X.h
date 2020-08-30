@@ -50,6 +50,7 @@
 #define DE_EMPHASIS_75 0
 #define DE_EMPHASIS_50 1
 
+
 #define REG00 0x00
 #define REG01 0x01
 #define REG02 0x02
@@ -1051,9 +1052,9 @@ public:
     int getRssi();
     int getSnr();
 
-    void setSoftmute(bool value);
-    void setSoftmuteAttack(uint8_t value);
-    void setSoftmuteAttenuation(uint8_t value);
+    void setSoftMute(bool value);
+    void setSoftMuteAttack(uint8_t value);
+    void setSoftMuteAttenuation(uint8_t value);
     void setMuteThreshold(uint8_t rssi, uint8_t snr);
     void setSeekMute(bool value); 
     void setAfcMute(bool value); 

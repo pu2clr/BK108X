@@ -378,6 +378,7 @@ void BK108X::reset()
  * @brief Powers the receiver on 
  * @details Starts the receiver and set default configurations suggested by the BELEN
  * @see BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; pages 12-21
+ * @see setup
  */
 void BK108X::powerUp()
 {
@@ -390,9 +391,14 @@ void BK108X::powerUp()
 
     setRegister(REG03, 0x0000);     // Sets to 0 all attributes of the register 0x03 (Channel)
 
-    setRegister(REG04, 0x60D4); // 0b0110000011010100
-    setRegister(REG05, 0x37CF); // 0b0011011111001111
-    setRegister(REG06, 0x086F); // 0b0000100001101111
+    setRegister(REG04, 0x60D4);     // 0b0110000011010100
+    setRegister(REG05, 0x37CF);     // 0b0011011111001111
+
+    
+    reg06->raw = 0x086F;            // Sets to the default value - 0b0000100001101111 -> CLKSEL = 1
+    reg06->refined.CLKSEL = this->oscillatorType;  // Sets to the clock type selected by the user
+    setRegister(REG06, reg06->raw);
+
     setRegister(REG07, 0x0101); // 0b0000000100000001
     setRegister(REG08, 0xAC90); // 0b1010110010010000
 
@@ -404,13 +410,15 @@ void BK108X::powerUp()
     setRegister(REG15, 0x79F8); // 0b0111100111111000
     setRegister(REG16, 0x4012); // 0b0100000000010010
 
-    setRegister(REG17, 0x0040); // 0b0000000001000000
+    // setRegister(REG17, 0x0040); // 0b0000000001000000
+    setRegister(REG17, 0x0800); // 0b0000100000000000
     setRegister(REG18, 0x341C); // 0b0011010000011100
     setRegister(REG19, 0x0080); // 0b0000000010000000
     setRegister(REG1A, 0x0000); // 0
     setRegister(REG1B, 0x4CA2); // 0b0100110010100010
 
-    setRegister(REG1C, 0x8820); // 0b1000100000100000 
+    // setRegister(REG1C, 0x8820); // 0b1000100000100000
+    setRegister(REG1C, 0); // 0b1000100000100000
     setRegister(REG1D, 0x0200); // 0b0000001000000000  ->  512
 
     delay(250);
@@ -473,11 +481,11 @@ void BK108X::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
 
     reg07->refined.MODE = MODE_FM;
     setRegister(REG07, reg07->raw);
+    delay(50);
     // Sets BAND, SPACE and other parameters
     this->currentFMBand =  reg05->refined.BAND = 0;
     this->currentFMSpace = reg05->refined.SPACE = 2;
     setRegister(REG05, reg05->raw);
-
     setFrequency(default_frequency);
 };
 
@@ -500,6 +508,7 @@ void BK108X::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
 
     this->currentMode =  reg07->refined.MODE = MODE_AM;
     setRegister(REG07, reg07->raw);
+    delay(50);
     // Sets BAND, SPACE and other parameters
 
     if (minimum_frequency < 520 )
@@ -512,10 +521,8 @@ void BK108X::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
     this->currentAMSpace = reg05->refined.SPACE = am_space;    // Space default value 0 (0=1KHz; 1 = 5KHz; 2=9KHz; 3 = 10KHz)
 
     setRegister(REG05, reg05->raw);
-
     this->setFrequency(default_frequency);
 }
-
 
 
 /**
@@ -842,7 +849,7 @@ int BK108X::getSnr()
  * @details Enable or Disable Soft Mute resource.
  * @param value  TRUE or FALSE
  */
-void BK108X::setSoftmute(bool value)
+void BK108X::setSoftMute(bool value)
 {
     reg02->refined.DSMUTE = !value;  // Soft mute TRUE/ENABLE means DSMUTE = 0. 
     setRegister(REG02,reg02->raw);
@@ -863,7 +870,7 @@ void BK108X::setSoftmute(bool value)
  * 
  * @param value  See table above. 
  */
-void BK108X::setSoftmuteAttack(uint8_t value)
+void BK108X::setSoftMuteAttack(uint8_t value)
 {
     reg06->refined.SMUTER = value;
     setRegister(REG06,reg06->raw);
@@ -882,7 +889,7 @@ void BK108X::setSoftmuteAttack(uint8_t value)
  * | 3     | slowest | 
  * @param value See table above
  */
-void BK108X::setSoftmuteAttenuation(uint8_t value)
+void BK108X::setSoftMuteAttenuation(uint8_t value)
 {
     reg06->refined.SMUTEA = value;
     setRegister(REG06, reg06->raw);
@@ -985,7 +992,7 @@ void BK108X::setMono(bool value)
 bool BK108X::isStereo()
 {
     getRegister(REG0A);
-    return reg0a->refined.ST;
+    return reg0a->refined.STEN;
 }
 
 /**

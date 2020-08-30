@@ -36,9 +36,6 @@
 #define SDA_PIN A4
 #define CLK_PIN A5
 
-uint16_t currentFM = 10390;
-uint16_t currentAM = 620;
-
 uint16_t currentFrequency;
 
 
@@ -58,7 +55,7 @@ void setup() {
   radio.setup(SDA_PIN, CLK_PIN);
   radio.setVolume(20);
 
-  currentFrequency = currentFM;
+  currentFrequency = 10650;
   radio.setFM(8400, 10800, currentFrequency, 10);
   showHelp();
   showStatus();
@@ -133,13 +130,11 @@ void loop()
       break;
     case 'a':
     case 'A':
-      currentFM = currentFrequency;
-      radio.setAM(550, 1710, currentAM, 10);
+      radio.setAM(550, 1710, 810, 10);
       break;
     case 'f':
     case 'F':
-      currentAM = currentFrequency;
-      radio.setFM(8700, 10800, currentFM, 10);
+      radio.setFM(8700, 10800, 10390, 10);
       radio.setMono(false);
       radio.setRds(true);
       break;

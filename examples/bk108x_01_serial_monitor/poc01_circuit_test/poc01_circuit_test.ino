@@ -57,6 +57,7 @@ void getDeviceInfo() {
     Serial.println("The device may not have been successfully detected. Please, check it.");
   }
 
+  // If you are using BK1088E, the Chip ID should be 4224 (0x1080) 
   sprintf(aux, "Device Id = %u; Chip Id = %u", deviceId, chipId);
   Serial.println(aux);
   
