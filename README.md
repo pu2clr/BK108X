@@ -22,7 +22,9 @@ Contact: __pu2clr@gmail.com__.
 6. [BK1086/88E TSSOP20 pinout](https://pu2clr.github.io/BK108X#bk108688e-tssop20--pinout)
 7. [Schematic](https://pu2clr.github.io/BK108X#schematic)
 8. [Sketch examples](https://github.com/pu2clr/BK108X/tree/master/examples)
-9. [References](https://pu2clr.github.io/BK108X#references)
+9. [Videos](https://pu2clr.github.io/BK108X#videos)
+10. [References](https://pu2clr.github.io/BK108X#references)
+    
 
 
 
@@ -209,6 +211,11 @@ Prototype: Photo 2
 
 
 
+## Videos
+
+1. [BK1088E FM, AM (LW, MW and SW) DSP receiver working with Arduino](https://youtu.be/qlEbFC5zt1U)
+2. [DSP BK1088E AM/MW and FM test with PU2CLR BK108X Arduino Library](https://youtu.be/c77Zjfsc5Ss)
+3. [DSP BK1088E SW test with PU2CLR BK108X Arduino Library](https://youtu.be/0ttRBs6OyVs)
 
 
 ## References
