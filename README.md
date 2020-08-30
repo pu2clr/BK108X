@@ -181,10 +181,10 @@ The main porpuse of this circuit is to test the  BK108X Arduino Library. However
 
 ## Troubleshoot
 
-1. Place C1 (1.8pF) as close as possible from the BK1088 pin 9;
+1. Place C1 (1.8pF) and the 32768KHz crystal as close as possible from the BK1088 pin 9;
 2. Place C4 (100nF) as close as possible from the BK1088 pin 13;
 3. Try to keep the length of the I2C bus as short as possible;
-4. If you check the circuit by running the [poc01_circuit_test.ino](https://github.com/pu2clr/BK108X/tree/master/examples/bk108x_01_serial_monitor/poc01_circuit_test) and get the Chip Id value -1 (0xFF). 
+4. If you check the circuit by running the [poc01_circuit_test.ino](https://github.com/pu2clr/BK108X/tree/master/examples/bk108x_01_serial_monitor/poc01_circuit_test) and get the Chip Id value -1 (0xFF): 
    * Check whether the DC voltage on pin 10 and 13 are correct;
    * Be sure I2C connections are right;
    * Be sure whether the I2C bus speed used by your MCU master (Arduino) is correct;

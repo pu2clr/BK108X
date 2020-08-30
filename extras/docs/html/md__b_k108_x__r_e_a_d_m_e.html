@@ -105,6 +105,7 @@ Contents</h1>
 <li><a href="https://pu2clr.github.io/BK108X#bk108688e-tssop20--pinout">BK1086/88E TSSOP20 pinout</a></li>
 <li><a href="https://pu2clr.github.io/BK108X#schematic">Schematic</a></li>
 <li><a href="https://github.com/pu2clr/BK108X/tree/master/examples">Sketch examples</a></li>
+<li><a href="https://pu2clr.github.io/BK108X#videos">Videos</a></li>
 <li><a href="https://pu2clr.github.io/BK108X#references">References</a></li>
 </ol>
 <h1><a class="anchor" id="autotoc_md3"></a>
@@ -232,10 +233,38 @@ BEKEN Typical Application Schematic</h2>
 <p>The main porpuse of this circuit is to test the <a class="el" href="group___g_a01.html#class_b_k108_x" title="KT0915 Class.">BK108X</a> Arduino Library. However, you may be surprised at the performance of this simple circuit due to the high features of the BK1086/88 device. Also, it is importante to say that this receiver does not intend to be a real radio for exigent listener. However, it is possible to start with it and then, if you wish, you can include some devices to the circuit to improve, for example, its sensibility, output sound quality beyond other desired features.</p>
 <p><img src="extras/images/basic_schematic.png" alt="Basic Schematic" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md16"></a>
+Troubleshoot</h1>
+<ol type="1">
+<li>Place C1 (1.8pF) and the 32768KHz crystal as close as possible from the BK1088 pin 9;</li>
+<li>Place C4 (100nF) as close as possible from the BK1088 pin 13;</li>
+<li>Try to keep the length of the I2C bus as short as possible;</li>
+<li>If you check the circuit by running the <a href="https://github.com/pu2clr/BK108X/tree/master/examples/bk108x_01_serial_monitor/poc01_circuit_test">poc01_circuit_test.ino</a> and get the Chip Id value -1 (0xFF):<ul>
+<li>Check whether the DC voltage on pin 10 and 13 are correct;</li>
+<li>Be sure I2C connections are right;</li>
+<li>Be sure whether the I2C bus speed used by your MCU master (Arduino) is correct;</li>
+<li>If you are using a BK1088, the Chip Id value should be 4224 (0x1080)</li>
+</ul>
+</li>
+<li>The frequency shown on display or Arduino IDE Serial Monitor is different from the real frequency.<ul>
+<li>You might have problem with reference clock. If you are using the 32.768KHz crystal, check whether it is working;</li>
+<li>If you are using an external clock input, check the signal with an oscilloscope (check the RCLK);</li>
+<li>By default, this library used 32.768KHz as reference clock;</li>
+<li>If you need to use external reference clock or a crystal with different clock, please, read the [API documentation} (<a href="https://pu2clr.github.io/BK108X/extras/docs/html/index.html">https://pu2clr.github.io/BK108X/extras/docs/html/index.html</a>)</li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md17"></a>
 Photos</h1>
 <p>Prototype: Photo 1 <img src="extras/images/photo_A02.png" alt="Prototype: Photo 1" class="inline"/></p>
 <p>Prototype: Photo 2 <img src="extras/images/photo_B01.png" alt="Prototype: Photo 2" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
+Videos</h1>
+<ol type="1">
+<li><a href="https://youtu.be/qlEbFC5zt1U">BK1088E FM, AM (LW, MW and SW) DSP receiver working with Arduino</a></li>
+<li><a href="https://youtu.be/c77Zjfsc5Ss">DSP BK1088E AM/MW and FM test with PU2CLR BK108X Arduino Library</a></li>
+<li><a href="https://youtu.be/0ttRBs6OyVs">DSP BK1088E SW test with PU2CLR BK108X Arduino Library</a></li>
+</ol>
+<h1><a class="anchor" id="autotoc_md19"></a>
 References</h1>
 <ul>
 <li>BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev 1.3 (Copyright©2012 by Beken Corporation);</li>

@@ -43,8 +43,10 @@ var NAVTREE =
       [ "Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md14", [
         [ "BEKEN Typical Application Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md15", null ]
       ] ],
-      [ "Photos", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md16", null ],
-      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md17", null ]
+      [ "Troubleshoot", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md16", null ],
+      [ "Photos", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md17", null ],
+      [ "Videos", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md18", null ],
+      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md19", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
