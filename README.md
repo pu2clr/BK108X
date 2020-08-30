@@ -108,13 +108,26 @@ If you have suggestions to improve this project, please let me know.
 * BK1086 only supports FM and medium wave, BK1088 supports short wave and long wave in addition to FM and medium wave;
 
 
-
-
  
 
 ## Library Installation
 
-__TODO__
+You can install this library on your Arduino environment using different methods. 
+
+### Installing via Arduino IDE
+
+
+__Under construction...__
+
+
+### Installing via the repository 
+
+With this approach, you will have the __most current version__ of the library. However, __it may not be the most stable version__. This is because the current version is always in development. [Prefer releases](https://github.com/pu2clr/BK108X/releases).
+Do you need some old version (release) of this library?  If yes, [check here](https://github.com/pu2clr/AKC695X/releases).
+
+
+First, you have to [download](https://github.com/pu2clr/AKC695X/archive/master.zip) this library in zip format.  The figures below show that. 
+
 
 
 ## Functional Block Diagram
