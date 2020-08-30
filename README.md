@@ -122,12 +122,13 @@ __Under construction...__
 
 ### Installing via the repository 
 
-With this approach, you will have the __most current version__ of the library. However, __it may not be the most stable version__. This is because the current version is always in development. [Prefer releases](https://github.com/pu2clr/BK108X/releases).
-Do you need some old version (release) of this library?  If yes, [check here](https://github.com/pu2clr/AKC695X/releases).
+With this approach, you will have the __most current version__ of the library. However, __it may not be the most stable version__. This is because the current version is always in development. [Prefer releases](https://github.com/pu2clr/BK108X/releases). Do you need some old version (release) of this library?  If yes, [check here](https://github.com/pu2clr/BK108X/releases).
 
+To install the current version, you have to [download](https://github.com/pu2clr/BK108X/archive/master.zip) this library in zip format.  After, unzip the BK108X-master.zip file in your Arduino Library folder. 
 
-First, you have to [download](https://github.com/pu2clr/AKC695X/archive/master.zip) this library in zip format.  The figures below show that. 
-
+* On __Windows__: "My Documents\Arduino\libraries"
+* On __MAC OS__: ˜/Documents/Arduino/libraries
+* On __Linux__: ˜/Documents/Arduino/libraries
 
 
 ## Functional Block Diagram
@@ -183,6 +184,8 @@ The image below was extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEI
 ![BEKEN Typical Application Schematic](extras/images/basic_circuit_from_beken.png)
 
 
+### BK1088E(SSOP20) and Arduino Schematic  
+
 The schematic below is based on the BEKEN typical application schematic added to the Arduino controller. The front-end circuit has been modified to use regular antenna instead headphone antenna setup.  
 
 The main porpuse of this circuit is to test the  BK108X Arduino Library. However, you may be surprised at the performance of this simple circuit due to the high features of the BK1086/88 device. Also, it is importante to say that this receiver does not intend to be a real radio for exigent listener. However, it is possible to start with it and then, if you wish, you can include some devices to the circuit to improve, for example,  its sensibility, output sound quality beyond other desired features.
@@ -190,6 +193,8 @@ The main porpuse of this circuit is to test the  BK108X Arduino Library. However
 
 ![Basic Schematic](extras/images/basic_schematic.png)
 
+
+The [example folder can guide you to check your circuit via Arduino sketches](https://github.com/pu2clr/BK108X/tree/master/examples)
 
 
 ## Troubleshoot
