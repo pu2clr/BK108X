@@ -116,8 +116,9 @@ You can install this library on your Arduino environment using different methods
 
 ### Installing via Arduino IDE
 
+This library is available on Arduino IDE platform. [This video will show you how to install the Arduino Library for the BK1086 / 88 DSP device](https://youtu.be/CvgKorUN0gE) on your local computer.
 
-__Under construction...__
+{% include libinstalling.html %} 
 
 
 ### Installing via the repository 
