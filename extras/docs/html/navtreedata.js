@@ -37,16 +37,20 @@ var NAVTREE =
         [ "Main features", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md9", null ],
         [ "Useful informarion", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md10", null ]
       ] ],
-      [ "Library Installation", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md11", null ],
-      [ "Functional Block Diagram", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md12", null ],
-      [ "BK1086/88E TSSOP20  pinout", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md13", null ],
-      [ "Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md14", [
-        [ "BEKEN Typical Application Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md15", null ]
+      [ "Library Installation", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md11", [
+        [ "Installing via Arduino IDE", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md12", null ],
+        [ "Installing via the repository", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md13", null ]
       ] ],
-      [ "Troubleshoot", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md16", null ],
-      [ "Photos", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md17", null ],
-      [ "Videos", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md18", null ],
-      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md19", null ]
+      [ "Functional Block Diagram", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md14", null ],
+      [ "BK1086/88E TSSOP20  pinout", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md15", null ],
+      [ "Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md16", [
+        [ "BEKEN Typical Application Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md17", null ],
+        [ "BK1088E(SSOP20) and Arduino Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md18", null ]
+      ] ],
+      [ "Troubleshoot", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md19", null ],
+      [ "Photos", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md20", null ],
+      [ "Videos", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md21", null ],
+      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md22", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -75,7 +79,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_b_k108_x_8cpp.html",
-"group___g_a01.html#ab3936dfdcad84edccb0d41f9a24c136f",
+"group___g_a01.html#ab332708e4304e13c9b424e7465254954",
 "group___g_a04.html#ga1fb9b7d09968c248624c9c9c3aa3b307"
 ];
 

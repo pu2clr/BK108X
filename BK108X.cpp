@@ -714,7 +714,7 @@ void BK108X::seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)
 }
 
 /**
- * @todo It is not working properly. 
+ * @todo make it work. 
  * @ingroup GA03
  * @brief Seeks a station via hardware functionality 
  * 
@@ -722,8 +722,6 @@ void BK108X::seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)
  * @param direction  Seek Direction; 0 = Seek down (default); 1 = Seek up.
  */
 void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction) {
-
-    char aux[100];
 
     reg03->refined.TUNE = 0;
     setRegister(REG03, reg03->raw);
@@ -753,6 +751,7 @@ void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction) {
 }
 
 /**
+ * @todo make it work. 
  * @ingroup GA03
  * @brief Sets RSSI and SNR Seek Threshold
  * @param  rssiValue between 0 and 127
@@ -933,16 +932,6 @@ void BK108X::setAfcMute(bool value) {
 }
 
 
-/**
- * @todo Not found in the documentation 
- * @ingroup GA03
- * @brief Sets the AGC enable or disable
- * @param value true = enable; false = disable
- */
-void BK108X::setAgc(bool value)
-{
-
-}
 
 /**
  * @ingroup GA03
@@ -1077,7 +1066,7 @@ void BK108X::getRdsStatus()
  */
 void BK108X::setRdsMode(uint8_t rds_mode)
 {
-
+    this->rds_mode = rds_mode;
 }
 
 /**
@@ -1119,7 +1108,7 @@ bool BK108X::getRdsReady()
  */
 uint8_t BK108X::getRdsFlagAB(void)
 {
-
+    return 0;
 }
 
 /**
@@ -1130,7 +1119,7 @@ uint8_t BK108X::getRdsFlagAB(void)
  */
 uint16_t BK108X::getRdsGroupType()
 {
-
+    return 0;
 }
 
 /**
@@ -1141,7 +1130,7 @@ uint16_t BK108X::getRdsGroupType()
  */
 uint8_t BK108X::getRdsVersionCode(void)
 {
-
+   return 0; 
 }
 
 /**  
@@ -1152,10 +1141,11 @@ uint8_t BK108X::getRdsVersionCode(void)
  */
 uint8_t BK108X::getRdsProgramType(void)
 {
-
+    return 0;
 }
 
 /**
+ * @todo to be implemented 
  * @ingroup GA04
  * 
  * @brief Process data received from group 2B
@@ -1163,10 +1153,12 @@ uint8_t BK108X::getRdsProgramType(void)
  */
 void BK108X::getNext2Block(char *c)
 {
-
+    this->rds_buffer2B[0] = *c;
+    c = NULL;
 }
 
 /**
+ * @todo to be implemented 
  * @ingroup GA04
  * 
  * @brief Process data received from group 2A
@@ -1175,7 +1167,8 @@ void BK108X::getNext2Block(char *c)
  */
 void BK108X::getNext4Block(char *c)
 {
-
+    this->rds_buffer2A[0] = *c;
+    c = NULL;
 }
 
 /**

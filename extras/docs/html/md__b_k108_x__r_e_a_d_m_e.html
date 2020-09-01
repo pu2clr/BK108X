@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('md__b_k108_x__r_e_a_d_m_e.html',''); i
 </p>
 <p>This project is about an Arduino Library to control the BK1086 and BK1088 devices. It was based on "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3" documentation from BEKEN Corporation.</p>
 <p>This library can be freely distributed using the MIT Free Software model.</p>
-<p><a href="https://pu2clr.github.io/bk108X/#mit-license">Copyright (c) 2019 Ricardo Lima Caratti</a>.</p>
+<p><a href="https://pu2clr.github.io/bk108X/#mit-license">Copyright (c) 2020 Ricardo Lima Caratti</a>.</p>
 <p>Contact: <a href="#" onclick="location.href='mai'+'lto:'+'__p'+'u2'+'clr'+'@g'+'mai'+'l.'+'com'+'__'; return false;">__pu2<span style="display: none;">.nosp@m.</span>clr@<span style="display: none;">.nosp@m.</span>gmail<span style="display: none;">.nosp@m.</span>.com<span style="display: none;">.nosp@m.</span>__</a>.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Contents</h1>
@@ -169,12 +169,25 @@ Useful informarion</h2>
 </ul>
 <h1><a class="anchor" id="autotoc_md11"></a>
 Library Installation</h1>
-<p><b>TODO</b></p>
-<h1><a class="anchor" id="autotoc_md12"></a>
+<p>You can install this library on your Arduino environment using different methods.</p>
+<h2><a class="anchor" id="autotoc_md12"></a>
+Installing via Arduino IDE</h2>
+<p>This library is available on Arduino IDE platform. <a href="https://youtu.be/CvgKorUN0gE">This video will show you how to install the Arduino Library for the BK1086 / 88 DSP device</a> on your local computer.</p>
+<p>{% include libinstalling.html %}</p>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Installing via the repository</h2>
+<p>With this approach, you will have the <b>most current version</b> of the library. However, <b>it may not be the most stable version</b>. This is because the current version is always in development. <a href="https://github.com/pu2clr/BK108X/releases">Prefer releases</a>. Do you need some old version (release) of this library? If yes, <a href="https://github.com/pu2clr/BK108X/releases">check here</a>.</p>
+<p>To install the current version, you have to <a href="https://github.com/pu2clr/BK108X/archive/master.zip">download</a> this library in zip format. After, unzip the BK108X-master.zip file in your Arduino Library folder.</p>
+<ul>
+<li>On <b>Windows</b>: "My Documents\Arduino\libraries"</li>
+<li>On <b>MAC OS</b>: ˜/Documents/Arduino/libraries</li>
+<li>On <b>Linux</b>: ˜/Documents/Arduino/libraries</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Functional Block Diagram</h1>
 <p><img src="extras/images/bk1088_functional_block_diagram.png" alt="BK1086/88E Functional Description" class="inline"/></p>
 <p><b>Source: "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 3"</b></p>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md15"></a>
 BK1086/88E TSSOP20  pinout</h1>
 <p><img src="extras/images/BK1088_pinout.png" alt="BK1086/88E PINOUT" class="inline"/></p>
 <p><b>Source: "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 23"</b></p>
@@ -222,17 +235,20 @@ BK1086/88E TSSOP20  pinout</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">20 </td><td class="markdownTableBodyNone">LIN1 </td><td class="markdownTableBodyNone">Line in input (Left channel1)  </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 Schematic</h1>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 BEKEN Typical Application Schematic</h2>
 <p>The image below was extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3; page 25". It is a basic circuit suggested by BEKEN.</p>
 <p><img src="extras/images/basic_circuit_from_beken.png" alt="BEKEN Typical Application Schematic" class="inline"/></p>
+<h2><a class="anchor" id="autotoc_md18"></a>
+BK1088E(SSOP20) and Arduino Schematic</h2>
 <p>The schematic below is based on the BEKEN typical application schematic added to the Arduino controller. The front-end circuit has been modified to use regular antenna instead headphone antenna setup. <br  />
 </p>
 <p>The main porpuse of this circuit is to test the <a class="el" href="group___g_a01.html#class_b_k108_x" title="KT0915 Class.">BK108X</a> Arduino Library. However, you may be surprised at the performance of this simple circuit due to the high features of the BK1086/88 device. Also, it is importante to say that this receiver does not intend to be a real radio for exigent listener. However, it is possible to start with it and then, if you wish, you can include some devices to the circuit to improve, for example, its sensibility, output sound quality beyond other desired features.</p>
 <p><img src="extras/images/basic_schematic.png" alt="Basic Schematic" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md16"></a>
+<p>The <a href="https://github.com/pu2clr/BK108X/tree/master/examples">example folder can guide you to check your circuit via Arduino sketches</a></p>
+<h1><a class="anchor" id="autotoc_md19"></a>
 Troubleshoot</h1>
 <ol type="1">
 <li>Place C1 (1.8pF) and the 32768KHz crystal as close as possible from the BK1088 pin 9;</li>
@@ -253,18 +269,18 @@ Troubleshoot</h1>
 </ul>
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 Photos</h1>
 <p>Prototype: Photo 1 <img src="extras/images/photo_A02.png" alt="Prototype: Photo 1" class="inline"/></p>
 <p>Prototype: Photo 2 <img src="extras/images/photo_B01.png" alt="Prototype: Photo 2" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 Videos</h1>
 <ol type="1">
 <li><a href="https://youtu.be/qlEbFC5zt1U">BK1088E FM, AM (LW, MW and SW) DSP receiver working with Arduino</a></li>
 <li><a href="https://youtu.be/c77Zjfsc5Ss">DSP BK1088E AM/MW and FM test with PU2CLR BK108X Arduino Library</a></li>
 <li><a href="https://youtu.be/0ttRBs6OyVs">DSP BK1088E SW test with PU2CLR BK108X Arduino Library</a></li>
 </ol>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md22"></a>
 References</h1>
 <ul>
 <li>BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev 1.3 (Copyright©2012 by Beken Corporation);</li>

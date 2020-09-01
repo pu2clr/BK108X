@@ -780,6 +780,8 @@ protected:
     char rds_buffer0A[9];  //!<  RDS Basic tuning and switching information (Type 0 groups)
     char rds_time[20];     //!<  RDS date time received information
 
+    uint8_t rds_mode; 
+
     int deviceAddress = I2C_DEVICE_ADDR;
 
     uint32_t currentFrequency;
@@ -963,7 +965,7 @@ public:
      */
     inline void setAfc(bool value)
     {
-        reg08->refined.AFCEN;
+        reg08->refined.AFCEN = value;
         setRegister(REG08, reg08->raw);
     }
 
@@ -974,7 +976,7 @@ public:
      */
     inline void setAfcRssiSnrCalculateRate(uint8_t value)
     {
-        reg08->refined.TCSEL;
+        reg08->refined.TCSEL =  value;
         setRegister(REG08, reg08->raw);
     }
 
@@ -985,7 +987,7 @@ public:
      */
     inline void setAfcThreshold(uint8_t value)
     {
-        reg08->refined.SEL25K;
+        reg08->refined.SEL25K =  value;
         setRegister(REG08, reg08->raw);
     }
 
@@ -996,7 +998,7 @@ public:
      */
     inline void setAfcAve(uint8_t value)
     {
-        reg08->refined.AVE;
+        reg08->refined.AVE =  value;
         setRegister(REG08, reg08->raw);
     }
 
@@ -1007,7 +1009,7 @@ public:
      */
     inline void setAfcVar(uint8_t value)
     {
-        reg08->refined.VAR;
+        reg08->refined.VAR =  value;
         setRegister(REG08, reg08->raw);
     }
 
@@ -1018,7 +1020,7 @@ public:
      */
     inline void setAfcRange(uint8_t value)
     {
-        reg08->refined.RANGE;
+        reg08->refined.RANGE =  value;
         setRegister(REG08, reg08->raw);
     }
 
@@ -1029,7 +1031,7 @@ public:
      */
     inline void setAfcRssiThreshold(uint8_t value)
     {
-        reg08->refined.AFCRSSIT;
+        reg08->refined.AFCRSSIT =  value;
         setRegister(REG08, reg08->raw);
     }
 
@@ -1058,7 +1060,6 @@ public:
     void setMuteThreshold(uint8_t rssi, uint8_t snr);
     void setSeekMute(bool value); 
     void setAfcMute(bool value); 
-    void setAgc(bool value);
     
     void setMono(bool value);
 

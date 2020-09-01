@@ -39,7 +39,6 @@ var group___g_a03 =
     [ "setMuteThreshold", "group___g_a03.html#gaeda6bee33d55a04e09a76408812f13cb", null ],
     [ "setSeekMute", "group___g_a03.html#gafce9573202cce9a06869bead65fe9685", null ],
     [ "setAfcMute", "group___g_a03.html#ga6d56b06e4420c573e56dbdd36ed18ed6", null ],
-    [ "setAgc", "group___g_a03.html#ga8c11bdd0e24365b242a9929238195a58", null ],
     [ "setAudioMute", "group___g_a03.html#ga402613def6ec429dcdb25ebdd91404fc", null ],
     [ "setAudioMute", "group___g_a03.html#ga62f9f2a5d84230b5f62be82d5514e86f", null ],
     [ "setMono", "group___g_a03.html#gabc3b9000cc833cfbec7cf1edc03ef674", null ],
