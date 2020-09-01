@@ -330,7 +330,7 @@ void showFrequency()
   {
     sprintf(aux, "%5.5u", currentFrequency);
 
-    freq[0] = aux[0];
+    freq[0] = (aux[0] == '0')? ' ' : aux[0];
     freq[1] = aux[1];
     freq[2] = aux[2];
     freq[3] = '\0';
