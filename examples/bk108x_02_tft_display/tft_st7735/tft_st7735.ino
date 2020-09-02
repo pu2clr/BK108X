@@ -486,6 +486,7 @@ void useBand() {
   else
   {
     rx.setAM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    // rx.setAfc(true);
   }
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;
