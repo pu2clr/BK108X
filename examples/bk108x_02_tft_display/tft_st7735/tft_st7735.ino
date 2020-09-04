@@ -242,8 +242,8 @@ void clearStatus() {
     bandMode = (char *) "AM";    
   }
   tft.setFont(&Serif_plain_7);
-  printValue(135,15,oldMode, bandMode,7,COLOR_YELLOW);  
-  printValue(135,36,oldUnit, unit,7,COLOR_YELLOW); 
+  printValue(138,15,oldMode, bandMode,7,COLOR_YELLOW);  
+  printValue(138,36,oldUnit, unit,7,COLOR_YELLOW); 
   tft.setFont(&Serif_plain_14);
   printValue(6, 80, oldBandName, band[bandIdx].name, 14, COLOR_GREEN);
 
@@ -382,19 +382,23 @@ void showRSSI()
  
   if (band[bandIdx].mode ==  MODE_FM) 
     showStereo();
-  
-  tft.setFont(&Serif_plain_14);
-  tft.setTextSize(1);
 
   rssiLevel = map(rx.getRssi(), 0, 127, 0, (maxAux - 48) );
   snrLevel = map(rx.getSnr(), 0, 127, 0, (maxAux - 48));
 
   tft.fillRect(5, 42,  maxAux, 6, ST77XX_BLACK);
-  tft.fillRect(5, 42, rssiLevel, 6, ST77XX_ORANGE);
+  tft.fillRect(5, 42, rssiLevel + 10, 6, ST77XX_ORANGE);
 
   tft.fillRect(5, 51, maxAux, 6, ST77XX_BLACK);
-  tft.fillRect(5, 51, snrLevel, 6, ST77XX_WHITE);
+  tft.fillRect(5, 51, snrLevel + 10 , 6, ST77XX_WHITE);
 
+  tft.setFont(&Serif_plain_7);
+  tft.setTextSize(1);
+  tft.setTextColor(COLOR_BLACK);
+  tft.setCursor(5, 47);
+  tft.print("rssi");
+  tft.setCursor(5, 56);
+  tft.print("srn");
 }
 
 
@@ -402,9 +406,9 @@ void showRSSI()
 void showStereo() {
   char stereo[10];
   sprintf(stereo, "%s", (rx.isStereo()) ? "St" : "Mo");
-  tft.setFont(&Serif_plain_14);
+  tft.setFont(NULL);
   tft.setTextSize(1);
-  printValue(125, 55, oldStereo, stereo, 15, COLOR_WHITE);
+  printValue(4, 4, oldStereo, stereo, 6, COLOR_WHITE);
 }
 
 /*
