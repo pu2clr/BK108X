@@ -375,18 +375,26 @@ void showStatus()
 */
 void showRSSI()
 {
-  char rssi[15];
-  int currentRssi;
-  
-   currentRssi = rx.getRssi();
+
+  int rssiLevel;
+  int snrLevel;
+  int maxAux = tft.width() - 10;
+ 
   if (band[bandIdx].mode ==  MODE_FM) 
     showStereo();
-    
-  sprintf(rssi, "%3u dBuV", currentRssi);
   
   tft.setFont(&Serif_plain_14);
   tft.setTextSize(1);
-  printValue(3, 55, oldRssi, rssi, 11, COLOR_WHITE);
+
+  rssiLevel = map(rx.getRssi(), 0, 127, 0, (maxAux - 48) );
+  snrLevel = map(rx.getSnr(), 0, 127, 0, (maxAux - 48));
+
+  tft.fillRect(5, 42,  maxAux, 6, ST77XX_BLACK);
+  tft.fillRect(5, 42, rssiLevel, 6, ST77XX_ORANGE);
+
+  tft.fillRect(5, 51, maxAux, 6, ST77XX_BLACK);
+  tft.fillRect(5, 51, snrLevel, 6, ST77XX_WHITE);
+
 }
 
 
