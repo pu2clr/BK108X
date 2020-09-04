@@ -398,7 +398,7 @@ void showRSSI()
   tft.setCursor(5, 47);
   tft.print("rssi");
   tft.setCursor(5, 56);
-  tft.print("srn");
+  tft.print("snr");
 }
 
 
