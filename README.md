@@ -21,7 +21,7 @@ Contact: __pu2clr@gmail.com__.
 5. [Functional Block Diagram](https://pu2clr.github.io/BK108X#functional-block-diagram)
 6. [BK1086/88E TSSOP20 pinout](https://pu2clr.github.io/BK108X#bk108688e-tssop20--pinout)
 7. [Schematic](https://pu2clr.github.io/BK108X#schematic)
-8. [Sketch examples](https://github.com/pu2clr/BK108X/tree/master/examples)
+8. [Source code - Arduino Sketch examples](https://github.com/pu2clr/BK108X/tree/master/examples)
 9. [Videos](https://pu2clr.github.io/BK108X#videos)
 10. [References](https://pu2clr.github.io/BK108X#references)
     
