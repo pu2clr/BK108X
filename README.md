@@ -7,7 +7,7 @@ This project is about an Arduino Library to control the BK1086 and BK1088 device
 
 This library can be freely distributed using the MIT Free Software model. 
 
-[Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/bk108X/#mit-license). 
+[Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/bk108X/#mit-license).  Teste!
 
 Contact: __pu2clr@gmail.com__.
 
