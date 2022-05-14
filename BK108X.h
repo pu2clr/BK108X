@@ -1065,6 +1065,7 @@ public:
     uint16_t getRealFrequency();
     uint16_t getRealChannel();
     void setChannel(uint16_t channel);
+    inline void seekStation(uint8_t seek_mode, uint8_t direction) {seekHardware(seek_mode, direction); };
     void seekHardware(uint8_t seek_mode, uint8_t direction);
     void seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL);
     void setSeekThreshold(uint8_t rssiValue, uint8_t snrValue);
