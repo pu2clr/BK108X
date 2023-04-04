@@ -1,8 +1,8 @@
 #include <BK108X.h>
 
 
-#define SDA_PIN A4
-#define CLK_PIN A5
+#define SDA_PIN 4
+#define CLK_PIN 5
 
 
 #define STRONG_LOCAL_FM_STATION 10650   // Set the best FM frequency to your location. The current is 106.50MHz 
