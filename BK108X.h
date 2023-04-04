@@ -16,6 +16,9 @@
  * Contact: pu2clr@gmail.com
  */
 
+#ifndef _BK108X_H // Prevent this file from being compiled more than once
+#define _BK108X_H
+
 #include <Arduino.h>
 
 #define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscilator becomes active
@@ -1112,3 +1115,5 @@ public:
     char *getRdsTime();
     bool getRdsSync();
 };
+
+#endif 
