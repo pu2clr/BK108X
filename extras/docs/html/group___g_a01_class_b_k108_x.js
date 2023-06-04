@@ -49,6 +49,7 @@ var group___g_a01_class_b_k108_x =
     [ "getRealFrequency", "group___g_a03.html#gac0f7f0de2093cae7777d2bc5ee1b22b4", null ],
     [ "getRealChannel", "group___g_a03.html#ga142c5b934ce9d95beb8e83278b622013", null ],
     [ "setChannel", "group___g_a03.html#gaa479240fcad272dc505ae50a6f4369d3", null ],
+    [ "seekStation", "group___g_a01.html#a687a756dc228f98d82cbc8fde296b746", null ],
     [ "seekHardware", "group___g_a03.html#gaf7b86960d2bfd182600cb4a4308eb9ab", null ],
     [ "seekSoftware", "group___g_a03.html#ga137b126f37f177a7c3928c5755d99757", null ],
     [ "setSeekThreshold", "group___g_a03.html#ga2d2a246c4d65dfbf93b5660a500c74c3", null ],
