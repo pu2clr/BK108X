@@ -1,31 +1,57 @@
 /*
- @licstart  The following is the entire license notice for the JavaScript code in this file.
+@licstart  The following is the entire license notice for the
+JavaScript code in this file.
 
- The MIT License (MIT)
+Copyright (C) 1997-2019 by Dimitri van Heesch
 
- Copyright (C) 1997-2020 by Dimitri van Heesch
+This program is free software; you can redistribute it and/or modify
+it under the terms of version 2 of the GNU General Public License as published by
+the Free Software Foundation
 
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software
- and associated documentation files (the "Software"), to deal in the Software without restriction,
- including without limitation the rights to use, copy, modify, merge, publish, distribute,
- sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
 
- The above copyright notice and this permission notice shall be included in all copies or
- substantial portions of the Software.
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
- BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
- DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
- @licend  The above is the entire license notice for the JavaScript code in this file
+@licend  The above is the entire license notice
+for the JavaScript code in this file
 */
 var NAVTREE =
 [
   [ "PU2CLR BK108X Arduino Library", "index.html", [
     [ "BK108X Arduino Library implementation", "index.html", null ],
+    [ "Your support is important.", "md__b_k108_x__c_o_n_t_r_i_b_u_t_i_n_g.html", null ],
+    [ "PU2CLR BK108X Arduino Library", "md__b_k108_x__r_e_a_d_m_e.html", [
+      [ "Contents", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md2", null ],
+      [ "Preface", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md3", [
+        [ "See also", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md4", null ]
+      ] ],
+      [ "MIT License", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md5", null ],
+      [ "Thanks", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md6", null ],
+      [ "Your support is important", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md7", null ],
+      [ "BK1086/88 features", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md8", [
+        [ "Main features", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md9", null ],
+        [ "Useful informarion", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md10", null ]
+      ] ],
+      [ "Library Installation", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md11", [
+        [ "Installing via Arduino IDE", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md12", null ],
+        [ "Installing via the repository", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md13", null ]
+      ] ],
+      [ "Functional Block Diagram", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md14", null ],
+      [ "BK1086/88E TSSOP20  pinout", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md15", null ],
+      [ "Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md16", [
+        [ "BEKEN Typical Application Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md17", null ],
+        [ "BK1088E(SSOP20) and Arduino Schematic", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md18", null ]
+      ] ],
+      [ "Troubleshoot", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md19", null ],
+      [ "Photos", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md20", null ],
+      [ "Videos", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md21", null ],
+      [ "References", "md__b_k108_x__r_e_a_d_m_e.html#autotoc_md22", null ]
+    ] ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Classes", "annotated.html", [
@@ -41,6 +67,8 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
@@ -51,7 +79,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_b_k108_x_8cpp.html",
-"group___g_a01.html#ab93fd5f964344aadbe614b1b076b8c9b"
+"group___g_a01.html#ab332708e4304e13c9b424e7465254954",
+"group___g_a04.html#ga1fb9b7d09968c248624c9c9c3aa3b307"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

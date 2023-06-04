@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oscillatortype_0',['oscillatorType',['../group___g_a01.html#a50a9ac975ce0539aed15b122db83d36b',1,'BK108X']]]
+  ['implied_458',['IMPLIED',['../license_8txt.html#a9c731e523f6a35737f231bf24431695d',1,'license.txt']]]
 ];

@@ -16,9 +16,6 @@
  * Contact: pu2clr@gmail.com
  */
 
-#ifndef _BK108X_H // Prevent this file from being compiled more than once
-#define _BK108X_H
-
 #include <Arduino.h>
 
 #define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscilator becomes active
@@ -925,7 +922,6 @@ public:
     }
 
     /**
-     * @ingroup GA03
      * @brief Sets the Gpio2 
      * @details the General Purpose I/O 2. You can use this pin according to the table below.
      * 
@@ -944,7 +940,6 @@ public:
     }
 
     /**
-     * @ingroup GA03
      * @brief Sets the Gpio3 
      * @details the General Purpose I/O 3. You can use this pin according to the table below.
      * 
@@ -964,7 +959,6 @@ public:
     }
 
     /**
-     * @ingroup GA03
      * @brief Enables or Disables AFC
      * 
      * @param value if True, it enables AFC
@@ -976,18 +970,6 @@ public:
     }
 
     /**
-     * @ingroup GA03
-     * @brief Enables or Disables AFC Invert
-     * 
-     * @param value if True, it enables AFC Invert.
-     */
-    inline void setAfcInvert(bool value) {
-        reg04->refined.AFCINV = value;
-        setRegister(REG04, reg04->raw);
-    }
-
-    /**
-     * @ingroup GA03
      * @brief Sets AFC/RSSI/SNR Calculate Rate
      * @details 00 = fastest; 11 = slowest. 4X times each
      * @param value 0˜3
@@ -999,7 +981,6 @@ public:
     }
 
     /**
-     * @ingroup GA03
      * @brief Sets AFCRL Threshold
      * @details 0 = Channel space/2; 1 = 25kHz
      * @param value 0=Channel space/2; 1 = 25kHz
@@ -1011,7 +992,6 @@ public:
     }
 
     /**
-     * @ingroup GA03
      * @brief Sets AFC Average
      * @details 0 = Use the instant AFC value; 1 = Use the average AFC value
      * @param value 0 or 1
@@ -1023,7 +1003,6 @@ public:
     }
 
     /**
-     * @ingroup GA03
      * @brief Sets Variation Threshold for average AFC calculation
      * @details 0 = Disable; 1 = the most strict; 2= ?; 3 = the loosest
      * @param value 0, 1, 2 or 3
@@ -1035,7 +1014,6 @@ public:
     }
 
     /**
-     * @ingroup GA03
      * @brief Sets AFC range
      * @details 0 = he most strict; 3 = the loosest
      * @param value 0,1,2 or 3
@@ -1047,7 +1025,6 @@ public:
     }
 
     /**
-     * @ingroup GA03
      * @brief Sets RSSI Threshold for Instant AFC updating
      * @details default value is 16 (0x10)
      * @param value 
@@ -1068,7 +1045,6 @@ public:
     uint16_t getRealFrequency();
     uint16_t getRealChannel();
     void setChannel(uint16_t channel);
-    inline void seekStation(uint8_t seek_mode, uint8_t direction) {seekHardware(seek_mode, direction); };
     void seekHardware(uint8_t seek_mode, uint8_t direction);
     void seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL);
     void setSeekThreshold(uint8_t rssiValue, uint8_t snrValue);
@@ -1115,5 +1091,3 @@ public:
     char *getRdsTime();
     bool getRdsSync();
 };
-
-#endif 
