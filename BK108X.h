@@ -1090,6 +1090,4 @@ public:
     char *getRdsText2B(void);
     char *getRdsTime();
     bool getRdsSync();
-
-    int checkI2C(uint8_t *addressArray);
 };

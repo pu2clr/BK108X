@@ -1,5 +1,5 @@
 #include <BK108X.h>
-#include <Wire.h>
+
 
 #define SDA_PIN A4
 #define CLK_PIN A5
@@ -10,41 +10,16 @@
 
 BK108X rx;
 
-char bufferAux[160];
-
-
 void setup()
 {
-
-  uint8_t i2cBusList[5];
-  int i2cStatus;
-
   Serial.begin(9600);
   while (!Serial);
-
-  i2cStatus = rx.checkI2C(i2cBusList); 
-
-  if (i2cStatus == -1)
-    showMsgHalt(F("\nError while try to access the device.\n")); 
-  else if (i2cStatus == 0) 
-    showMsgHalt(F("\nNo device was detected. Please, check your circuit!"));
-  else { 
-    for (int i = 0; i < i2cStatus ; i++) {
-      sprintf(bufferAux,"Found I2C adress: %X (HEX)\n", i2cBusList[i]);
-      Serial.print(bufferAux);
-    }
-  }    
 
   Serial.println("\n********Begin!");
  
   delay(1000);
 
-  Serial.println("\nStarting the receiver!");
-
   rx.setup(SDA_PIN, CLK_PIN);
-  
-  Serial.println("\nReceiver started!");
-  
   getDeviceInfo(); 
   
   rx.setVolume(20);       
@@ -72,13 +47,6 @@ void loop()
 }
 
 
-void showMsgHalt(String msg) {
-  Serial.print(F("\n********************\n"));
-  Serial.print(msg);
-  Serial.print(F("\n********************\n")); 
-  while(1);
-}
-
 void getDeviceInfo() {
 
   char aux[100];
@@ -94,9 +62,3 @@ void getDeviceInfo() {
   Serial.println(aux);
   
 }
-
-
-
-
-
-
