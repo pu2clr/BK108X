@@ -8,7 +8,7 @@
 
   TO RESET the EEPROM: Turn your receiver on with the encoder push button pressed.
 
-  Wire up ESP32 Dev Module, RDA5807 and LCD16x02 or LCD16x04
+  Wire up ESP32 Dev Module, BK1088E and LCD16x02 or LCD16x04
 
   | Device name               | Device Pin / Description  |  Arduino Pin  |
   | --------------------------| --------------------      | ------------  |
@@ -160,9 +160,9 @@ void setup() {
     // rx.RdssetRdsFifo(true);
     currentFrequency = previousFrequency = 10390;
   }
-  rx.setAFC(true);
+  // rx.setAFC(true);
   rx.setFrequency(currentFrequency);  // It is the frequency you want to select in MHz multiplied by 100.
-  rx.setSeekThreshold(50);            // Sets RSSI Seek Threshold (0 to 127)
+  // rx.setSeekThreshold(50);            // Sets RSSI Seek Threshold (0 to 127)
   lcd.clear();
   showStatus();
 }
@@ -189,8 +189,8 @@ void readAllReceiverInformation() {
   previousFrequency = currentFrequency;
 
   bRds = (bool)EEPROM.read(eeprom_address + 4);
-  rx.setRDS(bRds);
-  rx.setRdsFifo(bRds);
+  // rx.setRDS(bRds);
+  // rx.setRdsFifo(bRds);
 
   bSt = (bool)EEPROM.read(eeprom_address + 5);
   rx.setMono(bSt);
@@ -219,7 +219,7 @@ void rotaryEncoder() {  // rotary encoder events
 
 void showSplash() {
   lcd.setCursor(0, 0);
-  lcd.print("PU2CLR-RDA5807");
+  lcd.print("PU2CLR-BK1088");
   lcd.setCursor(0, 1);
   lcd.print("Arduino Library");
   lcd.display();
@@ -269,7 +269,7 @@ void showStatus() {
 */
 void showRSSI() {
   char rssi[12];
-  rx.convertToChar(rx.getRssi(), rssi, 3, 0, '.');
+  rx.convertToChar( rx.getRssi(), rssi, 3, 0, '.');
   strcat(rssi, "dB");
   lcd.setCursor(13, 1);
   lcd.print(rssi);

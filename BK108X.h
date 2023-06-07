@@ -772,6 +772,8 @@ private:
     uint16_t amEndBand[4] = {279, 1710, 21850, 1710}; //!< End FM band limit
     uint16_t amSpace[4] = {1, 5, 9, 10}; //!< AM channel space
 
+    char strFrequency[9];
+
     int pin_sdio, pin_sclk; 
 
 protected:
@@ -1047,6 +1049,11 @@ public:
     void setChannel(uint16_t channel);
     void seekHardware(uint8_t seek_mode, uint8_t direction);
     void seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL);
+    // Alias to seekSoftware.
+    inline void seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL) 
+    {
+         this->seekSoftware(seek_mode, direction, showFunc );
+    };
     void setSeekThreshold(uint8_t rssiValue, uint8_t snrValue);
 
     void setBand(uint8_t band = 1);
@@ -1092,4 +1099,34 @@ public:
     bool getRdsSync();
 
     int checkI2C(uint8_t *addressArray);
+    void convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros = true);
+
+    /**
+     * @ingroup GA05 Format the Frequency
+     * @brief Convert a numeric frequency to a formated string (char *) frequency
+     *
+     * @param uint16_t value  - A given frequency to be formated
+     * @param char *strValue - Formated frequency (Exe: 103,90) - Array of char ( minimal 7 elements )
+     * @param char decimalSeparator - the symbol that separates the decimal part (Exe: . or ,)
+     * @return point of strValue
+     */
+    inline char *formatFrequency(uint16_t value, char *strValue, char decimalSeparator)
+    {
+        this->convertToChar(value, strValue, 5, 3, decimalSeparator, true);
+        return strValue;
+    };
+    /**
+     * @ingroup GA05 Format the Frequency
+     * @brief Convert the current frequency to a formated string (char *) frequency
+     * @details The current frequency is the latest setted frequency by setFrequency, seek, setFrequencyUp and setFrequencyDown.
+     * @param char decimalSeparator - the symbol that separates the decimal part (Exe: . or ,)
+     * @return point char string strFrequency (member variable)
+     * @see setFrequency, seek, setFrequencyUp and setFrequencyDown
+     */
+    inline char *formatCurrentFrequency(char decimalSeparator = ',')
+    {
+        this->convertToChar(this->currentFrequency, this->strFrequency, 5, 3, decimalSeparator, true);
+        return this->strFrequency;
+    };
+
 };
