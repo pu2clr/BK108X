@@ -85,6 +85,35 @@
 
 #define EEPROM_SIZE 512
 
+
+typedef struct
+{
+  uint8_t  mode; // Bande mode.
+  char    *name;  
+  uint32_t minimum_frequency; // Minimum frequency to the band (KHz)
+  uint32_t maximum_frequency; // Maximum frequency to the band (KHz)
+  uint32_t default_frequency; // default frequency (KHz)
+  uint16_t step;               // step used (KHz)
+} tabBand;
+
+tabBand band[] = {
+  {MODE_FM, (char *) "FM", 6400, 10800, 10390, 10},
+  {MODE_AM, (char *) "MW ", 520, 1710, 810, 10},
+  {MODE_AM, (char *) "60m", 4700, 5600, 4885, 5},
+  {MODE_AM, (char *) "49m", 5700, 6400, 6100, 5},
+  {MODE_AM, (char *) "41m", 6800, 8200, 7205, 5},
+  {MODE_AM, (char *) "31m", 9200, 10500, 9600, 5},
+  {MODE_AM, (char *) "25m", 11400, 12200, 11940, 5},
+  {MODE_AM, (char *) "22m", 13400, 14300, 13600, 5},
+  {MODE_AM, (char *) "19m", 15000, 16100, 15300, 5},
+  {MODE_AM, (char *) "16m", 17400, 17900, 17600, 5},
+  {MODE_AM, (char *) "13m", 21400, 21900, 21525, 5}
+};
+
+const int lastBand = (sizeof band / sizeof(tabBand)) - 1;
+int bandIdx = 0; // FM
+
+
 const uint8_t app_id = 43;  // Useful to check the EEPROM content before processing useful data
 const int eeprom_address = 0;
 long storeTime = millis();
@@ -160,7 +189,9 @@ void setup() {
     // rx.RdssetRdsFifo(true);
     currentFrequency = previousFrequency = 10390;
   }
-  // rx.setAFC(true);
+  rx.setAfc(true);
+  rx.setVolume(20);
+  rx.setFM(8400, 10800, currentFrequency, 10);
   rx.setFrequency(currentFrequency);  // It is the frequency you want to select in MHz multiplied by 100.
   // rx.setSeekThreshold(50);            // Sets RSSI Seek Threshold (0 to 127)
   lcd.clear();
