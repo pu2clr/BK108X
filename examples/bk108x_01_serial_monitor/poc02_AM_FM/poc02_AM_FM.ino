@@ -167,7 +167,6 @@ void loop()
   if ( (millis() - elapsedTime) > 2000) {
     rssi = radio.getRssi(); 
     snr = radio.getSnr();
-    u = radio.isStereo();
     
     if ( (lastRssi != rssi) || (lastSnr != snr) || (lastStereo != stereo) ) {
       showStatus();
