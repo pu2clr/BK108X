@@ -1270,6 +1270,7 @@ int BK108X::checkI2C(uint8_t *addressArray)
         else if (error == 4)
             return -1;
     }
+    Wire.end();
     return idx;
 }
 
