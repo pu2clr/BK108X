@@ -13,6 +13,8 @@
  */
 
 #include <BK108X.h>
+#include <Wire.h> // This library is not used to communicate wwith BK108X family device. It is used to check I2C bus. 
+
 
 /** 
  * @defgroup GA02 BEKEN I2C BUS 
@@ -1237,3 +1239,37 @@ bool BK108X::getRdsSync()
 {
     return NULL;
 }
+
+
+/** 
+ * @defgroup GA07 Tools 
+ * @section GA05 Tools / Helper
+ */
+
+/**
+ * @ingroup GA05 Check the I2C buss address
+ * @brief Check the I2C bus address
+ *
+ * @param uint8_t address Array - this array will be populated with the I2C bus addresses found (minimum three elements)
+ * @return 0 if no i2c device is found; -1 if error is found or n > 0, where n is the number of I2C bus address found
+ */
+int BK108X::checkI2C(uint8_t *addressArray)
+{
+    Wire.begin();
+    int error, address;
+    int idx = 0;
+    for (address = 1; address < 127; address++)
+    {
+        Wire.beginTransmission(address);
+        error = Wire.endTransmission();
+        if (error == 0)
+        {
+            addressArray[idx] = address;
+            idx++;
+        }
+        else if (error == 4)
+            return -1;
+    }
+    return idx;
+}
+
