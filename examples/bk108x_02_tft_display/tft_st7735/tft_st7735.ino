@@ -117,17 +117,17 @@ typedef struct
 } tabBand;
 
 tabBand band[] = {
-  {MODE_FM, (char *) "FM", 6400, 10800, 10390, 10},
-  {MODE_AM, (char *) "MW ", 520, 1710, 810, 10},
-  {MODE_AM, (char *) "60m", 4700, 5600, 4885, 5},
-  {MODE_AM, (char *) "49m", 5700, 6400, 6100, 5},
-  {MODE_AM, (char *) "41m", 6800, 8200, 7205, 5},
-  {MODE_AM, (char *) "31m", 9200, 10500, 9600, 5},
-  {MODE_AM, (char *) "25m", 11400, 12200, 11940, 5},
-  {MODE_AM, (char *) "22m", 13400, 14300, 13600, 5},
-  {MODE_AM, (char *) "19m", 15000, 16100, 15300, 5},
-  {MODE_AM, (char *) "16m", 17400, 17900, 17600, 5},
-  {MODE_AM, (char *) "13m", 21400, 21900, 21525, 5}
+  {BK_MODE_FM, (char *) "FM", 6400, 10800, 10390, 10},
+  {BK_MODE_AM, (char *) "MW ", 520, 1710, 810, 10},
+  {BK_MODE_AM, (char *) "60m", 4700, 5600, 4885, 5},
+  {BK_MODE_AM, (char *) "49m", 5700, 6400, 6100, 5},
+  {BK_MODE_AM, (char *) "41m", 6800, 8200, 7205, 5},
+  {BK_MODE_AM, (char *) "31m", 9200, 10500, 9600, 5},
+  {BK_MODE_AM, (char *) "25m", 11400, 12200, 11940, 5},
+  {BK_MODE_AM, (char *) "22m", 13400, 14300, 13600, 5},
+  {BK_MODE_AM, (char *) "19m", 15000, 16100, 15300, 5},
+  {BK_MODE_AM, (char *) "16m", 17400, 17900, 17600, 5},
+  {BK_MODE_AM, (char *) "13m", 21400, 21900, 21525, 5}
 };
 
 const int lastBand = (sizeof band / sizeof(tabBand)) - 1;
@@ -234,7 +234,7 @@ void clearStatus() {
    
   tft.fillRect(3,61,maxX1, maxY1 - 61, COLOR_BLACK);
   
-  if (band[bandIdx].mode ==  MODE_FM) {
+  if (band[bandIdx].mode ==  BK_MODE_FM) {
     unit = (char *) "MHz";
     bandMode =  (char *) "FM";
   } else {
@@ -326,7 +326,7 @@ void showFrequency()
   tft.setTextSize(1);
   
 
-  if (band[bandIdx].mode ==  MODE_FM) // FM
+  if (band[bandIdx].mode ==  BK_MODE_FM) // FM
   {
     sprintf(aux, "%5.5u", currentFrequency);
 
@@ -379,7 +379,7 @@ void showRSSI()
   int currentRssi;
   
    currentRssi = rx.getRssi();
-  if (band[bandIdx].mode ==  MODE_FM) 
+  if (band[bandIdx].mode ==  BK_MODE_FM) 
     showStereo();
     
   sprintf(rssi, "%3u dBuV", currentRssi);
@@ -457,26 +457,26 @@ void bandUp()
 
 
 
-void bandDown()
-{
-  // save the current frequency for the band
-  band[bandIdx].default_frequency = currentFrequency;
+  void bandDown()
+  {
+    // save the current frequency for the band
+    band[bandIdx].default_frequency = currentFrequency;
 
-  if (bandIdx > 0)
-  {
-    bandIdx--;
+    if (bandIdx > 0)
+    {
+      bandIdx--;
+    }
+    else
+    {
+      bandIdx = lastBand;
+    }
+    useBand();
   }
-  else
-  {
-    bandIdx = lastBand;
-  }
-  useBand();
-}
 
 
 void useBand() {
 
-  if (band[bandIdx].mode ==  MODE_FM)
+  if (band[bandIdx].mode ==  BK_MODE_FM)
   {
     rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
     rx.setFmDeemphasis(DE_EMPHASIS_75);

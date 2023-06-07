@@ -479,9 +479,9 @@ void BK108X::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
     this->currentFrequency = default_frequency;
     this->minimumFrequency = minimum_frequency;
     this->maximumFrequency = maximum_frequency;
-    this->currentMode = MODE_FM;
+    this->currentMode = BK_MODE_FM;
 
-    reg07->refined.MODE = MODE_FM;
+    reg07->refined.MODE = BK_MODE_FM;
     setRegister(REG07, reg07->raw);
     delay(50);
     // Sets BAND, SPACE and other parameters
@@ -508,7 +508,7 @@ void BK108X::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
     this->minimumFrequency = minimum_frequency;
     this->maximumFrequency = maximum_frequency;
 
-    this->currentMode =  reg07->refined.MODE = MODE_AM;
+    this->currentMode =  reg07->refined.MODE = BK_MODE_AM;
     setRegister(REG07, reg07->raw);
     delay(50);
     // Sets BAND, SPACE and other parameters
@@ -557,7 +557,7 @@ void BK108X::setFrequency(uint16_t frequency)
 {
     uint16_t channel;
 
-    if (this->currentMode == MODE_FM) {
+    if (this->currentMode == BK_MODE_FM) {
         channel = (frequency - this->fmStartBand[this->currentFMBand]) /  this->fmSpace[this->currentFMSpace];
     }
     else {
@@ -638,7 +638,7 @@ uint16_t BK108X::getRealChannel()
  */
 uint16_t BK108X::getRealFrequency()
 {
-    if (currentMode == MODE_AM) {
+    if (currentMode == BK_MODE_AM) {
         return getRealChannel() * this->amSpace[this->currentAMSpace] + this->amStartBand[this->currentAMBand];
     } else {
         return getRealChannel() * this->fmSpace[this->currentFMSpace] + this->fmStartBand[this->currentFMBand];
@@ -786,7 +786,7 @@ void BK108X::setSeekThreshold(uint8_t rssiValue, uint8_t snrValue)
 
 void BK108X::setBand(uint8_t band)
 {
-    if (this->currentMode == MODE_AM ) 
+    if (this->currentMode == BK_MODE_AM ) 
         this->currentAMBand = band; 
     else
         this->currentFMBand = band;
@@ -811,7 +811,7 @@ void BK108X::setBand(uint8_t band)
  */
 void BK108X::setSpace(uint8_t space)
 {
-    if (this->currentMode == MODE_AM ) 
+    if (this->currentMode == BK_MODE_AM ) 
         this->currentAMSpace = space;
     else 
         this->currentFMSpace = space;

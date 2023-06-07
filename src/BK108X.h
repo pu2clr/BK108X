@@ -44,8 +44,8 @@
 #define AM_SW  2 //!< 2.3~21.85KHz
 #define AM_M22 3 //!< 522~1710
 
-#define MODE_FM  0
-#define MODE_AM  1
+#define BK_MODE_FM  0
+#define BK_MODE_AM  1
 
 #define DE_EMPHASIS_75 0
 #define DE_EMPHASIS_50 1
@@ -796,7 +796,7 @@ protected:
     uint8_t currentAMBand = 1;
     uint8_t currentFMSpace = 0;
     uint8_t currentAMSpace = 0;
-    uint8_t currentMode = MODE_FM;
+    uint8_t currentMode = BK_MODE_FM;
 
     uint8_t currentVolume = 0;
     int rdsInterruptPin = -1;

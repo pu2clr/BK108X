@@ -89,7 +89,7 @@ void showStatus()
 
   currentFrequency = radio.getFrequency();
 
-  if ( radio.getCurrentMode() == MODE_FM ) {
+  if ( radio.getCurrentMode() == BK_MODE_FM ) {
     freq = currentFrequency / 100.0;
     unt = (char *) "MHz";
   } else {

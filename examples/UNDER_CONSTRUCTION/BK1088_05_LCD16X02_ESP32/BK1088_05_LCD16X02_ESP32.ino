@@ -29,8 +29,8 @@
   | Buttons                   |                           |               |
   |                           | Volume Up                 |  GPIO32       |
   |                           | Volume Down               |  GPIO33       |
-  |                           | Stereo/Mono               |  GPIO25       |
-  |                           | RDS ON/off                |  GPIO26       |
+  |                           | Band Up                   |  GPIO25       |
+  |                           | Band Down                 |  GPIO26       |
   | --------------------------| --------------------------| --------------|
   | Encoder                   |                           |               |
   |                           | A                         |  GPIO13       |
@@ -72,9 +72,11 @@
 // Buttons controllers
 #define VOLUME_UP 32      // Volume Up
 #define VOLUME_DOWN 33    // Volume Down
-#define SWITCH_RDS 25     // SDR ON/OFF
-#define SWITCH_STEREO 26  // Stereo ON/OFF
-#define SEEK_FUNCTION 27  // Seek function
+#define BAND_MODE_SWITCH_UP 25     // Next Band
+#define BAND_MODE_SWITCH_DOWN 26  // Previous Band
+#define SEEK_FUNCTION 27  //Encoder push button
+
+#define DEFAULT_VOLUME_LEVEL 20
 
 #define POLLING_TIME 1900
 #define RDS_MSG_TYPE_TIME 25000
@@ -84,34 +86,44 @@
 #define PUSH_MIN_DELAY 300
 
 #define EEPROM_SIZE 512
+#define MIN_ELAPSED_TIME 150
 
+
+
+/*
+ * Structure used to refers a band / mode of the receiver
+*/
 
 typedef struct
 {
-  uint8_t  mode; // Bande mode.
-  char    *name;  
+  uint8_t  mode; // Band mode
+  char    *name; // Band name 
   uint32_t minimum_frequency; // Minimum frequency to the band (KHz)
   uint32_t maximum_frequency; // Maximum frequency to the band (KHz)
   uint32_t default_frequency; // default frequency (KHz)
-  uint16_t step;               // step used (KHz)
+  uint16_t step;              // step used (KHz)
 } tabBand;
 
+/*
+ * Table of the bands
+ */ 
+
 tabBand band[] = {
-  {MODE_FM, (char *) "FM", 6400, 10800, 10390, 10},
-  {MODE_AM, (char *) "MW ", 520, 1710, 810, 10},
-  {MODE_AM, (char *) "60m", 4700, 5600, 4885, 5},
-  {MODE_AM, (char *) "49m", 5700, 6400, 6100, 5},
-  {MODE_AM, (char *) "41m", 6800, 8200, 7205, 5},
-  {MODE_AM, (char *) "31m", 9200, 10500, 9600, 5},
-  {MODE_AM, (char *) "25m", 11400, 12200, 11940, 5},
-  {MODE_AM, (char *) "22m", 13400, 14300, 13600, 5},
-  {MODE_AM, (char *) "19m", 15000, 16100, 15300, 5},
-  {MODE_AM, (char *) "16m", 17400, 17900, 17600, 5},
-  {MODE_AM, (char *) "13m", 21400, 21900, 21525, 5}
+  {BK_MODE_FM, (char *) "FM", 6400, 10800, 10390, 10},
+  {BK_MODE_AM, (char *) "MW ", 520, 1710, 810, 10},
+  {BK_MODE_AM, (char *) "60m", 4700, 5600, 4885, 5},
+  {BK_MODE_AM, (char *) "49m", 5700, 6400, 6100, 5},
+  {BK_MODE_AM, (char *) "41m", 6800, 8200, 7205, 5},
+  {BK_MODE_AM, (char *) "31m", 9200, 10500, 9600, 5},
+  {BK_MODE_AM, (char *) "25m", 11400, 12200, 11940, 5},
+  {BK_MODE_AM, (char *) "22m", 13400, 14300, 13600, 5},
+  {BK_MODE_AM, (char *) "19m", 15000, 16100, 15300, 5},
+  {BK_MODE_AM, (char *) "16m", 17400, 17900, 17600, 5},
+  {BK_MODE_AM, (char *) "13m", 21400, 21900, 21525, 5}
 };
 
 const int lastBand = (sizeof band / sizeof(tabBand)) - 1;
-int bandIdx = 0; // FM
+int8_t bandIdx = 0; // FM
 
 
 const uint8_t app_id = 43;  // Useful to check the EEPROM content before processing useful data
@@ -150,9 +162,9 @@ void setup() {
   // Push button pin
   pinMode(VOLUME_UP, INPUT_PULLUP);
   pinMode(VOLUME_DOWN, INPUT_PULLUP);
-  pinMode(SWITCH_STEREO, INPUT_PULLUP);
-  pinMode(SWITCH_RDS, INPUT_PULLUP);
   pinMode(SEEK_FUNCTION, INPUT_PULLUP);
+  pinMode(BAND_MODE_SWITCH_UP, INPUT_PULLUP);
+  pinMode(BAND_MODE_SWITCH_DOWN, INPUT_PULLUP);
 
   // Start LCD display device
   lcd.begin(16, 2);
@@ -161,7 +173,7 @@ void setup() {
   EEPROM.begin(EEPROM_SIZE);
 
   // If you want to reset the eeprom, keep the ENCODER PUSH BUTTON  pressed during statup
-  if (digitalRead(SEEK_FUNCTION) == LOW) {
+  if (digitalRead(BAND_MODE_SWITCH_DOWN) == LOW) {
     EEPROM.write(eeprom_address, 0);
     lcd.clear();
     lcd.setCursor(0, 0);
@@ -187,13 +199,9 @@ void setup() {
     // rx.setRBDS(true);  //  set RDS and RBDS. See setRDS.
     // rx.setRDS(true);
     // rx.RdssetRdsFifo(true);
-    currentFrequency = previousFrequency = 10390;
+    rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    rx.setVolume(DEFAULT_VOLUME_LEVEL);
   }
-  rx.setAfc(true);
-  rx.setVolume(20);
-  rx.setFM(8400, 10800, currentFrequency, 10);
-  rx.setFrequency(currentFrequency);  // It is the frequency you want to select in MHz multiplied by 100.
-  // rx.setSeekThreshold(50);            // Sets RSSI Seek Threshold (0 to 127)
   lcd.clear();
   showStatus();
 }
@@ -209,6 +217,7 @@ void saveAllReceiverInformation() {
   EEPROM.write(eeprom_address + 3, currentFrequency & 0xFF);  // stores the current Frequency LOW byte for the band
   EEPROM.write(eeprom_address + 4, (uint8_t)bRds);
   EEPROM.write(eeprom_address + 5, (uint8_t)bSt);
+  EEPROM.write(eeprom_address + 6, bandIdx);
 
   EEPROM.end();
 }
@@ -224,6 +233,8 @@ void readAllReceiverInformation() {
   // rx.setRdsFifo(bRds);
 
   bSt = (bool)EEPROM.read(eeprom_address + 5);
+  bandIdx = EEPROM.read(eeprom_address + 6);
+  useBand();
   rx.setMono(bSt);
 }
 
@@ -313,6 +324,59 @@ void showStereoMono() {
   } else {
     lcd.print("MO");
   }
+}
+
+void bandUp()
+{
+  // save the current frequency for the band
+  band[bandIdx].default_frequency = currentFrequency;
+
+  if (bandIdx < lastBand)
+  {
+    bandIdx++;
+  }
+  else
+  {
+    bandIdx = 0;
+  }
+  useBand();
+}
+
+void bandDown()
+{
+  // save the current frequency for the band
+  band[bandIdx].default_frequency = currentFrequency;
+
+  if (bandIdx > 0)
+  {
+    bandIdx--;
+  }
+  else
+  {
+    bandIdx = lastBand;
+  }
+  useBand();
+}
+
+
+void useBand() {
+
+  if (band[bandIdx].mode ==  BK_MODE_FM)
+  {
+    rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    rx.setFmDeemphasis(DE_EMPHASIS_75);
+    // rx.setSoftMute(true);
+    rx.setMono(false);  // Force stereo
+  }
+  else
+  {
+    rx.setAM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+  }
+  delay(100);
+  currentFrequency = band[bandIdx].default_frequency;
+  rx.setFrequency(currentFrequency);
+  delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
+  showStatus();
 }
 
 /*********************************************************
@@ -476,13 +540,12 @@ void loop() {
   } else if (digitalRead(VOLUME_DOWN) == LOW) {
     rx.setVolumeDown();
     resetEepromDelay();
-  } else if (digitalRead(SWITCH_STEREO) == LOW)
+  } else if (digitalRead(SEEK_FUNCTION) == LOW)
     doStereo();
-  else if (digitalRead(SWITCH_RDS) == LOW)
-    doRds();
-  else if (digitalRead(SEEK_FUNCTION) == LOW)
-    doSeek();
-
+  else if (digitalRead(BAND_MODE_SWITCH_UP) == LOW)
+    bandUp();
+  else if (digitalRead(BAND_MODE_SWITCH_DOWN) == LOW)
+    bandDown();
   if ((millis() - pollin_elapsed) > POLLING_TIME) {
     showStatus();
     if (bShow) clearRds();
