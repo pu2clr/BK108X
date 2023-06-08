@@ -45,6 +45,7 @@ arduino-cli core update-index
 echo "This may take several minutes or hours. Please wait!"
 echo "Installing the libraries used by the examples implemented in this Library"
 #uncomment the lines if you and to include more libraries 
+arduino-cli lib install "PU2CLR BK108X"
 arduino-cli lib install "Adafruit BusIO"
 arduino-cli lib install "Adafruit SH110X"
 arduino-cli lib install "Adafruit SSD1306"
