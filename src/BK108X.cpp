@@ -1169,8 +1169,29 @@ uint8_t BK108X::getRdsProgramType(void)
  */
 void BK108X::getNext2Block(char *c)
 {
-    this->rds_buffer2B[0] = *c;
-    c = NULL;
+    char raw[2];
+    int i, j;
+
+    raw[1] = reg0d->refined.lowByte;  // RDS Block B low byte
+    raw[0] = reg0d->refined.highByte; // RDA Block B high byte
+
+    for (i = j = 0; i < 2; i++)
+    {
+        if (raw[i] == 0xD || raw[i] == 0xA)
+        {
+            c[j] = '\0';
+            return;
+        }
+        if (raw[i] >= 32)
+        {
+            c[j] = raw[i];
+            j++;
+        }
+        else
+        {
+            c[i] = ' ';
+        }
+    }
 }
 
 /**
@@ -1183,8 +1204,31 @@ void BK108X::getNext2Block(char *c)
  */
 void BK108X::getNext4Block(char *c)
 {
-    this->rds_buffer2A[0] = *c;
-    c = NULL;
+    char raw[4];
+    int i, j;
+
+    raw[0] = reg0e->refined.highByte; // RDS Block C high byte
+    raw[1] = reg0e->refined.lowByte;  // RDS Block C low byte
+    raw[2] = reg0f->refined.highByte; // RDS Block D high byte
+    raw[3] = reg0f->refined.lowByte;  // RDS Block D low byte
+
+    for (i = j = 0; i < 4; i++)
+    {
+        if (raw[i] == 0xD || raw[i] == 0xA)
+        {
+            c[j] = '\0';
+            return;
+        }
+        if (raw[i] >= 32)
+        {
+            c[j] = raw[i];
+            j++;
+        }
+        else
+        {
+            c[i] = ' ';
+        }
+    }
 }
 
 /**
@@ -1208,7 +1252,24 @@ char *BK108X::getRdsText(void)
  */
 char *BK108X::getRdsText0A(void)
 {
+    static int rdsTextAdress0A;
+    bk_rds_blockb blkb;
+
+    blkb.blockB = reg0d->raw;
+
+    if (blkb.group0.groupType == 0)
+    {
+        // Process group type 0
+        rdsTextAdress0A = blkb.group0.address;
+        if (rdsTextAdress0A >= 0 && rdsTextAdress0A < 4)
+        {
+            getNext2Block(&rds_buffer0A[rdsTextAdress0A * 2]);
+            rds_buffer0A[8] = '\0';
+            return rds_buffer0A;
+        }
+    }
     return NULL;
+
 }
 
 /**
@@ -1220,6 +1281,23 @@ char *BK108X::getRdsText0A(void)
  */
 char *BK108X::getRdsText2A(void)
 {
+    static int rdsTextAdress2A;
+    bk_rds_blockb blkb;
+
+    blkb.blockB = reg0d->raw;
+    rdsTextAdress2A = blkb.group2.address;
+
+    if (blkb.group2.groupType == 2)
+    {
+        // Process group 2A
+        // Decode B block information
+        if (rdsTextAdress2A >= 0 && rdsTextAdress2A < 16)
+        {
+            getNext4Block(&rds_buffer2A[rdsTextAdress2A * 4]);
+            rds_buffer2A[63] = '\0';
+            return rds_buffer2A;
+        }
+    }
     return NULL;
 }
 
@@ -1230,6 +1308,20 @@ char *BK108X::getRdsText2A(void)
  */
 char *BK108X::getRdsText2B(void)
 {
+    static int rdsTextAdress2B;
+    bk_rds_blockb blkb;
+
+    blkb.blockB = reg0d->raw;
+    if (blkb.group2.groupType == 1)
+    {
+        // Process group 2B
+        rdsTextAdress2B = blkb.group2.address;
+        if (rdsTextAdress2B >= 0 && rdsTextAdress2B < 16)
+        {
+            getNext2Block(&rds_buffer2B[rdsTextAdress2B * 2]);
+            return rds_buffer2B;
+        }
+    }
     return NULL;
 }
 

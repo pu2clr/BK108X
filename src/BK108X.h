@@ -177,16 +177,16 @@ typedef union
 {
     struct
     {
-        uint8_t DUMMY : 2;   //!< Not used / RESERVED General Purpose I/O 1; 00 = High impedance (default); 01 = CLK38MHz; 10 = Low; 11 = High.
-        uint8_t GPIO2 : 2;   //!< General Purpose I/O 2. 00 = High impedance (default); 01 = STC/RDS interrupt; 10 = Low; 11 = High.
-        uint8_t GPIO3 : 2;   //!< General Purpose I/O 2. 00 = High impedance (default); 01 = Mono/Stereo indicator (ST); 10 = Low; 11 = High.
-        uint8_t PILOTS : 3;   //!< Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. See table above.
-        uint8_t TCPILOT : 2; //!< The Time Used to Cal The Strength of Pilot
-        uint8_t DE : 1;      //!< De-emphasis; 0 = 75 μs. Used in USA (default); 1 = 50 μs. Used in Europe, Australia, Japan.
-        uint8_t RDSEN : 1;   //!< RDS Enable; 0 = Disable (default); 1 = Enable.
-        uint8_t AFCINV : 1;  //!< AFC Invert; 0 = Normal AFC into mixer; 1 = Reverse AFC into mixer.
-        uint8_t STCIEN : 1;  //!< Seek/Tune Complete Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt. See details above.
-        uint8_t RDSIEN : 1;  //!< RDS Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt. See details above.
+        uint16_t DUMMY : 2;   //!< Not used / RESERVED General Purpose I/O 1; 00 = High impedance (default); 01 = CLK38MHz; 10 = Low; 11 = High.
+        uint16_t GPIO2 : 2;   //!< General Purpose I/O 2. 00 = High impedance (default); 01 = STC/RDS interrupt; 10 = Low; 11 = High.
+        uint16_t GPIO3 : 2;   //!< General Purpose I/O 2. 00 = High impedance (default); 01 = Mono/Stereo indicator (ST); 10 = Low; 11 = High.
+        uint16_t PILOTS : 3;   //!< Stereo/Mono Blend Level Adjustment. Sets the RSSI range for stereo/mono blend. See table above.
+        uint16_t TCPILOT : 2; //!< The Time Used to Cal The Strength of Pilot
+        uint16_t DE : 1;      //!< De-emphasis; 0 = 75 μs. Used in USA (default); 1 = 50 μs. Used in Europe, Australia, Japan.
+        uint16_t RDSEN : 1;   //!< RDS Enable; 0 = Disable (default); 1 = Enable.
+        uint16_t AFCINV : 1;  //!< AFC Invert; 0 = Normal AFC into mixer; 1 = Reverse AFC into mixer.
+        uint16_t STCIEN : 1;  //!< Seek/Tune Complete Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt. See details above.
+        uint16_t RDSIEN : 1;  //!< RDS Interrupt Enable; 0 = Disable Interrupt (default); 1 = Enable Interrupt. See details above.
     } refined;
     uint16_t raw;
 } bk_reg04;
@@ -219,10 +219,10 @@ typedef union
 {
     struct
     {
-        uint8_t VOLUME : 5; //!< 0x00 is the lowest and 0x1F is highest (0dBFS). 2dB each
-        uint8_t SPACE : 2;  //!< Channel Spacing; See AM and FM Channel Space table above.
-        uint8_t BAND : 2;   //!< Band Select. See AM and Fm Band table above.
-        uint8_t SEEKTH : 7; //!< RSSI Seek Threshold. 0x00 = min RSSI (default); 0x7F = max RSSI.
+        uint16_t VOLUME : 5; //!< 0x00 is the lowest and 0x1F is highest (0dBFS). 2dB each
+        uint16_t SPACE : 2;  //!< Channel Spacing; See AM and FM Channel Space table above.
+        uint16_t BAND : 2;   //!< Band Select. See AM and Fm Band table above.
+        uint16_t SEEKTH : 7; //!< RSSI Seek Threshold. 0x00 = min RSSI (default); 0x7F = max RSSI.
     } refined;
     uint16_t raw;
 } bk_reg05;
@@ -256,11 +256,11 @@ typedef union
 {
     struct
     {
-        uint8_t SKCNT : 4;  //!< See details above.
-        uint8_t SKSNR : 7;  //!< Seek SNR Threshold. Required channel SNR for a valid seek channel
-        uint8_t CLKSEL : 1; //!< Clock Select. 0 = External clock input; 1= Internal oscillator input.
-        uint8_t SMUTEA : 2; //!< Softmute Attenuation; See table above.
-        uint8_t SMUTER : 2; //!< Softmute Attack/Recover Rate; See table above
+        uint16_t SKCNT : 4;  //!< See details above.
+        uint16_t SKSNR : 7;  //!< Seek SNR Threshold. Required channel SNR for a valid seek channel
+        uint16_t CLKSEL : 1; //!< Clock Select. 0 = External clock input; 1= Internal oscillator input.
+        uint16_t SMUTEA : 2; //!< Softmute Attenuation; See table above.
+        uint16_t SMUTER : 2; //!< Softmute Attack/Recover Rate; See table above
     } refined;
     uint16_t raw;
 } bk_reg06;
@@ -273,17 +273,17 @@ typedef union
 {
     struct
     {
-        uint8_t FMGAIN : 3;     //!< The gain of Frequency demodulated; 000 = 0dB ... 011= +18dB; 100= 0dB ... 111= -18dB
-        uint8_t RESERVED :3;
-        uint8_t STHYS_SEL : 1;  //!< ST/MONO Transition Hysterisis Select.  0 = 6dB; 1=2dB
-        uint8_t DACCK_SEL : 1;  //!< DAC Clock Select
-        uint8_t IMPTH : 2;      //!< Threshold of Impulse Detect. 00 = toughest; 11 = loosest
-        uint8_t BPDE : 1;       //!< De-emphasis Bypass; 0 = Normal operation; 1 = Bypass de-emphasis.
-        uint8_t IMPEN : 1;      //!< Impulse Remove Enable; 0 = Disable; 1 = Enable.
-        uint8_t SIQ : 1;        //!< IF I/Q Signal switch; 0 = Normal operation; 1 = Reversed I/Q signal.
-        uint8_t MODE : 1;       //!< 0 = FM receiver; 1 = AM receiver
-        uint8_t LINEIN_EN : 1;  //!< Audio Line in Enable; 0 = Disable (Receiver Mode) 
-        uint8_t LINEIN_SEL : 1; //!< Audio Line in Channel Select; 0 = Channel 1; 1=Channel 2 ((QFN24 only support one line in channel))
+        uint16_t FMGAIN : 3;     //!< The gain of Frequency demodulated; 000 = 0dB ... 011= +18dB; 100= 0dB ... 111= -18dB
+        uint16_t RESERVED :3;
+        uint16_t STHYS_SEL : 1;  //!< ST/MONO Transition Hysterisis Select.  0 = 6dB; 1=2dB
+        uint16_t DACCK_SEL : 1;  //!< DAC Clock Select
+        uint16_t IMPTH : 2;      //!< Threshold of Impulse Detect. 00 = toughest; 11 = loosest
+        uint16_t BPDE : 1;       //!< De-emphasis Bypass; 0 = Normal operation; 1 = Bypass de-emphasis.
+        uint16_t IMPEN : 1;      //!< Impulse Remove Enable; 0 = Disable; 1 = Enable.
+        uint16_t SIQ : 1;        //!< IF I/Q Signal switch; 0 = Normal operation; 1 = Reversed I/Q signal.
+        uint16_t MODE : 1;       //!< 0 = FM receiver; 1 = AM receiver
+        uint16_t LINEIN_EN : 1;  //!< Audio Line in Enable; 0 = Disable (Receiver Mode) 
+        uint16_t LINEIN_SEL : 1; //!< Audio Line in Channel Select; 0 = Channel 1; 1=Channel 2 ((QFN24 only support one line in channel))
     } refined;
     uint16_t raw;
 } bk_reg07;
@@ -299,13 +299,13 @@ typedef union
 {
     struct
     {
-        uint8_t AFCRSSIT : 7; //!< RSSI Threshold for Instant AFC updating
-        uint8_t RANGE : 2;    //!< AFC Average Range; 00 = the toughest; 11 = the loosest
-        uint8_t VAR : 2;      //!< Variation Threshold for average AFC calculation; 00 = Disable; 01 = the toughest; 11 = the loosest
-        uint8_t AVE : 1;      //!< AFC Average
-        uint8_t SEL25K : 1;   //!< AFCRL Threshold; 0 = Channel space/2; 1 = 25kHz
-        uint8_t TCSEL : 2;    //!< AFC/RSSI/SNR Calculate Rate; 00 = fastest; 11 = slowest. 4X times each
-        uint8_t AFCEN : 1;    //!< AFC Enable; 0 = Disable; 1 = Enable.
+        uint16_t AFCRSSIT : 7; //!< RSSI Threshold for Instant AFC updating
+        uint16_t RANGE : 2;    //!< AFC Average Range; 00 = the toughest; 11 = the loosest
+        uint16_t VAR : 2;      //!< Variation Threshold for average AFC calculation; 00 = Disable; 01 = the toughest; 11 = the loosest
+        uint16_t AVE : 1;      //!< AFC Average
+        uint16_t SEL25K : 1;   //!< AFCRL Threshold; 0 = Channel space/2; 1 = 25kHz
+        uint16_t TCSEL : 2;    //!< AFC/RSSI/SNR Calculate Rate; 00 = fastest; 11 = slowest. 4X times each
+        uint16_t AFCEN : 1;    //!< AFC Enable; 0 = Disable; 1 = Enable.
     } refined;
     uint16_t raw;
 } bk_reg08;
@@ -332,14 +332,14 @@ typedef union
 {
     struct
     {
-        uint8_t RSSI : 7;   //!< RSSI (Received Signal Strength Indicator).
-        uint8_t ST : 1;     //!< Stereo Indicator; 0 = Mono; 1 = Stereo.
-        uint8_t STEN : 1;   //!< Impulse Number
-        uint8_t DUMMY: 3; 
-        uint8_t AFCRL : 1;  //!< AFC Rail; 0 = AFC not railed; 1 = AFC railed.
-        uint8_t SF_BL : 1;  //!< Seek Fail/Band Limit; 0 = Seek successful; 1 = Seek failure/Band limit reached.
-        uint8_t STC : 1;    //!< Seek/Tune Complete; 0 = Not complete (default); 1 = Complete.
-        uint8_t RDSR : 1;   //!< RDS Ready; 0 = No RDS group ready (default); 1 = New RDS group ready. Keep high for 40ms after new RDS is received
+        uint16_t RSSI : 7;   //!< RSSI (Received Signal Strength Indicator).
+        uint16_t ST : 1;     //!< Stereo Indicator; 0 = Mono; 1 = Stereo.
+        uint16_t STEN : 1;   //!< Impulse Number
+        uint16_t DUMMY: 3; 
+        uint16_t AFCRL : 1;  //!< AFC Rail; 0 = AFC not railed; 1 = AFC railed.
+        uint16_t SF_BL : 1;  //!< Seek Fail/Band Limit; 0 = Seek successful; 1 = Seek failure/Band limit reached.
+        uint16_t STC : 1;    //!< Seek/Tune Complete; 0 = Not complete (default); 1 = Complete.
+        uint16_t RDSR : 1;   //!< RDS Ready; 0 = No RDS group ready (default); 1 = New RDS group ready. Keep high for 40ms after new RDS is received
     } refined;
     uint16_t raw;
 } bk_reg0a;
@@ -482,10 +482,10 @@ typedef union
 {
     struct
     {
-        uint8_t RSSIMTH : 7; //!< The Mute Threshold Based on RSSI
-        uint8_t SNRMTH : 7;  //!< The Mute Threshold Based on SNR
-        uint8_t AFCMUTE : 1; //!< 0: disable soft mute when AFCRL is high; 1: enable soft mute when AFCRL is high
-        uint8_t SKMUTE : 1;  //!< 0: disable soft mute when seeking; 1: enable soft mute when seeking
+        uint16_t RSSIMTH : 7; //!< The Mute Threshold Based on RSSI
+        uint16_t SNRMTH : 7;  //!< The Mute Threshold Based on SNR
+        uint16_t AFCMUTE : 1; //!< 0: disable soft mute when AFCRL is high; 1: enable soft mute when AFCRL is high
+        uint16_t SKMUTE : 1;  //!< 0: disable soft mute when seeking; 1: enable soft mute when seeking
     } refined;
     uint16_t raw;
 } bk_reg14;
@@ -724,7 +724,7 @@ class BK108X
 
 private:
 
-    uint8_t  i2cBuffer[32];
+    // uint8_t  i2cBuffer[32];
 
     uint16_t shadowRegisters[32]; //!< shadow registers 0x00  to 0x1F (0 - 31)
 
