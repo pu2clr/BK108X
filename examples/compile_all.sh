@@ -27,7 +27,7 @@ echo "********************"
 
 arduino-cli compile -b lgt8fx:avr:328 ./BK1088_00_SERIAL_MONITOR/POC_01_CIRCUIT_TEST --output-dir ~/Downloads/hex/lgt8fx/POC_01_CIRCUIT_TEST  --warnings all
 arduino-cli compile -b lgt8fx:avr:328 ./BK1088_00_SERIAL_MONITOR/POC_02_AM_FM --output-dir ~/Downloads/hex/lgt8fx/POC_02_AM_FM  
-arduino-cli compile -b lgt8fx:avr:328 ./BK1088_00_SERIAL_MONITOR/POC03_SW --output-dir ~/Downloads/hex/lgt8fx/POC03_SW  
+arduino-cli compile -b lgt8fx:avr:328 ./BK1088_00_SERIAL_MONITOR/POC_03_SW --output-dir ~/Downloads/hex/lgt8fx/POC_03_SW  
 
 # compiles ESP32 LCD16x2_ALL_IN_ONE
 echo "********************"
