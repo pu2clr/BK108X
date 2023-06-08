@@ -670,7 +670,7 @@ typedef union
         uint8_t versionCode : 1;        // (B0) => 0=A; 1=B
         uint8_t groupType : 4;          // Group Type code.
     } refined;
-    bk_reg0d blockB;
+    uint16_t blockB;
 } bk_rds_blockb;
 
 /**

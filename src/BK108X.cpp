@@ -1089,17 +1089,23 @@ void BK108X::setRds(bool value)
 /**
  * @ingroup GA04
  * @brief Returns true if RDS Ready
- * @details Read address 0Ah and check the bit RDSR.
+ * @details Read addresses 0Ah, 0Ch,  and check the bit RDSR.
  * @details If in verbose mode, the BLERA bits indicate how many errors were corrected in block A. If BLERA indicates 6 or more errors, the data in RDSA should be discarded.
  * @details When using the polling method, it is best not to poll continuously. The data will appear in intervals of ~88 ms and the RDSR indicator will be available for at least 40 ms, so a polling rate of 40 ms or less should be sufficient.
- * @return true 
- * @return false 
+ * @details ATTENTION: You must call this function before calling any RDS function to process data
+ * @return true or false
  */
 bool BK108X::getRdsReady()
 {
     getRegister(REG0A);
-    return reg0a->refined.RDSR;
+    if ( !reg0a->refined.RDSR ) return false ;
+    getRegister(REG0C); // The First Register of RDS 
+    getRegister(REG0D); // The second register of RDS 
+    getRegister(REG0E); // The third register of RDS 
+    getRegister(REG0F); // The third register of RDS
+    return true;
 };
+
 
 /**
  * @ingroup GA04
@@ -1121,7 +1127,9 @@ uint8_t BK108X::getRdsFlagAB(void)
  */
 uint16_t BK108X::getRdsGroupType()
 {
-    return 0;
+   bk_rds_blockb b;
+   b.blockB = reg0c->raw;
+   return b.refined.groupType;     
 }
 
 /**
@@ -1132,7 +1140,9 @@ uint16_t BK108X::getRdsGroupType()
  */
 uint8_t BK108X::getRdsVersionCode(void)
 {
-   return 0; 
+   bk_rds_blockb b;
+   b.blockB = reg0c->raw;
+   return b.refined.versionCode; 
 }
 
 /**  
@@ -1143,7 +1153,9 @@ uint8_t BK108X::getRdsVersionCode(void)
  */
 uint8_t BK108X::getRdsProgramType(void)
 {
-    return 0;
+   bk_rds_blockb b;
+   b.blockB = reg0c->raw;
+   return b.refined.groupType; 
 }
 
 /**
