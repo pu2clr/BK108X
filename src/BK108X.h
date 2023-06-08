@@ -1116,6 +1116,15 @@ public:
      */
     inline char *getRdsStationInformation(void) { return getRdsText2B(); };   
 
+    /**
+     * @ingroup GA04
+     * @brief Gets the Station Name
+     * @details Alias for getRdsText0A
+     * @details ATTENTION: You must call getRdsReady before calling this function. 
+     * @return char* should return a string with the station name. However, some stations send other kind of messages
+     * @see getRdsText0A
+     */
+    inline char *getRdsStationName(void) { return getRdsText0A(); };
 
 
     void clearRdsBuffer();
