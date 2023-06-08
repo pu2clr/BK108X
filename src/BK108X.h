@@ -643,32 +643,32 @@ typedef union
 {
     struct
     {
-        uint8_t address : 2;            // Depends on Group Type and Version codes. If 0A or 0B it is the Text Segment Address.
-        uint8_t DI : 1;                 // Decoder Controll bit
-        uint8_t MS : 1;                 // Music/Speech
-        uint8_t TA : 1;                 // Traffic Announcement
-        uint8_t programType : 5;        // PTY (Program Type) code
-        uint8_t trafficProgramCode : 1; // (TP) => 0 = No Traffic Alerts; 1 = Station gives Traffic Alerts
-        uint8_t versionCode : 1;        // (B0) => 0=A; 1=B
-        uint8_t groupType : 4;          // Group Type code.
+        uint16_t address : 2;            // Depends on Group Type and Version codes. If 0A or 0B it is the Text Segment Address.
+        uint16_t DI : 1;                 // Decoder Controll bit
+        uint16_t MS : 1;                 // Music/Speech
+        uint16_t TA : 1;                 // Traffic Announcement
+        uint16_t programType : 5;        // PTY (Program Type) code
+        uint16_t trafficProgramCode : 1; // (TP) => 0 = No Traffic Alerts; 1 = Station gives Traffic Alerts
+        uint16_t versionCode : 1;        // (B0) => 0=A; 1=B
+        uint16_t groupType : 4;          // Group Type code.
     } group0;
     struct
     {
-        uint8_t address : 4;            // Depends on Group Type and Version codes. If 2A or 2B it is the Text Segment Address.
-        uint8_t textABFlag : 1;         // Do something if it chanhes from binary "0" to binary "1" or vice-versa
-        uint8_t programType : 5;        // PTY (Program Type) code
-        uint8_t trafficProgramCode : 1; // (TP) => 0 = No Traffic Alerts; 1 = Station gives Traffic Alerts
-        uint8_t versionCode : 1;        // (B0) => 0=A; 1=B
-        uint8_t groupType : 4;          // Group Type code.
+        uint16_t address : 4;            // Depends on Group Type and Version codes. If 2A or 2B it is the Text Segment Address.
+        uint16_t textABFlag : 1;         // Do something if it chanhes from binary "0" to binary "1" or vice-versa
+        uint16_t programType : 5;        // PTY (Program Type) code
+        uint16_t trafficProgramCode : 1; // (TP) => 0 = No Traffic Alerts; 1 = Station gives Traffic Alerts
+        uint16_t versionCode : 1;        // (B0) => 0=A; 1=B
+        uint16_t groupType : 4;          // Group Type code.
     } group2;
     struct
     {
-        uint8_t content : 4;            // Depends on Group Type and Version codes.
-        uint8_t textABFlag : 1;         // Do something if it chanhes from binary "0" to binary "1" or vice-versa
-        uint8_t programType : 5;        // PTY (Program Type) code
-        uint8_t trafficProgramCode : 1; // (TP) => 0 = No Traffic Alerts; 1 = Station gives Traffic Alerts
-        uint8_t versionCode : 1;        // (B0) => 0=A; 1=B
-        uint8_t groupType : 4;          // Group Type code.
+        uint16_t content : 4;            // Depends on Group Type and Version codes.
+        uint16_t textABFlag : 1;         // Do something if it chanhes from binary "0" to binary "1" or vice-versa
+        uint16_t programType : 5;        // PTY (Program Type) code
+        uint16_t trafficProgramCode : 1; // (TP) => 0 = No Traffic Alerts; 1 = Station gives Traffic Alerts
+        uint16_t versionCode : 1;        // (B0) => 0=A; 1=B
+        uint16_t groupType : 4;          // Group Type code.
     } refined;
     uint16_t blockB;
 } bk_rds_blockb;
@@ -687,12 +687,10 @@ typedef union
 {
     struct
     {
-        uint8_t offset : 5;       // Local Time Offset
-        uint8_t offset_sense : 1; // Local Offset Sign ( 0 = + , 1 = - )
-        uint8_t minute1 : 2;      // UTC Minutes - 2 bits less significant (void “Crosses boundary”).
-        uint8_t minute2 : 4;      // UTC Minutes - 4 bits  more significant  (void “Crosses boundary”)
-        uint8_t hour1 : 4;        // UTC Hours - 4 bits less significant (void “Crosses boundary”)
-        uint8_t hour2 : 1;        // UTC Hours - 4 bits more significant (void “Crosses boundary”)
+        uint32_t offset : 5;       // Local Time Offset
+        uint32_t offset_sense : 1; // Local Offset Sign ( 0 = + , 1 = - )
+        uint32_t minute : 6;      // UTC Minutes - 2 bits less significant (void “Crosses boundary”).
+        uint32_t hour  : 5;        // UTC Hours - 4 bits less significant (void “Crosses boundary”)
         uint32_t mjd : 17;        // Modified Julian Day Code
     } refined;
     uint8_t raw[6];

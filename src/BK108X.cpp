@@ -1111,7 +1111,7 @@ bool BK108X::getRdsReady()
  * @ingroup GA04
  * 
  * @brief Returns the current Text Flag A/B  
- * 
+ * @details You must call getRdsReady before calling this function
  * @return uint8_t current Text Flag A/B  
  */
 uint8_t BK108X::getRdsFlagAB(void)
@@ -1122,7 +1122,7 @@ uint8_t BK108X::getRdsFlagAB(void)
 /**
  * @ingroup GA04
  * @brief Return the group type 
- * 
+ * @details You must call getRdsReady before calling this function
  * @return uint16_t 
  */
 uint16_t BK108X::getRdsGroupType()
@@ -1136,6 +1136,7 @@ uint16_t BK108X::getRdsGroupType()
  * @ingroup GA04
  * 
  * @brief Gets the version code (extracted from the Block B)
+ * @details You must call getRdsReady before calling this function
  * @returns  0=A or 1=B
  */
 uint8_t BK108X::getRdsVersionCode(void)
@@ -1148,6 +1149,7 @@ uint8_t BK108X::getRdsVersionCode(void)
 /**  
  * @ingroup GA04  
  * @brief Returns the Program Type (extracted from the Block B)
+ * @details You must call getRdsReady before calling this function
  * @see https://en.wikipedia.org/wiki/Radio_Data_System
  * @return program type (an integer betwenn 0 and 31)
  */
@@ -1155,7 +1157,7 @@ uint8_t BK108X::getRdsProgramType(void)
 {
    bk_rds_blockb b;
    b.blockB = reg0c->raw;
-   return b.refined.groupType; 
+   return b.refined.programType; 
 }
 
 /**

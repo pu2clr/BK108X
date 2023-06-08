@@ -14,6 +14,13 @@
    | CLK  (pin 7) |   A5        |             |
    | SDA  (pin 8) |   A4        |             |
 
+  BK1088 and ESP32 DEV Modeule
+  
+   | BK1088 pin   | ESP32 DEV Modele | 
+   | -----------  | ---------------- | 
+   | CLK  (pin 7) |  GPIO22          |
+   | SDA  (pin 8) |  GPIO21          |
+
   See schematic: https://pu2clr.github.io/BK108X/
 
   PU2CLR BK108X API documentation: https://pu2clr.github.io/BK108X/extras/docs/html/index.html
@@ -23,8 +30,14 @@
 
 #include <BK108X.h>
 
+
+
 #define SDA_PIN A4
 #define CLK_PIN A5
+
+// #define SDA_PIN 21
+// #define CLK_PIN 22
+
 
 uint16_t currentFrequency;
 
@@ -41,14 +54,12 @@ BK108X rx;
 void setup() {
 
   Serial.begin(9600);
-  while (!Serial)
-    ;
 
   rx.setup(SDA_PIN, CLK_PIN);
-  rx.setVolume(20);
-
-  currentFrequency = 10650;  // Using a strong station that broadcast RDS service
+  currentFrequency = 8990;  // Using a strong station that broadcast RDS service
   rx.setFM(8400, 10800, currentFrequency, 10);
+  rx.setVolume(20);
+  rx.setRds(true);
   showHelp();
   showStatus();
 
