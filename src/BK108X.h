@@ -1110,9 +1110,9 @@ public:
      * @param char decimalSeparator - the symbol that separates the decimal part (Exe: . or ,)
      * @return point of strValue
      */
-    inline char *formatFrequency(uint16_t value, char *strValue, char decimalSeparator)
+    inline char *formatFrequency(uint16_t value, char *strValue, char decimalSeparator = ',', uint8_t decimalPosition = 3)
     {
-        this->convertToChar(value, strValue, 5, 3, decimalSeparator, true);
+        this->convertToChar(value, strValue, 5, decimalPosition, decimalSeparator, true);
         return strValue;
     };
     /**
