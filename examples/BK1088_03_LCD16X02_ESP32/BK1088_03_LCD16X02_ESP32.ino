@@ -42,11 +42,9 @@
   By PU2CLR, Ricardo,  Feb  2023.
 */
 
-
 #include <BK108X.h>
 #include <EEPROM.h>
 #include <LiquidCrystal.h>
-
 
 #include "Rotary.h"
 
@@ -57,7 +55,6 @@
 #define LCD_D4 18
 #define LCD_RS 19
 #define LCD_E 23
-
 
 #define I2C_SDIO_PIN 21
 #define I2C_SCLK_PIN 22
@@ -87,7 +84,6 @@
 
 #define EEPROM_SIZE 512
 #define MIN_ELAPSED_TIME 150
-
 
 
 /*
@@ -125,11 +121,9 @@ tabBand band[] = {
 const int lastBand = (sizeof band / sizeof(tabBand)) - 1;
 int8_t bandIdx = 0; // FM
 
-
-const uint8_t app_id = 43;  // Useful to check the EEPROM content before processing useful data
+const uint8_t app_id = 88;  // Useful to check the EEPROM content before processing useful data
 const int eeprom_address = 0;
 long storeTime = millis();
-
 
 bool bSt = true;
 bool bRds = true;
@@ -151,7 +145,6 @@ Rotary encoder = Rotary(ENCODER_PIN_A, ENCODER_PIN_B);
 
 // LCD display
 LiquidCrystal lcd(LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7);
-
 BK108X rx;
 
 void setup() {
