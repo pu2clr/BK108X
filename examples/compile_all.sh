@@ -18,6 +18,7 @@ echo "********************"
 arduino-cli compile -b arduino:avr:nano ./BK1088_00_SERIAL_MONITOR/POC_01_CIRCUIT_TEST --output-dir ~/Downloads/hex/atmega/POC_01_CIRCUIT_TEST  --warnings all
 arduino-cli compile -b arduino:avr:nano ./BK1088_00_SERIAL_MONITOR/POC_02_AM_FM --output-dir ~/Downloads/hex/atmega/POC_02_AM_FM  --warnings all
 arduino-cli compile -b arduino:avr:nano ./BK1088_00_SERIAL_MONITOR/POC03_SW --output-dir ~/Downloads/hex/atmega/POC03_SW  --warnings all
+arduino-cli compile -b arduino:avr:nano ./BK1088_02_TFT_DISPLAY/POC01_ST7735 --output-dir ~/Downloads/hex/atmega/POC01_ST7735  --warnings all
 
 
 echo "********************"
@@ -33,4 +34,4 @@ echo "********************"
 echo "ESP32"
 echo "ESP32 LCD16x2"
 echo "********************"
-# arduino-cli compile --fqbn esp32:esp32:esp32-poe-iso ./RDA5807_05_LCD16X02_ESP32 --output-dir ~/Downloads/hex/ESP32/DEVM/RDA5807_05_LCD16X02_ESP32  --warnings all
+arduino-cli compile --fqbn esp32:esp32:esp32-poe-iso ./BK1088_03_LCD16X02_ESP32 --output-dir ~/Downloads/hex/ESP32/DEVM/BK1088_03_LCD16X02_ESP32  --warnings all
