@@ -1094,7 +1094,31 @@ public:
     char *getRdsText2A(void);
     char *getRdsText2B(void);
     char *getRdsTime();
+    char *getRdsLocalTime();
     bool getRdsSync();
+
+    /**
+     * @ingroup @ingroup GA04
+     * @brief Gets the Program Information (RT - Radio Text)
+     * @details Process the program information data. Same getRdsText2A(). It is a alias for getRdsText2A.
+     * @details ATTENTION: You must call getRdsReady before calling this function. 
+     * @return char array with the program information (63 bytes)
+     * @see getRdsText2A
+     */
+    inline char *getRdsProgramInformation(void) { return getRdsText2A(); };
+
+     /**
+     * @ingroup GA04
+     * @brief Gets the Station Information.
+     * @details ATTENTION: You must call getRdsReady before calling this function. 
+     * @return char array with the Text of Station Information (33 bytes)
+     * @see getRdsReady
+     */
+    inline char *getRdsStationInformation(void) { return getRdsText2B(); };   
+
+
+
+    void clearRdsBuffer();
 
     int checkI2C(uint8_t *addressArray);
     void convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros = true);

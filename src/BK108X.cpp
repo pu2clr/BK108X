@@ -1332,8 +1332,126 @@ char *BK108X::getRdsText2B(void)
  */
 char *BK108X::getRdsTime()
 {
+    bk_rds_date_time dt;
+    word16_to_bytes blk_b, blk_c, blk_d;
+    bk_rds_blockb blkb;
+
+    blk_b.raw = blkb.blockB = reg0d->raw; // Block B
+    blk_c.raw = reg0e->raw; // Block C
+    blk_d.raw = reg0f->raw; // Block D
+
+    uint16_t minute;
+    uint16_t hour;
+
+    if (blkb.group0.groupType == 4)
+    {
+        char offset_sign;
+        int offset_h;
+        int offset_m;
+
+        // uint16_t y, m, d;
+
+        dt.raw[4] = blk_b.refined.lowByte;
+        dt.raw[5] = blk_b.refined.highByte;
+
+        dt.raw[2] = blk_c.refined.lowByte;
+        dt.raw[3] = blk_c.refined.highByte;
+
+        dt.raw[0] = blk_d.refined.lowByte;
+        dt.raw[1] = blk_d.refined.highByte;
+
+        minute = dt.refined.minute;
+        hour = dt.refined.hour;
+
+        offset_sign = (dt.refined.offset_sense == 1) ? '+' : '-';
+        offset_h = (dt.refined.offset * 30) / 60;
+        offset_m = (dt.refined.offset * 30) - (offset_h * 60);
+
+        // If wrong time, return NULL
+        if ( offset_h > 12 || offset_m > 60 || hour > 24 || minute > 60 ) return NULL;
+
+        this->convertToChar(hour, rds_time, 2, 0, ' ', false);
+        rds_time[2] = ':';
+        this->convertToChar(minute, &rds_time[3], 2, 0, ' ', false);
+        rds_time[5] = ' ';
+        rds_time[6] = offset_sign;
+        this->convertToChar(offset_h, &rds_time[7], 2, 0, ' ', false);
+        rds_time[9] = ':';
+        this->convertToChar(offset_m, &rds_time[10], 2, 0, ' ', false);
+        rds_time[12] = '\0';
+
+        return rds_time;
+    }
+
     return NULL;
 }
+
+/**
+ * @ingroup GA04
+ * @todo Need to check.
+ * @brief Gets the RDS time converted to local time.
+ * @details ATTENTION: You must call getRdsReady before calling this function.
+ * @details ATTENTION: Some stations broadcast wrong time.
+ * @return char* a string with hh:mm
+ * @see getRdsReady
+ */
+char *BK108X::getRdsLocalTime()
+{
+    bk_rds_date_time dt;
+    word16_to_bytes blk_b, blk_c, blk_d;
+    bk_rds_blockb blkb;
+
+    blk_b.raw = blkb.blockB = reg0d->raw; // Block B
+    blk_c.raw = reg0e->raw; // Block C
+    blk_d.raw = reg0f->raw; // Block D 
+
+    uint16_t minute;
+    uint16_t hour;
+    uint16_t localTime;
+
+    if (blkb.group0.groupType == 4)
+    {
+        int offset_h;
+        int offset_m;
+
+        dt.raw[4] = blk_b.refined.lowByte;
+        dt.raw[5] = blk_b.refined.highByte;
+
+        dt.raw[2] = blk_c.refined.lowByte;
+        dt.raw[3] = blk_c.refined.highByte;
+
+        dt.raw[0] = blk_d.refined.lowByte;
+        dt.raw[1] = blk_d.refined.highByte;
+
+        minute = dt.refined.minute;
+        hour = dt.refined.hour;
+
+        offset_h = (dt.refined.offset * 30) / 60;
+        offset_m = (dt.refined.offset * 30) - (offset_h * 60);
+
+        localTime = (hour * 60  + minute);
+        if ( dt.refined.offset_sense == 1)
+            localTime -= (offset_h * 60 + offset_m);
+        else
+            localTime += (offset_h * 60 + offset_m);
+
+        hour = localTime / 60;
+        minute = localTime - (hour * 60);
+
+        if (hour > 24 || minute > 60 ) return NULL;
+
+        this->convertToChar(hour, rds_time, 2, 0, ' ', false);
+        rds_time[2] = ':';
+        this->convertToChar(minute, &rds_time[3], 2, 0, ' ', false);
+        rds_time[5] = '\0';
+
+        return rds_time;
+    }
+
+    return NULL;
+}
+
+
 
 /**
  * @ingroup GA04 
@@ -1344,6 +1462,19 @@ char *BK108X::getRdsTime()
 bool BK108X::getRdsSync()
 {
     return NULL;
+}
+
+/**
+ * @ingroup GA04
+ * @brief Clear RDS Information (Station Name, Station Information, Program Information and Time)
+ * @details Clear the buffer with latest RDS information
+ */
+void BK108X::clearRdsBuffer()
+{
+    memset(rds_buffer0A, 0, sizeof(rds_buffer0A));
+    memset(rds_buffer2A , 0, sizeof(rds_buffer2A));
+    memset(rds_buffer2B, 0, sizeof(rds_buffer2B));
+    memset(rds_time, 0, sizeof(rds_time));
 }
 
 

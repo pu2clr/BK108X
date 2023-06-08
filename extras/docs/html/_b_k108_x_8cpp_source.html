@@ -1428,97 +1428,228 @@ $(document).ready(function(){initNavTree('_b_k108_x_8cpp_source.html',''); initR
 <div class="line"><span class="lineno"> 1332</span><span class="comment"> */</span></div>
 <div class="line"><a id="l01333" name="l01333"></a><span class="lineno"><a class="line" href="group___g_a04.html#ga6c0f7231f5c0b02185f5f3ad847364a4"> 1333</a></span><span class="keywordtype">char</span> *<a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a04.html#ga6c0f7231f5c0b02185f5f3ad847364a4">getRdsTime</a>()</div>
 <div class="line"><a id="l01334" name="l01334"></a><span class="lineno"> 1334</span>{</div>
-<div class="line"><a id="l01335" name="l01335"></a><span class="lineno"> 1335</span>    <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a id="l01336" name="l01336"></a><span class="lineno"> 1336</span>}</div>
-<div class="line"><a id="l01337" name="l01337"></a><span class="lineno"> 1337</span> </div>
-<div class="line"><a id="l01338" name="l01338"></a><span class="lineno"> 1338</span><span class="comment">/**</span></div>
-<div class="line"><span class="lineno"> 1339</span><span class="comment"> * @ingroup GA04 </span></div>
-<div class="line"><span class="lineno"> 1340</span><span class="comment"> * @brief Get the Rds Sync </span></div>
-<div class="line"><span class="lineno"> 1341</span><span class="comment"> * @details Returns true if RDS currently synchronized.</span></div>
-<div class="line"><span class="lineno"> 1342</span><span class="comment"> * @return true or false</span></div>
-<div class="line"><span class="lineno"> 1343</span><span class="comment"> */</span></div>
-<div class="line"><a id="l01344" name="l01344"></a><span class="lineno"><a class="line" href="group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c"> 1344</a></span><span class="keywordtype">bool</span> <a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c">getRdsSync</a>()</div>
-<div class="line"><a id="l01345" name="l01345"></a><span class="lineno"> 1345</span>{</div>
-<div class="line"><a id="l01346" name="l01346"></a><span class="lineno"> 1346</span>    <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a id="l01347" name="l01347"></a><span class="lineno"> 1347</span>}</div>
-<div class="line"><a id="l01348" name="l01348"></a><span class="lineno"> 1348</span> </div>
-<div class="line"><a id="l01349" name="l01349"></a><span class="lineno"> 1349</span> </div>
-<div class="line"><a id="l01350" name="l01350"></a><span class="lineno"> 1350</span><span class="comment">/** </span></div>
-<div class="line"><span class="lineno"> 1351</span><span class="comment"> * @defgroup GA05 Tools </span></div>
-<div class="line"><span class="lineno"> 1352</span><span class="comment"> * @section GA05 Tools / Helper</span></div>
-<div class="line"><span class="lineno"> 1353</span><span class="comment"> */</span></div>
-<div class="line"><a id="l01354" name="l01354"></a><span class="lineno"> 1354</span> </div>
-<div class="line"><a id="l01355" name="l01355"></a><span class="lineno"> 1355</span><span class="comment">/**</span></div>
-<div class="line"><span class="lineno"> 1356</span><span class="comment"> * @ingroup GA05 Check the I2C buss address</span></div>
-<div class="line"><span class="lineno"> 1357</span><span class="comment"> * @brief Check the I2C bus address</span></div>
-<div class="line"><span class="lineno"> 1358</span><span class="comment"> *</span></div>
-<div class="line"><span class="lineno"> 1359</span><span class="comment"> * @param uint8_t address Array - this array will be populated with the I2C bus addresses found (minimum three elements)</span></div>
-<div class="line"><span class="lineno"> 1360</span><span class="comment"> * @return 0 if no i2c device is found; -1 if error is found or n &gt; 0, where n is the number of I2C bus address found</span></div>
-<div class="line"><span class="lineno"> 1361</span><span class="comment"> */</span></div>
-<div class="line"><a id="l01362" name="l01362"></a><span class="lineno"><a class="line" href="group___g_a05.html#ga94349ed646b59d42fe4c771e273df737"> 1362</a></span><span class="keywordtype">int</span> <a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a05.html#ga94349ed646b59d42fe4c771e273df737">checkI2C</a>(uint8_t *addressArray)</div>
-<div class="line"><a id="l01363" name="l01363"></a><span class="lineno"> 1363</span>{</div>
-<div class="line"><a id="l01364" name="l01364"></a><span class="lineno"> 1364</span>    Wire.begin();</div>
-<div class="line"><a id="l01365" name="l01365"></a><span class="lineno"> 1365</span>    <span class="keywordtype">int</span> error, address;</div>
-<div class="line"><a id="l01366" name="l01366"></a><span class="lineno"> 1366</span>    <span class="keywordtype">int</span> idx = 0;</div>
-<div class="line"><a id="l01367" name="l01367"></a><span class="lineno"> 1367</span>    <span class="keywordflow">for</span> (address = 1; address &lt; 127; address++)</div>
-<div class="line"><a id="l01368" name="l01368"></a><span class="lineno"> 1368</span>    {</div>
-<div class="line"><a id="l01369" name="l01369"></a><span class="lineno"> 1369</span>        Wire.beginTransmission(address);</div>
-<div class="line"><a id="l01370" name="l01370"></a><span class="lineno"> 1370</span>        error = Wire.endTransmission();</div>
-<div class="line"><a id="l01371" name="l01371"></a><span class="lineno"> 1371</span>        <span class="keywordflow">if</span> (error == 0)</div>
-<div class="line"><a id="l01372" name="l01372"></a><span class="lineno"> 1372</span>        {</div>
-<div class="line"><a id="l01373" name="l01373"></a><span class="lineno"> 1373</span>            addressArray[idx] = address;</div>
-<div class="line"><a id="l01374" name="l01374"></a><span class="lineno"> 1374</span>            idx++;</div>
-<div class="line"><a id="l01375" name="l01375"></a><span class="lineno"> 1375</span>        }</div>
-<div class="line"><a id="l01376" name="l01376"></a><span class="lineno"> 1376</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (error == 4)</div>
-<div class="line"><a id="l01377" name="l01377"></a><span class="lineno"> 1377</span>            <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a id="l01378" name="l01378"></a><span class="lineno"> 1378</span>    }</div>
-<div class="line"><a id="l01379" name="l01379"></a><span class="lineno"> 1379</span>    Wire.end();</div>
-<div class="line"><a id="l01380" name="l01380"></a><span class="lineno"> 1380</span>    <span class="keywordflow">return</span> idx;</div>
-<div class="line"><a id="l01381" name="l01381"></a><span class="lineno"> 1381</span>}</div>
+<div class="line"><a id="l01335" name="l01335"></a><span class="lineno"> 1335</span>    bk_rds_date_time dt;</div>
+<div class="line"><a id="l01336" name="l01336"></a><span class="lineno"> 1336</span>    word16_to_bytes blk_b, blk_c, blk_d;</div>
+<div class="line"><a id="l01337" name="l01337"></a><span class="lineno"> 1337</span>    bk_rds_blockb blkb;</div>
+<div class="line"><a id="l01338" name="l01338"></a><span class="lineno"> 1338</span> </div>
+<div class="line"><a id="l01339" name="l01339"></a><span class="lineno"> 1339</span>    blk_b.raw = blkb.blockB = reg0d-&gt;raw; <span class="comment">// Block B</span></div>
+<div class="line"><a id="l01340" name="l01340"></a><span class="lineno"> 1340</span>    blk_c.raw = reg0e-&gt;raw; <span class="comment">// Block C</span></div>
+<div class="line"><a id="l01341" name="l01341"></a><span class="lineno"> 1341</span>    blk_d.raw = reg0f-&gt;raw; <span class="comment">// Block D</span></div>
+<div class="line"><a id="l01342" name="l01342"></a><span class="lineno"> 1342</span> </div>
+<div class="line"><a id="l01343" name="l01343"></a><span class="lineno"> 1343</span>    uint16_t minute;</div>
+<div class="line"><a id="l01344" name="l01344"></a><span class="lineno"> 1344</span>    uint16_t hour;</div>
+<div class="line"><a id="l01345" name="l01345"></a><span class="lineno"> 1345</span> </div>
+<div class="line"><a id="l01346" name="l01346"></a><span class="lineno"> 1346</span>    <span class="keywordflow">if</span> (blkb.group0.groupType == 4)</div>
+<div class="line"><a id="l01347" name="l01347"></a><span class="lineno"> 1347</span>    {</div>
+<div class="line"><a id="l01348" name="l01348"></a><span class="lineno"> 1348</span>        <span class="keywordtype">char</span> offset_sign;</div>
+<div class="line"><a id="l01349" name="l01349"></a><span class="lineno"> 1349</span>        <span class="keywordtype">int</span> offset_h;</div>
+<div class="line"><a id="l01350" name="l01350"></a><span class="lineno"> 1350</span>        <span class="keywordtype">int</span> offset_m;</div>
+<div class="line"><a id="l01351" name="l01351"></a><span class="lineno"> 1351</span> </div>
+<div class="line"><a id="l01352" name="l01352"></a><span class="lineno"> 1352</span>        <span class="comment">// uint16_t y, m, d;</span></div>
+<div class="line"><a id="l01353" name="l01353"></a><span class="lineno"> 1353</span> </div>
+<div class="line"><a id="l01354" name="l01354"></a><span class="lineno"> 1354</span>        dt.raw[4] = blk_b.refined.lowByte;</div>
+<div class="line"><a id="l01355" name="l01355"></a><span class="lineno"> 1355</span>        dt.raw[5] = blk_b.refined.highByte;</div>
+<div class="line"><a id="l01356" name="l01356"></a><span class="lineno"> 1356</span> </div>
+<div class="line"><a id="l01357" name="l01357"></a><span class="lineno"> 1357</span>        dt.raw[2] = blk_c.refined.lowByte;</div>
+<div class="line"><a id="l01358" name="l01358"></a><span class="lineno"> 1358</span>        dt.raw[3] = blk_c.refined.highByte;</div>
+<div class="line"><a id="l01359" name="l01359"></a><span class="lineno"> 1359</span> </div>
+<div class="line"><a id="l01360" name="l01360"></a><span class="lineno"> 1360</span>        dt.raw[0] = blk_d.refined.lowByte;</div>
+<div class="line"><a id="l01361" name="l01361"></a><span class="lineno"> 1361</span>        dt.raw[1] = blk_d.refined.highByte;</div>
+<div class="line"><a id="l01362" name="l01362"></a><span class="lineno"> 1362</span> </div>
+<div class="line"><a id="l01363" name="l01363"></a><span class="lineno"> 1363</span>        minute = dt.refined.minute;</div>
+<div class="line"><a id="l01364" name="l01364"></a><span class="lineno"> 1364</span>        hour = dt.refined.hour;</div>
+<div class="line"><a id="l01365" name="l01365"></a><span class="lineno"> 1365</span> </div>
+<div class="line"><a id="l01366" name="l01366"></a><span class="lineno"> 1366</span>        offset_sign = (dt.refined.offset_sense == 1) ? <span class="stringliteral">&#39;+&#39;</span> : <span class="stringliteral">&#39;-&#39;</span>;</div>
+<div class="line"><a id="l01367" name="l01367"></a><span class="lineno"> 1367</span>        offset_h = (dt.refined.offset * 30) / 60;</div>
+<div class="line"><a id="l01368" name="l01368"></a><span class="lineno"> 1368</span>        offset_m = (dt.refined.offset * 30) - (offset_h * 60);</div>
+<div class="line"><a id="l01369" name="l01369"></a><span class="lineno"> 1369</span> </div>
+<div class="line"><a id="l01370" name="l01370"></a><span class="lineno"> 1370</span>        <span class="comment">// If wrong time, return NULL</span></div>
+<div class="line"><a id="l01371" name="l01371"></a><span class="lineno"> 1371</span>        <span class="keywordflow">if</span> ( offset_h &gt; 12 || offset_m &gt; 60 || hour &gt; 24 || minute &gt; 60 ) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l01372" name="l01372"></a><span class="lineno"> 1372</span> </div>
+<div class="line"><a id="l01373" name="l01373"></a><span class="lineno"> 1373</span>        <span class="keyword">this</span>-&gt;convertToChar(hour, rds_time, 2, 0, <span class="stringliteral">&#39; &#39;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l01374" name="l01374"></a><span class="lineno"> 1374</span>        <a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>[2] = <span class="stringliteral">&#39;:&#39;</span>;</div>
+<div class="line"><a id="l01375" name="l01375"></a><span class="lineno"> 1375</span>        <span class="keyword">this</span>-&gt;convertToChar(minute, &amp;rds_time[3], 2, 0, <span class="stringliteral">&#39; &#39;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l01376" name="l01376"></a><span class="lineno"> 1376</span>        <a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>[5] = <span class="stringliteral">&#39; &#39;</span>;</div>
+<div class="line"><a id="l01377" name="l01377"></a><span class="lineno"> 1377</span>        <a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>[6] = offset_sign;</div>
+<div class="line"><a id="l01378" name="l01378"></a><span class="lineno"> 1378</span>        <span class="keyword">this</span>-&gt;convertToChar(offset_h, &amp;<a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>[7], 2, 0, <span class="stringliteral">&#39; &#39;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l01379" name="l01379"></a><span class="lineno"> 1379</span>        <a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>[9] = <span class="stringliteral">&#39;:&#39;</span>;</div>
+<div class="line"><a id="l01380" name="l01380"></a><span class="lineno"> 1380</span>        <span class="keyword">this</span>-&gt;convertToChar(offset_m, &amp;<a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>[10], 2, 0, <span class="stringliteral">&#39; &#39;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l01381" name="l01381"></a><span class="lineno"> 1381</span>        <a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>[12] = <span class="stringliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a id="l01382" name="l01382"></a><span class="lineno"> 1382</span> </div>
-<div class="line"><a id="l01383" name="l01383"></a><span class="lineno"> 1383</span> </div>
-<div class="line"><a id="l01384" name="l01384"></a><span class="lineno"> 1384</span><span class="comment">/**</span></div>
-<div class="line"><span class="lineno"> 1385</span><span class="comment"> * @ingroup GA05 Covert numbers to char array</span></div>
-<div class="line"><span class="lineno"> 1386</span><span class="comment"> * @brief Converts a number to a char array</span></div>
-<div class="line"><span class="lineno"> 1387</span><span class="comment"> * @details It is useful to mitigate memory space used by functions like sprintf or othetr generic similar functions</span></div>
-<div class="line"><span class="lineno"> 1388</span><span class="comment"> * @details You can use it to format frequency using decimal or tousand separator and also to convert smalm numbers.</span></div>
-<div class="line"><span class="lineno"> 1389</span><span class="comment"> *</span></div>
-<div class="line"><span class="lineno"> 1390</span><span class="comment"> * @param value  value to be converted</span></div>
-<div class="line"><span class="lineno"> 1391</span><span class="comment"> * @param strValue char array that will be receive the converted value</span></div>
-<div class="line"><span class="lineno"> 1392</span><span class="comment"> * @param len final string size (in bytes)</span></div>
-<div class="line"><span class="lineno"> 1393</span><span class="comment"> * @param dot the decimal or tousand separator position</span></div>
-<div class="line"><span class="lineno"> 1394</span><span class="comment"> * @param separator symbol &quot;.&quot; or &quot;,&quot;</span></div>
-<div class="line"><span class="lineno"> 1395</span><span class="comment"> * @param remove_leading_zeros if true removes up to two leading zeros (default is true)</span></div>
-<div class="line"><span class="lineno"> 1396</span><span class="comment"> */</span></div>
-<div class="line"><a id="l01397" name="l01397"></a><span class="lineno"><a class="line" href="group___g_a05.html#ga2ab717229791f3d3994f10717fb3c703"> 1397</a></span><span class="keywordtype">void</span> <a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a05.html#ga2ab717229791f3d3994f10717fb3c703">convertToChar</a>(uint16_t value, <span class="keywordtype">char</span> *strValue, uint8_t len, uint8_t dot, uint8_t separator, <span class="keywordtype">bool</span> remove_leading_zeros)</div>
-<div class="line"><a id="l01398" name="l01398"></a><span class="lineno"> 1398</span>{</div>
-<div class="line"><a id="l01399" name="l01399"></a><span class="lineno"> 1399</span>    <span class="keywordtype">char</span> d;</div>
-<div class="line"><a id="l01400" name="l01400"></a><span class="lineno"> 1400</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = (len - 1); i &gt;= 0; i--)</div>
-<div class="line"><a id="l01401" name="l01401"></a><span class="lineno"> 1401</span>    {</div>
-<div class="line"><a id="l01402" name="l01402"></a><span class="lineno"> 1402</span>        d = value % 10;</div>
-<div class="line"><a id="l01403" name="l01403"></a><span class="lineno"> 1403</span>        value = value / 10;</div>
-<div class="line"><a id="l01404" name="l01404"></a><span class="lineno"> 1404</span>        strValue[i] = d + 48;</div>
-<div class="line"><a id="l01405" name="l01405"></a><span class="lineno"> 1405</span>    }</div>
-<div class="line"><a id="l01406" name="l01406"></a><span class="lineno"> 1406</span>    strValue[len] = <span class="stringliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a id="l01407" name="l01407"></a><span class="lineno"> 1407</span>    <span class="keywordflow">if</span> (dot &gt; 0)</div>
-<div class="line"><a id="l01408" name="l01408"></a><span class="lineno"> 1408</span>    {</div>
-<div class="line"><a id="l01409" name="l01409"></a><span class="lineno"> 1409</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = len; i &gt;= dot; i--)</div>
-<div class="line"><a id="l01410" name="l01410"></a><span class="lineno"> 1410</span>        {</div>
-<div class="line"><a id="l01411" name="l01411"></a><span class="lineno"> 1411</span>            strValue[i + 1] = strValue[i];</div>
-<div class="line"><a id="l01412" name="l01412"></a><span class="lineno"> 1412</span>        }</div>
-<div class="line"><a id="l01413" name="l01413"></a><span class="lineno"> 1413</span>        strValue[dot] = separator;</div>
-<div class="line"><a id="l01414" name="l01414"></a><span class="lineno"> 1414</span>    }</div>
-<div class="line"><a id="l01415" name="l01415"></a><span class="lineno"> 1415</span> </div>
-<div class="line"><a id="l01416" name="l01416"></a><span class="lineno"> 1416</span>    <span class="keywordflow">if</span> (remove_leading_zeros)</div>
-<div class="line"><a id="l01417" name="l01417"></a><span class="lineno"> 1417</span>    {</div>
-<div class="line"><a id="l01418" name="l01418"></a><span class="lineno"> 1418</span>        <span class="keywordflow">if</span> (strValue[0] == <span class="stringliteral">&#39;0&#39;</span>)</div>
-<div class="line"><a id="l01419" name="l01419"></a><span class="lineno"> 1419</span>        {</div>
-<div class="line"><a id="l01420" name="l01420"></a><span class="lineno"> 1420</span>            strValue[0] = <span class="stringliteral">&#39; &#39;</span>;</div>
-<div class="line"><a id="l01421" name="l01421"></a><span class="lineno"> 1421</span>            <span class="keywordflow">if</span> (strValue[1] == <span class="stringliteral">&#39;0&#39;</span>)</div>
-<div class="line"><a id="l01422" name="l01422"></a><span class="lineno"> 1422</span>                strValue[1] = <span class="stringliteral">&#39; &#39;</span>;</div>
-<div class="line"><a id="l01423" name="l01423"></a><span class="lineno"> 1423</span>        }</div>
-<div class="line"><a id="l01424" name="l01424"></a><span class="lineno"> 1424</span>    }</div>
-<div class="line"><a id="l01425" name="l01425"></a><span class="lineno"> 1425</span>}</div>
+<div class="line"><a id="l01383" name="l01383"></a><span class="lineno"> 1383</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>;</div>
+<div class="line"><a id="l01384" name="l01384"></a><span class="lineno"> 1384</span>    }</div>
+<div class="line"><a id="l01385" name="l01385"></a><span class="lineno"> 1385</span> </div>
+<div class="line"><a id="l01386" name="l01386"></a><span class="lineno"> 1386</span>    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l01387" name="l01387"></a><span class="lineno"> 1387</span>}</div>
+<div class="line"><a id="l01388" name="l01388"></a><span class="lineno"> 1388</span> </div>
+<div class="line"><a id="l01389" name="l01389"></a><span class="lineno"> 1389</span><span class="comment">/**</span></div>
+<div class="line"><span class="lineno"> 1390</span><span class="comment"> * @ingroup GA04</span></div>
+<div class="line"><span class="lineno"> 1391</span><span class="comment"> * @todo Need to check.</span></div>
+<div class="line"><span class="lineno"> 1392</span><span class="comment"> * @brief Gets the RDS time converted to local time.</span></div>
+<div class="line"><span class="lineno"> 1393</span><span class="comment"> * @details ATTENTION: You must call getRdsReady before calling this function.</span></div>
+<div class="line"><span class="lineno"> 1394</span><span class="comment"> * @details ATTENTION: Some stations broadcast wrong time.</span></div>
+<div class="line"><span class="lineno"> 1395</span><span class="comment"> * @return char* a string with hh:mm</span></div>
+<div class="line"><span class="lineno"> 1396</span><span class="comment"> * @see getRdsReady</span></div>
+<div class="line"><span class="lineno"> 1397</span><span class="comment"> */</span></div>
+<div class="line"><a id="l01398" name="l01398"></a><span class="lineno"><a class="line" href="group___g_a04.html#gaebab6fd2a2af03b6a05991dad7b8ab35"> 1398</a></span><span class="keywordtype">char</span> *<a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a04.html#gaebab6fd2a2af03b6a05991dad7b8ab35">getRdsLocalTime</a>()</div>
+<div class="line"><a id="l01399" name="l01399"></a><span class="lineno"> 1399</span>{</div>
+<div class="line"><a id="l01400" name="l01400"></a><span class="lineno"> 1400</span>    bk_rds_date_time dt;</div>
+<div class="line"><a id="l01401" name="l01401"></a><span class="lineno"> 1401</span>    word16_to_bytes blk_b, blk_c, blk_d;</div>
+<div class="line"><a id="l01402" name="l01402"></a><span class="lineno"> 1402</span>    bk_rds_blockb blkb;</div>
+<div class="line"><a id="l01403" name="l01403"></a><span class="lineno"> 1403</span> </div>
+<div class="line"><a id="l01404" name="l01404"></a><span class="lineno"> 1404</span>    blk_b.raw = blkb.blockB = reg0d-&gt;raw; <span class="comment">// Block B</span></div>
+<div class="line"><a id="l01405" name="l01405"></a><span class="lineno"> 1405</span>    blk_c.raw = reg0e-&gt;raw; <span class="comment">// Block C</span></div>
+<div class="line"><a id="l01406" name="l01406"></a><span class="lineno"> 1406</span>    blk_d.raw = reg0f-&gt;raw; <span class="comment">// Block D </span></div>
+<div class="line"><a id="l01407" name="l01407"></a><span class="lineno"> 1407</span> </div>
+<div class="line"><a id="l01408" name="l01408"></a><span class="lineno"> 1408</span>    uint16_t minute;</div>
+<div class="line"><a id="l01409" name="l01409"></a><span class="lineno"> 1409</span>    uint16_t hour;</div>
+<div class="line"><a id="l01410" name="l01410"></a><span class="lineno"> 1410</span>    uint16_t localTime;</div>
+<div class="line"><a id="l01411" name="l01411"></a><span class="lineno"> 1411</span> </div>
+<div class="line"><a id="l01412" name="l01412"></a><span class="lineno"> 1412</span>    <span class="keywordflow">if</span> (blkb.group0.groupType == 4)</div>
+<div class="line"><a id="l01413" name="l01413"></a><span class="lineno"> 1413</span>    {</div>
+<div class="line"><a id="l01414" name="l01414"></a><span class="lineno"> 1414</span>        <span class="keywordtype">int</span> offset_h;</div>
+<div class="line"><a id="l01415" name="l01415"></a><span class="lineno"> 1415</span>        <span class="keywordtype">int</span> offset_m;</div>
+<div class="line"><a id="l01416" name="l01416"></a><span class="lineno"> 1416</span> </div>
+<div class="line"><a id="l01417" name="l01417"></a><span class="lineno"> 1417</span>        dt.raw[4] = blk_b.refined.lowByte;</div>
+<div class="line"><a id="l01418" name="l01418"></a><span class="lineno"> 1418</span>        dt.raw[5] = blk_b.refined.highByte;</div>
+<div class="line"><a id="l01419" name="l01419"></a><span class="lineno"> 1419</span> </div>
+<div class="line"><a id="l01420" name="l01420"></a><span class="lineno"> 1420</span>        dt.raw[2] = blk_c.refined.lowByte;</div>
+<div class="line"><a id="l01421" name="l01421"></a><span class="lineno"> 1421</span>        dt.raw[3] = blk_c.refined.highByte;</div>
+<div class="line"><a id="l01422" name="l01422"></a><span class="lineno"> 1422</span> </div>
+<div class="line"><a id="l01423" name="l01423"></a><span class="lineno"> 1423</span>        dt.raw[0] = blk_d.refined.lowByte;</div>
+<div class="line"><a id="l01424" name="l01424"></a><span class="lineno"> 1424</span>        dt.raw[1] = blk_d.refined.highByte;</div>
+<div class="line"><a id="l01425" name="l01425"></a><span class="lineno"> 1425</span> </div>
+<div class="line"><a id="l01426" name="l01426"></a><span class="lineno"> 1426</span>        minute = dt.refined.minute;</div>
+<div class="line"><a id="l01427" name="l01427"></a><span class="lineno"> 1427</span>        hour = dt.refined.hour;</div>
+<div class="line"><a id="l01428" name="l01428"></a><span class="lineno"> 1428</span> </div>
+<div class="line"><a id="l01429" name="l01429"></a><span class="lineno"> 1429</span>        offset_h = (dt.refined.offset * 30) / 60;</div>
+<div class="line"><a id="l01430" name="l01430"></a><span class="lineno"> 1430</span>        offset_m = (dt.refined.offset * 30) - (offset_h * 60);</div>
+<div class="line"><a id="l01431" name="l01431"></a><span class="lineno"> 1431</span> </div>
+<div class="line"><a id="l01432" name="l01432"></a><span class="lineno"> 1432</span>        localTime = (hour * 60  + minute);</div>
+<div class="line"><a id="l01433" name="l01433"></a><span class="lineno"> 1433</span>        <span class="keywordflow">if</span> ( dt.refined.offset_sense == 1)</div>
+<div class="line"><a id="l01434" name="l01434"></a><span class="lineno"> 1434</span>            localTime -= (offset_h * 60 + offset_m);</div>
+<div class="line"><a id="l01435" name="l01435"></a><span class="lineno"> 1435</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l01436" name="l01436"></a><span class="lineno"> 1436</span>            localTime += (offset_h * 60 + offset_m);</div>
+<div class="line"><a id="l01437" name="l01437"></a><span class="lineno"> 1437</span> </div>
+<div class="line"><a id="l01438" name="l01438"></a><span class="lineno"> 1438</span>        hour = localTime / 60;</div>
+<div class="line"><a id="l01439" name="l01439"></a><span class="lineno"> 1439</span>        minute = localTime - (hour * 60);</div>
+<div class="line"><a id="l01440" name="l01440"></a><span class="lineno"> 1440</span> </div>
+<div class="line"><a id="l01441" name="l01441"></a><span class="lineno"> 1441</span>        <span class="keywordflow">if</span> (hour &gt; 24 || minute &gt; 60 ) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l01442" name="l01442"></a><span class="lineno"> 1442</span> </div>
+<div class="line"><a id="l01443" name="l01443"></a><span class="lineno"> 1443</span>        <span class="keyword">this</span>-&gt;convertToChar(hour, rds_time, 2, 0, <span class="stringliteral">&#39; &#39;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l01444" name="l01444"></a><span class="lineno"> 1444</span>        <a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>[2] = <span class="stringliteral">&#39;:&#39;</span>;</div>
+<div class="line"><a id="l01445" name="l01445"></a><span class="lineno"> 1445</span>        <span class="keyword">this</span>-&gt;convertToChar(minute, &amp;rds_time[3], 2, 0, <span class="stringliteral">&#39; &#39;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l01446" name="l01446"></a><span class="lineno"> 1446</span>        <a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>[5] = <span class="stringliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l01447" name="l01447"></a><span class="lineno"> 1447</span> </div>
+<div class="line"><a id="l01448" name="l01448"></a><span class="lineno"> 1448</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>;</div>
+<div class="line"><a id="l01449" name="l01449"></a><span class="lineno"> 1449</span>    }</div>
+<div class="line"><a id="l01450" name="l01450"></a><span class="lineno"> 1450</span> </div>
+<div class="line"><a id="l01451" name="l01451"></a><span class="lineno"> 1451</span>    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l01452" name="l01452"></a><span class="lineno"> 1452</span>}</div>
+<div class="line"><a id="l01453" name="l01453"></a><span class="lineno"> 1453</span> </div>
+<div class="line"><a id="l01454" name="l01454"></a><span class="lineno"> 1454</span> </div>
+<div class="line"><a id="l01455" name="l01455"></a><span class="lineno"> 1455</span> </div>
+<div class="line"><a id="l01456" name="l01456"></a><span class="lineno"> 1456</span><span class="comment">/**</span></div>
+<div class="line"><span class="lineno"> 1457</span><span class="comment"> * @ingroup GA04 </span></div>
+<div class="line"><span class="lineno"> 1458</span><span class="comment"> * @brief Get the Rds Sync </span></div>
+<div class="line"><span class="lineno"> 1459</span><span class="comment"> * @details Returns true if RDS currently synchronized.</span></div>
+<div class="line"><span class="lineno"> 1460</span><span class="comment"> * @return true or false</span></div>
+<div class="line"><span class="lineno"> 1461</span><span class="comment"> */</span></div>
+<div class="line"><a id="l01462" name="l01462"></a><span class="lineno"><a class="line" href="group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c"> 1462</a></span><span class="keywordtype">bool</span> <a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c">getRdsSync</a>()</div>
+<div class="line"><a id="l01463" name="l01463"></a><span class="lineno"> 1463</span>{</div>
+<div class="line"><a id="l01464" name="l01464"></a><span class="lineno"> 1464</span>    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l01465" name="l01465"></a><span class="lineno"> 1465</span>}</div>
+<div class="line"><a id="l01466" name="l01466"></a><span class="lineno"> 1466</span> </div>
+<div class="line"><a id="l01467" name="l01467"></a><span class="lineno"> 1467</span><span class="comment">/**</span></div>
+<div class="line"><span class="lineno"> 1468</span><span class="comment"> * @ingroup GA04</span></div>
+<div class="line"><span class="lineno"> 1469</span><span class="comment"> * @brief Clear RDS Information (Station Name, Station Information, Program Information and Time)</span></div>
+<div class="line"><span class="lineno"> 1470</span><span class="comment"> * @details Clear the buffer with latest RDS information</span></div>
+<div class="line"><span class="lineno"> 1471</span><span class="comment"> */</span></div>
+<div class="line"><a id="l01472" name="l01472"></a><span class="lineno"><a class="line" href="group___g_a04.html#gab4df6a9ab8f9ea2b4ec0878fd49b99a1"> 1472</a></span><span class="keywordtype">void</span> <a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a04.html#gab4df6a9ab8f9ea2b4ec0878fd49b99a1">clearRdsBuffer</a>()</div>
+<div class="line"><a id="l01473" name="l01473"></a><span class="lineno"> 1473</span>{</div>
+<div class="line"><a id="l01474" name="l01474"></a><span class="lineno"> 1474</span>    memset(<a class="code hl_variable" href="group___g_a01.html#a910467537993ef0875059b2318ee508e">rds_buffer0A</a>, 0, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="group___g_a01.html#a910467537993ef0875059b2318ee508e">rds_buffer0A</a>));</div>
+<div class="line"><a id="l01475" name="l01475"></a><span class="lineno"> 1475</span>    memset(<a class="code hl_variable" href="group___g_a01.html#a47624a15a9716a9ec6c0ac2d1060dd85">rds_buffer2A</a> , 0, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="group___g_a01.html#a47624a15a9716a9ec6c0ac2d1060dd85">rds_buffer2A</a>));</div>
+<div class="line"><a id="l01476" name="l01476"></a><span class="lineno"> 1476</span>    memset(<a class="code hl_variable" href="group___g_a01.html#a55d9b83680e41111d9926e19c2b99047">rds_buffer2B</a>, 0, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="group___g_a01.html#a55d9b83680e41111d9926e19c2b99047">rds_buffer2B</a>));</div>
+<div class="line"><a id="l01477" name="l01477"></a><span class="lineno"> 1477</span>    memset(<a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>, 0, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">rds_time</a>));</div>
+<div class="line"><a id="l01478" name="l01478"></a><span class="lineno"> 1478</span>}</div>
+<div class="line"><a id="l01479" name="l01479"></a><span class="lineno"> 1479</span> </div>
+<div class="line"><a id="l01480" name="l01480"></a><span class="lineno"> 1480</span> </div>
+<div class="line"><a id="l01481" name="l01481"></a><span class="lineno"> 1481</span><span class="comment">/** </span></div>
+<div class="line"><span class="lineno"> 1482</span><span class="comment"> * @defgroup GA05 Tools </span></div>
+<div class="line"><span class="lineno"> 1483</span><span class="comment"> * @section GA05 Tools / Helper</span></div>
+<div class="line"><span class="lineno"> 1484</span><span class="comment"> */</span></div>
+<div class="line"><a id="l01485" name="l01485"></a><span class="lineno"> 1485</span> </div>
+<div class="line"><a id="l01486" name="l01486"></a><span class="lineno"> 1486</span><span class="comment">/**</span></div>
+<div class="line"><span class="lineno"> 1487</span><span class="comment"> * @ingroup GA05 Check the I2C buss address</span></div>
+<div class="line"><span class="lineno"> 1488</span><span class="comment"> * @brief Check the I2C bus address</span></div>
+<div class="line"><span class="lineno"> 1489</span><span class="comment"> *</span></div>
+<div class="line"><span class="lineno"> 1490</span><span class="comment"> * @param uint8_t address Array - this array will be populated with the I2C bus addresses found (minimum three elements)</span></div>
+<div class="line"><span class="lineno"> 1491</span><span class="comment"> * @return 0 if no i2c device is found; -1 if error is found or n &gt; 0, where n is the number of I2C bus address found</span></div>
+<div class="line"><span class="lineno"> 1492</span><span class="comment"> */</span></div>
+<div class="line"><a id="l01493" name="l01493"></a><span class="lineno"><a class="line" href="group___g_a05.html#ga94349ed646b59d42fe4c771e273df737"> 1493</a></span><span class="keywordtype">int</span> <a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a05.html#ga94349ed646b59d42fe4c771e273df737">checkI2C</a>(uint8_t *addressArray)</div>
+<div class="line"><a id="l01494" name="l01494"></a><span class="lineno"> 1494</span>{</div>
+<div class="line"><a id="l01495" name="l01495"></a><span class="lineno"> 1495</span>    Wire.begin();</div>
+<div class="line"><a id="l01496" name="l01496"></a><span class="lineno"> 1496</span>    <span class="keywordtype">int</span> error, address;</div>
+<div class="line"><a id="l01497" name="l01497"></a><span class="lineno"> 1497</span>    <span class="keywordtype">int</span> idx = 0;</div>
+<div class="line"><a id="l01498" name="l01498"></a><span class="lineno"> 1498</span>    <span class="keywordflow">for</span> (address = 1; address &lt; 127; address++)</div>
+<div class="line"><a id="l01499" name="l01499"></a><span class="lineno"> 1499</span>    {</div>
+<div class="line"><a id="l01500" name="l01500"></a><span class="lineno"> 1500</span>        Wire.beginTransmission(address);</div>
+<div class="line"><a id="l01501" name="l01501"></a><span class="lineno"> 1501</span>        error = Wire.endTransmission();</div>
+<div class="line"><a id="l01502" name="l01502"></a><span class="lineno"> 1502</span>        <span class="keywordflow">if</span> (error == 0)</div>
+<div class="line"><a id="l01503" name="l01503"></a><span class="lineno"> 1503</span>        {</div>
+<div class="line"><a id="l01504" name="l01504"></a><span class="lineno"> 1504</span>            addressArray[idx] = address;</div>
+<div class="line"><a id="l01505" name="l01505"></a><span class="lineno"> 1505</span>            idx++;</div>
+<div class="line"><a id="l01506" name="l01506"></a><span class="lineno"> 1506</span>        }</div>
+<div class="line"><a id="l01507" name="l01507"></a><span class="lineno"> 1507</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (error == 4)</div>
+<div class="line"><a id="l01508" name="l01508"></a><span class="lineno"> 1508</span>            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l01509" name="l01509"></a><span class="lineno"> 1509</span>    }</div>
+<div class="line"><a id="l01510" name="l01510"></a><span class="lineno"> 1510</span>    Wire.end();</div>
+<div class="line"><a id="l01511" name="l01511"></a><span class="lineno"> 1511</span>    <span class="keywordflow">return</span> idx;</div>
+<div class="line"><a id="l01512" name="l01512"></a><span class="lineno"> 1512</span>}</div>
+<div class="line"><a id="l01513" name="l01513"></a><span class="lineno"> 1513</span> </div>
+<div class="line"><a id="l01514" name="l01514"></a><span class="lineno"> 1514</span> </div>
+<div class="line"><a id="l01515" name="l01515"></a><span class="lineno"> 1515</span><span class="comment">/**</span></div>
+<div class="line"><span class="lineno"> 1516</span><span class="comment"> * @ingroup GA05 Covert numbers to char array</span></div>
+<div class="line"><span class="lineno"> 1517</span><span class="comment"> * @brief Converts a number to a char array</span></div>
+<div class="line"><span class="lineno"> 1518</span><span class="comment"> * @details It is useful to mitigate memory space used by functions like sprintf or othetr generic similar functions</span></div>
+<div class="line"><span class="lineno"> 1519</span><span class="comment"> * @details You can use it to format frequency using decimal or tousand separator and also to convert smalm numbers.</span></div>
+<div class="line"><span class="lineno"> 1520</span><span class="comment"> *</span></div>
+<div class="line"><span class="lineno"> 1521</span><span class="comment"> * @param value  value to be converted</span></div>
+<div class="line"><span class="lineno"> 1522</span><span class="comment"> * @param strValue char array that will be receive the converted value</span></div>
+<div class="line"><span class="lineno"> 1523</span><span class="comment"> * @param len final string size (in bytes)</span></div>
+<div class="line"><span class="lineno"> 1524</span><span class="comment"> * @param dot the decimal or tousand separator position</span></div>
+<div class="line"><span class="lineno"> 1525</span><span class="comment"> * @param separator symbol &quot;.&quot; or &quot;,&quot;</span></div>
+<div class="line"><span class="lineno"> 1526</span><span class="comment"> * @param remove_leading_zeros if true removes up to two leading zeros (default is true)</span></div>
+<div class="line"><span class="lineno"> 1527</span><span class="comment"> */</span></div>
+<div class="line"><a id="l01528" name="l01528"></a><span class="lineno"><a class="line" href="group___g_a05.html#ga2ab717229791f3d3994f10717fb3c703"> 1528</a></span><span class="keywordtype">void</span> <a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a05.html#ga2ab717229791f3d3994f10717fb3c703">convertToChar</a>(uint16_t value, <span class="keywordtype">char</span> *strValue, uint8_t len, uint8_t dot, uint8_t separator, <span class="keywordtype">bool</span> remove_leading_zeros)</div>
+<div class="line"><a id="l01529" name="l01529"></a><span class="lineno"> 1529</span>{</div>
+<div class="line"><a id="l01530" name="l01530"></a><span class="lineno"> 1530</span>    <span class="keywordtype">char</span> d;</div>
+<div class="line"><a id="l01531" name="l01531"></a><span class="lineno"> 1531</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = (len - 1); i &gt;= 0; i--)</div>
+<div class="line"><a id="l01532" name="l01532"></a><span class="lineno"> 1532</span>    {</div>
+<div class="line"><a id="l01533" name="l01533"></a><span class="lineno"> 1533</span>        d = value % 10;</div>
+<div class="line"><a id="l01534" name="l01534"></a><span class="lineno"> 1534</span>        value = value / 10;</div>
+<div class="line"><a id="l01535" name="l01535"></a><span class="lineno"> 1535</span>        strValue[i] = d + 48;</div>
+<div class="line"><a id="l01536" name="l01536"></a><span class="lineno"> 1536</span>    }</div>
+<div class="line"><a id="l01537" name="l01537"></a><span class="lineno"> 1537</span>    strValue[len] = <span class="stringliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l01538" name="l01538"></a><span class="lineno"> 1538</span>    <span class="keywordflow">if</span> (dot &gt; 0)</div>
+<div class="line"><a id="l01539" name="l01539"></a><span class="lineno"> 1539</span>    {</div>
+<div class="line"><a id="l01540" name="l01540"></a><span class="lineno"> 1540</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = len; i &gt;= dot; i--)</div>
+<div class="line"><a id="l01541" name="l01541"></a><span class="lineno"> 1541</span>        {</div>
+<div class="line"><a id="l01542" name="l01542"></a><span class="lineno"> 1542</span>            strValue[i + 1] = strValue[i];</div>
+<div class="line"><a id="l01543" name="l01543"></a><span class="lineno"> 1543</span>        }</div>
+<div class="line"><a id="l01544" name="l01544"></a><span class="lineno"> 1544</span>        strValue[dot] = separator;</div>
+<div class="line"><a id="l01545" name="l01545"></a><span class="lineno"> 1545</span>    }</div>
+<div class="line"><a id="l01546" name="l01546"></a><span class="lineno"> 1546</span> </div>
+<div class="line"><a id="l01547" name="l01547"></a><span class="lineno"> 1547</span>    <span class="keywordflow">if</span> (remove_leading_zeros)</div>
+<div class="line"><a id="l01548" name="l01548"></a><span class="lineno"> 1548</span>    {</div>
+<div class="line"><a id="l01549" name="l01549"></a><span class="lineno"> 1549</span>        <span class="keywordflow">if</span> (strValue[0] == <span class="stringliteral">&#39;0&#39;</span>)</div>
+<div class="line"><a id="l01550" name="l01550"></a><span class="lineno"> 1550</span>        {</div>
+<div class="line"><a id="l01551" name="l01551"></a><span class="lineno"> 1551</span>            strValue[0] = <span class="stringliteral">&#39; &#39;</span>;</div>
+<div class="line"><a id="l01552" name="l01552"></a><span class="lineno"> 1552</span>            <span class="keywordflow">if</span> (strValue[1] == <span class="stringliteral">&#39;0&#39;</span>)</div>
+<div class="line"><a id="l01553" name="l01553"></a><span class="lineno"> 1553</span>                strValue[1] = <span class="stringliteral">&#39; &#39;</span>;</div>
+<div class="line"><a id="l01554" name="l01554"></a><span class="lineno"> 1554</span>        }</div>
+<div class="line"><a id="l01555" name="l01555"></a><span class="lineno"> 1555</span>    }</div>
+<div class="line"><a id="l01556" name="l01556"></a><span class="lineno"> 1556</span>}</div>
 <div class="ttc" id="a_b_k108_x_8h_html_a06bf525972f7b47f7683a0c37cfb2a70"><div class="ttname"><a href="_b_k108_x_8h.html#a06bf525972f7b47f7683a0c37cfb2a70">REG12</a></div><div class="ttdeci">#define REG12</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00072">BK108X.h:72</a></div></div>
 <div class="ttc" id="a_b_k108_x_8h_html_a09a3d3fef9f53f0dbe1dd0072f02c1d4"><div class="ttname"><a href="_b_k108_x_8h.html#a09a3d3fef9f53f0dbe1dd0072f02c1d4">REG02</a></div><div class="ttdeci">#define REG02</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00056">BK108X.h:56</a></div></div>
 <div class="ttc" id="a_b_k108_x_8h_html_a0e3b6e600782d453f87223f87784c54d"><div class="ttname"><a href="_b_k108_x_8h.html#a0e3b6e600782d453f87223f87784c54d">REG0C</a></div><div class="ttdeci">#define REG0C</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00066">BK108X.h:66</a></div></div>
@@ -1559,6 +1690,7 @@ $(document).ready(function(){initNavTree('_b_k108_x_8cpp_source.html',''); initR
 <div class="ttc" id="agroup___g_a01_html_a68b0bac67680a37773d972c470716a37"><div class="ttname"><a href="group___g_a01.html#a68b0bac67680a37773d972c470716a37">BK108X::seekInterruptPin</a></div><div class="ttdeci">int seekInterruptPin</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00801">BK108X.h:801</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_a910467537993ef0875059b2318ee508e"><div class="ttname"><a href="group___g_a01.html#a910467537993ef0875059b2318ee508e">BK108X::rds_buffer0A</a></div><div class="ttdeci">char rds_buffer0A[9]</div><div class="ttdoc">RDS Basic tuning and switching information (Type 0 groups)</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00780">BK108X.h:780</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_a91b3171ba5c52f8bbbd54277bbb2bdfe"><div class="ttname"><a href="group___g_a01.html#a91b3171ba5c52f8bbbd54277bbb2bdfe">BK108X::deviceAddress</a></div><div class="ttdeci">int deviceAddress</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00785">BK108X.h:785</a></div></div>
+<div class="ttc" id="agroup___g_a01_html_a9eaf32bcfafe2ac39912b81707c9da5e"><div class="ttname"><a href="group___g_a01.html#a9eaf32bcfafe2ac39912b81707c9da5e">BK108X::rds_time</a></div><div class="ttdeci">char rds_time[20]</div><div class="ttdoc">RDS date time received information.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00781">BK108X.h:781</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_ab14e1e533462b60b82ff498dc15abbb1"><div class="ttname"><a href="group___g_a01.html#ab14e1e533462b60b82ff498dc15abbb1">BK108X::rdsInterruptPin</a></div><div class="ttdeci">int rdsInterruptPin</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00800">BK108X.h:800</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_class_b_k108_x"><div class="ttname"><a href="group___g_a01.html#class_b_k108_x">BK108X</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00722">BK108X.h:723</a></div></div>
 <div class="ttc" id="agroup___g_a02_html_ga00ccd956af8470ccc32a18b476dda0c2"><div class="ttname"><a href="group___g_a02.html#ga00ccd956af8470ccc32a18b476dda0c2">BK108X::i2cReceiveAck</a></div><div class="ttdeci">uint8_t i2cReceiveAck()</div><div class="ttdoc">Gets Acknowledge (ACK)</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l00138">BK108X.cpp:138</a></div></div>
@@ -1623,12 +1755,14 @@ $(document).ready(function(){initNavTree('_b_k108_x_8cpp_source.html',''); initR
 <div class="ttc" id="agroup___g_a04_html_ga8dafdca0cc93acecacfd3231af8aba1e"><div class="ttname"><a href="group___g_a04.html#ga8dafdca0cc93acecacfd3231af8aba1e">BK108X::getRdsProgramType</a></div><div class="ttdeci">uint8_t getRdsProgramType(void)</div><div class="ttdoc">Returns the Program Type (extracted from the Block B)</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01156">BK108X.cpp:1156</a></div></div>
 <div class="ttc" id="agroup___g_a04_html_ga9604c12896a554660d5cef45a1f8d940"><div class="ttname"><a href="group___g_a04.html#ga9604c12896a554660d5cef45a1f8d940">BK108X::getNext2Block</a></div><div class="ttdeci">void getNext2Block(char *c)</div><div class="ttdoc">Process data received from group 2B.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01170">BK108X.cpp:1170</a></div></div>
 <div class="ttc" id="agroup___g_a04_html_gaa45a715a465a77143dc7d300d6a3192f"><div class="ttname"><a href="group___g_a04.html#gaa45a715a465a77143dc7d300d6a3192f">BK108X::getRdsText2A</a></div><div class="ttdeci">char * getRdsText2A(void)</div><div class="ttdoc">Gets the Text processed for the 2A group.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01282">BK108X.cpp:1282</a></div></div>
-<div class="ttc" id="agroup___g_a04_html_gace7a6e83ef173bcf9e26b129df416c9c"><div class="ttname"><a href="group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c">BK108X::getRdsSync</a></div><div class="ttdeci">bool getRdsSync()</div><div class="ttdoc">Get the Rds Sync.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01344">BK108X.cpp:1344</a></div></div>
+<div class="ttc" id="agroup___g_a04_html_gab4df6a9ab8f9ea2b4ec0878fd49b99a1"><div class="ttname"><a href="group___g_a04.html#gab4df6a9ab8f9ea2b4ec0878fd49b99a1">BK108X::clearRdsBuffer</a></div><div class="ttdeci">void clearRdsBuffer()</div><div class="ttdoc">Clear RDS Information (Station Name, Station Information, Program Information and Time)</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01472">BK108X.cpp:1472</a></div></div>
+<div class="ttc" id="agroup___g_a04_html_gace7a6e83ef173bcf9e26b129df416c9c"><div class="ttname"><a href="group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c">BK108X::getRdsSync</a></div><div class="ttdeci">bool getRdsSync()</div><div class="ttdoc">Get the Rds Sync.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01462">BK108X.cpp:1462</a></div></div>
 <div class="ttc" id="agroup___g_a04_html_gadb237cc8ad191804af5de514a5610fd9"><div class="ttname"><a href="group___g_a04.html#gadb237cc8ad191804af5de514a5610fd9">BK108X::setRdsMode</a></div><div class="ttdeci">void setRdsMode(uint8_t rds_mode=0)</div><div class="ttdoc">Sets the Rds Mode Standard or Verbose.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01069">BK108X.cpp:1069</a></div></div>
 <div class="ttc" id="agroup___g_a04_html_gadc61ebb78e49b6bfc9aa6eadc98363a5"><div class="ttname"><a href="group___g_a04.html#gadc61ebb78e49b6bfc9aa6eadc98363a5">BK108X::setRds</a></div><div class="ttdeci">void setRds(bool value)</div><div class="ttdoc">Sets the RDS operation.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01081">BK108X.cpp:1081</a></div></div>
 <div class="ttc" id="agroup___g_a04_html_gade944541df0205f7a7bb6335ae25c211"><div class="ttname"><a href="group___g_a04.html#gade944541df0205f7a7bb6335ae25c211">BK108X::getRdsStatus</a></div><div class="ttdeci">void getRdsStatus()</div><div class="ttdoc">Gets the RDS registers information.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01058">BK108X.cpp:1058</a></div></div>
-<div class="ttc" id="agroup___g_a05_html_ga2ab717229791f3d3994f10717fb3c703"><div class="ttname"><a href="group___g_a05.html#ga2ab717229791f3d3994f10717fb3c703">BK108X::convertToChar</a></div><div class="ttdeci">void convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros=true)</div><div class="ttdoc">Converts a number to a char array.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01397">BK108X.cpp:1397</a></div></div>
-<div class="ttc" id="agroup___g_a05_html_ga94349ed646b59d42fe4c771e273df737"><div class="ttname"><a href="group___g_a05.html#ga94349ed646b59d42fe4c771e273df737">BK108X::checkI2C</a></div><div class="ttdeci">int checkI2C(uint8_t *addressArray)</div><div class="ttdoc">Check the I2C bus address.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01362">BK108X.cpp:1362</a></div></div>
+<div class="ttc" id="agroup___g_a04_html_gaebab6fd2a2af03b6a05991dad7b8ab35"><div class="ttname"><a href="group___g_a04.html#gaebab6fd2a2af03b6a05991dad7b8ab35">BK108X::getRdsLocalTime</a></div><div class="ttdeci">char * getRdsLocalTime()</div><div class="ttdoc">Gets the RDS time converted to local time.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01398">BK108X.cpp:1398</a></div></div>
+<div class="ttc" id="agroup___g_a05_html_ga2ab717229791f3d3994f10717fb3c703"><div class="ttname"><a href="group___g_a05.html#ga2ab717229791f3d3994f10717fb3c703">BK108X::convertToChar</a></div><div class="ttdeci">void convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros=true)</div><div class="ttdoc">Converts a number to a char array.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01528">BK108X.cpp:1528</a></div></div>
+<div class="ttc" id="agroup___g_a05_html_ga94349ed646b59d42fe4c771e273df737"><div class="ttname"><a href="group___g_a05.html#ga94349ed646b59d42fe4c771e273df737">BK108X::checkI2C</a></div><div class="ttdeci">int checkI2C(uint8_t *addressArray)</div><div class="ttdoc">Check the I2C bus address.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l01493">BK108X.cpp:1493</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
