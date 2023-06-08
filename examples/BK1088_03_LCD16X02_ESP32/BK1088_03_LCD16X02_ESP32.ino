@@ -226,6 +226,7 @@ void readAllReceiverInformation() {
 
   bSt = (bool)EEPROM.read(eeprom_address + 5);
   bandIdx = EEPROM.read(eeprom_address + 6);
+  band[bandIdx].default_frequency = currentFrequency;
   useBand();
   rx.setMono(bSt);
 }
@@ -273,7 +274,14 @@ void showTemplate() {
 void showFrequency() {
   currentFrequency = rx.getFrequency();
   lcd.setCursor(4, 1);
-  lcd.print(rx.formatCurrentFrequency());
+  if ( band[bandIdx].mode == BK_MODE_FM)
+     lcd.print(rx.formatCurrentFrequency());
+  else {
+      if ( currentFrequency < 1000) 
+        lcd.print(rx.formatCurrentFrequency(' ',0));
+      else   
+        lcd.print(rx.formatCurrentFrequency('.',2));
+  }
   lcd.display();
 }
 
@@ -288,7 +296,7 @@ void showFrequencySeek() {
 void showStatus() {
   clearLcdLine(1);
   showFrequency();
-  showStereoMono();
+  showBandStatus();
   showRSSI();
 
   if (bRds) {
@@ -309,13 +317,9 @@ void showRSSI() {
   lcd.print(rssi);
 }
 
-void showStereoMono() {
+void showBandStatus() {
   lcd.setCursor(0, 1);
-  if (bSt) {
-    lcd.print("ST");
-  } else {
-    lcd.print("MO");
-  }
+  lcd.print(band[bandIdx].name);
 }
 
 void bandUp()
@@ -471,12 +475,13 @@ void checkRDS() {
 }
 
 void showRdsIndicator() {
-
+  /*
   lcd.setCursor(2, 1);
   if (bRds)
     lcd.print(".");
   else
     lcd.print(" ");
+  */
 }
 
 /*********************************************************
@@ -487,7 +492,7 @@ void showRdsIndicator() {
 void doStereo() {
   rx.setMono((bSt = !bSt));
   bShow = true;
-  showStereoMono();
+  showBandStatus();
   resetEepromDelay();
 }
 

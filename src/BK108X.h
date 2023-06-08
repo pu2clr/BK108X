@@ -1123,9 +1123,9 @@ public:
      * @return point char string strFrequency (member variable)
      * @see setFrequency, seek, setFrequencyUp and setFrequencyDown
      */
-    inline char *formatCurrentFrequency(char decimalSeparator = ',')
+    inline char *formatCurrentFrequency(char decimalSeparator = ',', uint8_t decimalPosition = 3)
     {
-        this->convertToChar(this->currentFrequency, this->strFrequency, 5, 3, decimalSeparator, true);
+        this->convertToChar(this->currentFrequency, this->strFrequency, 5, decimalPosition, decimalSeparator, true);
         return this->strFrequency;
     };
 
