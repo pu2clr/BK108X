@@ -187,7 +187,6 @@ void setup() {
     readAllReceiverInformation();
   } else {
     // Default values
-    rx.setVolume(6);
     rx.setMono(false);  // Force stereo
     // rx.setRBDS(true);  //  set RDS and RBDS. See setRDS.
     // rx.setRDS(true);
