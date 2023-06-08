@@ -2,6 +2,7 @@ var group___g_a04 =
 [
     [ "BK108X::getRdsProgramInformation", "group___g_a04.html#gaa749da139e196b13efe6977e3d1a811d", null ],
     [ "BK108X::getRdsStationInformation", "group___g_a04.html#ga254ac994c1ae20891387ffd66fa8680a", null ],
+    [ "BK108X::getRdsStationName", "group___g_a04.html#ga4c3e22b1a3565d0ce22cd07c5c840205", null ],
     [ "BK108X::getRdsStatus", "group___g_a04.html#gade944541df0205f7a7bb6335ae25c211", null ],
     [ "BK108X::setRdsMode", "group___g_a04.html#gadb237cc8ad191804af5de514a5610fd9", null ],
     [ "BK108X::setRds", "group___g_a04.html#gadc61ebb78e49b6bfc9aa6eadc98363a5", null ],

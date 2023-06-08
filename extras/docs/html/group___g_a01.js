@@ -225,6 +225,7 @@ var group___g_a01 =
       [ "getRdsSync", "group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c", null ],
       [ "getRdsProgramInformation", "group___g_a04.html#gaa749da139e196b13efe6977e3d1a811d", null ],
       [ "getRdsStationInformation", "group___g_a04.html#ga254ac994c1ae20891387ffd66fa8680a", null ],
+      [ "getRdsStationName", "group___g_a04.html#ga4c3e22b1a3565d0ce22cd07c5c840205", null ],
       [ "clearRdsBuffer", "group___g_a04.html#gab4df6a9ab8f9ea2b4ec0878fd49b99a1", null ],
       [ "checkI2C", "group___g_a05.html#ga94349ed646b59d42fe4c771e273df737", null ],
       [ "convertToChar", "group___g_a05.html#ga2ab717229791f3d3994f10717fb3c703", null ],
