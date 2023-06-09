@@ -107,13 +107,26 @@ void showStatus() {
 
 void processRdsInfo() {
 
-  if ((millis() - delayRDSInfo) > 5000) {
+  char *pProgramInfo;
+  char *pStationName;
+
+  if ((millis() - delayRDSInfo) > 1000) {
     Serial.print("\nGroupType....: ");
     Serial.print(rx.getRdsGroupType());
     Serial.print("\nVersion Code.: ");
     Serial.print(rx.getRdsVersionCode());
     Serial.print("\nProgramType..: ");
     Serial.print(rx.getRdsProgramType());
+    pStationName = rx.getRdsStationName();
+    if (pStationName != NULL) {
+      Serial.print("\nStationName..: ");
+      Serial.print(rx.getRdsStationName());
+    }
+    if (pProgramInfo != NULL) {
+      Serial.print("\nProgramInfo..: ");
+      Serial.print(rx.getRdsProgramInformation());
+    }
+
     delayRDSInfo = millis();
   }
 }
