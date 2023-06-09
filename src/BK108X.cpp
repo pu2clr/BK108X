@@ -1121,14 +1121,14 @@ uint8_t BK108X::getRdsFlagAB(void)
 
 /**
  * @ingroup GA04
- * @brief Return the group type 
+ * @brief Return the group type - Gets the Group Type (extracted from the Block B)
  * @details You must call getRdsReady before calling this function
  * @return uint16_t 
  */
 uint16_t BK108X::getRdsGroupType()
 {
    bk_rds_blockb b;
-   b.blockB = reg0c->raw;
+   b.blockB = reg0d->raw;
    return b.refined.groupType;     
 }
 
@@ -1142,7 +1142,7 @@ uint16_t BK108X::getRdsGroupType()
 uint8_t BK108X::getRdsVersionCode(void)
 {
    bk_rds_blockb b;
-   b.blockB = reg0c->raw;
+   b.blockB = reg0d->raw;
    return b.refined.versionCode; 
 }
 
@@ -1156,7 +1156,7 @@ uint8_t BK108X::getRdsVersionCode(void)
 uint8_t BK108X::getRdsProgramType(void)
 {
    bk_rds_blockb b;
-   b.blockB = reg0c->raw;
+   b.blockB = reg0d->raw; 
    return b.refined.programType; 
 }
 
