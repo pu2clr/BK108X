@@ -203,11 +203,11 @@ void setup() {
     // rx.setRBDS(true);  //  set RDS and RBDS. See setRDS.
     rx.setRDS(true);
     currentFrequency = previousFrequency = band[bandIdx].default_frequency;
+    useBand();
   }
 
-  rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
-
-  rx.setFrequency(currentFrequency);  // It is the frequency you want to select in MHz multiplied by 100.
+  
+  // rx.setFrequency(currentFrequency);  // It is the frequency you want to select in MHz multiplied by 100.
 
   showStatus();
 }
