@@ -315,6 +315,7 @@ void showStatus() {
   display.setTextColor(BLACK);
   showFrequency();
   showRSSI();
+  showBandName();
   display.display();
 }
 
@@ -328,6 +329,12 @@ void showRSSI() {
   strcat(rssi, "dB");
   display.setCursor(53, 0);
   display.print(rssi);
+}
+
+void showBandName() {
+  display.setTextSize(1);
+  display.setCursor(0, 0);
+  display.print(band[bandIdx].name);
 }
 
 
