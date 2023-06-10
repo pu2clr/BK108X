@@ -546,7 +546,7 @@ void loop() {
     pollin_elapsed = millis();
   }
 
-  if ( (millis() - rds_pulling) > POLLING_RDS ) {
+  if ( (millis() - rds_pulling) > POLLING_RDS  && band[bandIdx].mode == BK_MODE_FM)   {
      checkRDS();
      rds_pulling = millis();
   } 
