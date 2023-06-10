@@ -1265,7 +1265,7 @@ char *BK108X::getRdsText0A(void)
         rdsTextAdress0A = blkb.group0.address;
         if (rdsTextAdress0A >= 0 && rdsTextAdress0A < 4)
         {
-            strcpy(rds_buffer0A, "TO DO...");
+            strcpy(rds_buffer0A, "TO DO...");  // Need to check the device and RDS protocol.
             // getNext2Block(&rds_buffer0A[rdsTextAdress0A * 2]);
             rds_buffer0A[8] = '\0';
             return rds_buffer0A;
