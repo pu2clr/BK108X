@@ -1245,7 +1245,7 @@ char *BK108X::getRdsText(void)
 
 /**
  * @ingroup GA04
- * @todo This function is not working. Checking the devices and RDS protocol
+ * @todo This function is not working. Checking the BK1088E devices and RDS protocol implementation
  * @todo RDS Dynamic PS or Scrolling PS support
  * @brief Gets the Station Name and other messages. 
  * @details Same getRdsStationName. 
