@@ -105,7 +105,7 @@ typedef struct
  */ 
 
 tabBand band[] = {
-  {BK_MODE_FM, (char *) "FM", 6400, 10800, 10390, 20},
+  {BK_MODE_FM, (char *) "FM", 8390, 10790, 10390, 20}, 
   {BK_MODE_AM, (char *) "MW ", 520, 1710, 810, 10},
   {BK_MODE_AM, (char *) "60m", 4700, 5600, 4885, 5},
   {BK_MODE_AM, (char *) "49m", 5700, 6400, 6100, 5},
