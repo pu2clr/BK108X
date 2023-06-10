@@ -1099,10 +1099,10 @@ bool BK108X::getRdsReady()
 {
     getRegister(REG0A);
     if ( !reg0a->refined.RDSR ) return false ;
-    getRegister(REG0C); // The First Register of RDS 
-    getRegister(REG0D); // The second register of RDS 
-    getRegister(REG0E); // The third register of RDS 
-    getRegister(REG0F); // The third register of RDS
+    getRegister(REG0C); // The First Register of RDS - Block A
+    getRegister(REG0D); // The second register of RDS  - Block B
+    getRegister(REG0E); // The third register of RDS  - Block C
+    getRegister(REG0F); // The third register of RDS - Bloco D
     return true;
 };
 
@@ -1116,7 +1116,9 @@ bool BK108X::getRdsReady()
  */
 uint8_t BK108X::getRdsFlagAB(void)
 {
-    return 0;
+    bk_rds_blockb blkb;
+    blkb.blockB = reg0d->raw;
+    return blkb.refined.textABFlag;
 }
 
 /**
@@ -1195,11 +1197,10 @@ void BK108X::getNext2Block(char *c)
 }
 
 /**
- * @todo to be implemented 
  * @ingroup GA04
  * 
- * @brief Process data received from group 2A
- * 
+ * @brief Processes data received from group 2A
+ * @details decodes data received from block C and block D
  * @param c  char array reference to the "group  2A" text 
  */
 void BK108X::getNext4Block(char *c)
