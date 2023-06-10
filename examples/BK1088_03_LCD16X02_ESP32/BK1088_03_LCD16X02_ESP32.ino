@@ -77,7 +77,7 @@
 
 #define POLLING_TIME 1900
 #define RDS_MSG_TYPE_TIME 25000
-#define POLLING_RDS 80
+#define POLLING_RDS 40
 
 #define STORE_TIME 10000  // Time of inactivity to make the current receiver status writable (10s / 10000 milliseconds).
 #define PUSH_MIN_DELAY 300
@@ -105,7 +105,7 @@ typedef struct
  */ 
 
 tabBand band[] = {
-  {BK_MODE_FM, (char *) "FM", 6400, 10800, 10390, 10},
+  {BK_MODE_FM, (char *) "FM", 6400, 10800, 10390, 20},
   {BK_MODE_AM, (char *) "MW ", 520, 1710, 810, 10},
   {BK_MODE_AM, (char *) "60m", 4700, 5600, 4885, 5},
   {BK_MODE_AM, (char *) "49m", 5700, 6400, 6100, 5},
@@ -126,8 +126,7 @@ const int eeprom_address = 0;
 long storeTime = millis();
 
 bool bSt = true;
-bool bRds = true;
-bool bShow = false;
+
 uint8_t seekDirection = 1;  // 0 = Down; 1 = Up. This value is set by the last encoder direction.
 
 long pollin_elapsed = millis();
@@ -194,6 +193,7 @@ void setup() {
     rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
     rx.setVolume(DEFAULT_VOLUME_LEVEL);
   }
+  rx.setRDS(true);
   lcd.clear();
   showStatus();
 }
@@ -207,7 +207,6 @@ void saveAllReceiverInformation() {
   EEPROM.write(eeprom_address + 1, rx.getVolume());           // stores the current Volume
   EEPROM.write(eeprom_address + 2, currentFrequency >> 8);    // stores the current Frequency HIGH byte for the band
   EEPROM.write(eeprom_address + 3, currentFrequency & 0xFF);  // stores the current Frequency LOW byte for the band
-  EEPROM.write(eeprom_address + 4, (uint8_t)bRds);
   EEPROM.write(eeprom_address + 5, (uint8_t)bSt);
   EEPROM.write(eeprom_address + 6, bandIdx);
 
@@ -220,9 +219,6 @@ void readAllReceiverInformation() {
   currentFrequency |= EEPROM.read(eeprom_address + 3);
   previousFrequency = currentFrequency;
 
-  bRds = (bool)EEPROM.read(eeprom_address + 4);
-  // rx.setRDS(bRds);
-  // rx.setRdsFifo(bRds);
 
   bSt = (bool)EEPROM.read(eeprom_address + 5);
   bandIdx = EEPROM.read(eeprom_address + 6);
@@ -299,10 +295,6 @@ void showStatus() {
   showBandStatus();
   showRSSI();
 
-  if (bRds) {
-    showRdsIndicator();
-  }
-
   lcd.display();
 }
 
@@ -360,6 +352,7 @@ void useBand() {
   if (band[bandIdx].mode ==  BK_MODE_FM)
   {
     rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    rx.setRDS(true);
     rx.setFmDeemphasis(DE_EMPHASIS_75);
     // rx.setSoftMute(true);
     rx.setMono(false);  // Force stereo
@@ -379,18 +372,11 @@ void useBand() {
    RDS
  *********************************************************/
 char *programInfo;
-char *stationName;
-char *rdsTime;
-int currentMsgType = 0;
 long polling_rds = millis();
-long timeTextType = millis();  // controls the type of each text will be shown (Message, Station Name or time)
 
 int progInfoIndex = 0;  // controls the part of the rdsMsg text will be shown on LCD 16x2 Display
 
 long delayProgramInfo = millis();
-long delayStationName = millis();
-long delayRdsTime = millis();
-
 
 /**
   showProgramInfo - Shows the Program Information
@@ -410,32 +396,6 @@ void showProgramInfo() {
   lcd.print(txtAux);
 }
 
-/**
-   showRDSStation - Shows the 
-*/
-void showRDSStation() {
-  if (stationName == NULL || strlen(stationName) < 2 || (millis() - delayStationName) < 3000) return;
-  delayStationName = millis();
-  clearLcdLine(0);
-  lcd.setCursor(0, 0);
-  lcd.print(stationName);
-}
-
-void showRDSTime() {
-  char txtAux[17];
-
-  if (rdsTime == NULL || strlen(rdsTime) < 2 || (millis() - delayRdsTime) < 60000) return;
-  delayRdsTime = millis();
-  clearLcdLine(0);
-  rdsTime[16] = '\0';
-  strncpy(txtAux, rdsTime, 16);
-  txtAux[16] = '\0';
-  lcd.setCursor(0, 0);
-  lcd.print(txtAux);
-}
-
-
-
 void clearLcdLine(uint8_t line) {
   for (int i = 0; i < 16; i++) {
     lcd.setCursor(i, line);
@@ -444,44 +404,17 @@ void clearLcdLine(uint8_t line) {
 }
 
 void clearRds() {
-  bShow = false;
   programInfo = NULL;
-  stationName = NULL;
-  rdsTime = NULL;
-  progInfoIndex = currentMsgType = 0;
-  // rx.clearRdsBuffer();
+  rx.clearRdsBuffer();
   clearLcdLine(0);
 }
 
 void checkRDS() {
-  /*
   // You must call getRdsReady before calling any RDS query function.
   if (rx.getRdsReady()) {
-    if (rx.hasRdsInfo()) {
-
       programInfo = rx.getRdsProgramInformation();
-      stationName = rx.getRdsStationName();
-      rdsTime = rx.getRdsTime();
-
-      if (currentMsgType == 0) // Time to show program information
-        showProgramInfo();
-      else if (currentMsgType == 1) // Time to show Station Name
-        showRDSStation();
-      else if (currentMsgType == 2) // Time to show UTC time - Some stations broadcast wrong information
-        showRDSTime();
-    }
+      showProgramInfo();
   }
-  */
-}
-
-void showRdsIndicator() {
-  /*
-  lcd.setCursor(2, 1);
-  if (bRds)
-    lcd.print(".");
-  else
-    lcd.print(" ");
-  */
 }
 
 /*********************************************************
@@ -491,15 +424,7 @@ void showRdsIndicator() {
 
 void doStereo() {
   rx.setMono((bSt = !bSt));
-  bShow = true;
   showBandStatus();
-  resetEepromDelay();
-}
-
-void doRds() {
-  rx.setRDS((bRds = !bRds));
-  progInfoIndex = currentMsgType = 0;
-  showRdsIndicator();
   resetEepromDelay();
 }
 
@@ -510,7 +435,6 @@ void doRds() {
 void doSeek() {
   rx.seek(BK_SEEK_WRAP, seekDirection, showFrequencySeek);  // showFrequency will be called by the seek function during the process.
   delay(200);
-  bShow = true;
   showStatus();
 }
 
@@ -526,7 +450,6 @@ void loop() {
       seekDirection = BK_SEEK_DOWN;
     }
     showStatus();
-    bShow = true;
     encoderCount = 0;
     storeTime = millis();
   }
@@ -545,24 +468,14 @@ void loop() {
     bandDown();
   if ((millis() - pollin_elapsed) > POLLING_TIME) {
     showStatus();
-    if (bShow) clearRds();
     pollin_elapsed = millis();
   }
 
   if ((millis() - polling_rds) > POLLING_RDS) {
-    if (bRds) {
       checkRDS();
-    }
     polling_rds = millis();
   }
 
-  if ((millis() - timeTextType) > RDS_MSG_TYPE_TIME) {
-    // Toggles the type of message to be shown - See showRds function
-    currentMsgType++;
-    progInfoIndex = 0;
-    if (currentMsgType > 2) currentMsgType = 0;
-    timeTextType = millis();
-  }
 
   // Show the current frequency only if it has changed
   if ((currentFrequency = rx.getFrequency()) != previousFrequency) {

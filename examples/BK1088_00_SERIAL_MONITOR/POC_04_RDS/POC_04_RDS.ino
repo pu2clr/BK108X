@@ -109,8 +109,10 @@ void processRdsInfo() {
 
   char *pProgramInfo;
   char *pStationName;
+  char *pStarionInfo;
+  char *pLocalTime;
 
-  if ((millis() - delayRDSInfo) > 1000) {
+  if ((millis() - delayRDSInfo) > 500) {
     Serial.print("\nGroupType....: ");
     Serial.print(rx.getRdsGroupType());
     Serial.print("\nVersion Code.: ");
@@ -120,12 +122,26 @@ void processRdsInfo() {
     pStationName = rx.getRdsStationName();
     if (pStationName != NULL) {
       Serial.print("\nStationName..: ");
-      Serial.print(rx.getRdsStationName());
+      Serial.print(pStationName);
     }
+    pProgramInfo = rx.getRdsProgramInformation();
     if (pProgramInfo != NULL) {
       Serial.print("\nProgramInfo..: ");
-      Serial.print(rx.getRdsProgramInformation());
+      Serial.print(pProgramInfo);
     }
+
+    pStarionInfo = rx.getRdsStationInformation();
+    if (pStarionInfo != NULL) {
+      Serial.print("\nStationInfo..: ");
+      Serial.print(pStarionInfo);
+    }
+
+    pLocalTime = rx.getRdsLocalTime();
+    if (pLocalTime != NULL) {
+      Serial.print("\nLocalTime..: ");
+      Serial.print(pLocalTime);
+    }
+
 
     delayRDSInfo = millis();
   }
@@ -135,6 +151,7 @@ void loop() {
 
   if (Serial.available() > 0) {
     char key = Serial.read();
+    rx.clearRdsBuffer();
     switch (key) {
       case '+':
         rx.setVolumeUp();
@@ -185,5 +202,5 @@ void loop() {
   if (rx.getRdsReady()) {
     processRdsInfo();
   }
-  delay(5);
+  delay(50);
 }

@@ -367,6 +367,16 @@ typedef union
 {
     struct
     {
+        uint16_t BLERB : 2;  //!< Block Errors Level of RDS_DATA_1
+        uint16_t BLERA : 2;  //!< Block Errors Level of RDS_DATA_0
+        uint16_t ABCD_E : 1; //!< 1 = the block id of register 0cH,0dH,0eH,0fH is E;  0 = the block id of register 0cH, 0dH, 0eH,0fH is A, B, C, D
+        uint16_t DUMMY : 2;
+        uint16_t FM_READY : 1; //!< 1=ready; 0=not ready.
+        uint16_t FM_TRUE : 1;  //!< 1 = the current channel is a station; 0 = the current channel is not a station.
+        uint16_t RSSI : 7;     //!< RSSI; 000000 = min; 111111 = max; RSSI scale is logarithmic.
+    } rds_status;    
+    struct
+    {
         uint8_t lowByte;
         uint8_t highByte;
     } refined;
