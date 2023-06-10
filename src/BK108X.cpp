@@ -1245,6 +1245,7 @@ char *BK108X::getRdsText(void)
 
 /**
  * @ingroup GA04
+ * @todo This function is not working. Checking the devices and RDS protocol
  * @todo RDS Dynamic PS or Scrolling PS support
  * @brief Gets the Station Name and other messages. 
  * @details Same getRdsStationName. 
@@ -1261,10 +1262,11 @@ char *BK108X::getRdsText0A(void)
     if (blkb.group0.groupType == 0)
     {
         // Process group type 0
-        rdsTextAdress0A = blkb.group2.address;
+        rdsTextAdress0A = blkb.group0.address;
         if (rdsTextAdress0A >= 0 && rdsTextAdress0A < 4)
         {
-            getNext2Block(&rds_buffer0A[rdsTextAdress0A * 2]);
+            strcpy(rds_buffer0A, "TO DO...");
+            // getNext2Block(&rds_buffer0A[rdsTextAdress0A * 2]);
             rds_buffer0A[8] = '\0';
             return rds_buffer0A;
         }
