@@ -190,7 +190,7 @@ void setup() {
     // rx.setRBDS(true);  //  set RDS and RBDS. See setRDS.
     // rx.setRDS(true);
     // rx.RdssetRdsFifo(true);
-    rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    useBand();
     rx.setVolume(DEFAULT_VOLUME_LEVEL);
   }
   rx.setRDS(true);
