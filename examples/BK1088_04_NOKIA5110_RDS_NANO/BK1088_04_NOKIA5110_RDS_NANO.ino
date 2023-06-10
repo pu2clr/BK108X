@@ -87,22 +87,23 @@
 // Buttons controllers
 #define VOLUME_UP 4       // Volume Up
 #define VOLUME_DOWN 5     // Volume Down
-#define SWITCH_STEREO 6   // Select Mono or Stereo
-#define SWITCH_RDS 7      // SDR ON or OFF
+#define BAND_UP 6   // Select Mono or Stereo
+#define BAND_DOWN 7      // SDR ON or OFF
 #define SEEK_FUNCTION 14  // Pin A0 / Digital 14
 
 #define POLLING_TIME 3000
+#define MIN_ELAPSED_TIME 200
 
 #define STORE_TIME 10000    // Time of inactivity to make the current receiver status writable (10s / 10000 milliseconds).
 #define PUSH_MIN_DELAY 300  // Minimum waiting time after an action
+#define POLLING_RDS 40
+#define DEFAULT_VOLUME 25
 
 const uint8_t app_id = 88;  // Useful to check the EEPROM content before processing useful data
 const int eeprom_address = 0;
 long storeTime = millis();
 
 
-bool bSt = true;
-bool bRds = false;
 uint8_t seekDirection = 1;  // 0 = Down; 1 = Up. This value is set by the last encoder direction.
 
 long pollin_elapsed = millis();
@@ -160,8 +161,8 @@ void setup() {
   // Push button pin
   pinMode(VOLUME_UP, INPUT_PULLUP);
   pinMode(VOLUME_DOWN, INPUT_PULLUP);
-  pinMode(SWITCH_STEREO, INPUT_PULLUP);
-  pinMode(SWITCH_RDS, INPUT_PULLUP);
+  pinMode(BAND_UP, INPUT_PULLUP);
+  pinMode(BAND_DOWN, INPUT_PULLUP);
   pinMode(SEEK_FUNCTION, INPUT_PULLUP);
 
   // Start the Nokia display device
@@ -197,11 +198,11 @@ void setup() {
     readAllReceiverInformation();
   } else {
     // Default values
-    rx.setVolume(6);
+    rx.setVolume(DEFAULT_VOLUME);
     rx.setMono(false);  // Force stereo
     // rx.setRBDS(true);  //  set RDS and RBDS. See setRDS.
     rx.setRDS(true);
-    currentFrequency = previousFrequency = 10390;
+    currentFrequency = previousFrequency = band[bandIdx].default_frequency;
   }
 
   rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
@@ -217,8 +218,7 @@ void saveAllReceiverInformation() {
   EEPROM.update(eeprom_address + 1, rx.getVolume());           // stores the current Volume
   EEPROM.update(eeprom_address + 2, currentFrequency >> 8);    // stores the current Frequency HIGH byte for the band
   EEPROM.update(eeprom_address + 3, currentFrequency & 0xFF);  // stores the current Frequency LOW byte for the band
-  EEPROM.update(eeprom_address + 4, (uint8_t)bRds);
-  EEPROM.update(eeprom_address + 5, (uint8_t)bSt);
+  EEPROM.update(eeprom_address + 6, bandIdx);
 }
 
 void readAllReceiverInformation() {
@@ -227,11 +227,9 @@ void readAllReceiverInformation() {
   currentFrequency |= EEPROM.read(eeprom_address + 3);
   previousFrequency = currentFrequency;
 
-  bRds = (bool)EEPROM.read(eeprom_address + 4);
-  rx.setRDS(bRds);
-
-  bSt = (bool)EEPROM.read(eeprom_address + 5);
-  rx.setMono(bSt);
+  bandIdx = EEPROM.read(eeprom_address + 6);
+  band[bandIdx].default_frequency = currentFrequency;
+  useBand();
 }
 
 
@@ -290,9 +288,16 @@ void showTemplate() {
 */
 void showFrequency() {
   currentFrequency = rx.getFrequency();
-  display.setTextSize(2);
   display.setCursor(3, 8);
-  display.print(rx.formatCurrentFrequency());
+  display.setTextSize(2);
+  if ( band[bandIdx].mode == BK_MODE_FM)
+     display.print(rx.formatCurrentFrequency());
+  else {
+      if ( currentFrequency < 1000) 
+        display.print(rx.formatCurrentFrequency(' ',0));
+      else   
+        display.print(rx.formatCurrentFrequency('.',2));
+  }
   display.display();
 }
 
@@ -306,13 +311,10 @@ void showFrequencySeek() {
     Show some basic information on display
 */
 void showStatus() {
-
   display.fillRect(0, 0, 84, 23, WHITE);
   display.setTextColor(BLACK);
   showFrequency();
-  showStereoMono();
   showRSSI();
-  showRds();
   display.display();
 }
 
@@ -328,15 +330,6 @@ void showRSSI() {
   display.print(rssi);
 }
 
-void showStereoMono() {
-  display.setTextSize(1);
-  display.setCursor(0, 0);
-  if (bSt) {
-    display.print("ST");
-  } else {
-    display.print("MO");
-  }
-}
 
 /*********************************************************
    RDS
@@ -348,6 +341,7 @@ char *rdsTime;
 long delayStationName = millis();
 long delayProgramInfo = millis();
 long delayTime = millis();
+long rds_pulling = millis();
 uint8_t idxProgramInfo = 0;
 
 void showProgramInfo() {
@@ -436,32 +430,67 @@ void checkRDS() {
 }
 
 
-void showRds() {
-
-  display.setCursor(25, 0);
-  if (bRds) {
-    display.print("RDS");
-  } else {
-    display.print("   ");
-  }
-  display.display();
-}
-
 /*********************************************************
 
  *********************************************************/
 
+/*
+ * Selects the next band (see bandTable)
+ */
+void bandUp()
+{
+  // save the current frequency for the band
+  band[bandIdx].default_frequency = currentFrequency;
 
-void doStereo() {
-  rx.setMono((bSt = !bSt));
-  showStereoMono();
-  resetEepromDelay();
+  if (bandIdx < lastBand)
+  {
+    bandIdx++;
+  }
+  else
+  {
+    bandIdx = 0;
+  }
+  useBand();
 }
 
-void doRds() {
-  rx.setRDS((bRds = !bRds));
-  showRds();
-  resetEepromDelay();
+/*
+ * Selects the previous band (See bandTable).
+ */
+void bandDown()
+{
+  // save the current frequency for the band
+  band[bandIdx].default_frequency = currentFrequency;
+
+  if (bandIdx > 0)
+  {
+    bandIdx--;
+  }
+  else
+  {
+    bandIdx = lastBand;
+  }
+  useBand();
+}
+
+
+void useBand() {
+
+  if (band[bandIdx].mode ==  BK_MODE_FM)
+  {
+    rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    rx.setRDS(true);
+    rx.setFmDeemphasis(DE_EMPHASIS_75);
+    rx.setMono(false);  // Force stereo
+  }
+  else
+  {
+    rx.setAM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+  }
+  delay(100);
+  currentFrequency = band[bandIdx].default_frequency;
+  rx.setFrequency(currentFrequency);
+  delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
+  showStatus();
 }
 
 /**
@@ -496,10 +525,12 @@ void loop() {
   } else if (digitalRead(VOLUME_DOWN) == LOW) {
     rx.setVolumeDown();
     resetEepromDelay();
-  } else if (digitalRead(SWITCH_STEREO) == LOW)
-    doStereo();
-  else if (digitalRead(SWITCH_RDS) == LOW)
-    doRds();
+  } else if (digitalRead(BAND_UP) == LOW) {
+    bandUp();
+  }
+  else if (digitalRead(BAND_DOWN) == LOW) {
+    bandDown();
+  }
   else if (digitalRead(SEEK_FUNCTION) == LOW)
     doSeek();
 
@@ -508,10 +539,10 @@ void loop() {
     pollin_elapsed = millis();
   }
 
-  if (bRds) {
-    checkRDS();
-  }
-
+  if ( (millis() - rds_pulling) > POLLING_RDS ) {
+     checkRDS();
+     rds_pulling = millis();
+  } 
 
   // Show the current frequency only if it has changed
   if ((currentFrequency = rx.getFrequency()) != previousFrequency) {
