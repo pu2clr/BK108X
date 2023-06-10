@@ -1246,8 +1246,8 @@ char *BK108X::getRdsText(void)
 /**
  * @ingroup GA04
  * @todo RDS Dynamic PS or Scrolling PS support
- * @brief Gets the station name and other messages. 
- * 
+ * @brief Gets the Station Name and other messages. 
+ * @details Same getRdsStationName. 
  * @return char* should return a string with the station name. 
  *         However, some stations send other kind of messages
  */
@@ -1261,7 +1261,7 @@ char *BK108X::getRdsText0A(void)
     if (blkb.group0.groupType == 0)
     {
         // Process group type 0
-        rdsTextAdress0A = blkb.group0.address;
+        rdsTextAdress0A = blkb.group2.address;
         if (rdsTextAdress0A >= 0 && rdsTextAdress0A < 4)
         {
             getNext2Block(&rds_buffer0A[rdsTextAdress0A * 2]);
