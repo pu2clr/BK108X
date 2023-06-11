@@ -379,6 +379,7 @@ int progInfoIndex = 0;  // controls the part of the rdsMsg text will be shown on
 
 long delayProgramInfo = millis();
 long delayLocalTime = millis();
+long waitTime = 1000L;
 
 /**
   showProgramInfo - Shows the Program Information
@@ -386,7 +387,7 @@ long delayLocalTime = millis();
 void showProgramInfo() {
   char txtAux[17];
 
-  if (programInfo == NULL || strlen(programInfo) < 2 || (millis() - delayProgramInfo) < 1000) return;
+  if (programInfo == NULL || strlen(programInfo) < 2 || (millis() - delayProgramInfo) < waitTime) return;
   delayProgramInfo = millis();
   clearLcdLine(0);
   programInfo[61] = '\0';  // Truncate the message to fit on display line
@@ -396,16 +397,18 @@ void showProgramInfo() {
   if (progInfoIndex > 60) progInfoIndex = 0;
   lcd.setCursor(0, 0);
   lcd.print(txtAux);
+  waitTime = 1000L;
 }
 
 
 void showTime() {
-  if (localTime == NULL || (millis() - delayLocalTime) < 50000) return;
+  if (localTime == NULL || strlen(localTime) < 4 || (millis() - delayLocalTime) < 50000) return;
   clearLcdLine(0);
   lcd.setCursor(0, 0);
   lcd.print(localTime);
-  delayProgramInfo = millis() + 10000; // Stop showing Program Information for 10s
+  delayProgramInfo = millis(); // Stop showing Program Information for 10s
   delayLocalTime = millis(); 
+  waitTime = 10000L;
 } 
 
 void clearLcdLine(uint8_t line) {
