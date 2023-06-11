@@ -1103,6 +1103,7 @@ public:
     char *getRdsText0A(void);
     char *getRdsText2A(void);
     char *getRdsText2B(void);
+    bool getRdsAllData(char **stationName, char **stationInformation, char **programInformation, char **utcTime);
     char *getRdsTime();
     char *getRdsLocalTime();
     bool getRdsSync();
