@@ -75,7 +75,7 @@
 
 #define DEFAULT_VOLUME_LEVEL 20
 
-#define POLLING_TIME 1900
+#define POLLING_TIME 10000
 #define RDS_MSG_TYPE_TIME 25000
 #define POLLING_RDS 40
 
@@ -165,7 +165,7 @@ void setup() {
   EEPROM.begin(EEPROM_SIZE);
 
   // If you want to reset the eeprom, keep the ENCODER PUSH BUTTON  pressed during statup
-  if (digitalRead(BAND_MODE_SWITCH_DOWN) == LOW) {
+  if (digitalRead(SEEK_FUNCTION) == LOW) {
     EEPROM.write(eeprom_address, 0);
     lcd.clear();
     lcd.setCursor(0, 0);
@@ -409,10 +409,13 @@ void showTime() {
 } 
 
 void clearLcdLine(uint8_t line) {
+  /*
   for (int i = 0; i < 16; i++) {
     lcd.setCursor(i, line);
     lcd.print(' ');
-  }
+  }*/ 
+  lcd.setCursor(0,line);
+  lcd.print("                ");
 }
 
 void clearRds() {
