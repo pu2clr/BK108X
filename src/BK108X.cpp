@@ -419,8 +419,8 @@ void BK108X::powerUp()
     setRegister(REG1A, 0x0000); // 0
     setRegister(REG1B, 0x4CA2); // 0b0100110010100010
 
-    // setRegister(REG1C, 0x8820); // 0b1000100000100000
-    setRegister(REG1C, 0); // 0b1000100000100000
+    setRegister(REG1C, 0x8820); // 0b1000100000100000
+    // setRegister(REG1C, 0); // 0b1000100000100000
     setRegister(REG1D, 0x0200); // 0b0000001000000000  ->  512
 
     delay(250);
