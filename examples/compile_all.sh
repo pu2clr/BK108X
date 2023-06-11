@@ -19,6 +19,7 @@ arduino-cli compile -b arduino:avr:nano ./BK1088_00_SERIAL_MONITOR/POC_01_CIRCUI
 arduino-cli compile -b arduino:avr:nano ./BK1088_00_SERIAL_MONITOR/POC_02_AM_FM --output-dir ~/Downloads/hex/atmega/POC_02_AM_FM  --warnings all
 arduino-cli compile -b arduino:avr:nano ./BK1088_00_SERIAL_MONITOR/POC_03_SW --output-dir ~/Downloads/hex/atmega/POC_03_SW  --warnings all
 arduino-cli compile -b arduino:avr:nano ./BK1088_02_TFT_DISPLAY/POC_01_ST7735 --output-dir ~/Downloads/hex/atmega/POC_01_ST7735  --warnings all
+arduino-cli compile -b arduino:avr:nano ./BK1088_04_NOKIA5110_RDS_NANO --output-dir ~/Downloads/hex/atmega/BK1088_04_NOKIA5110_RDS_NANO  --warnings all
 
 
 echo "********************"
