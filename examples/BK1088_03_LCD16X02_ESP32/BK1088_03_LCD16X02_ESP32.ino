@@ -372,11 +372,13 @@ void useBand() {
    RDS
  *********************************************************/
 char *programInfo;
+char *localTime;
 long polling_rds = millis();
 
 int progInfoIndex = 0;  // controls the part of the rdsMsg text will be shown on LCD 16x2 Display
 
 long delayProgramInfo = millis();
+long delayLocalTime = millis();
 
 /**
   showProgramInfo - Shows the Program Information
@@ -396,6 +398,16 @@ void showProgramInfo() {
   lcd.print(txtAux);
 }
 
+
+void showTime() {
+  if (localTime == NULL || (millis() - delayLocalTime) < 50000) return;
+  clearLcdLine(0);
+  lcd.setCursor(0, 0);
+  lcd.print(localTime);
+  delayProgramInfo = millis() + 10000; // Stop showing Program Information for 10s
+  delayLocalTime = millis(); 
+} 
+
 void clearLcdLine(uint8_t line) {
   for (int i = 0; i < 16; i++) {
     lcd.setCursor(i, line);
@@ -413,7 +425,9 @@ void checkRDS() {
   // You must call getRdsReady before calling any RDS query function.
   if (rx.getRdsReady()) {
       programInfo = rx.getRdsProgramInformation();
+      localTime = rx.getRdsLocalTime();
       showProgramInfo();
+      showTime();
   }
 }
 
