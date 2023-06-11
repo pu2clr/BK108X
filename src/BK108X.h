@@ -810,7 +810,8 @@ protected:
     int rdsInterruptPin = -1;
     int seekInterruptPin = -1;
     int oscillatorType = OSCILLATOR_TYPE_CRYSTAL;
-    uint16_t maxDelayAftarCrystalOn = MAX_DELAY_AFTER_OSCILLATOR;
+    
+    uint16_t maxDelayAfterCrystalOn = MAX_DELAY_AFTER_OSCILLATOR;
 
 
 public:
@@ -847,7 +848,7 @@ public:
      * 
      * @param ms_value  Value in milliseconds 
      */
-    inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAftarCrystalOn = ms_value; };
+    inline void setDelayAfterCrystalOn(uint8_t ms_value) { maxDelayAfterCrystalOn = ms_value; };
 
     uint16_t getRegister(uint8_t reg);
     void setRegister(uint8_t reg, uint16_t value);
