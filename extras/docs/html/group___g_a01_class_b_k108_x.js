@@ -116,5 +116,5 @@ var group___g_a01_class_b_k108_x =
     [ "rdsInterruptPin", "group___g_a01.html#ab14e1e533462b60b82ff498dc15abbb1", null ],
     [ "seekInterruptPin", "group___g_a01.html#a68b0bac67680a37773d972c470716a37", null ],
     [ "oscillatorType", "group___g_a01.html#a50a9ac975ce0539aed15b122db83d36b", null ],
-    [ "maxDelayAftarCrystalOn", "group___g_a01.html#aa4937fcebe3dc30474a903c3aa02a67b", null ]
+    [ "maxDelayAfterCrystalOn", "group___g_a01.html#aa4937fcebe3dc30474a903c3aa02a67b", null ]
 ];
