@@ -423,7 +423,8 @@ void BK108X::powerUp()
     // setRegister(REG1C, 0); // 0b1000100000100000
     setRegister(REG1D, 0x0200); // 0b0000001000000000  ->  512
 
-    delay(250);
+    delay(this->maxDelayAfterCrystalOn);
+
 }
 
 /**
@@ -447,7 +448,7 @@ void BK108X::powerDown()
  * @param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control. 
  * @param oscillator_type  // optional. Sets the Oscillator type used Crystal (default) or Ref. Clock. 
  */
-void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type)
+void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type, uint16_t maxDelayAfterCrystalOn )
 {
     // Configures BEKEN I2C bus 
     this->i2cInit(sda_pin, sclk_pin);
@@ -458,6 +459,7 @@ void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInter
         this->seekInterruptPin = seekInterruptPin;
 
     this->oscillatorType = oscillator_type;
+    this->maxDelayAfterCrystalOn = maxDelayAfterCrystalOn;
 
     powerUp();
 
