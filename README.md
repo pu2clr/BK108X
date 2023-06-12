@@ -187,9 +187,9 @@ The image below was extracted from "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEI
 
 ### BK1088E(SSOP20) and Arduino Schematic  
 
-The schematic below is based on the BEKEN typical application schematic added to the Arduino controller. The front-end circuit has been modified to use regular antenna instead headphone antenna setup.  
+The schematic provided below is based on the typical application schematic provided by BEKEN and modified to work with the Arduino controller. The front-end circuit has been adjusted to utilize a regular antenna instead of a headphone antenna setup.
 
-The main porpuse of this circuit is to test the  BK108X Arduino Library. However, you may be surprised at the performance of this simple circuit due to the high features of the BK1086/88 device. Also, it is importante to say that this receiver does not intend to be a real radio for exigent listener. However, it is possible to start with it and then, if you wish, you can include some devices to the circuit to improve, for example,  its sensibility, output sound quality beyond other desired features.
+This circuit primarily serves the purpose of testing the BK108X Arduino Library. However, you may be pleasantly surprised by the performance of this simple circuit, thanks to the advanced features of the BK1086/88 device. It is important to note that while this receiver is not intended to meet the expectations of demanding listeners, it serves as a starting point. If desired, you can enhance its sensitivity, improve output sound quality, and add other desired features by incorporating additional devices into the circuit.
 
 
 ![Basic Schematic](extras/images/basic_schematic.png)
