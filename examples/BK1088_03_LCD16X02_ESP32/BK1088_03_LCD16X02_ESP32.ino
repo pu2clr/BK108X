@@ -437,11 +437,6 @@ void checkRDS() {
  *********************************************************/
 
 
-void doStereo() {
-  rx.setMono((bSt = !bSt));
-  showBandStatus();
-  resetEepromDelay();
-}
 
 /**
    Process seek command.
@@ -476,7 +471,7 @@ void loop() {
     rx.setVolumeDown();
     resetEepromDelay();
   } else if (digitalRead(SEEK_FUNCTION) == LOW)
-    doStereo();
+    doSeek();
   else if (digitalRead(BAND_MODE_SWITCH_UP) == LOW)
     bandUp();
   else if (digitalRead(BAND_MODE_SWITCH_DOWN) == LOW)
