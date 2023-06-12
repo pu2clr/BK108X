@@ -498,7 +498,7 @@ void loop() {
     if ((millis() - storeTime) > STORE_TIME) {
       saveAllReceiverInformation();
       storeTime = millis();
-      previousFrequency = currentFrequency;
+      band[bandIdx].default_frequency =  previousFrequency = currentFrequency;
     }
   }
 
