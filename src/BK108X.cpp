@@ -412,8 +412,8 @@ void BK108X::powerUp()
     setRegister(REG15, 0x79F8); // 0b0111100111111000
     setRegister(REG16, 0x4012); // 0b0100000000010010
 
-    // setRegister(REG17, 0x0040); // 0b0000000001000000
-    setRegister(REG17, 0x0800); // 0b0000100000000000
+    setRegister(REG17, 0x0040); // 0b0000000001000000
+    // setRegister(REG17, 0x0800); // 0b0000100000000000
     setRegister(REG18, 0x341C); // 0b0011010000011100
     setRegister(REG19, 0x0080); // 0b0000000010000000
     setRegister(REG1A, 0x0000); // 0
@@ -1267,8 +1267,8 @@ char *BK108X::getRdsText0A(void)
         rdsTextAdress0A = blkb.group0.address;
         if (rdsTextAdress0A >= 0 && rdsTextAdress0A < 4)
         {
-            strcpy(rds_buffer0A, "TO DO...");  // Need to check the device and RDS protocol.
-            // getNext2Block(&rds_buffer0A[rdsTextAdress0A * 2]);
+            // strcpy(rds_buffer0A, "TO DO...");  // Need to check the device and RDS protocol.
+            getNext2Block(&rds_buffer0A[rdsTextAdress0A * 2]);
             rds_buffer0A[8] = '\0';
             return rds_buffer0A;
         }
