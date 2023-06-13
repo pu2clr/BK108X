@@ -755,7 +755,7 @@ void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction)
 
         this->setChannel(this->getRealChannel());
         this->currentFrequency = getRealFrequency();
-        
+
     } while (reg0a->refined.SF_BL != 0 && (millis() - max_time) < MAX_SEEK_TIME);
 }
 
