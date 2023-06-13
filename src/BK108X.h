@@ -890,6 +890,18 @@ public:
 
     /**
      * @ingroup GA03
+     * @brief   set the FM gain.
+     * @param if 0, +18db. If 7, - 18db
+     * 
+     * @param value 
+     */
+    void inline setFMGain(uint8_t value = 0) {
+        reg07->refined.FMGAIN = value;
+        setRegister(REG07,reg07->raw); 
+    }
+
+    /**
+     * @ingroup GA03
      * @brief Get the Current Mode (AM or FM)
      * 
      * @return uint8_t  0 = FM; 1 = AM

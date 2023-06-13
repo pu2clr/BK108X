@@ -488,6 +488,7 @@ void useBand() {
   {
     rx.setFM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
     rx.setRDS(true);
+    rx.setFMGain(0); // +18db
     rx.setFmDeemphasis(DE_EMPHASIS_75);
     rx.setMono(false);  // Force stereo
   }
