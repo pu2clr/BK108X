@@ -1056,12 +1056,12 @@ public:
     uint16_t getRealFrequency();
     uint16_t getRealChannel();
     void setChannel(uint16_t channel);
-    void seekHardware(uint8_t seek_mode, uint8_t direction);
+    void seekHardware(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL);
     void seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL);
     // Alias to seekSoftware.
     inline void seek(uint8_t seek_mode, uint8_t direction, void (*showFunc)() = NULL) 
     {
-         this->seekSoftware(seek_mode, direction, showFunc );
+         this->seekHardware(seek_mode, direction, showFunc );
     };
     void setSeekThreshold(uint8_t rssiValue, uint8_t snrValue);
 

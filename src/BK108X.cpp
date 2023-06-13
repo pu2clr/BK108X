@@ -503,7 +503,7 @@ void BK108X::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
  * @param default_frequency  default freuency
  * @param step  increment and decrement frequency step
  * @param am_space (default 0 = 1kHz). You can control the freqyuency step by using am_space = 0 and just set the step to 1, 5, 9 or 10 kHz.
- *                 This way, you can keep the space always 0    
+ *                 This way, you can keep the space always 0
  */
 void BK108X::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space)
 {
@@ -691,12 +691,11 @@ void BK108X::seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)
 {
     long max_time = millis(); // Maximum time seeking a station.
 
-    reg03->refined.TUNE = 1;
-    setRegister(REG03, reg03->raw);
-    delay(50);
-
     do
     {
+        reg03->refined.TUNE = 0;
+        setRegister(REG03, reg03->raw);
+        delay(50);
         reg02->refined.SKMODE = seek_mode;
         reg02->refined.SEEKUP = direction;
         reg02->refined.SEEK = 1;
@@ -726,27 +725,31 @@ void BK108X::seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)
  * @param seek_mode  Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit.
  * @param direction  Seek Direction; 0 = Seek down (default); 1 = Seek up.
  */
-void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction)
+void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction, void (*showFunc)())
 {
 
     long max_time = millis(); // Max time seeking a station.
 
-    reg03->refined.TUNE = 1;
-    setRegister(REG03, reg03->raw);
-
-    reg02->refined.SKMODE = seek_mode;
-    reg02->refined.SEEKUP = direction;
-    reg02->refined.SKAFCRL = 1;
-
     do
     {
+        reg03->refined.TUNE = 0;
+        setRegister(REG03, reg03->raw);
+
+        reg02->refined.SKMODE = seek_mode;
+        reg02->refined.SEEKUP = direction;
+        reg02->refined.SKAFCRL = 1;
         reg02->refined.SEEK = 1;
         setRegister(REG02, reg02->raw);
         delay(40);
-        while (reg0a->refined.STC == 0)
+        while (reg0a->refined.STC == 0 && (millis() - max_time) < MAX_SEEK_TIME )
         {
-            delay(10);
+            if (showFunc != NULL)
+            {
+                this->currentFrequency = getRealFrequency();
+                showFunc();
+            }
             getRegister(REG0A);
+            delay(40);
         }
         reg02->refined.SEEK = 0;
         setRegister(REG02, reg02->raw);
@@ -757,6 +760,8 @@ void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction)
         this->setFrequency(this->currentFrequency);
 
     } while (reg0a->refined.SF_BL != 0 && (millis() - max_time) < MAX_SEEK_TIME);
+    reg03->refined.TUNE = 0;
+    setRegister(REG03, reg03->raw);
 }
 
 /**

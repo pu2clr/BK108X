@@ -92,31 +92,30 @@
 
 typedef struct
 {
-  uint8_t  mode; // Band mode
-  char    *name; // Band name 
+  uint8_t  mode; // Bande mode.
+  char    *name;  
   uint32_t minimum_frequency; // Minimum frequency to the band (KHz)
   uint32_t maximum_frequency; // Maximum frequency to the band (KHz)
   uint32_t default_frequency; // default frequency (KHz)
-  uint16_t step;              // step used (KHz)
+  uint16_t step;               // step used (KHz)
+  uint8_t band_space;           // AM: (0=1KHz; 1 = 5KHz; 2=9KHz; 3 = 10KHz) | FM: Not used here.
 } tabBand;
 
-/*
- * Table of the bands
- */ 
-
 tabBand band[] = {
-  {BK_MODE_FM, (char *) "FM", 8390, 10790, 10390, 10}, 
-  {BK_MODE_AM, (char *) "MW ", 520, 1710, 810, 10},
-  {BK_MODE_AM, (char *) "60m", 4700, 5600, 4885, 5},
-  {BK_MODE_AM, (char *) "49m", 5700, 6400, 6100, 5},
-  {BK_MODE_AM, (char *) "41m", 6800, 8200, 7205, 5},
-  {BK_MODE_AM, (char *) "31m", 9200, 10500, 9600, 5},
-  {BK_MODE_AM, (char *) "25m", 11400, 12200, 11940, 5},
-  {BK_MODE_AM, (char *) "22m", 13400, 14300, 13600, 5},
-  {BK_MODE_AM, (char *) "19m", 15000, 16100, 15300, 5},
-  {BK_MODE_AM, (char *) "16m", 17400, 17900, 17600, 5},
-  {BK_MODE_AM, (char *) "13m", 21400, 21900, 21525, 5}
+  {BK_MODE_FM, (char *) "FM", 6400, 10800, 10390, 10, 2},
+  {BK_MODE_AM, (char *) "MW1", 520, 1710, 810, 10, 3},    //
+  {BK_MODE_AM, (char *) "MW2", 522, 1710, 810,  9, 2},    // MW/AM - Europe
+  {BK_MODE_AM, (char *) "60m", 4700, 5600, 4885, 5, 1},
+  {BK_MODE_AM, (char *) "49m", 5700, 6400, 6100, 5, 1},
+  {BK_MODE_AM, (char *) "41m", 6800, 8200, 7205, 5, 1},
+  {BK_MODE_AM, (char *) "31m", 9200, 10500, 9600, 5, 1},
+  {BK_MODE_AM, (char *) "25m", 11400, 12200, 11940, 5, 1},
+  {BK_MODE_AM, (char *) "22m", 13400, 14300, 13600, 5, 1},
+  {BK_MODE_AM, (char *) "19m", 15000, 16100, 15300, 5, 1},
+  {BK_MODE_AM, (char *) "16m", 17400, 17900, 17600, 5, 1},
+  {BK_MODE_AM, (char *) "13m", 21400, 21900, 21525, 5, 1}
 };
+
 
 const int lastBand = (sizeof band / sizeof(tabBand)) - 1;
 int8_t bandIdx = 0; // FM
@@ -359,7 +358,7 @@ void useBand() {
   }
   else
   {
-    rx.setAM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    rx.setAM(band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step, band[bandIdx].band_space);
   }
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;
@@ -444,7 +443,6 @@ void checkRDS() {
 */
 void doSeek() {
   rx.seek(BK_SEEK_WRAP, seekDirection, showFrequencySeek);  // showFrequency will be called by the seek function during the process.
-  // rx.seekHardware(BK_SEEK_WRAP, seekDirection);
   delay(200);
   showStatus();
 }
