@@ -443,8 +443,8 @@ void checkRDS() {
    The seek direction is based on the last encoder direction rotation.
 */
 void doSeek() {
-  // rx.seek(BK_SEEK_WRAP, seekDirection, showFrequencySeek);  // showFrequency will be called by the seek function during the process.
-  rx.seekHardware(BK_SEEK_WRAP, seekDirection);
+  rx.seek(BK_SEEK_WRAP, seekDirection, showFrequencySeek);  // showFrequency will be called by the seek function during the process.
+  // rx.seekHardware(BK_SEEK_WRAP, seekDirection);
   delay(200);
   showStatus();
 }

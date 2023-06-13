@@ -691,6 +691,10 @@ void BK108X::seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)
 
     // reg06->refined.SKSNR = 9;
     // setRegister(REG06,reg06->raw);
+    if (BK_MODE_AM) 
+      this->setSpace(3);
+    else 
+      this->setSpace(2); 
 
     reg03->refined.TUNE = 0;
     setRegister(REG03, reg03->raw);
@@ -732,6 +736,11 @@ void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction)
 
     long max_time = millis();
 
+    if (BK_MODE_AM) 
+      this->setSpace(3);
+    else 
+      this->setSpace(2);  
+
     reg03->refined.TUNE = 0;
     setRegister(REG03, reg03->raw);
 
@@ -755,6 +764,7 @@ void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction)
 
         this->setChannel(this->getRealChannel());
         this->currentFrequency = getRealFrequency();
+        this->setFrequency(this->currentFrequency);
 
     } while (reg0a->refined.SF_BL != 0 && (millis() - max_time) < MAX_SEEK_TIME);
 }
