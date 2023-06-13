@@ -22,7 +22,7 @@
 
 #define I2C_DEVICE_ADDR 0x80
 
-#define MAX_SEEK_TIME 3000 // Maximum time have to be a seeking process (in ms).
+#define MAX_SEEK_TIME 5000 // Maximum time have to be a seeking process (in ms).
 
 #define OSCILLATOR_TYPE_CRYSTAL 1 // Crystal
 #define OSCILLATOR_TYPE_REFCLK 0  // Reference clock
