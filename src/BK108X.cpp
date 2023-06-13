@@ -488,7 +488,7 @@ void BK108X::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
     delay(50);
     // Sets BAND, SPACE and other parameters
     this->currentFMBand = reg05->refined.BAND = 0;
-    this->currentFMSpace = reg05->refined.SPACE = 2;
+    this->currentFMSpace = reg05->refined.SPACE = 2; // Space will be always 2 and the tune is controlled by currentStep (multiple of 100)
     setRegister(REG05, reg05->raw);
     setFrequency(default_frequency);
 };
@@ -502,6 +502,8 @@ void BK108X::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
  * @param maximum_frequency  maximum frequency for the band
  * @param default_frequency  default freuency
  * @param step  increment and decrement frequency step
+ * @param am_space (default 0 = 1kHz). You can control the freqyuency step by using am_space = 0 and just set the step to 1, 5, 9 or 10 kHz.
+ *                 This way, you can keep the space always 0    
  */
 void BK108X::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space)
 {
@@ -687,16 +689,9 @@ uint16_t BK108X::getRealFrequency()
  */
 void BK108X::seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)())
 {
-    long max_time = millis();
+    long max_time = millis(); // Maximum time seeking a station.
 
-    // reg06->refined.SKSNR = 9;
-    // setRegister(REG06,reg06->raw);
-    if (BK_MODE_AM) 
-      this->setSpace(3);
-    else 
-      this->setSpace(2); 
-
-    reg03->refined.TUNE = 0;
+    reg03->refined.TUNE = 1;
     setRegister(REG03, reg03->raw);
     delay(50);
 
@@ -734,14 +729,9 @@ void BK108X::seekSoftware(uint8_t seek_mode, uint8_t direction, void (*showFunc)
 void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction)
 {
 
-    long max_time = millis();
+    long max_time = millis(); // Max time seeking a station.
 
-    if (BK_MODE_AM) 
-      this->setSpace(3);
-    else 
-      this->setSpace(2);  
-
-    reg03->refined.TUNE = 0;
+    reg03->refined.TUNE = 1;
     setRegister(REG03, reg03->raw);
 
     reg02->refined.SKMODE = seek_mode;
