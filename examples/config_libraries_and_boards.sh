@@ -69,6 +69,7 @@ echo "----------------------------------------------------"
 echo "Installing the library Adafruit_SH1106 via github repository"
 export ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL=true
 arduino-cli lib install --git-url https://github.com/wonho-maker/Adafruit_SH1106 
+arduino-cli lib install --git-url https://github.com/danilopinotti/Battery18650Stats 
 echo "----------------------------------------------------"
 
 # uncomment the lines below if you want some additional boards 

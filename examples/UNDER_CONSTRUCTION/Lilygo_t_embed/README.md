@@ -209,8 +209,6 @@ to
 
 
 
-
-
 ## References 
 
 * [Vídeo about this project](https://youtu.be/hMyZkXs8gW4) 
