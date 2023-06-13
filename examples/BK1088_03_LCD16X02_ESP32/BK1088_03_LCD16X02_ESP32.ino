@@ -102,10 +102,10 @@ typedef struct
 } tabBand;
 
 tabBand band[] = {
-  {BK_MODE_FM, (char *) "FM", 6400, 10800, 10390, 10, 2},
-  {BK_MODE_AM, (char *) "MW1", 520, 1710, 810, 10, 3},    //
-  {BK_MODE_AM, (char *) "MW2", 522, 1710, 810,  9, 2},    // MW/AM - Europe
-  {BK_MODE_AM, (char *) "60m", 4700, 5600, 4885, 5, 1},
+  {BK_MODE_FM, (char *) "FM", 6400, 10800, 10390, 10, 2}, // 100kHz - Band space
+  {BK_MODE_AM, (char *) "MW1", 520, 1710, 810, 10, 3},    // 10 kHz
+  {BK_MODE_AM, (char *) "MW2", 522, 1710, 810,  9, 2},    // MW/AM - Europe - 9kHz
+  {BK_MODE_AM, (char *) "60m", 4700, 5600, 4885, 5, 1},   // Always 5 kHz
   {BK_MODE_AM, (char *) "49m", 5700, 6400, 6100, 5, 1},
   {BK_MODE_AM, (char *) "41m", 6800, 8200, 7205, 5, 1},
   {BK_MODE_AM, (char *) "31m", 9200, 10500, 9600, 5, 1},
@@ -124,7 +124,6 @@ const uint8_t app_id = 88;  // Useful to check the EEPROM content before process
 const int eeprom_address = 0;
 long storeTime = millis();
 
-bool bSt = true;
 
 uint8_t seekDirection = 1;  // 0 = Down; 1 = Up. This value is set by the last encoder direction.
 
@@ -206,7 +205,7 @@ void saveAllReceiverInformation() {
   EEPROM.write(eeprom_address + 1, rx.getVolume());           // stores the current Volume
   EEPROM.write(eeprom_address + 2, currentFrequency >> 8);    // stores the current Frequency HIGH byte for the band
   EEPROM.write(eeprom_address + 3, currentFrequency & 0xFF);  // stores the current Frequency LOW byte for the band
-  EEPROM.write(eeprom_address + 5, (uint8_t)bSt);
+
   EEPROM.write(eeprom_address + 6, bandIdx);
 
   EEPROM.end();
@@ -219,11 +218,9 @@ void readAllReceiverInformation() {
   previousFrequency = currentFrequency;
 
 
-  bSt = (bool)EEPROM.read(eeprom_address + 5);
   bandIdx = EEPROM.read(eeprom_address + 6);
   band[bandIdx].default_frequency = currentFrequency;
   useBand();
-  rx.setMono(bSt);
 }
 
 
