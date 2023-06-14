@@ -511,7 +511,7 @@ int getStrength(uint8_t rssi)
  */
 void showRSSI()
 {
-  spr.fillRect(240,20,76,88,TFT_BLACK); // Clear the indicator areas 
+  spr.fillRect(240,20,76,80,TFT_BLACK); // Clear the indicator areas 
   
   for (int i = 0; i < getStrength(rssi); i++)
   {
@@ -637,46 +637,47 @@ int progInfoIndex = 0;  // controls the part of the rdsMsg text will be shown on
 
 long delayProgramInfo = millis();
 long delayLocalTime = millis();
-long waitTime = 1000L;
 
 
 /**
   showProgramInfo - Shows the Program Information
 */
 void showProgramInfo() {
-  char txtAux[21];
+  char txtAux[14];
 
-  if (programInfo == NULL || strlen(programInfo) < 2 || (millis() - delayProgramInfo) < waitTime) return;
+  if (programInfo == NULL || strlen(programInfo) < 2 || (millis() - delayProgramInfo) < 1000L) return;
   delayProgramInfo = millis();
-  // clearLcdLine(0);
   programInfo[61] = '\0';  // Truncate the message to fit on display line
-  strncpy(txtAux, &programInfo[progInfoIndex], 21);
-  txtAux[20] = '\0';
+  strncpy(txtAux, &programInfo[progInfoIndex], 14);
+  txtAux[13] = '\0';
   progInfoIndex += 3;
   if (progInfoIndex > 60) progInfoIndex = 0;
 
-  spr.fillRect(0, 0, 120, 20, TFT_BLACK);
+  spr.fillRect(0, 100, 152, 20, TFT_BLACK);
   spr.setTextColor(TFT_YELLOW, TFT_BLACK);  
   spr.setFreeFont(&FreeMono9pt7b);
-  spr.drawString(txtAux,0,8);
+  spr.drawString(txtAux,77,111);
+  spr.pushSprite(0, 0);
 
-  waitTime = 1000L;
 }
 
 void showTime() {
   if (localTime == NULL || strlen(localTime) < 4 || (millis() - delayLocalTime) < 50000) return;
-  // clearLcdLine(0);
-  // lcd.setCursor(0, 0);
-  // lcd.print(localTime);
+
+  spr.fillRect(240, 100, 138, 20, TFT_BLACK);
+  spr.setTextColor(TFT_YELLOW, TFT_BLACK);  
+  spr.setFreeFont(&FreeMono9pt7b);
+  spr.drawString(localTime,241,111);
+  spr.pushSprite(0, 0);
   delayProgramInfo = millis(); // Stop showing Program Information for 10s
   delayLocalTime = millis(); 
-  waitTime = 10000L;
 } 
 
 
 void clearRds() {
   localTime = programInfo = NULL;
   rx.clearRdsBuffer();
+  progInfoIndex = 0;
   // clearLcdLine(0);
 }
 
@@ -820,6 +821,7 @@ void loop()
       }
       // Show the current frequency only if it has changed
       currentFrequency = rx.getFrequency();
+      clearRds();
       showFrequency();
     }
     encoderCount = 0;
