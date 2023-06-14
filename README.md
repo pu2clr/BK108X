@@ -38,6 +38,10 @@ This library is based on the BEKEN manual “BK1086/88 - BROADCAST AM/FM/SW/LW R
 If you are a hobbyist, a radio enthusiast and enjoy Arduino, this project is for you.
 
 
+{% include video02.html %} 
+
+[All Band receiver with BK1088E and LilyGo panel](https://youtu.be/5D6u2bwwWx0)
+
 {% include video01.html %} 
 
 [BK1088E FM, AM (LW, MW and SW) DSP receiver working with Arduino](https://youtu.be/qlEbFC5zt1U)
