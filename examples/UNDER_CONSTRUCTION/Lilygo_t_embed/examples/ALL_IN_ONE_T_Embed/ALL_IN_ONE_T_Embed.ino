@@ -644,21 +644,21 @@ long waitTime = 1000L;
   showProgramInfo - Shows the Program Information
 */
 void showProgramInfo() {
-  char txtAux[17];
+  char txtAux[21];
 
   if (programInfo == NULL || strlen(programInfo) < 2 || (millis() - delayProgramInfo) < waitTime) return;
   delayProgramInfo = millis();
   // clearLcdLine(0);
   programInfo[61] = '\0';  // Truncate the message to fit on display line
-  strncpy(txtAux, &programInfo[progInfoIndex], 16);
-  txtAux[16] = '\0';
+  strncpy(txtAux, &programInfo[progInfoIndex], 21);
+  txtAux[20] = '\0';
   progInfoIndex += 3;
   if (progInfoIndex > 60) progInfoIndex = 0;
 
-  spr.fillRect(0, 6, 150, 10, TFT_BLACK);
+  spr.fillRect(0, 0, 120, 20, TFT_BLACK);
   spr.setTextColor(TFT_YELLOW, TFT_BLACK);  
   spr.setFreeFont(&FreeMono9pt7b);
-  spr.drawString(txtAux,0,6);
+  spr.drawString(txtAux,0,8);
 
   waitTime = 1000L;
 }
