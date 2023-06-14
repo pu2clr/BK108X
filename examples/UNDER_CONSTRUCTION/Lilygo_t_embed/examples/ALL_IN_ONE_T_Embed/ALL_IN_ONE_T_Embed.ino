@@ -50,6 +50,7 @@
 
 #include "Rotary.h"
 
+#define POLLING_RDS 40
 
 // Enconder PINs
 #define ENCODER_PIN_A  1           // GPIO2 
@@ -623,6 +624,76 @@ void showMenu() {
   spr.pushSprite(0, 0);
 }
 
+/**
+  RDS Begin
+ */
+
+
+char *programInfo;
+char *localTime;
+long polling_rds = millis();
+
+int progInfoIndex = 0;  // controls the part of the rdsMsg text will be shown on LCD 16x2 Display
+
+long delayProgramInfo = millis();
+long delayLocalTime = millis();
+long waitTime = 1000L;
+
+
+/**
+  showProgramInfo - Shows the Program Information
+*/
+void showProgramInfo() {
+  char txtAux[17];
+
+  if (programInfo == NULL || strlen(programInfo) < 2 || (millis() - delayProgramInfo) < waitTime) return;
+  delayProgramInfo = millis();
+  // clearLcdLine(0);
+  programInfo[61] = '\0';  // Truncate the message to fit on display line
+  strncpy(txtAux, &programInfo[progInfoIndex], 16);
+  txtAux[16] = '\0';
+  progInfoIndex += 3;
+  if (progInfoIndex > 60) progInfoIndex = 0;
+
+  spr.fillRect(0, 6, 150, 10, TFT_BLACK);
+  spr.setTextColor(TFT_YELLOW, TFT_BLACK);  
+  spr.setFreeFont(&FreeMono9pt7b);
+  spr.drawString(txtAux,0,6);
+
+  waitTime = 1000L;
+}
+
+void showTime() {
+  if (localTime == NULL || strlen(localTime) < 4 || (millis() - delayLocalTime) < 50000) return;
+  // clearLcdLine(0);
+  // lcd.setCursor(0, 0);
+  // lcd.print(localTime);
+  delayProgramInfo = millis(); // Stop showing Program Information for 10s
+  delayLocalTime = millis(); 
+  waitTime = 10000L;
+} 
+
+
+void clearRds() {
+  localTime = programInfo = NULL;
+  rx.clearRdsBuffer();
+  // clearLcdLine(0);
+}
+
+
+void checkRDS() {
+  // You must call getRdsReady before calling any RDS query function.
+  if (rx.getRdsReady()) {
+      programInfo = rx.getRdsProgramInformation();
+      localTime = rx.getRdsLocalTime();
+      showProgramInfo();
+      showTime();
+  }
+}
+
+/**
+  RDS END
+*/   
 
 /**
  * Switches the current step
@@ -822,6 +893,11 @@ void loop()
   {
       elapsedBattery = millis();
       showBattery();
+  }
+
+  if ((millis() - polling_rds) > POLLING_RDS && band[bandIdx].mode == BK_MODE_FM)  {
+    checkRDS();
+    polling_rds = millis();
   }
 
 }
