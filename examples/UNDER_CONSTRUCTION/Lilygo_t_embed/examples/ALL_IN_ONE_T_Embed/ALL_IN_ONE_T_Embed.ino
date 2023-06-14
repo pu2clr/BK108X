@@ -42,7 +42,6 @@
   By PU2CLR, Ricardo, Dec  2022.
 */
 
-#include <Wire.h>
 #include "EEPROM.h"
 #include <BK108X.h>
 #include <FastLED.h>
@@ -88,7 +87,7 @@
 Battery18650Stats battery(PIN_BAT_VOLT);
 
 // EEPROM - Stroring control variables
-const uint8_t app_id = 88; // Useful to check the EEPROM content before processing useful data
+const uint8_t app_id = 86; // Useful to check the EEPROM content before processing useful data
 const int eeprom_address = 0;
 long storeTime = millis();
 
@@ -169,9 +168,6 @@ void setup()
   pinMode(ENCODER_PIN_A, INPUT_PULLUP);
   pinMode(ENCODER_PIN_B, INPUT_PULLUP);
 
-  // The line below may be necessary to setup I2C pins on ESP32
-  Wire.begin(ESP32_I2C_SDA, ESP32_I2C_SCL);
-
   FastLED.addLeds<APA102, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 
   tft.begin();
@@ -208,6 +204,8 @@ void setup()
   rx.setup(ESP32_I2C_SDA, ESP32_I2C_SCL);
   
   delay(300);
+
+
 
   // Checking the EEPROM content
   if (EEPROM.read(eeprom_address) == app_id)
@@ -247,7 +245,7 @@ void splash() {
   spr.fillSprite(TFT_BLACK);
   spr.setTextColor(TFT_WHITE, TFT_BLACK);
   spr.setFreeFont(&Orbitron_Light_24);
-  spr.drawString(" PU2CLR SI4735", 140, 12);
+  spr.drawString(" PU2CLR BK1088", 140, 12);
   spr.drawString("Arduino Library", 140, 60);
   spr.pushSprite(0, 0);
   delay(700);
