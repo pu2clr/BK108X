@@ -605,8 +605,8 @@ typedef union
 {
     struct
     {    
-        uint16_t RESERVED : 15;
-        uint16_t FREQ_SEL : 1; //!<  Reference clock divider control ,Refer to Reg1D Default 0 for 32.768kHz reference input.
+        uint16_t RESERVED : 14;
+        uint16_t FREQ_SEL : 2; //!<  Reference clock divider control ,Refer to Reg1D Default 0 for 32.768kHz reference input.
     } refined;
     uint16_t raw;
 } bk_reg1C;
