@@ -810,6 +810,7 @@ protected:
     int rdsInterruptPin = -1;
     int seekInterruptPin = -1;
     int oscillatorType = OSCILLATOR_TYPE_CRYSTAL;
+    uint32_t oscillatorFrequency = 32768;
     
     uint16_t maxDelayAfterCrystalOn = MAX_DELAY_AFTER_OSCILLATOR;
 
@@ -883,7 +884,8 @@ public:
     uint16_t getDeviceId();
     uint16_t getChipId();
 
-    void setup(int sda_pin, int sclk_pin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL, uint16_t maxDelayAfterCrystalOn = MAX_DELAY_AFTER_OSCILLATOR);
+    void setup(int sda_pin, int sclk_pin, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL, uint32_t oscillator_frequency = 32768);
+    // void setup(int sda_pin, int sclk_pin, int rdsInterruptPin = -1, int seekInterruptPin = -1, uint8_t oscillator_type = OSCILLATOR_TYPE_CRYSTAL, uint16_t maxDelayAfterCrystalOn = MAX_DELAY_AFTER_OSCILLATOR);
     
     void setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step);
     void setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space = 0);

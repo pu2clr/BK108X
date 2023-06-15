@@ -52,8 +52,8 @@ void setup() {
   Serial.begin(9600);
   while(!Serial);
 
-  radio.setup(SDA_PIN, CLK_PIN, -1, -1, OSCILLATOR_TYPE_REFCLK);
-  // radio.setup(SDA_PIN, CLK_PIN);
+  radio.setup(SDA_PIN, CLK_PIN, OSCILLATOR_TYPE_REFCLK, 12000000); // 12MHz external clock oscillator
+
   delay(100);
   radio.setVolume(28);
 

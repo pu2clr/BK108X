@@ -420,10 +420,27 @@ void BK108X::powerUp()
     setRegister(REG19, 0x0080); // 0b0000000010000000
     setRegister(REG1A, 0x0000); // 0
     setRegister(REG1B, 0x4CA2); // 0b0100110010100010
-
+    // 32768 crystal clock (default setup)
     setRegister(REG1C, 0x8820); // 0b1000100000100000
-    // setRegister(REG1C, 0); // 0b1000100000100000
     setRegister(REG1D, 0x0200); // 0b0000001000000000  ->  512
+    // If the setup is not factory default
+    if (this->oscillatorType != OSCILLATOR_TYPE_CRYSTAL || oscillatorFrequency != 32768)
+    {
+        uint32_t bk_number = (oscillatorFrequency / 512) + 0.5; // The result is a 18 bit number
+        uint16_t final_result = 0;
+        uint16_t aux;
+        // Sets the two most significant bits of result (bk_number) to the REG1C [1:0],
+        reg1c->refined.FREQ_SEL = (bk_number >> 16);
+        setRegister(REG1C, reg1c->raw);
+        //The REG1D receives the inverted order of the 16 least significant bits of the bk_number.. The bit order of REG1D is opposite to the calculation result
+        aux = (bk_number & 0x1111111111111111);
+        for (int i = 0; i < 16; i++)
+        {
+            if ((aux & (1 << i)) != 0)
+                final_result |= 1 << (15 - i);
+        }
+        setRegister(REG1D, final_result);
+    }
 
     delay(this->maxDelayAfterCrystalOn);
 }
@@ -445,10 +462,13 @@ void BK108X::powerDown()
  * @brief Starts the device
  * @details sets the reset pin, interrupt pins and oscillator type you are using in your project.
  * @details You have to inform at least two parameters: RESET pin and I2C SDA pin of your MCU
+ * @param sda_pin MCU SDA/SDIO pin  (ATMEGA328 must be 4)
+ * @param sclk_pin MCU SCLK/CLK pin (ATMEGA328 must be 5)
  * @param rdsInterruptPin  // optional. Sets the Interrupt Arduino pin used to RDS function control.
  * @param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control.
  * @param oscillator_type  // optional. Sets the Oscillator type used Crystal (default) or Ref. Clock.
  */
+/**
 void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type, uint16_t maxDelayAfterCrystalOn)
 {
     // Configures BEKEN I2C bus
@@ -462,6 +482,27 @@ void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInter
     this->oscillatorType = oscillator_type;
     this->maxDelayAfterCrystalOn = maxDelayAfterCrystalOn;
 
+    powerUp();
+}
+*/
+
+/**
+ * @ingroup GA03
+ * @brief Starts the device
+ * @details Initiates the divice (similar to the previous setup function)
+ * @details This method allows different clock frequencies.
+ * @details You have to inform at least two parameters: RESET pin and I2C SDA pin of your MCU
+ * @param sda_pin MCU SDA/SDIO pin  (ATMEGA328 must be 4)
+ * @param sclk_pin MCU SCLK/CLK pin (ATMEGA328 must be 5)
+ * @param oscillator_type  0 = External clock input; 1= Internal oscillator input (default).
+ * @param oscillator_frequency from 32768Hz (32.768 KHz) to 34400000Hz (34.4Mhz). Default (32.768 kHz). For frequency less than 4 MHz, it must be multiplier of 32.768KHz.
+ */
+void BK108X::setup(int sda_pin, int sclk_pin, uint8_t oscillator_type, uint32_t oscillator_frequency)
+{
+    // Configures BEKEN I2C bus
+    this->i2cInit(sda_pin, sclk_pin);
+    this->oscillatorType = oscillator_type;
+    this->oscillatorFrequency = oscillator_frequency;
     powerUp();
 }
 
@@ -741,7 +782,7 @@ void BK108X::seekHardware(uint8_t seek_mode, uint8_t direction, void (*showFunc)
         reg02->refined.SEEK = 1;
         setRegister(REG02, reg02->raw);
         delay(40);
-        while (reg0a->refined.STC == 0 && (millis() - max_time) < MAX_SEEK_TIME )
+        while (reg0a->refined.STC == 0 && (millis() - max_time) < MAX_SEEK_TIME)
         {
             if (showFunc != NULL)
             {
