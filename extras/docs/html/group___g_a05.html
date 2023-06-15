@@ -108,6 +108,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga94349ed646b59d42fe4c771e273df737"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a05.html#ga94349ed646b59d42fe4c771e273df737">BK108X::checkI2C</a> (uint8_t *addressArray)</td></tr>
 <tr class="memdesc:ga94349ed646b59d42fe4c771e273df737"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the I2C bus address.  <br /></td></tr>
 <tr class="separator:ga94349ed646b59d42fe4c771e273df737"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76cc0d91aab1701220c080349d7717d8"><td class="memItemLeft" align="right" valign="top">uint16_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a05.html#ga76cc0d91aab1701220c080349d7717d8">BK108X::getRegisterValues</a> ()</td></tr>
+<tr class="memdesc:ga76cc0d91aab1701220c080349d7717d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the point of uint16_t array (size 32)  <br /></td></tr>
+<tr class="separator:ga76cc0d91aab1701220c080349d7717d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2ab717229791f3d3994f10717fb3c703"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a05.html#ga2ab717229791f3d3994f10717fb3c703">BK108X::convertToChar</a> (uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros=true)</td></tr>
 <tr class="memdesc:ga2ab717229791f3d3994f10717fb3c703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a number to a char array.  <br /></td></tr>
 <tr class="separator:ga2ab717229791f3d3994f10717fb3c703"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,7 +176,7 @@ Tools / Helper</h1>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>point of strValue </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01168">1168</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01171">1171</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -221,7 +224,7 @@ Tools / Helper</h1>
 <dl class="section return"><dt>Returns</dt><dd>point char string strFrequency (member variable) </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a03.html#ga514242393caa2068d8acb3adec953832" title="Sets the FM frequency.">setFrequency</a>, <a class="el" href="group___g_a01.html#ae9395bc20d9f1ef654253fed787e07cd">seek</a>, <a class="el" href="group___g_a03.html#gac0c265a916d7852d7e4977b1835098eb" title="Increments the current frequency.">setFrequencyUp</a> and <a class="el" href="group___g_a03.html#ga5bf724e36f2dbdc826c387601e00ace1" title="Decrements the current frequency.">setFrequencyDown</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01181">1181</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01184">1184</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -250,7 +253,29 @@ Tools / Helper</h1>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if no i2c device is found; -1 if error is found or n &gt; 0, where n is the number of I2C bus address found </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01540">1540</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01586">1586</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ga76cc0d91aab1701220c080349d7717d8" name="ga76cc0d91aab1701220c080349d7717d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga76cc0d91aab1701220c080349d7717d8">&#9670;&#160;</a></span>getRegisterValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t * BK108X::getRegisterValues </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the point of uint16_t array (size 32) </p>
+<p>Useful to monitor the device internal registers </p><dl class="section return"><dt>Returns</dt><dd>point of shadowRegisters </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01613">1613</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -319,7 +344,7 @@ Tools / Helper</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01574">1574</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01633">1633</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>

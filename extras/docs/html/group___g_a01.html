@@ -1519,9 +1519,9 @@ raw</td>
 <tr class="memitem:a102d07b1523cf46434bb4434b7c70d60"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a102d07b1523cf46434bb4434b7c70d60">getChipId</a> ()</td></tr>
 <tr class="memdesc:a102d07b1523cf46434bb4434b7c70d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Chip Indentifiction.  <br /></td></tr>
 <tr class="separator:a102d07b1523cf46434bb4434b7c70d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga27c6792578abb68e34f5308b91e1b62e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga27c6792578abb68e34f5308b91e1b62e">setup</a> (int sda_pin, int sclk_pin, int <a class="el" href="group___g_a01.html#ab14e1e533462b60b82ff498dc15abbb1">rdsInterruptPin</a>=-1, int <a class="el" href="group___g_a01.html#a68b0bac67680a37773d972c470716a37">seekInterruptPin</a>=-1, uint8_t oscillator_type=<a class="el" href="_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2">OSCILLATOR_TYPE_CRYSTAL</a>, uint16_t <a class="el" href="group___g_a01.html#a84232f0a3edd1c9307e463266fc64bcb">maxDelayAfterCrystalOn</a>=<a class="el" href="_b_k108_x_8h.html#afb81dd661d531fa5c5422549fab7588f">MAX_DELAY_AFTER_OSCILLATOR</a>)</td></tr>
-<tr class="memdesc:ga27c6792578abb68e34f5308b91e1b62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the device.  <br /></td></tr>
-<tr class="separator:ga27c6792578abb68e34f5308b91e1b62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad1e862acb8dd7f8f121963c97b9e0eed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gad1e862acb8dd7f8f121963c97b9e0eed">setup</a> (int sda_pin, int sclk_pin, uint8_t oscillator_type=<a class="el" href="_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2">OSCILLATOR_TYPE_CRYSTAL</a>, uint32_t oscillator_frequency=32768)</td></tr>
+<tr class="memdesc:gad1e862acb8dd7f8f121963c97b9e0eed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the device.  <br /></td></tr>
+<tr class="separator:gad1e862acb8dd7f8f121963c97b9e0eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa6da4291400839ffc68ccff5e1ad7b13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gaa6da4291400839ffc68ccff5e1ad7b13">setFM</a> (uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step)</td></tr>
 <tr class="memdesc:gaa6da4291400839ffc68ccff5e1ad7b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the receiver to FM mode.  <br /></td></tr>
 <tr class="separator:gaa6da4291400839ffc68ccff5e1ad7b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1733,6 +1733,9 @@ raw</td>
 <tr class="memitem:ga2ab717229791f3d3994f10717fb3c703"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a05.html#ga2ab717229791f3d3994f10717fb3c703">convertToChar</a> (uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros=true)</td></tr>
 <tr class="memdesc:ga2ab717229791f3d3994f10717fb3c703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a number to a char array.  <br /></td></tr>
 <tr class="separator:ga2ab717229791f3d3994f10717fb3c703"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76cc0d91aab1701220c080349d7717d8"><td class="memItemLeft" align="right" valign="top">uint16_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a05.html#ga76cc0d91aab1701220c080349d7717d8">getRegisterValues</a> ()</td></tr>
+<tr class="memdesc:ga76cc0d91aab1701220c080349d7717d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the point of uint16_t array (size 32)  <br /></td></tr>
+<tr class="separator:ga76cc0d91aab1701220c080349d7717d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8209b9f2545c2c661fab9099061f753a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a05.html#ga8209b9f2545c2c661fab9099061f753a">formatFrequency</a> (uint16_t value, char *strValue, char decimalSeparator=',', uint8_t decimalPosition=3)</td></tr>
 <tr class="memdesc:ga8209b9f2545c2c661fab9099061f753a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a numeric frequency to a formated string (char *) frequency.  <br /></td></tr>
 <tr class="separator:ga8209b9f2545c2c661fab9099061f753a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1784,6 +1787,8 @@ raw</td>
 <tr class="separator:a68b0bac67680a37773d972c470716a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50a9ac975ce0539aed15b122db83d36b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a50a9ac975ce0539aed15b122db83d36b">oscillatorType</a> = <a class="el" href="_b_k108_x_8h.html#ad0763fd256db4ec1ecc62f84bbff56e2">OSCILLATOR_TYPE_CRYSTAL</a></td></tr>
 <tr class="separator:a50a9ac975ce0539aed15b122db83d36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad36cac73c8cbb3021797ee843e559aab"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#ad36cac73c8cbb3021797ee843e559aab">oscillatorFrequency</a> = 32768</td></tr>
+<tr class="separator:ad36cac73c8cbb3021797ee843e559aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84232f0a3edd1c9307e463266fc64bcb"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a84232f0a3edd1c9307e463266fc64bcb">maxDelayAfterCrystalOn</a> = <a class="el" href="_b_k108_x_8h.html#afb81dd661d531fa5c5422549fab7588f">MAX_DELAY_AFTER_OSCILLATOR</a></td></tr>
 <tr class="separator:a84232f0a3edd1c9307e463266fc64bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -1877,7 +1882,7 @@ raw</td>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00960">960</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00962">962</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1926,7 +1931,7 @@ raw</td>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00978">978</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00980">980</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1962,7 +1967,7 @@ raw</td>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00989">989</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00991">991</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -1998,7 +2003,7 @@ raw</td>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01000">1000</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01002">1002</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -2034,7 +2039,7 @@ raw</td>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01011">1011</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01013">1013</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -2070,7 +2075,7 @@ raw</td>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01022">1022</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01024">1024</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -2106,7 +2111,7 @@ raw</td>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01033">1033</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01035">1035</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -2142,7 +2147,7 @@ raw</td>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01044">1044</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01046">1046</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -2178,7 +2183,7 @@ raw</td>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01055">1055</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01057">1057</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -2222,7 +2227,7 @@ raw</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01074">1074</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01076">1076</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -2250,9 +2255,9 @@ raw</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01106">1106</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01108">1108</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01091">setRds()</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01137">setRds()</a>.</p>
 
 </div>
 </div>
@@ -2281,7 +2286,7 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00788">788</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01520">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01292">getRdsText2A()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01566">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01338">getRdsText2A()</a>.</p>
 
 </div>
 </div>
@@ -2309,7 +2314,7 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00789">789</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01520">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01319">getRdsText2B()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01566">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01365">getRdsText2B()</a>.</p>
 
 </div>
 </div>
@@ -2337,7 +2342,7 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00790">790</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01520">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01263">getRdsText0A()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01566">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01309">getRdsText0A()</a>.</p>
 
 </div>
 </div>
@@ -2365,7 +2370,7 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00791">791</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01520">clearRdsBuffer()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l01447">getRdsLocalTime()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01381">getRdsTime()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01566">clearRdsBuffer()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l01493">getRdsLocalTime()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01427">getRdsTime()</a>.</p>
 
 </div>
 </div>
@@ -2415,7 +2420,7 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00795">795</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00240">readRegister()</a>, <a class="el" href="_b_k108_x_8h_source.html#l00843">setI2CAddress()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l00211">writeRegister()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00240">readRegister()</a>, <a class="el" href="_b_k108_x_8h_source.html#l00844">setI2CAddress()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l00211">writeRegister()</a>.</p>
 
 </div>
 </div>
@@ -2705,8 +2710,6 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00810">810</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00452">setup()</a>.</p>
-
 </div>
 </div>
 <a id="a68b0bac67680a37773d972c470716a37" name="a68b0bac67680a37773d972c470716a37"></a>
@@ -2730,8 +2733,6 @@ raw</td>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00811">811</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00452">setup()</a>.</p>
 
 </div>
 </div>
@@ -2759,6 +2760,30 @@ raw</td>
 
 </div>
 </div>
+<a id="ad36cac73c8cbb3021797ee843e559aab" name="ad36cac73c8cbb3021797ee843e559aab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad36cac73c8cbb3021797ee843e559aab">&#9670;&#160;</a></span>oscillatorFrequency</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t BK108X::oscillatorFrequency = 32768</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00813">813</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+
+</div>
+</div>
 <a id="a84232f0a3edd1c9307e463266fc64bcb" name="a84232f0a3edd1c9307e463266fc64bcb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a84232f0a3edd1c9307e463266fc64bcb">&#9670;&#160;</a></span>maxDelayAfterCrystalOn</h2>
 
@@ -2779,7 +2804,7 @@ raw</td>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00814">814</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00815">815</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
 </div>
 </div>
@@ -4003,13 +4028,13 @@ RESERVED</td>
 <tr><td class="fieldtype">
 <a id="a83c7f2aa8c3ac10ed8beb75cad162827" name="a83c7f2aa8c3ac10ed8beb75cad162827"></a>uint16_t</td>
 <td class="fieldname">
-RESERVED: 15</td>
+RESERVED: 14</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
 <a id="ac279a2ae488147fc31abb73f59163f40" name="ac279a2ae488147fc31abb73f59163f40"></a>uint16_t</td>
 <td class="fieldname">
-FREQ_SEL: 1</td>
+FREQ_SEL: 2</td>
 <td class="fielddoc">
 Reference clock divider control ,Refer to Reg1D Default 0 for 32.768kHz reference input. </td></tr>
 </table>

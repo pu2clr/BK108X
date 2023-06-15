@@ -16,7 +16,7 @@ var group___g_a03 =
     [ "BK108X::reset", "group___g_a03.html#ga0479b36a2d6558df557a3ba4a0d07ce2", null ],
     [ "BK108X::powerUp", "group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618", null ],
     [ "BK108X::powerDown", "group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857", null ],
-    [ "BK108X::setup", "group___g_a03.html#ga27c6792578abb68e34f5308b91e1b62e", null ],
+    [ "BK108X::setup", "group___g_a03.html#gad1e862acb8dd7f8f121963c97b9e0eed", null ],
     [ "BK108X::setFM", "group___g_a03.html#gaa6da4291400839ffc68ccff5e1ad7b13", null ],
     [ "BK108X::setAM", "group___g_a03.html#ga334ccbe40fcb5faa9e045288ca606f89", null ],
     [ "BK108X::setChannel", "group___g_a03.html#gaa479240fcad272dc505ae50a6f4369d3", null ],

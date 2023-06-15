@@ -160,7 +160,7 @@ var group___g_a01 =
       [ "setShadownRegister", "group___g_a03.html#ga08ce22717a9f95e1ee3685478e919ee5", null ],
       [ "getDeviceId", "group___g_a01.html#a5f9fe73f248fbeafb1a6abb1c92d578b", null ],
       [ "getChipId", "group___g_a01.html#a102d07b1523cf46434bb4434b7c70d60", null ],
-      [ "setup", "group___g_a03.html#ga27c6792578abb68e34f5308b91e1b62e", null ],
+      [ "setup", "group___g_a03.html#gad1e862acb8dd7f8f121963c97b9e0eed", null ],
       [ "setFM", "group___g_a03.html#gaa6da4291400839ffc68ccff5e1ad7b13", null ],
       [ "setAM", "group___g_a03.html#ga334ccbe40fcb5faa9e045288ca606f89", null ],
       [ "setFMGain", "group___g_a03.html#gaeb1a1f4d31cb789c71809102c47da5b0", null ],
@@ -232,6 +232,7 @@ var group___g_a01 =
       [ "clearRdsBuffer", "group___g_a04.html#gab4df6a9ab8f9ea2b4ec0878fd49b99a1", null ],
       [ "checkI2C", "group___g_a05.html#ga94349ed646b59d42fe4c771e273df737", null ],
       [ "convertToChar", "group___g_a05.html#ga2ab717229791f3d3994f10717fb3c703", null ],
+      [ "getRegisterValues", "group___g_a05.html#ga76cc0d91aab1701220c080349d7717d8", null ],
       [ "formatFrequency", "group___g_a05.html#ga8209b9f2545c2c661fab9099061f753a", null ],
       [ "formatCurrentFrequency", "group___g_a05.html#ga12955f9e667d323153b10d48f4b50843", null ],
       [ "rds_buffer2A", "group___g_a01.html#a47624a15a9716a9ec6c0ac2d1060dd85", null ],
@@ -254,6 +255,7 @@ var group___g_a01 =
       [ "rdsInterruptPin", "group___g_a01.html#ab14e1e533462b60b82ff498dc15abbb1", null ],
       [ "seekInterruptPin", "group___g_a01.html#a68b0bac67680a37773d972c470716a37", null ],
       [ "oscillatorType", "group___g_a01.html#a50a9ac975ce0539aed15b122db83d36b", null ],
+      [ "oscillatorFrequency", "group___g_a01.html#ad36cac73c8cbb3021797ee843e559aab", null ],
       [ "maxDelayAfterCrystalOn", "group___g_a01.html#a84232f0a3edd1c9307e463266fc64bcb", null ]
     ] ],
     [ "bk_reg00.refined", "group___g_a01.html#structbk__reg00_8refined", [
