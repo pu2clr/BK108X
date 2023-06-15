@@ -389,6 +389,11 @@ void BK108X::powerUp()
 {
     // Starts the mains register with default values suggested by BEKEN.
 
+    // Turn the receiver on
+    reg02->raw = 0x0280;            // Sets to 0 all attributes of the register 0x02 (Power Configuration)
+    reg02->refined.DISABLE = 0;     // Power up Disable: 0 = Normal operation
+    reg02->refined.ENABLE = 1;      // Power the receiver UP (DISABLE has to be 0)
+    setRegister(REG02, reg02->raw); // Stores the register 0x02
 
     setRegister(REG03, 0x0000); // Sets to 0 all attributes of the register 0x03 (Channel)
 
@@ -437,14 +442,10 @@ void BK108X::powerUp()
             if ((aux & (1 << i)) != 0)
                 final_result |= 1 << (15 - i);
         }
-        setRegister(REG1D, final_result); // It has no effect on the REG1d register.
-        // setRegister(REG1D,0x71DA); // 12MHz test
+        // setRegister(REG1D, final_result); // It has no effect on the REG1d register.
+        setRegister(REG1D,0x71DA); // 12MHz test
     }
 
-    reg02->raw = 0x0280;            // Sets to 0 all attributes of the register 0x02 (Power Configuration)
-    reg02->refined.DISABLE = 0;     // Force stereo
-    reg02->refined.ENABLE = 1;      // Power the receiver UP (DISABLE has to be 0)
-    setRegister(REG02, reg02->raw); // Stores the register 0x02
 
     delay(this->maxDelayAfterCrystalOn);
 }
