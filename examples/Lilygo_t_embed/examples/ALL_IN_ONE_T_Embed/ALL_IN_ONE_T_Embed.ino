@@ -384,10 +384,12 @@ void showFrequency()
 
   value = freq * 10;
 
+  // spr.setTextColor(TFT_YELLOW, TFT_YELLOW);   
   spr.fillSprite(TFT_BLACK); // clear screen
   spr.drawFloat(freq, decimals, 150, 64, 7); // shows the frequency
 
   // Builds the frequency ruler
+  // spr.setTextColor(TFT_YELLOW, TFT_RED);   
   spr.fillTriangle(156, 104, 160, 114, 164, 104, TFT_RED); 
   spr.drawLine(160, 114, 160, 170, TFT_RED);
  

@@ -52,9 +52,9 @@ void setup() {
   Serial.begin(9600);
   while(!Serial);
 
-  // radio.setup(SDA_PIN, CLK_PIN);
+  radio.setup(SDA_PIN, CLK_PIN);
   // radio.setup(SDA_PIN, CLK_PIN, OSCILLATOR_TYPE_REFCLK, 12000000); // 12MHz external clock oscillator
-  radio.setup(SDA_PIN, CLK_PIN, OSCILLATOR_TYPE_CRYSTAL, 12000000); // 12MHz external clock oscillator
+  // radio.setup(SDA_PIN, CLK_PIN, OSCILLATOR_TYPE_CRYSTAL, 32768000); // 32.768 MHz external, crystal
   // radio.setup(SDA_PIN, CLK_PIN, OSCILLATOR_TYPE_CRYSTAL, 32768); // 
 
   delay(100);
