@@ -430,7 +430,7 @@ void BK108X::powerUp()
         uint16_t final_result = 0;
         uint16_t aux;
         // Sets the two most significant bits of result (bk_number) to the REG1C [1:0]
-        reg1c->refined.FREQ_SEL = (bk_number >> 16);
+        reg1c->refined.FREQ_SEL = (bk_number >> 15);
         setRegister(REG1C, reg1c->raw);
         //The REG1D receives the inverted order of the 16 least significant bits of the bk_number.. The bit order of REG1D is opposite to the calculation result
         aux = bk_number & 0b001111111111111111;

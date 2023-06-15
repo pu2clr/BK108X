@@ -194,6 +194,7 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_B), rotaryEncoder, CHANGE);
 
   rx.setup(SDA_PIN,CLK_PIN); 
+  // rx.setup(SDA_PIN, CLK_PIN, OSCILLATOR_TYPE_REFCLK, 12000000); // 12MHz external clock oscillator
 
   // Checking the EEPROM content
   if (EEPROM.read(eeprom_address) == app_id) {
