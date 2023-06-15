@@ -24,9 +24,10 @@ var group___g_a01_class_b_k108_x =
     [ "setShadownRegister", "group___g_a03.html#ga08ce22717a9f95e1ee3685478e919ee5", null ],
     [ "getDeviceId", "group___g_a01.html#a5f9fe73f248fbeafb1a6abb1c92d578b", null ],
     [ "getChipId", "group___g_a01.html#a102d07b1523cf46434bb4434b7c70d60", null ],
-    [ "setup", "group___g_a03.html#ga8d1b082b77d8b0cc7c0e6cb5cb489c80", null ],
+    [ "setup", "group___g_a03.html#ga27c6792578abb68e34f5308b91e1b62e", null ],
     [ "setFM", "group___g_a03.html#gaa6da4291400839ffc68ccff5e1ad7b13", null ],
     [ "setAM", "group___g_a03.html#ga334ccbe40fcb5faa9e045288ca606f89", null ],
+    [ "setFMGain", "group___g_a03.html#gaeb1a1f4d31cb789c71809102c47da5b0", null ],
     [ "getCurrentMode", "group___g_a03.html#ga75e29ce01163c9bb4934d0064e998362", null ],
     [ "setStereoThresholdPilotStrength", "group___g_a03.html#ga787b79fcfb96881a1784560393a23f12", null ],
     [ "setFmDeemphasis", "group___g_a03.html#gabe69405f657c656f61e5e6b169690709", null ],
@@ -48,7 +49,7 @@ var group___g_a01_class_b_k108_x =
     [ "getRealFrequency", "group___g_a03.html#gac0f7f0de2093cae7777d2bc5ee1b22b4", null ],
     [ "getRealChannel", "group___g_a03.html#ga142c5b934ce9d95beb8e83278b622013", null ],
     [ "setChannel", "group___g_a03.html#gaa479240fcad272dc505ae50a6f4369d3", null ],
-    [ "seekHardware", "group___g_a03.html#gaf7b86960d2bfd182600cb4a4308eb9ab", null ],
+    [ "seekHardware", "group___g_a03.html#ga0a0067f9c9c50d595bcec8b9157bd957", null ],
     [ "seekSoftware", "group___g_a03.html#ga137b126f37f177a7c3928c5755d99757", null ],
     [ "seek", "group___g_a01.html#ae9395bc20d9f1ef654253fed787e07cd", null ],
     [ "setSeekThreshold", "group___g_a03.html#ga2d2a246c4d65dfbf93b5660a500c74c3", null ],
@@ -85,6 +86,7 @@ var group___g_a01_class_b_k108_x =
     [ "getRdsText0A", "group___g_a04.html#ga045825c54358c0bc1e741889a14a8a32", null ],
     [ "getRdsText2A", "group___g_a04.html#gaa45a715a465a77143dc7d300d6a3192f", null ],
     [ "getRdsText2B", "group___g_a04.html#ga2f9f668c6a689276d486fe0c0871086c", null ],
+    [ "getRdsAllData", "group___g_a04.html#ga5ee4c3a85508799204ed17fb84856fdb", null ],
     [ "getRdsTime", "group___g_a04.html#ga6c0f7231f5c0b02185f5f3ad847364a4", null ],
     [ "getRdsLocalTime", "group___g_a04.html#gaebab6fd2a2af03b6a05991dad7b8ab35", null ],
     [ "getRdsSync", "group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c", null ],
@@ -116,5 +118,5 @@ var group___g_a01_class_b_k108_x =
     [ "rdsInterruptPin", "group___g_a01.html#ab14e1e533462b60b82ff498dc15abbb1", null ],
     [ "seekInterruptPin", "group___g_a01.html#a68b0bac67680a37773d972c470716a37", null ],
     [ "oscillatorType", "group___g_a01.html#a50a9ac975ce0539aed15b122db83d36b", null ],
-    [ "maxDelayAfterCrystalOn", "group___g_a01.html#aa4937fcebe3dc30474a903c3aa02a67b", null ]
+    [ "maxDelayAfterCrystalOn", "group___g_a01.html#a84232f0a3edd1c9307e463266fc64bcb", null ]
 ];

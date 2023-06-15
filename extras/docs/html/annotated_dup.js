@@ -32,6 +32,7 @@ var annotated_dup =
     [ "bk_reg0b", "group___g_a01.html#unionbk__reg0b", "group___g_a01_unionbk__reg0b" ],
     [ "bk_reg0b.refined", "group___g_a01.html#structbk__reg0b_8refined", "group___g_a01_structbk__reg0b_8refined" ],
     [ "bk_reg0c", "group___g_a01.html#unionbk__reg0c", "group___g_a01_unionbk__reg0c" ],
+    [ "bk_reg0c.rds_status", "group___g_a01.html#structbk__reg0c_8rds__status", "group___g_a01_structbk__reg0c_8rds__status" ],
     [ "bk_reg0c.refined", "group___g_a01.html#structbk__reg0c_8refined", "group___g_a01_structbk__reg0c_8refined" ],
     [ "bk_reg0d", "group___g_a01.html#unionbk__reg0d", "group___g_a01_unionbk__reg0d" ],
     [ "bk_reg0d.refined", "group___g_a01.html#structbk__reg0d_8refined", "group___g_a01_structbk__reg0d_8refined" ],

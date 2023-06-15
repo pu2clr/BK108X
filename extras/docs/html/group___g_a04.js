@@ -17,6 +17,7 @@ var group___g_a04 =
     [ "BK108X::getRdsText0A", "group___g_a04.html#ga045825c54358c0bc1e741889a14a8a32", null ],
     [ "BK108X::getRdsText2A", "group___g_a04.html#gaa45a715a465a77143dc7d300d6a3192f", null ],
     [ "BK108X::getRdsText2B", "group___g_a04.html#ga2f9f668c6a689276d486fe0c0871086c", null ],
+    [ "BK108X::getRdsAllData", "group___g_a04.html#ga5ee4c3a85508799204ed17fb84856fdb", null ],
     [ "BK108X::getRdsTime", "group___g_a04.html#ga6c0f7231f5c0b02185f5f3ad847364a4", null ],
     [ "BK108X::getRdsLocalTime", "group___g_a04.html#gaebab6fd2a2af03b6a05991dad7b8ab35", null ],
     [ "BK108X::getRdsSync", "group___g_a04.html#gace7a6e83ef173bcf9e26b129df416c9c", null ],
