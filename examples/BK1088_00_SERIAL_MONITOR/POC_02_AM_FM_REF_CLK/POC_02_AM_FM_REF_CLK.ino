@@ -52,12 +52,12 @@ void setup() {
   Serial.begin(9600);
   while(!Serial);
 
-  radio.setup()
   radio.setup(SDA_PIN, CLK_PIN, -1, -1, OSCILLATOR_TYPE_REFCLK);
+  // radio.setup(SDA_PIN, CLK_PIN);
   delay(100);
-  radio.setVolume(20);
+  radio.setVolume(28);
 
-  currentFrequency = 10650;
+  currentFrequency = 9470;
   radio.setFM(8400, 10800, currentFrequency, 10);
   showHelp();
   showStatus();
@@ -149,10 +149,10 @@ void loop()
       radio.setFrequencyDown();
       break;
     case 'S':
-      radio.seekHardware(0,1);
+      radio.seek(0,1, showStatus);
       break;
     case 's':
-      radio.seekHardware(0,0);
+      radio.seek(0,0, showStatus);
       break;
     case '0':
       showStatus();
