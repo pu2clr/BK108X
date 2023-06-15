@@ -47,18 +47,6 @@ If you are a hobbyist, a radio enthusiast and enjoy Arduino, this project is for
 [BK1088E FM, AM (LW, MW and SW) DSP receiver working with Arduino](https://youtu.be/qlEbFC5zt1U)
 
 
-
-### See also
-
-1. [PU2CLR Si4735 Library for Arduino](https://pu2clr.github.io/SI4735/). This library was built based on “Si47XX PROGRAMMING GUIDE; AN332” and it has support to FM, AM and SSB modes (LW, MW and SW). It also can be used on all members of the SI47XX family respecting, of course, the features available for each IC version; 
-2. [PU2CLR SI4844 Arduino Library](https://github.com/pu2clr/SI4844). This is an Arduino library for the SI4844, BROADCAST ANALOG TUNING DIGITAL DISPLAY AM/FM/SW RADIO RECEIVER,  IC from Silicon Labs.  It is available on Arduino IDE. This library is intended to provide an easier interface for controlling the SI4844.
-3. [PU2CLR AKC695X Arduino Library](https://pu2clr.github.io/AKC695X/). The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959sx support AM and FM modes. On AM mode the AKC6955 and AKC6959sx work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.
-4. [PU2CLR KT0915 Arduino Library](https://pu2clr.github.io/KT0915/). The KT0915 is a full band AM (LW, MW and SW) and FM DSP receiver that can provide you a easy way to build a high quality radio with low cost. 
-5. [PU2CLR RDA5807 Arduino Library](https://pu2clr.github.io/RDA5807/). The RDA5807 is a FM DSP integrated circuit receiver (50 to 115MHz) with low noise amplifier support. This device requires very few external components if compared with other similar devices. It also supports RDS/RBDS functionalities, direct auto gain control (AGC) and real time adaptive noise cancellation function.
-6. [PU2CLR SI470X Arduino Library](https://pu2clr.github.io/SI470X/). It is a Silicon Labs device family that integrates the complete functionalities for FM receivers, including RDS (Si4703).
-
-
-
 ## MIT License 
 
 Copyright (c) 2019 Ricardo Lima Caratti
@@ -104,7 +92,7 @@ If you have suggestions to improve this project, please let me know.
 14. 32.768KHz crystal oscillator.
 
 
-### Useful informarion
+### Useful information
 
 * BK1086/88 can be controlled by an MCU through 2-wire I2C mode. 
 * The BK1088 already comes with 40K internal pull-up resistors on the i2c bus. Probabbly, no external pull-up resitores will be needed. However, depending on the size of the bus, consider using external pull-up resistors; 
@@ -133,7 +121,7 @@ To install the current version, you have to [download](https://github.com/pu2clr
 
 * On __Windows__: "My Documents\Arduino\libraries"
 * On __MAC OS__: ˜/Documents/Arduino/libraries
-* On __Linux__: ˜/Documents/Arduino/libraries
+* On __Linux__: ˜/Arduino/libraries
 
 
 ## Functional Block Diagram
@@ -228,20 +216,35 @@ Prototype: Photo 1
 ![Prototype: Photo 1](extras/images/photo_A02.png)
 
 
-
 Prototype: Photo 2
 ![Prototype: Photo 2](extras/images/photo_B01.png)
 
 
-
+Prototype: Photo 3
+![Prototype: Photo 3](extras/images/BK1088E_01.jpg)
 
 
 
 ## Videos
 
-1. [BK1088E FM, AM (LW, MW and SW) DSP receiver working with Arduino](https://youtu.be/qlEbFC5zt1U)
-2. [DSP BK1088E AM/MW and FM test with PU2CLR BK108X Arduino Library](https://youtu.be/c77Zjfsc5Ss)
-3. [DSP BK1088E SW test with PU2CLR BK108X Arduino Library](https://youtu.be/0ttRBs6OyVs)
+1. [All Band receiver with BK1088E and PU2CLR BK108X Arduino Library](https://youtu.be/y7wwjrIYjrg)
+2. [All Band Receiver with BK1088E Arduino Library and LilyGO T Embed](https://youtu.be/5D6u2bwwWx0)
+3. [AM / FM-RDS Receiver with PU2CLR BK108X Arduino Library, Nano and Nokia 5110](https://youtu.be/jwtJYUsiUuo)
+4. [FM/RDS Radio with BK1088E - ESP32 - LCD16x02 with PU2CLR BK108X Arduino Library](https://youtu.be/o8MFkSy3y1g)
+5. [BK1088E FM, AM (LW, MW and SW) DSP receiver working with Arduino](https://youtu.be/qlEbFC5zt1U)
+6. [DSP BK1088E AM/MW and FM test with PU2CLR BK108X Arduino Library](https://youtu.be/c77Zjfsc5Ss)
+7. [DSP BK1088E SW test with PU2CLR BK108X Arduino Library](https://youtu.be/0ttRBs6OyVs)
+
+
+### See also
+
+1. [PU2CLR Si4735 Library for Arduino](https://pu2clr.github.io/SI4735/). This library was built based on “Si47XX PROGRAMMING GUIDE; AN332” and it has support to FM, AM and SSB modes (LW, MW and SW). It also can be used on all members of the SI47XX family respecting, of course, the features available for each IC version; 
+2. [PU2CLR SI4844 Arduino Library](https://github.com/pu2clr/SI4844). This is an Arduino library for the SI4844, BROADCAST ANALOG TUNING DIGITAL DISPLAY AM/FM/SW RADIO RECEIVER,  IC from Silicon Labs.  It is available on Arduino IDE. This library is intended to provide an easier interface for controlling the SI4844.
+3. [PU2CLR AKC695X Arduino Library](https://pu2clr.github.io/AKC695X/). The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959sx support AM and FM modes. On AM mode the AKC6955 and AKC6959sx work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.
+4. [PU2CLR KT0915 Arduino Library](https://pu2clr.github.io/KT0915/). The KT0915 is a full band AM (LW, MW and SW) and FM DSP receiver that can provide you a easy way to build a high quality radio with low cost. 
+5. [PU2CLR RDA5807 Arduino Library](https://pu2clr.github.io/RDA5807/). The RDA5807 is a FM DSP integrated circuit receiver (50 to 115MHz) with low noise amplifier support. This device requires very few external components if compared with other similar devices. It also supports RDS/RBDS functionalities, direct auto gain control (AGC) and real time adaptive noise cancellation function.
+6. [PU2CLR SI470X Arduino Library](https://pu2clr.github.io/SI470X/). It is a Silicon Labs device family that integrates the complete functionalities for FM receivers, including RDS (Si4703).
+
 
 
 ## References
