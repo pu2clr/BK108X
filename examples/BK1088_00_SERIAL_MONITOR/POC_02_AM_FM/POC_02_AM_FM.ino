@@ -53,9 +53,11 @@ void setup() {
   while(!Serial);
 
   radio.setup(SDA_PIN, CLK_PIN);
+  // radio.setup(SDA_PIN, CLK_PIN, OSCILLATOR_TYPE_REFCLK, 32768);
+
   radio.setVolume(20);
   showRegisters();
-  currentFrequency = 10650;
+  currentFrequency = 9470;
   radio.setFM(8400, 10800, currentFrequency, 10);
   showHelp();
   showStatus();
@@ -84,13 +86,14 @@ void showHelp()
 
 void showRegisters() {
 
+  uint16_t *regContent;
   uint8_t reg;
   uint16_t aux;
   char bufferAux[60];
   Serial.println("\n***Register values***** \n");
-
+  regContent = radio.getRegisterValues();
   for ( reg = 0; reg < 32; reg++) {
-    aux = radio.getRegister(reg);
+    aux =  regContent[reg];
     sprintf(bufferAux,"Reg %d: %x (%u)", reg, aux, aux );
     Serial.println(bufferAux);
   }

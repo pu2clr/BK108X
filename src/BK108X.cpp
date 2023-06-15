@@ -1605,6 +1605,19 @@ int BK108X::checkI2C(uint8_t *addressArray)
 }
 
 /**
+ * @ingroup GA05 Check the I2C buss address
+ * @brief Returns the point of uint16_t array (size 32)
+ * @details Useful to monitor the device internal registers
+ * @return point of shadowRegisters
+ */
+uint16_t *BK108X::getRegisterValues() {
+    for (uint8_t i = 0; i < 32; i++ ) {
+        this->getRegister(i); // Gets the current value of the internal register
+    }
+    return shadowRegisters;
+}
+
+/**
  * @ingroup GA05 Covert numbers to char array
  * @brief Converts a number to a char array
  * @details It is useful to mitigate memory space used by functions like sprintf or othetr generic similar functions

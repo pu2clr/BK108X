@@ -18,8 +18,6 @@ void setup()
 
   uint8_t i2cBusList[15];
   int i2cStatus;
-  int reg;
-  uint16_t aux;
 
   Serial.begin(9600);
   while (!Serial);
@@ -46,15 +44,7 @@ void setup()
 
   rx.setup(SDA_PIN, CLK_PIN);
 
-
-  Serial.println("\n***Register values\***** n");
-
-  for ( reg = 0; reg < 32; reg++) {
-    aux = rx.getRegister(reg);
-    sprintf(bufferAux,"Reg %d: %x (%u)", reg, aux, aux );
-    Serial.println(bufferAux);
-  }
-
+  showRegisters();
   
   Serial.println("\nReceiver started!");
   
@@ -78,6 +68,23 @@ void setup()
   Serial.println("\nFinish!***********");  
   
 }
+
+void showRegisters() {
+
+  uint16_t *regContent;
+  uint8_t reg;
+  uint16_t aux;
+  char bufferAux[60];
+  Serial.println("\n***Register values***** \n");
+  regContent = rx.getRegisterValues();
+  for ( reg = 0; reg < 32; reg++) {
+    aux =  regContent[reg];
+    sprintf(bufferAux,"Reg %d: %x (%u)", reg, aux, aux );
+    Serial.println(bufferAux);
+  }
+
+}
+
 
 void loop()
 {

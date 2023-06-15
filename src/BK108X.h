@@ -1157,6 +1157,7 @@ public:
 
     int checkI2C(uint8_t *addressArray);
     void convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros = true);
+    uint16_t *getRegisterValues();
 
     /**
      * @ingroup GA05 Format the Frequency
