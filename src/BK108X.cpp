@@ -434,6 +434,7 @@ void BK108X::powerUp()
         setRegister(REG1C, reg1c->raw);
         //The REG1D receives the inverted order of the 16 least significant bits of the bk_number.. The bit order of REG1D is opposite to the calculation result
         aux = bk_number & 0b001111111111111111;
+        // Inverts the bit order of aux;
         for (int i = 0; i < 16; i++)
         {
             if ((aux & (1 << i)) != 0)
