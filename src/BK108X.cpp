@@ -423,7 +423,7 @@ void BK108X::powerUp()
     // 32768 crystal clock (default setup)
     setRegister(REG1C, 0x8820); // 0b1000100000100000
     setRegister(REG1D, 0x0200); // 0b0000001000000000  ->  512
-    // If the setup is not factory default
+    // If the setup is not factory default -- The commands below are not working propely
     if (this->oscillatorType != OSCILLATOR_TYPE_CRYSTAL || oscillatorFrequency != 32768)
     {
         uint32_t bk_number = (oscillatorFrequency / 512) + 0.5; // The result is a 18 bit number
@@ -441,7 +441,7 @@ void BK108X::powerUp()
             if ((aux & (1 << i)) != 0)
                 final_result |= 1 << (15 - i);
         }
-        setRegister(REG1D, final_result);
+        setRegister(REG1D, final_result); // It has no effect on the REG1d register.
         // setRegister(REG1D,0x71DA); // 12MHz test
     }
 
