@@ -54,11 +54,13 @@ void setup() {
 
   radio.setup(SDA_PIN, CLK_PIN);
   radio.setVolume(20);
-
+  showRegisters();
   currentFrequency = 10650;
   radio.setFM(8400, 10800, currentFrequency, 10);
   showHelp();
   showStatus();
+
+  showRegisters();
 
   lastRssi = rssi = radio.getRssi();
   lastSnr = snr = radio.getSnr();
@@ -79,6 +81,22 @@ void showHelp()
   Serial.println("==================================================");
   delay(1000);
 }
+
+void showRegisters() {
+
+  uint8_t reg;
+  uint16_t aux;
+  char bufferAux[60];
+  Serial.println("\n***Register values***** \n");
+
+  for ( reg = 0; reg < 32; reg++) {
+    aux = radio.getRegister(reg);
+    sprintf(bufferAux,"Reg %d: %x (%u)", reg, aux, aux );
+    Serial.println(bufferAux);
+  }
+
+}
+
 
 // Show current frequency
 void showStatus()

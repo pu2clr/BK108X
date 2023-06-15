@@ -16,12 +16,15 @@ char bufferAux[160];
 void setup()
 {
 
-  uint8_t i2cBusList[5];
+  uint8_t i2cBusList[15];
   int i2cStatus;
+  int reg;
+  uint16_t aux;
 
   Serial.begin(9600);
   while (!Serial);
 
+  /*
   i2cStatus = rx.checkI2C(i2cBusList); 
 
   if (i2cStatus == -1)
@@ -33,7 +36,7 @@ void setup()
       sprintf(bufferAux,"Found I2C adress: %X (HEX)\n", i2cBusList[i]);
       Serial.print(bufferAux);
     }
-  }    
+  }    */
 
   Serial.println("\n********Begin!");
  
@@ -42,6 +45,16 @@ void setup()
   Serial.println("\nStarting the receiver!");
 
   rx.setup(SDA_PIN, CLK_PIN);
+
+
+  Serial.println("\n***Register values\***** n");
+
+  for ( reg = 0; reg < 32; reg++) {
+    aux = rx.getRegister(reg);
+    sprintf(bufferAux,"Reg %d: %x (%u)", reg, aux, aux );
+    Serial.println(bufferAux);
+  }
+
   
   Serial.println("\nReceiver started!");
   
