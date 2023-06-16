@@ -1077,21 +1077,11 @@ void BK108X::setVolumeDown()
  * @section GA04 RDS/RBDS
  */
 
-/**
- * @ingroup GA04
- * @brief Gets the RDS registers information
- * @details Gets the value of the registers from 0x0A to 0x0F
- * @details This function also updates the value of shadowRegisters[0];
- * @return bk_reg0a
- */
-void BK108X::getRdsStatus()
-{
-}
 
 /**
  * @ingroup GA04
  * @brief Sets the Rds Mode Standard or Verbose
- *
+ * @details There is no information about it in the BK1088 documentation.
  * @param rds_mode  0 = Standard (default); 1 = Verbose
  */
 void BK108X::setRdsMode(uint8_t rds_mode)
@@ -1130,7 +1120,7 @@ void BK108X::setRds(bool value, bool interrupt_enable)
 bool BK108X::getRdsReady()
 {
     getRegister(REG0A);
-    if (!reg0a->refined.RDSR)
+    if (!reg0a->refined.RDSR) // Checks if there is some RDS information available. 
         return false;
     getRegister(REG0C); // The First Register of RDS - Block A
     getRegister(REG0D); // The second register of RDS  - Block B
