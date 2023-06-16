@@ -713,7 +713,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00354">354</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00584">BK108X::setChannel()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00556">BK108X::setChannel()</a>.</p>
 
 </div>
 </div>
@@ -760,7 +760,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00388">388</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00505">BK108X::setup()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00477">BK108X::setup()</a>.</p>
 
 </div>
 </div>
@@ -824,21 +824,6 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 </div><div class="memdoc">
 
 <p>Starts the device. </p>
-<p>sets the reset pin, interrupt pins and oscillator type you are using in your project.</p>
-<p>You have to inform at least two parameters: RESET pin and I2C SDA pin of your MCU </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sda_pin</td><td>MCU SDA/SDIO pin (ATMEGA328 must be 4) </td></tr>
-    <tr><td class="paramname">sclk_pin</td><td>MCU SCLK/CLK pin (ATMEGA328 must be 5) </td></tr>
-    <tr><td class="paramname">rdsInterruptPin</td><td>// optional. Sets the Interrupt Arduino pin used to RDS function control. </td></tr>
-    <tr><td class="paramname">seekInterruptPin</td><td>// optional. Sets the Arduino pin used to Seek function control. </td></tr>
-    <tr><td class="paramname">oscillator_type</td><td>// optional. Sets the Oscillator type used Crystal (default) or Ref. Clock. void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type, uint16_t maxDelayAfterCrystalOn) { Configures BEKEN I2C bus this-&gt;i2cInit(sda_pin, sclk_pin);</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>if (rdsInterruptPin &gt;= 0) this-&gt;rdsInterruptPin = rdsInterruptPin; if (seekInterruptPin &gt;= 0) this-&gt;seekInterruptPin = seekInterruptPin;</p>
-<p>this-&gt;oscillatorType = oscillator_type; this-&gt;maxDelayAfterCrystalOn = maxDelayAfterCrystalOn;</p>
-<p><a class="el" href="group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618" title="Powers the receiver on.">powerUp()</a>; }</p>
-<p>Starts the device</p>
 <p>Initiates the divice (similar to the previous setup function)</p>
 <p>This method allows different clock frequencies.</p>
 <p>You have to inform at least two parameters: RESET pin and I2C SDA pin of your MCU </p><dl class="params"><dt>Parameters</dt><dd>
@@ -851,7 +836,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00505">505</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00477">477</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l00056">BK108X::i2cInit()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l00388">BK108X::powerUp()</a>.</p>
 
@@ -907,7 +892,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00524">524</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00496">496</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -968,7 +953,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00554">554</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00526">526</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -996,7 +981,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00584">584</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00556">556</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l00354">BK108X::waitAndFinishTune()</a>.</p>
 
@@ -1026,7 +1011,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00605">605</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00577">577</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1048,7 +1033,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 <p>Increments the current frequency. </p>
 <p>The increment uses the band space as step. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00626">626</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00598">598</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1070,7 +1055,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 <p>Decrements the current frequency. </p>
 <p>The drecrement uses the band space as step. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00641">641</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00613">613</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1092,7 +1077,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 <p>Gets the current frequency. </p>
 <dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00656">656</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00628">628</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1114,7 +1099,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 <p>Gets the current channel. </p>
 <dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00666">666</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00638">638</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1136,7 +1121,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 <p>Gets the current channel stored in register 0x0B. </p>
 <p>This method is useful to query the current channel during the seek operations. </p><dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00677">677</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00649">649</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1159,7 +1144,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 <p>Unlike getFrequency method, this method queries the device.</p>
 <dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00690">690</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00662">662</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1223,7 +1208,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 <div class="ttc" id="a_b_k108_x_8h_html_a8b6fda0c416f414d2f9b94e704b4bb42"><div class="ttname"><a href="_b_k108_x_8h.html#a8b6fda0c416f414d2f9b94e704b4bb42">BK_SEEK_UP</a></div><div class="ttdeci">#define BK_SEEK_UP</div><div class="ttdoc">Seek Up Direction.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00033">BK108X.h:33</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_ae9395bc20d9f1ef654253fed787e07cd"><div class="ttname"><a href="group___g_a01.html#ae9395bc20d9f1ef654253fed787e07cd">BK108X::seek</a></div><div class="ttdeci">void seek(uint8_t seek_mode, uint8_t direction, void(*showFunc)()=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l01076">BK108X.h:1076</a></div></div>
 <div class="ttc" id="agroup___g_a01_html_class_b_k108_x"><div class="ttname"><a href="group___g_a01.html#class_b_k108_x">BK108X</a></div><div class="ttdoc">KT0915 Class.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8h_source.html#l00732">BK108X.h:733</a></div></div>
-<div class="ttc" id="agroup___g_a03_html_ga91be125793a421bc17e2b25223b3a10a"><div class="ttname"><a href="group___g_a03.html#ga91be125793a421bc17e2b25223b3a10a">BK108X::getFrequency</a></div><div class="ttdeci">uint16_t getFrequency()</div><div class="ttdoc">Gets the current frequency.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l00656">BK108X.cpp:656</a></div></div>
+<div class="ttc" id="agroup___g_a03_html_ga91be125793a421bc17e2b25223b3a10a"><div class="ttname"><a href="group___g_a03.html#ga91be125793a421bc17e2b25223b3a10a">BK108X::getFrequency</a></div><div class="ttdeci">uint16_t getFrequency()</div><div class="ttdoc">Gets the current frequency.</div><div class="ttdef"><b>Definition:</b> <a href="_b_k108_x_8cpp_source.html#l00628">BK108X.cpp:628</a></div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">seek_mode</td><td>Seek Mode; 0 = Wrap at the upper or lower band limit and continue seeking (default); 1 = Stop seeking at the upper or lower band limit. </td></tr>
@@ -1233,7 +1218,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00736">736</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00708">708</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1279,7 +1264,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00774">774</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00746">746</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1319,7 +1304,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00820">820</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00792">792</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1361,7 +1346,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00845">845</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00817">817</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1402,7 +1387,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00870">870</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00842">842</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1424,7 +1409,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 <p>Gets the current Rssi. </p>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00887">887</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00859">859</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1446,7 +1431,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 <p>Gets the current SNR. </p>
 <dl class="section return"><dt>Returns</dt><dd>int The SNR Value.( in dB) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00899">899</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00871">871</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1474,7 +1459,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00911">911</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00883">883</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1515,7 +1500,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00932">932</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00904">904</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1555,7 +1540,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00951">951</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00923">923</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1595,7 +1580,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00965">965</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00937">937</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1623,7 +1608,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00978">978</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00950">950</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1651,7 +1636,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00990">990</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00962">962</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1690,9 +1675,9 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01003">1003</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00975">975</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01016">BK108X::setAudioMute()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l00988">BK108X::setAudioMute()</a>.</p>
 
 </div>
 </div>
@@ -1720,9 +1705,9 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01016">1016</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00988">988</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01003">BK108X::setAudioMute()</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l00975">BK108X::setAudioMute()</a>.</p>
 
 </div>
 </div>
@@ -1750,7 +1735,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01027">1027</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l00999">999</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1778,7 +1763,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01041">1041</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01013">1013</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1806,7 +1791,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01053">1053</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01025">1025</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1828,7 +1813,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 <p>Gets the current audio volume level. </p>
 <dl class="section return"><dt>Returns</dt><dd>uint8_t 0 to 15 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01070">1070</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01042">1042</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1849,7 +1834,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 
 <p>Increments the audio volume. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01080">1080</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01052">1052</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -1870,7 +1855,7 @@ BK1086/88E - BROADCAST AM/FM/SW/LW RADIO RECEIVER Rev 1.3; page 17.</dd></dl>
 
 <p>Decrements the audio volume. </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01094">1094</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01066">1066</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
