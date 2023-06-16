@@ -1102,7 +1102,6 @@ public:
     void setVolumeUp();
     void setVolumeDown();
 
-    void getRdsStatus();
     void setRdsMode(uint8_t rds_mode = 0);
     void setRds(bool value, bool interrupt_enable = false);
     inline void setRDS(bool value, bool interrupt_enable = false ) { setRds(value, interrupt_enable); };
