@@ -1195,7 +1195,6 @@ uint8_t BK108X::getRdsProgramType(void)
 }
 
 /**
- * @todo to be implemented
  * @ingroup GA04
  *
  * @brief Process data received from group 2B
