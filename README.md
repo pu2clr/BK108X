@@ -3,7 +3,7 @@
 The BK1088E is a single-chip solution for receiving AM, FM, and shortwave radio. 
 Using inexpensive components (Arduino Pro Mini, some push buttons buttons, and a standard OLED or TFT display), the  hobbyists can build serviceable little receiver based on BK1088E with a impressive performance.  
 
-This project is about an Arduino Library to control the BK1086 and BK1088 devices. It was based on "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.3" documentation from BEKEN Corporation.
+This project involves a cross-platform Arduino Library designed to control the BK1086 and BK1088 devices. The NK108X Aerduino Library library is based on the documentation titled "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.4" provided by BEKEN Corporation. Its purpose is to enable seamless control and integration of the BK1086 and BK1088 devices within Arduino projects.
 
 This library can be freely distributed using the MIT Free Software model. 
 

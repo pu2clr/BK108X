@@ -1196,13 +1196,16 @@ uint8_t BK108X::getRdsProgramType(void)
 
 /**
  * @ingroup GA04
- *
- * @brief Process data received from group 2B
+ * @brief Process data received from group 2B - Station Name
+ * @details It appears that the BK1088 device is typically pre-configured with RBDS setup instead of RDS by default. 
+ * @details Consequently, the Station Name is obtained from block E instead of block B.
+ * @details The documentation from BEKEN used in this project does not provide instructions on how to switch from RBDS to RDS mode. 
+ * @details If anyone has access to this information, kindly share it with us.  
  * @param c  char array reference to the "group 2B" text
  */
 void inline BK108X::getNext2Block(char *c)
 {
-    c[1] = reg0f->refined.lowByte;
+    c[1] = reg0f->refined.lowByte; // should be reg0d (block B) if RDS and reg0f (block E) if RBDS. 
     c[0] = reg0f->refined.highByte;
 }
 
