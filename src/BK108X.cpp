@@ -1200,9 +1200,8 @@ uint8_t BK108X::getRdsProgramType(void)
  * @brief Process data received from group 2B
  * @param c  char array reference to the "group 2B" text
  */
-void BK108X::getNext2Block(char *c)
+void inline BK108X::getNext2Block(char *c)
 {
-
     c[1] = reg0f->refined.lowByte;
     c[0] = reg0f->refined.highByte;
 }
@@ -1214,7 +1213,7 @@ void BK108X::getNext2Block(char *c)
  * @details decodes data received from block C and block D
  * @param c  char array reference to the "group  2A" text
  */
-void BK108X::getNext4Block(char *c)
+void inline BK108X::getNext4Block(char *c)
 {
     c[0] = reg0e->refined.highByte; // RDS Block C high byte
     c[1] = reg0e->refined.lowByte;  // RDS Block C low byte
