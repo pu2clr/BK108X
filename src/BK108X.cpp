@@ -1203,29 +1203,8 @@ uint8_t BK108X::getRdsProgramType(void)
 void BK108X::getNext2Block(char *c)
 {
 
-    c[1] = reg0d->refined.lowByte;
-    c[0] = reg0d->refined.highByte;
-
-    /*
-    char raw[2];
-    int i, j;
-
-    raw[1] = reg0d->refined.lowByte;  // RDS Block B low byte
-    raw[0] = reg0d->refined.highByte; // RDA Block B high byte
-
-    for (i = j = 0; i < 2; i++)
-    {
-        if (raw[i] == 0xD || raw[i] == 0xA)
-            c[j] = '.';
-        else if (raw[i] >= 32)
-        {
-            c[j] = raw[i];
-            j++;
-        }
-        else
-            c[i] = ' ';
-    }
-    */
+    c[1] = reg0f->refined.lowByte;
+    c[0] = reg0f->refined.highByte;
 }
 
 /**
@@ -1241,34 +1220,6 @@ void BK108X::getNext4Block(char *c)
     c[1] = reg0e->refined.lowByte;  // RDS Block C low byte
     c[2] = reg0f->refined.highByte; // RDS Block D high byte
     c[3] = reg0f->refined.lowByte;  // RDS Block D low byte
-
-    /*
-    char raw[4];
-    int i, j;
-
-    raw[0] = reg0e->refined.highByte; // RDS Block C high byte
-    raw[1] = reg0e->refined.lowByte;  // RDS Block C low byte
-    raw[2] = reg0f->refined.highByte; // RDS Block D high byte
-    raw[3] = reg0f->refined.lowByte;  // RDS Block D low byte
-
-    for (i = j = 0; i < 4; i++)
-    {
-        if (raw[i] == 0xD || raw[i] == 0xA)
-        {
-            c[j] = '\0';
-            return;
-        }
-        if (raw[i] >= 32)
-        {
-            c[j] = raw[i];
-            j++;
-        }
-        else
-        {
-            c[i] = ' ';
-        }
-    }
-    */
 }
 
 /**
@@ -1284,7 +1235,7 @@ char *BK108X::getRdsText(void)
 
 /**
  * @ingroup GA04
- * @todo This function is not working. Checking the BK1088E devices and RDS protocol implementation
+ * @todo Need to check Block B and Block E and RDS mode
  * @todo RDS Dynamic PS or Scrolling PS support
  * @brief Gets the Station Name and other messages.
  * @details Same getRdsStationName.
