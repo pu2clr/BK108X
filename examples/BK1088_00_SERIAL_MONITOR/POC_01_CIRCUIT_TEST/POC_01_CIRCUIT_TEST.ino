@@ -16,13 +16,12 @@ char bufferAux[160];
 void setup()
 {
 
+  Serial.begin(9600);
+  while (!Serial);
+  /*
   uint8_t i2cBusList[15];
   int i2cStatus;
 
-  Serial.begin(9600);
-  while (!Serial);
-
-  /*
   i2cStatus = rx.checkI2C(i2cBusList); 
 
   if (i2cStatus == -1)

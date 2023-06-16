@@ -462,34 +462,6 @@ void BK108X::powerDown()
     delay(100);
 }
 
-/**
- * @ingroup GA03
- * @brief Starts the device
- * @details sets the reset pin, interrupt pins and oscillator type you are using in your project.
- * @details You have to inform at least two parameters: RESET pin and I2C SDA pin of your MCU
- * @param sda_pin MCU SDA/SDIO pin  (ATMEGA328 must be 4)
- * @param sclk_pin MCU SCLK/CLK pin (ATMEGA328 must be 5)
- * @param rdsInterruptPin  // optional. Sets the Interrupt Arduino pin used to RDS function control.
- * @param seekInterruptPin // optional. Sets the Arduino pin used to Seek function control.
- * @param oscillator_type  // optional. Sets the Oscillator type used Crystal (default) or Ref. Clock.
- */
-/**
-void BK108X::setup(int sda_pin, int sclk_pin, int rdsInterruptPin, int seekInterruptPin, uint8_t oscillator_type, uint16_t maxDelayAfterCrystalOn)
-{
-    // Configures BEKEN I2C bus
-    this->i2cInit(sda_pin, sclk_pin);
-
-    if (rdsInterruptPin >= 0)
-        this->rdsInterruptPin = rdsInterruptPin;
-    if (seekInterruptPin >= 0)
-        this->seekInterruptPin = seekInterruptPin;
-
-    this->oscillatorType = oscillator_type;
-    this->maxDelayAfterCrystalOn = maxDelayAfterCrystalOn;
-
-    powerUp();
-}
-*/
 
 /**
  * @ingroup GA03
@@ -1579,7 +1551,9 @@ void BK108X::clearRdsBuffer()
 /**
  * @ingroup GA05 Check the I2C buss address
  * @brief Check the I2C bus address
- *
+ * @details For some reason, the BK1088 device does not work with the standard Wire.h library of Arduino. 
+ * @details The checkI2C function is only used to test the circuit. 
+ * @details In practice, no function from the Wire.h library is utilized in a real application with the BK1088 in this project. 
  * @param uint8_t address Array - this array will be populated with the I2C bus addresses found (minimum three elements)
  * @return 0 if no i2c device is found; -1 if error is found or n > 0, where n is the number of I2C bus address found
  */
@@ -1601,6 +1575,7 @@ int BK108X::checkI2C(uint8_t *addressArray)
             return -1;
     }
     Wire.end();
+    delay(200);
     return idx;
 }
 
