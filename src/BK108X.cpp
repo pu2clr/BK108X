@@ -1202,6 +1202,11 @@ uint8_t BK108X::getRdsProgramType(void)
  */
 void BK108X::getNext2Block(char *c)
 {
+
+    c[1] = reg0d->refined.lowByte;
+    c[0] = reg0d->refined.highByte;
+
+    /*
     char raw[2];
     int i, j;
 
@@ -1220,6 +1225,7 @@ void BK108X::getNext2Block(char *c)
         else
             c[i] = ' ';
     }
+    */
 }
 
 /**
@@ -1231,6 +1237,12 @@ void BK108X::getNext2Block(char *c)
  */
 void BK108X::getNext4Block(char *c)
 {
+    c[0] = reg0e->refined.highByte; // RDS Block C high byte
+    c[1] = reg0e->refined.lowByte;  // RDS Block C low byte
+    c[2] = reg0f->refined.highByte; // RDS Block D high byte
+    c[3] = reg0f->refined.lowByte;  // RDS Block D low byte
+
+    /*
     char raw[4];
     int i, j;
 
@@ -1256,6 +1268,7 @@ void BK108X::getNext4Block(char *c)
             c[i] = ' ';
         }
     }
+    */
 }
 
 /**
