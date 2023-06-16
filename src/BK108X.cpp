@@ -1103,12 +1103,18 @@ void BK108X::setRdsMode(uint8_t rds_mode)
  * @ingroup GA04
  * @brief Sets the RDS operation
  * @details Enable or Disable the RDS
- *
+ * @details You can setup interrupt via GPIO2. It is useful to avoid pulling during RDS queries.
+ * @details When a new RDS data is available (new RDS information came) a 5ms low pulse will appear at GPIO2
  * @param true = turns the RDS ON; false  = turns the RDS OFF
+ * @param true = enable interruot at GPIO2 when new RDS is available (default false).
  */
-void BK108X::setRds(bool value)
+void BK108X::setRds(bool value, bool interrupt_enable)
 {
     reg04->refined.RDSEN = value;
+    if ( interrupt_enable ) {
+        reg04->refined.RDSIEN = interrupt_enable; // enable interrupt when new RDS information is available
+        reg04->refined.GPIO2 = 1; // set to 5ms low pulse  at GPIO2
+    }
     setRegister(REG04, reg04->raw);
 }
 
@@ -1206,19 +1212,14 @@ void BK108X::getNext2Block(char *c)
     for (i = j = 0; i < 2; i++)
     {
         if (raw[i] == 0xD || raw[i] == 0xA)
-        {
-            c[j] = '\0';
-            return;
-        }
-        if (raw[i] >= 32)
+            c[j] = '.';
+        else if (raw[i] >= 32)
         {
             c[j] = raw[i];
             j++;
         }
         else
-        {
             c[i] = ' ';
-        }
     }
 }
 

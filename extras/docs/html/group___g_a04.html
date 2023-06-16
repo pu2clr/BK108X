@@ -114,9 +114,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gadb237cc8ad191804af5de514a5610fd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gadb237cc8ad191804af5de514a5610fd9">BK108X::setRdsMode</a> (uint8_t <a class="el" href="group___g_a01.html#a864add052ac17f0669938b647f681398">rds_mode</a>=0)</td></tr>
 <tr class="memdesc:gadb237cc8ad191804af5de514a5610fd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Rds Mode Standard or Verbose.  <br /></td></tr>
 <tr class="separator:gadb237cc8ad191804af5de514a5610fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadc61ebb78e49b6bfc9aa6eadc98363a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gadc61ebb78e49b6bfc9aa6eadc98363a5">BK108X::setRds</a> (bool value)</td></tr>
-<tr class="memdesc:gadc61ebb78e49b6bfc9aa6eadc98363a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the RDS operation.  <br /></td></tr>
-<tr class="separator:gadc61ebb78e49b6bfc9aa6eadc98363a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae34ef5e3d69ef41522b611dcc3ce14a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gae34ef5e3d69ef41522b611dcc3ce14a0">BK108X::setRds</a> (bool value, bool interrupt_enable=false)</td></tr>
+<tr class="memdesc:gae34ef5e3d69ef41522b611dcc3ce14a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the RDS operation.  <br /></td></tr>
+<tr class="separator:gae34ef5e3d69ef41522b611dcc3ce14a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1fb9b7d09968c248624c9c9c3aa3b307"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga1fb9b7d09968c248624c9c9c3aa3b307">BK108X::getRdsReady</a> ()</td></tr>
 <tr class="memdesc:ga1fb9b7d09968c248624c9c9c3aa3b307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if RDS Ready.  <br /></td></tr>
 <tr class="separator:ga1fb9b7d09968c248624c9c9c3aa3b307"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -202,7 +202,7 @@ RDS/RBDS</h1>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01134">1134</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01310">BK108X::getRdsText2A()</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01311">BK108X::getRdsText2A()</a>.</p>
 
 </div>
 </div>
@@ -236,7 +236,7 @@ RDS/RBDS</h1>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01143">1143</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01337">BK108X::getRdsText2B()</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01338">BK108X::getRdsText2B()</a>.</p>
 
 </div>
 </div>
@@ -271,7 +271,7 @@ RDS/RBDS</h1>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01153">1153</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01281">BK108X::getRdsText0A()</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01282">BK108X::getRdsText0A()</a>.</p>
 
 </div>
 </div>
@@ -326,8 +326,8 @@ RDS/RBDS</h1>
 
 </div>
 </div>
-<a id="gadc61ebb78e49b6bfc9aa6eadc98363a5" name="gadc61ebb78e49b6bfc9aa6eadc98363a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadc61ebb78e49b6bfc9aa6eadc98363a5">&#9670;&#160;</a></span>setRds()</h2>
+<a id="gae34ef5e3d69ef41522b611dcc3ce14a0" name="gae34ef5e3d69ef41522b611dcc3ce14a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae34ef5e3d69ef41522b611dcc3ce14a0">&#9670;&#160;</a></span>setRds()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -336,22 +336,34 @@ RDS/RBDS</h1>
           <td class="memname">void BK108X::setRds </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>interrupt_enable</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Sets the RDS operation. </p>
 <p>Enable or Disable the RDS</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>You can setup interrupt via GPIO2. It is useful to avoid pulling during RDS queries.</p>
+<p>When a new RDS data is available (new RDS information came) a 5ms low pulse will appear at GPIO2 </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">true</td><td>= turns the RDS ON; false = turns the RDS OFF </td></tr>
+    <tr><td class="paramname">true</td><td>= enable interruot at GPIO2 when new RDS is available (default false). </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01109">1109</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01111">1111</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="_b_k108_x_8h_source.html#l01108">BK108X::setRDS()</a>.</p>
 
@@ -378,9 +390,9 @@ RDS/RBDS</h1>
 <p>When using the polling method, it is best not to poll continuously. The data will appear in intervals of ~88 ms and the RDSR indicator will be available for at least 40 ms, so a polling rate of 40 ms or less should be sufficient.</p>
 <p>ATTENTION: You must call this function before calling any RDS function to process data </p><dl class="section return"><dt>Returns</dt><dd>true or false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01124">1124</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01130">1130</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01381">BK108X::getRdsAllData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01382">BK108X::getRdsAllData()</a>.</p>
 
 </div>
 </div>
@@ -403,7 +415,7 @@ RDS/RBDS</h1>
 <p>Returns the current Text Flag A/B. </p>
 <p>You must call getRdsReady before calling this function </p><dl class="section return"><dt>Returns</dt><dd>uint8_t current Text Flag A/B </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01143">1143</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01149">1149</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -425,7 +437,7 @@ RDS/RBDS</h1>
 <p>Return the group type - Gets the Group Type (extracted from the Block B) </p>
 <p>You must call getRdsReady before calling this function </p><dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01156">1156</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01162">1162</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -448,7 +460,7 @@ RDS/RBDS</h1>
 <p>Gets the version code (extracted from the Block B) </p>
 <p>You must call getRdsReady before calling this function </p><dl class="section return"><dt>Returns</dt><dd>0=A or 1=B </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01170">1170</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01176">1176</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -472,7 +484,7 @@ RDS/RBDS</h1>
 <p>You must call getRdsReady before calling this function </p><dl class="section see"><dt>See also</dt><dd><a href="https://en.wikipedia.org/wiki/Radio_Data_System">https://en.wikipedia.org/wiki/Radio_Data_System</a> </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>program type (an integer betwenn 0 and 31) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01184">1184</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01190">1190</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -501,9 +513,9 @@ RDS/RBDS</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01198">1198</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01204">1204</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01281">BK108X::getRdsText0A()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01337">BK108X::getRdsText2B()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01282">BK108X::getRdsText0A()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01338">BK108X::getRdsText2B()</a>.</p>
 
 </div>
 </div>
@@ -531,9 +543,9 @@ RDS/RBDS</h1>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01232">1232</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01233">1233</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01310">BK108X::getRdsText2A()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01311">BK108X::getRdsText2A()</a>.</p>
 
 </div>
 </div>
@@ -556,7 +568,7 @@ RDS/RBDS</h1>
 <p>Gets the RDS Text when the message is of the Group Type 2 version A. </p>
 <dl class="section return"><dt>Returns</dt><dd>char* The string (char array) with the content (Text) received from group 2A </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01267">1267</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01268">1268</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -582,11 +594,11 @@ RDS/RBDS</h1>
 </dd></dl>
 <p>Same getRdsStationName. </p><dl class="section return"><dt>Returns</dt><dd>char* should return a string with the station name. However, some stations send other kind of messages </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01281">1281</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01282">1282</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01198">BK108X::getNext2Block()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l00790">BK108X::rds_buffer0A</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01204">BK108X::getNext2Block()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l00790">BK108X::rds_buffer0A</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01381">BK108X::getRdsAllData()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l01153">BK108X::getRdsStationName()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01382">BK108X::getRdsAllData()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l01153">BK108X::getRdsStationName()</a>.</p>
 
 </div>
 </div>
@@ -610,11 +622,11 @@ RDS/RBDS</h1>
 <p>@</p>
 <dl class="section return"><dt>Returns</dt><dd>char* string with the Text of the group A2 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01310">1310</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01311">1311</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01232">BK108X::getNext4Block()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l00788">BK108X::rds_buffer2A</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01233">BK108X::getNext4Block()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l00788">BK108X::rds_buffer2A</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01381">BK108X::getRdsAllData()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l01134">BK108X::getRdsProgramInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01382">BK108X::getRdsAllData()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l01134">BK108X::getRdsProgramInformation()</a>.</p>
 
 </div>
 </div>
@@ -637,11 +649,11 @@ RDS/RBDS</h1>
 <p>Gets the Text processed for the 2B group. </p>
 <dl class="section return"><dt>Returns</dt><dd>char* string with the Text of the group AB </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01337">1337</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01338">1338</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01198">BK108X::getNext2Block()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l00789">BK108X::rds_buffer2B</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01204">BK108X::getNext2Block()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l00789">BK108X::rds_buffer2B</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01381">BK108X::getRdsAllData()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l01143">BK108X::getRdsStationInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01382">BK108X::getRdsAllData()</a>, and <a class="el" href="_b_k108_x_8h_source.html#l01143">BK108X::getRdsStationInformation()</a>.</p>
 
 </div>
 </div>
@@ -705,11 +717,11 @@ RDS/RBDS</h1>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if found at least one valid data </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#a6ac7cb09328897832578e4397645ab75">setRDS</a>, setRdsFifo, <a class="el" href="group___g_a04.html#ga5ee4c3a85508799204ed17fb84856fdb" title="Gets Station Name, Station Information, Program Information and utcTime.">getRdsAllData</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#ae6fb3f9108ff9bc85382e541f256805d">setRDS</a>, setRdsFifo, <a class="el" href="group___g_a04.html#ga5ee4c3a85508799204ed17fb84856fdb" title="Gets Station Name, Station Information, Program Information and utcTime.">getRdsAllData</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01381">1381</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01382">1382</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01124">BK108X::getRdsReady()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l01281">BK108X::getRdsText0A()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l01310">BK108X::getRdsText2A()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l01337">BK108X::getRdsText2B()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01399">BK108X::getRdsTime()</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01130">BK108X::getRdsReady()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l01282">BK108X::getRdsText0A()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l01311">BK108X::getRdsText2A()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l01338">BK108X::getRdsText2B()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01400">BK108X::getRdsTime()</a>.</p>
 
 </div>
 </div>
@@ -731,11 +743,11 @@ RDS/RBDS</h1>
 <p>Gets the RDS time and date when the Group type is 4. </p>
 <dl class="section return"><dt>Returns</dt><dd>char* a string with hh:mm +/- offset </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01399">1399</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01400">1400</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="_b_k108_x_8h_source.html#l00791">BK108X::rds_time</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01381">BK108X::getRdsAllData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01382">BK108X::getRdsAllData()</a>.</p>
 
 </div>
 </div>
@@ -760,7 +772,7 @@ RDS/RBDS</h1>
 <p>ATTENTION: Some stations broadcast wrong time. </p><dl class="section return"><dt>Returns</dt><dd>char* a string with hh:mm </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#ga1fb9b7d09968c248624c9c9c3aa3b307" title="Returns true if RDS Ready.">getRdsReady</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01465">1465</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01466">1466</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="_b_k108_x_8h_source.html#l00791">BK108X::rds_time</a>.</p>
 
@@ -784,7 +796,7 @@ RDS/RBDS</h1>
 <p>Get the Rds Sync. </p>
 <p>Returns true if RDS currently synchronized. </p><dl class="section return"><dt>Returns</dt><dd>true or false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01528">1528</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01529">1529</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 </div>
 </div>
@@ -806,7 +818,7 @@ RDS/RBDS</h1>
 <p>Clear RDS Information (Station Name, Station Information, Program Information and Time) </p>
 <p>Clear the buffer with latest RDS information </p>
 
-<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01538">1538</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_b_k108_x_8cpp_source.html#l01539">1539</a> of file <a class="el" href="_b_k108_x_8cpp_source.html">BK108X.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="_b_k108_x_8h_source.html#l00790">BK108X::rds_buffer0A</a>, <a class="el" href="_b_k108_x_8h_source.html#l00788">BK108X::rds_buffer2A</a>, <a class="el" href="_b_k108_x_8h_source.html#l00789">BK108X::rds_buffer2B</a>, and <a class="el" href="_b_k108_x_8h_source.html#l00791">BK108X::rds_time</a>.</p>
 

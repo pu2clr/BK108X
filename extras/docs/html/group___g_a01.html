@@ -1665,11 +1665,11 @@ raw</td>
 <tr class="memitem:gadb237cc8ad191804af5de514a5610fd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gadb237cc8ad191804af5de514a5610fd9">setRdsMode</a> (uint8_t <a class="el" href="group___g_a01.html#a864add052ac17f0669938b647f681398">rds_mode</a>=0)</td></tr>
 <tr class="memdesc:gadb237cc8ad191804af5de514a5610fd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Rds Mode Standard or Verbose.  <br /></td></tr>
 <tr class="separator:gadb237cc8ad191804af5de514a5610fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadc61ebb78e49b6bfc9aa6eadc98363a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gadc61ebb78e49b6bfc9aa6eadc98363a5">setRds</a> (bool value)</td></tr>
-<tr class="memdesc:gadc61ebb78e49b6bfc9aa6eadc98363a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the RDS operation.  <br /></td></tr>
-<tr class="separator:gadc61ebb78e49b6bfc9aa6eadc98363a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ac7cb09328897832578e4397645ab75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#a6ac7cb09328897832578e4397645ab75">setRDS</a> (bool value)</td></tr>
-<tr class="separator:a6ac7cb09328897832578e4397645ab75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae34ef5e3d69ef41522b611dcc3ce14a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gae34ef5e3d69ef41522b611dcc3ce14a0">setRds</a> (bool value, bool interrupt_enable=false)</td></tr>
+<tr class="memdesc:gae34ef5e3d69ef41522b611dcc3ce14a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the RDS operation.  <br /></td></tr>
+<tr class="separator:gae34ef5e3d69ef41522b611dcc3ce14a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6fb3f9108ff9bc85382e541f256805d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a01.html#ae6fb3f9108ff9bc85382e541f256805d">setRDS</a> (bool value, bool interrupt_enable=false)</td></tr>
+<tr class="separator:ae6fb3f9108ff9bc85382e541f256805d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1fb9b7d09968c248624c9c9c3aa3b307"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga1fb9b7d09968c248624c9c9c3aa3b307">getRdsReady</a> ()</td></tr>
 <tr class="memdesc:ga1fb9b7d09968c248624c9c9c3aa3b307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if RDS Ready.  <br /></td></tr>
 <tr class="separator:ga1fb9b7d09968c248624c9c9c3aa3b307"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2231,8 +2231,8 @@ raw</td>
 
 </div>
 </div>
-<a id="a6ac7cb09328897832578e4397645ab75" name="a6ac7cb09328897832578e4397645ab75"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ac7cb09328897832578e4397645ab75">&#9670;&#160;</a></span>setRDS()</h2>
+<a id="ae6fb3f9108ff9bc85382e541f256805d" name="ae6fb3f9108ff9bc85382e541f256805d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6fb3f9108ff9bc85382e541f256805d">&#9670;&#160;</a></span>setRDS()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2244,8 +2244,18 @@ raw</td>
           <td class="memname">void BK108X::setRDS </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>interrupt_enable</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -2257,7 +2267,7 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l01108">1108</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01109">setRds()</a>.</p>
+<p class="reference">References <a class="el" href="_b_k108_x_8cpp_source.html#l01111">setRds()</a>.</p>
 
 </div>
 </div>
@@ -2286,7 +2296,7 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00788">788</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01538">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01310">getRdsText2A()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01539">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01311">getRdsText2A()</a>.</p>
 
 </div>
 </div>
@@ -2314,7 +2324,7 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00789">789</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01538">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01337">getRdsText2B()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01539">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01338">getRdsText2B()</a>.</p>
 
 </div>
 </div>
@@ -2342,7 +2352,7 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00790">790</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01538">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01281">getRdsText0A()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01539">clearRdsBuffer()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01282">getRdsText0A()</a>.</p>
 
 </div>
 </div>
@@ -2370,7 +2380,7 @@ raw</td>
 
 <p class="definition">Definition at line <a class="el" href="_b_k108_x_8h_source.html#l00791">791</a> of file <a class="el" href="_b_k108_x_8h_source.html">BK108X.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01538">clearRdsBuffer()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l01465">getRdsLocalTime()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01399">getRdsTime()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_b_k108_x_8cpp_source.html#l01539">clearRdsBuffer()</a>, <a class="el" href="_b_k108_x_8cpp_source.html#l01466">getRdsLocalTime()</a>, and <a class="el" href="_b_k108_x_8cpp_source.html#l01400">getRdsTime()</a>.</p>
 
 </div>
 </div>

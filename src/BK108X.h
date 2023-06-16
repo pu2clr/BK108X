@@ -1104,8 +1104,8 @@ public:
 
     void getRdsStatus();
     void setRdsMode(uint8_t rds_mode = 0);
-    void setRds(bool value);
-    inline void setRDS(bool value) { setRds(value); };
+    void setRds(bool value, bool interrupt_enable = false);
+    inline void setRDS(bool value, bool interrupt_enable = false ) { setRds(value, interrupt_enable); };
     bool getRdsReady();
 
     uint8_t getRdsFlagAB(void);

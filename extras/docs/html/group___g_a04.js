@@ -5,7 +5,7 @@ var group___g_a04 =
     [ "BK108X::getRdsStationName", "group___g_a04.html#ga4c3e22b1a3565d0ce22cd07c5c840205", null ],
     [ "BK108X::getRdsStatus", "group___g_a04.html#gade944541df0205f7a7bb6335ae25c211", null ],
     [ "BK108X::setRdsMode", "group___g_a04.html#gadb237cc8ad191804af5de514a5610fd9", null ],
-    [ "BK108X::setRds", "group___g_a04.html#gadc61ebb78e49b6bfc9aa6eadc98363a5", null ],
+    [ "BK108X::setRds", "group___g_a04.html#gae34ef5e3d69ef41522b611dcc3ce14a0", null ],
     [ "BK108X::getRdsReady", "group___g_a04.html#ga1fb9b7d09968c248624c9c9c3aa3b307", null ],
     [ "BK108X::getRdsFlagAB", "group___g_a04.html#ga8be7187079334991c12934087e7d826c", null ],
     [ "BK108X::getRdsGroupType", "group___g_a04.html#ga88ee370deb58d65deee0e8e159507758", null ],
