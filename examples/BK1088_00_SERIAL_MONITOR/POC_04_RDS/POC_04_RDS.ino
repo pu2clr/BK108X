@@ -112,7 +112,7 @@ void processRdsInfo() {
   char *pStarionInfo;
   char *pLocalTime;
 
-  if ((millis() - delayRDSInfo) > 500) {
+  if ((millis() - delayRDSInfo) > 50) {
     Serial.print("\nGroupType....: ");
     Serial.print(rx.getRdsGroupType());
     Serial.print("\nVersion Code.: ");
