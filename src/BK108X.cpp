@@ -387,6 +387,9 @@ void BK108X::reset()
  */
 void BK108X::powerUp()
 {
+
+    // A bit delay before starting the system. 
+    delay(100); 
     // Starts the mains register with default values suggested by BEKEN.
 
     // Turn the receiver on
@@ -423,27 +426,27 @@ void BK108X::powerUp()
     setRegister(REG1B, 0x4CA2); // 0b0100110010100010
     // 32768 crystal clock (default setup)
     setRegister(REG1C, 0x8820); // 0b1000100000100000
-    setRegister(REG1D, 0x0200); // 0b0000001000000000  ->  512
+    setRegister(REG1D, 0x0200); // 0b0000001000000000  ->  512 
     // If the setup is not factory default -- The commands below are not working propely
     if (this->oscillatorType != OSCILLATOR_TYPE_CRYSTAL || oscillatorFrequency != 32768)
     {
         uint32_t bk_number = (oscillatorFrequency / 512) + 0.5; // The result is a 18 bit number
-        uint16_t final_result = 0;
-        uint16_t aux;
+        uint16_t final_result;
+        // uint16_t aux;
         // Sets the two most significant bits of result (bk_number) to the REG1C [1:0]
         // reg1c->refined.FREQ_SEL = 0 // 12MHz test
         reg1c->refined.FREQ_SEL =  (bk_number >> 16);
         setRegister(REG1C, reg1c->raw);
         //The REG1D receives the inverted order of the 16 least significant bits of the bk_number.. The bit order of REG1D is opposite to the calculation result
-        aux = bk_number & 0b001111111111111111;
+        final_result = bk_number & 0b001111111111111111;
         // Inverts the bit order of aux;
-        for (int i = 0; i < 16; i++)
-        {
-            if ((aux & (1 << i)) != 0)
-                final_result |= 1 << (15 - i);
-        }
-        // setRegister(REG1D, final_result); // It has no effect on the REG1d register.
-        setRegister(REG1D,0x71DA); // 12MHz test
+        // for (int i = 0; i < 16; i++)
+        // {
+        //     if ((aux & (1 << i)) != 0)
+        //         final_result |= 1 << (15 - i);
+        // }
+        setRegister(REG1D, final_result); // It has no effect on the REG1d register.
+        // setRegister(REG1D,0x71DA); // 12MHz test
     }
 
 
