@@ -177,6 +177,7 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_B), rotaryEncoder, CHANGE);
 
   rx.setup(I2C_SDIO_PIN, I2C_SCLK_PIN);
+  // rx.setup(I2C_SDIO_PIN, I2C_SCLK_PIN, OSCILLATOR_TYPE_REFCLK, 32768); // 12MHz external clock oscillator
   delay(100);
 
   // Checking the EEPROM content
