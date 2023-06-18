@@ -177,7 +177,7 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_B), rotaryEncoder, CHANGE);
 
   rx.setup(I2C_SDIO_PIN, I2C_SCLK_PIN);
-  // rx.setup(I2C_SDIO_PIN, I2C_SCLK_PIN, OSCILLATOR_TYPE_REFCLK, 32768); // 12MHz external clock oscillator
+  // rx.setup(I2C_SDIO_PIN, I2C_SCLK_PIN, OSCILLATOR_TYPE_REFCLK, 32768); // It is not working - Trying to get more information about the device and setup
   delay(100);
 
   // Checking the EEPROM content
@@ -376,25 +376,32 @@ int progInfoIndex = 0;  // controls the part of the rdsMsg text will be shown on
 
 long delayProgramInfo = millis();
 long delayLocalTime = millis();
-long waitTime = 1000L;
+long waitTime = 700L;
+
+
+void clearRdsText(char *txt, int size) {
+  for (int i = 0; i < size; i++) 
+    if ( txt[i] < 32 ) txt[i] = ' ';
+}
 
 /**
   showProgramInfo - Shows the Program Information
 */
 void showProgramInfo() {
-  char txtAux[17];
+  char txtAux[16];
 
   if (programInfo == NULL || strlen(programInfo) < 2 || (millis() - delayProgramInfo) < waitTime) return;
   delayProgramInfo = millis();
   clearLcdLine(0);
   programInfo[61] = '\0';  // Truncate the message to fit on display line
   strncpy(txtAux, &programInfo[progInfoIndex], 16);
-  txtAux[16] = '\0';
-  progInfoIndex += 3;
+  txtAux[15] = '\0';
+  clearRdsText(txtAux,17); // replace unwanted ASCII symbol to space. 
+  progInfoIndex += 2;
   if (progInfoIndex > 60) progInfoIndex = 0;
   lcd.setCursor(0, 0);
   lcd.print(txtAux);
-  waitTime = 1000L;
+  waitTime = 700;
 }
 
 
