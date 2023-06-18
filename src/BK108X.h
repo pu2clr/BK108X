@@ -937,7 +937,8 @@ public:
     /**
      * @ingroup GA03
      * @brief Sets the time used to call the strength of pilot
-     * 
+     * @details he Strength Pilot refers to a specific technique used in digital broadcasting systems to provide an indication of the signal strength or quality. 
+     * @details It is primarily used in FM (Frequency Modulation) broadcasting.
      * @param value  0 ~ 3
      */
     inline void setTimeCallStrengthPilot(uint8_t value)
@@ -947,6 +948,7 @@ public:
     }
 
     /**
+     * @ingroup GA03
      * @brief Sets the Gpio2 
      * @details the General Purpose I/O 2. You can use this pin according to the table below.
      * 
@@ -965,6 +967,7 @@ public:
     }
 
     /**
+     * @ingroup GA03
      * @brief Sets the Gpio3 
      * @details the General Purpose I/O 3. You can use this pin according to the table below.
      * 
@@ -984,8 +987,10 @@ public:
     }
 
     /**
+     * @ingroup GA03
      * @brief Enables or Disables AFC
-     * 
+     * @details In DSP receivers, AFC stands for Automatic Frequency Control. 
+     * @details It is a mechanism used to automatically adjust the frequency of the receiver's local oscillator to accurately track and lock onto the desired signal.
      * @param value if True, it enables AFC
      */
     inline void setAfc(bool value)
@@ -995,6 +1000,20 @@ public:
     }
 
     /**
+     * @ingroup GA03
+     * @brief Sets AFC Rail 
+     * @details In the context of a DSP receiver, AFC (Automatic Frequency Control) rail refers to a control signal or voltage that is used to adjust the frequency of the receiver's local oscillator.
+     * @details AFC rail helps maintain the receiver's frequency locked onto the desired signal by compensating for any variations or drifts in the received signal's frequency. 
+     * @details It is part of the automatic frequency control mechanism that ensures the receiver stays tuned accurately to the desired station or frequency. 
+     * @param value True or false. If true, it enables AFC Rail 
+     */
+    inline void AfcRail(bool value) {
+        reg0a->refined.AFCRL = value;
+        setRegister(REG0A,reg0a->raw);
+    }
+
+    /**
+     * @ingroup GA03
      * @brief Sets AFC/RSSI/SNR Calculate Rate
      * @details 00 = fastest; 11 = slowest. 4X times each
      * @param value 0˜3
@@ -1006,6 +1025,7 @@ public:
     }
 
     /**
+     * @ingroup GA03
      * @brief Sets AFCRL Threshold
      * @details 0 = Channel space/2; 1 = 25kHz
      * @param value 0=Channel space/2; 1 = 25kHz
@@ -1017,8 +1037,11 @@ public:
     }
 
     /**
+     * @ingroup GA03
      * @brief Sets AFC Average
      * @details 0 = Use the instant AFC value; 1 = Use the average AFC value
+     * @details AFC Average refers to the averaging of the Automatic Frequency Control (AFC) signal over a certain period of time. 
+     * @details AFC Average is used to mitigate short-term fluctuations or noise in the received signal's frequency. 
      * @param value 0 or 1
      */
     inline void setAfcAve(uint8_t value)
@@ -1028,6 +1051,7 @@ public:
     }
 
     /**
+     * @ingroup GA03
      * @brief Sets Variation Threshold for average AFC calculation
      * @details 0 = Disable; 1 = the most strict; 2= ?; 3 = the loosest
      * @param value 0, 1, 2 or 3
@@ -1050,6 +1074,7 @@ public:
     }
 
     /**
+     * @ingroup GA03
      * @brief Sets RSSI Threshold for Instant AFC updating
      * @details default value is 16 (0x10)
      * @param value 

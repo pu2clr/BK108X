@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['readregister_0',['readRegister',['../group___g_a02.html#ga6521ba6b192db9370203d6672178d47e',1,'BK108X']]],
-  ['reset_1',['reset',['../group___g_a03.html#ga0479b36a2d6558df557a3ba4a0d07ce2',1,'BK108X']]]
+  ['powerdown_0',['powerDown',['../group___g_a03.html#gaa3a8958cbfb9cac36c81ed9351b5b857',1,'BK108X']]],
+  ['powerup_1',['powerUp',['../group___g_a03.html#gacdabf4e7e5c7ef78bf51710122daa618',1,'BK108X']]]
 ];
