@@ -209,7 +209,19 @@ The [example folder can guide you to check your circuit via Arduino sketches](ht
    * If you are using an external clock input, check the signal with an oscilloscope (check the RCLK);
    * By default, this library used 32.768KHz as reference clock; 
    * If you need to use external reference clock or a crystal with different clock, please, read the [API documentation} (https://pu2clr.github.io/BK108X/extras/docs/html/index.html)
-       
+
+
+## BK1088 and different reference clock frequency
+
+I came across the following guide online regarding different reference clock frequencies:
+To accommodate the specific clock signal used, the internal registers should be configured as follows:
+
+1. Calculate the value using the formula (Freq/512)+0.5, resulting in an 18-bit hexadecimal number.
+2. Set Bit[17:16] of REG28 to the corresponding values and set Bit[15:0] of REG29 to the reverse order of the lower 16 bits of the calculated binary number.
+3. Please, note that the bit order of REG29 should be opposite to the calculation result. Bit[15] corresponds to REG29[0], and Bit[0] corresponds to REG29[15].
+4. For example, if the frequency is 12MHz: Calculate (12000000/512) + 0.5 = 23438. Convert it to hexadecimal: 0x5B8E. Convert the lower 16 bits to binary and reverse the order: 0111 0001 1101 1010. Convert it back to hexadecimal: 0x71DA. Hence, the configuration for the 12MHz clock would be: REG28 remains unchanged at 0x0000, and REG29 changes from 0x0200 to 0x71DA.
+
+This implementation is found within the powerUp function of this library (refer to void BK108X::powerUp() in the BK108X.cpp file). However, it did not yield successful results in my tests. Currently, this library solely supports the 32.768kHz passive crystal oscillator. If you possess any knowledge on how to implement it differently, please inform me.
 
 
 
@@ -254,10 +266,6 @@ The following prototype is highly beneficial for Arduino UNO users looking to de
 
 
 ![Prototype: Arduino UNO Shield 4 ](extras/images/UNO_SHIELD_07.jpg)
-
-
-
-
 
 
 
