@@ -215,6 +215,9 @@ The [example folder can guide you to check your circuit via Arduino sketches](ht
 
 ## Photos
 
+The following prototypes are based on the electrical schematics available in this repository and aim to guide experimenters in assembling a receiver based on the BK1088E device.
+
+In some prototypes, the receiving module is separated from the controller module. This aids in conducting tests with various different configurations. Additionally, it helps mitigate noise emitted by the controller. See the videos posted on youtube.
 
 Prototype: Photo 1
 ![Prototype: Photo 1](extras/images/photo_A02.png)
@@ -239,6 +242,7 @@ Prototype: Photo 5
 
 ### Arduino UNO SHIELD
 
+The following prototype is highly beneficial for Arduino UNO users looking to develop a receiver utilizing the BK1088E. Additionally, this model offers the flexibility to incorporate a wide range of display options.
 
 ![Prototype: Arduino UNO Shield 1](extras/images/UNO_SHIELD_02.jpg)
 
