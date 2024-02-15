@@ -309,4 +309,5 @@ The following prototype is highly beneficial for Arduino UNO users looking to de
 * [1201682 Radio Alarm Clock with Bluetooth Speaker / Bluetooth Alarm Clock Radio Schematics Circuit Diagram Shenzhen Great Power Enterprise](https://fccid.io/ZY9-1201682/Schematics/Circuit-Diagram-2803394);
 * [AudioComm RAD-F630Z](http://nice.kaze.com/rad-f630z.html)
 * [Tutorial: Arduino and the I2C bus – Part One](https://tronixstuff.com/2010/10/20/tutorial-arduino-and-the-i2c-bus/)
+* [GNL Project](https://www.youtube.com/@GNLProject-yp8po/videos)
   
