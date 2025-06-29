@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('_b_k108_x_8cpp_source.html',''); initR
 <div class="line"><span class="lineno">   13</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">BK108X</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">Wire</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span> <span class="comment">// This library is not used to communicate wwith BK108X family device. It is used to check I2C bus.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">Wire</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span> <span class="comment">// This library is not used to communicate with BK108X family device. It is used to check I2C bus.</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">/**</span></div>
 <div class="line"><span class="lineno">   19</span><span class="comment"> * @defgroup GA02 BEKEN I2C BUS</span></div>
@@ -590,7 +590,7 @@ $(document).ready(function(){initNavTree('_b_k108_x_8cpp_source.html',''); initR
 <div class="line"><span class="lineno">  494</span><span class="comment"> *</span></div>
 <div class="line"><span class="lineno">  495</span><span class="comment"> * @param minimum_frequency  minimum frequency for the band</span></div>
 <div class="line"><span class="lineno">  496</span><span class="comment"> * @param maximum_frequency  maximum frequency for the band</span></div>
-<div class="line"><span class="lineno">  497</span><span class="comment"> * @param default_frequency  default freuency</span></div>
+<div class="line"><span class="lineno">  497</span><span class="comment"> * @param default_frequency  default frequency</span></div>
 <div class="line"><span class="lineno">  498</span><span class="comment"> * @param step  increment and decrement frequency step in KHz (default 10 * 10KHz)</span></div>
 <div class="line"><span class="lineno">  499</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00500" name="l00500"></a><span class="lineno"><a class="line" href="group___g_a03.html#gaa6da4291400839ffc68ccff5e1ad7b13">  500</a></span><span class="keywordtype">void</span> <a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a03.html#gaa6da4291400839ffc68ccff5e1ad7b13">setFM</a>(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step)</div>
@@ -618,9 +618,9 @@ $(document).ready(function(){initNavTree('_b_k108_x_8cpp_source.html',''); initR
 <div class="line"><span class="lineno">  522</span><span class="comment"> *</span></div>
 <div class="line"><span class="lineno">  523</span><span class="comment"> * @param minimum_frequency  minimum frequency for the band</span></div>
 <div class="line"><span class="lineno">  524</span><span class="comment"> * @param maximum_frequency  maximum frequency for the band</span></div>
-<div class="line"><span class="lineno">  525</span><span class="comment"> * @param default_frequency  default freuency</span></div>
+<div class="line"><span class="lineno">  525</span><span class="comment"> * @param default_frequency  default frequency</span></div>
 <div class="line"><span class="lineno">  526</span><span class="comment"> * @param step  increment and decrement frequency step</span></div>
-<div class="line"><span class="lineno">  527</span><span class="comment"> * @param am_space (default 0 = 1kHz). You can control the freqyuency step by using am_space = 0 and just set the step to 1, 5, 9 or 10 kHz.</span></div>
+<div class="line"><span class="lineno">  527</span><span class="comment"> * @param am_space (default 0 = 1kHz). You can control the frequency step by using am_space = 0 and just set the step to 1, 5, 9 or 10 kHz.</span></div>
 <div class="line"><span class="lineno">  528</span><span class="comment"> *                 This way, you can keep the space always 0</span></div>
 <div class="line"><span class="lineno">  529</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00530" name="l00530"></a><span class="lineno"><a class="line" href="group___g_a03.html#ga334ccbe40fcb5faa9e045288ca606f89">  530</a></span><span class="keywordtype">void</span> <a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a03.html#ga334ccbe40fcb5faa9e045288ca606f89">setAM</a>(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space)</div>
@@ -693,7 +693,7 @@ $(document).ready(function(){initNavTree('_b_k108_x_8cpp_source.html',''); initR
 <div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span><span class="comment">/**</span></div>
 <div class="line"><span class="lineno">  598</span><span class="comment"> * @ingroup GA03</span></div>
 <div class="line"><span class="lineno">  599</span><span class="comment"> * @brief Increments the current frequency</span></div>
-<div class="line"><span class="lineno">  600</span><span class="comment"> * @details The increment uses the band space as step.</span></div>
+<div class="line"><span class="lineno">  600</span><span class="comment"> * @details The increment uses the band space as a step.</span></div>
 <div class="line"><span class="lineno">  601</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00602" name="l00602"></a><span class="lineno"><a class="line" href="group___g_a03.html#gac0c265a916d7852d7e4977b1835098eb">  602</a></span><span class="keywordtype">void</span> <a class="code hl_class" href="group___g_a01.html#class_b_k108_x">BK108X</a>::<a class="code hl_function" href="group___g_a03.html#gac0c265a916d7852d7e4977b1835098eb">setFrequencyUp</a>()</div>
 <div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>{</div>

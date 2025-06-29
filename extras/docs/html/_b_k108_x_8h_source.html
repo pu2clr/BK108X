@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('_b_k108_x_8h_source.html',''); initRes
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">Arduino</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="_b_k108_x_8h.html#afb81dd661d531fa5c5422549fab7588f">   21</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">MAX_DELAY_AFTER_OSCILLATOR</span> 500 <span class="comment">// Max delay after the crystal oscilator becomes active</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="_b_k108_x_8h.html#afb81dd661d531fa5c5422549fab7588f">   21</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">MAX_DELAY_AFTER_OSCILLATOR</span> 500 <span class="comment">// Max delay after the crystal oscillator becomes active</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="_b_k108_x_8h.html#af1732013854882f94b02e77b8a6106ec">   23</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">I2C_DEVICE_ADDR</span> 0x80</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
@@ -223,7 +223,7 @@ $(document).ready(function(){initNavTree('_b_k108_x_8h_source.html',''); initRes
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">/**</span></div>
 <div class="line"><span class="lineno">  129</span><span class="comment"> * @ingroup GA01</span></div>
-<div class="line"><span class="lineno">  130</span><span class="comment"> * @brief Power Configuratio</span></div>
+<div class="line"><span class="lineno">  130</span><span class="comment"> * @brief Power Configuration</span></div>
 <div class="line"><span class="lineno">  131</span><span class="comment"> * @see  BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER; pages 13 and 14 </span></div>
 <div class="line"><span class="lineno">  132</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="group___g_a01.html#unionbk__reg02">  133</a></span><span class="keyword">typedef</span> <span class="keyword">union</span></div>
@@ -248,7 +248,7 @@ $(document).ready(function(){initNavTree('_b_k108_x_8h_source.html',''); initRes
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">/**</span></div>
 <div class="line"><span class="lineno">  154</span><span class="comment"> * @ingroup GA01</span></div>
-<div class="line"><span class="lineno">  155</span><span class="comment"> * @brief Channe</span></div>
+<div class="line"><span class="lineno">  155</span><span class="comment"> * @brief Channel</span></div>
 <div class="line"><span class="lineno">  156</span><span class="comment"> * @details The tuned Frequency = Band + CHAN * SPACE</span></div>
 <div class="line"><span class="lineno">  157</span><span class="comment"> * @see BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER; page 14 </span></div>
 <div class="line"><span class="lineno">  158</span><span class="comment"> */</span></div>
@@ -373,7 +373,7 @@ $(document).ready(function(){initNavTree('_b_k108_x_8h_source.html',''); initRes
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        uint16_t RESERVED :3;</div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        uint16_t STHYS_SEL : 1;  <span class="comment">//!&lt; ST/MONO Transition Hysterisis Select.  0 = 6dB; 1=2dB</span></div>
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        uint16_t DACCK_SEL : 1;  <span class="comment">//!&lt; DAC Clock Select</span></div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        uint16_t IMPTH : 2;      <span class="comment">//!&lt; Threshold of Impulse Detect. 00 = toughest; 11 = loosest</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        uint16_t IMPTH : 2;      <span class="comment">//!&lt; Threshold of Impulse Detect. 00 = strictest; 11 = loosest</span></div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        uint16_t BPDE : 1;       <span class="comment">//!&lt; De-emphasis Bypass; 0 = Normal operation; 1 = Bypass de-emphasis.</span></div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        uint16_t IMPEN : 1;      <span class="comment">//!&lt; Impulse Remove Enable; 0 = Disable; 1 = Enable.</span></div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        uint16_t SIQ : 1;        <span class="comment">//!&lt; IF I/Q Signal switch; 0 = Normal operation; 1 = Reversed I/Q signal.</span></div>
@@ -396,8 +396,8 @@ $(document).ready(function(){initNavTree('_b_k108_x_8h_source.html',''); initRes
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno"><a class="line" href="group___g_a01.html#structbk__reg08_8refined">  300</a></span>    <span class="keyword">struct</span></div>
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    {</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        uint16_t AFCRSSIT : 7; <span class="comment">//!&lt; RSSI Threshold for Instant AFC updating</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        uint16_t RANGE : 2;    <span class="comment">//!&lt; AFC Average Range; 00 = the toughest; 11 = the loosest</span></div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        uint16_t VAR : 2;      <span class="comment">//!&lt; Variation Threshold for average AFC calculation; 00 = Disable; 01 = the toughest; 11 = the loosest</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        uint16_t RANGE : 2;    <span class="comment">//!&lt; AFC Average Range; 00 = the strictest; 11 = the loosest</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        uint16_t VAR : 2;      <span class="comment">//!&lt; Variation Threshold for average AFC calculation; 00 = Disable; 01 = the strictest; 11 = the loosest</span></div>
 <div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        uint16_t AVE : 1;      <span class="comment">//!&lt; AFC Average</span></div>
 <div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        uint16_t SEL25K : 1;   <span class="comment">//!&lt; AFCRL Threshold; 0 = Channel space/2; 1 = 25kHz</span></div>
 <div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>        uint16_t TCSEL : 2;    <span class="comment">//!&lt; AFC/RSSI/SNR Calculate Rate; 00 = fastest; 11 = slowest. 4X times each</span></div>
@@ -1160,7 +1160,7 @@ $(document).ready(function(){initNavTree('_b_k108_x_8h_source.html',''); initRes
 <div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span> </div>
 <div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>    <span class="comment">/**</span></div>
 <div class="line"><span class="lineno"> 1066</span><span class="comment">     * @brief Sets AFC range</span></div>
-<div class="line"><span class="lineno"> 1067</span><span class="comment">     * @details 0 = he most strict; 3 = the loosest</span></div>
+<div class="line"><span class="lineno"> 1067</span><span class="comment">     * @details 0 = the most strict; 3 = the loosest</span></div>
 <div class="line"><span class="lineno"> 1068</span><span class="comment">     * @param value 0,1,2 or 3</span></div>
 <div class="line"><span class="lineno"> 1069</span><span class="comment">     */</span></div>
 <div class="line"><a id="l01070" name="l01070"></a><span class="lineno"><a class="line" href="group___g_a01.html#a55598bcb5bf6624db9741cac93c015da"> 1070</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group___g_a01.html#a55598bcb5bf6624db9741cac93c015da">setAfcRange</a>(uint8_t value)</div>
