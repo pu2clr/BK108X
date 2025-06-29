@@ -13,7 +13,7 @@
  */
 
 #include <BK108X.h>
-#include <Wire.h> // This library is not used to communicate wwith BK108X family device. It is used to check I2C bus.
+#include <Wire.h> // This library is not used to communicate with BK108X family device. It is used to check I2C bus.
 
 /**
  * @defgroup GA02 BEKEN I2C BUS
@@ -494,7 +494,7 @@ void BK108X::setup(int sda_pin, int sclk_pin, uint8_t oscillator_type, uint32_t 
  *
  * @param minimum_frequency  minimum frequency for the band
  * @param maximum_frequency  maximum frequency for the band
- * @param default_frequency  default freuency
+ * @param default_frequency  default frequency
  * @param step  increment and decrement frequency step in KHz (default 10 * 10KHz)
  */
 void BK108X::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step)
@@ -522,9 +522,9 @@ void BK108X::setFM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint1
  *
  * @param minimum_frequency  minimum frequency for the band
  * @param maximum_frequency  maximum frequency for the band
- * @param default_frequency  default freuency
+ * @param default_frequency  default frequency
  * @param step  increment and decrement frequency step
- * @param am_space (default 0 = 1kHz). You can control the freqyuency step by using am_space = 0 and just set the step to 1, 5, 9 or 10 kHz.
+ * @param am_space (default 0 = 1kHz). You can control the frequency step by using am_space = 0 and just set the step to 1, 5, 9 or 10 kHz.
  *                 This way, you can keep the space always 0
  */
 void BK108X::setAM(uint16_t minimum_frequency, uint16_t maximum_frequency, uint16_t default_frequency, uint16_t step, uint16_t am_space)
@@ -597,7 +597,7 @@ void BK108X::setFrequency(uint16_t frequency)
 /**
  * @ingroup GA03
  * @brief Increments the current frequency
- * @details The increment uses the band space as step.
+ * @details The increment uses the band space as a step.
  */
 void BK108X::setFrequencyUp()
 {

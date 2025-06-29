@@ -1,9 +1,9 @@
 # [PU2CLR BK108X Arduino Library](https://pu2clr.github.io/BK108X/)
 
 The BK1088E is a single-chip solution for receiving AM, FM, and shortwave radio. 
-Using inexpensive components (Arduino Pro Mini, some push buttons buttons, and a standard OLED or TFT display), the  hobbyists can build serviceable little receiver based on BK1088E with a impressive performance.  
+Using inexpensive components (Arduino Pro Mini, some push buttons, and a standard OLED or TFT display), the hobbyists can build serviceable little receiver based on BK1088E with impressive performance.  
 
-This project involves a cross-platform Arduino Library designed to control the BK1086 and BK1088 devices. The NK108X Aerduino Library library is based on the documentation titled "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.4" provided by BEKEN Corporation. Its purpose is to enable seamless control and integration of the BK1086 and BK1088 devices within Arduino projects.
+This project involves a cross-platform Arduino Library designed to control the BK1086 and BK1088 devices. The BK108X Arduino Library is based on the documentation titled "BK1086/88E BROADCAST AM/FM/SW/LW RADIO RECEIVER; Rev.1.4" provided by BEKEN Corporation. Its purpose is to enable seamless control and integration of the BK1086 and BK1088 devices within Arduino projects.
 
 This library can be freely distributed using the MIT Free Software model. 
 
@@ -69,7 +69,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE ARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 <BR>
 
@@ -109,7 +109,7 @@ If you have suggestions to improve this project, please let me know.
 ### Useful information
 
 * BK1086/88 can be controlled by an MCU through 2-wire I2C mode. 
-* The BK1088 already comes with 40K internal pull-up resistors on the i2c bus. Probabbly, no external pull-up resitores will be needed. However, depending on the size of the bus, consider using external pull-up resistors; 
+* The BK1088 already comes with 40K internal pull-up resistors on the i2c bus. Probably, no external pull-up resistors will be needed. However, depending on the size of the bus, consider using external pull-up resistors; 
 * BK1086/88 has an internal automatic tuning technology, which can automatically adjust the internal variable capacitance value to make the resonant circuit in the best resonance state at the current operating frequency, thus greatly simplifying the front-end design;
 * BK1086 only supports FM and medium wave, BK1088 supports short wave and long wave in addition to FM and medium wave;
 

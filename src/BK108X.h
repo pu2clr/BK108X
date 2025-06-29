@@ -18,7 +18,7 @@
 
 #include <Arduino.h>
 
-#define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscilator becomes active
+#define MAX_DELAY_AFTER_OSCILLATOR 500 // Max delay after the crystal oscillator becomes active
 
 #define I2C_DEVICE_ADDR 0x80
 
@@ -127,7 +127,7 @@ typedef union
 
 /**
  * @ingroup GA01
- * @brief Power Configuratio
+ * @brief Power Configuration
  * @see  BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER; pages 13 and 14 
  */
 typedef union
@@ -152,7 +152,7 @@ typedef union
 
 /**
  * @ingroup GA01
- * @brief Channe
+ * @brief Channel
  * @details The tuned Frequency = Band + CHAN * SPACE
  * @see BEKEN - BK1086/88 - BROADCAST AM/FM/SW/LW RADIO RECEIVER; page 14 
  */
@@ -277,7 +277,7 @@ typedef union
         uint16_t RESERVED :3;
         uint16_t STHYS_SEL : 1;  //!< ST/MONO Transition Hysterisis Select.  0 = 6dB; 1=2dB
         uint16_t DACCK_SEL : 1;  //!< DAC Clock Select
-        uint16_t IMPTH : 2;      //!< Threshold of Impulse Detect. 00 = toughest; 11 = loosest
+        uint16_t IMPTH : 2;      //!< Threshold of Impulse Detect. 00 = strictest; 11 = loosest
         uint16_t BPDE : 1;       //!< De-emphasis Bypass; 0 = Normal operation; 1 = Bypass de-emphasis.
         uint16_t IMPEN : 1;      //!< Impulse Remove Enable; 0 = Disable; 1 = Enable.
         uint16_t SIQ : 1;        //!< IF I/Q Signal switch; 0 = Normal operation; 1 = Reversed I/Q signal.
@@ -300,8 +300,8 @@ typedef union
     struct
     {
         uint16_t AFCRSSIT : 7; //!< RSSI Threshold for Instant AFC updating
-        uint16_t RANGE : 2;    //!< AFC Average Range; 00 = the toughest; 11 = the loosest
-        uint16_t VAR : 2;      //!< Variation Threshold for average AFC calculation; 00 = Disable; 01 = the toughest; 11 = the loosest
+        uint16_t RANGE : 2;    //!< AFC Average Range; 00 = the strictest; 11 = the loosest
+        uint16_t VAR : 2;      //!< Variation Threshold for average AFC calculation; 00 = Disable; 01 = the strictest; 11 = the loosest
         uint16_t AVE : 1;      //!< AFC Average
         uint16_t SEL25K : 1;   //!< AFCRL Threshold; 0 = Channel space/2; 1 = 25kHz
         uint16_t TCSEL : 2;    //!< AFC/RSSI/SNR Calculate Rate; 00 = fastest; 11 = slowest. 4X times each
@@ -1064,7 +1064,7 @@ public:
 
     /**
      * @brief Sets AFC range
-     * @details 0 = he most strict; 3 = the loosest
+     * @details 0 = the most strict; 3 = the loosest
      * @param value 0,1,2 or 3
      */
     inline void setAfcRange(uint8_t value)
